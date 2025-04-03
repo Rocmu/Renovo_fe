@@ -1,3 +1,8 @@
+/* This file contains the main styles for the application */
 :root {
-  font-family: 'Madimi One', sans-serif;
+  --blue-color: #0046AD; /* perussininen */
+  --hover-color: #0063f6; /* hoversininen */
+  --grey-color: #ededed;   /* taustan harmaa */
+  --white-color: #FFF;  /* valkoinen */
+  --text-color: #212322;
 }
