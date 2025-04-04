@@ -5,6 +5,7 @@
   --grey-color: #ededed;   /* taustan harmaa */
   --white-color: #FFF;  /* valkoinen */
   --text-color: #212322;
+  --font-family: Verdana, sans-serif; /* basic font, probably changed later */
 }
 
 * {
@@ -18,19 +19,27 @@ body {
 
 header {
   background-color: var(--white-color);
-  padding: 5px;
+  padding: 0.3rem;
   width: 100%;
-  height: 100px;
+  height: 8rem;
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
+.app-logo {
+  display: block;
+  width: 20rem;
+  height: auto;
+  margin: 0;
+}
+
 .return-button {
-  all: unset;
+  all: unset; /** Resets default button styling */
   box-sizing: border-box;
   float: left;
   text-align: left;
+  font-family: var(--font-family);
   width: 15%;
   height: auto;
   position: relative;
@@ -40,6 +49,8 @@ header {
   padding: 2px;
   border: 2px solid var(--blue-color);
   line-height: 1;
+  cursor: pointer;
+  border-radius: 0.7rem;
 }
 
 .return-button:hover {
@@ -48,6 +59,7 @@ header {
 }
 
 .logo-button {
+  all: unset;
   position: relative;
   box-sizing: border-box;
   float: left;
@@ -56,10 +68,13 @@ header {
   height: auto;
   color: var(--blue-color);
   font-size: 40px;
+  font-family: var(--font-family);
   /* margin: 0; */
   padding: 2px;
   border: 2px solid var(--blue-color);
   line-height: 1;
+  cursor: pointer;
+  border-radius: 0.7rem;
 }
 
 .logo-button:hover {
@@ -80,8 +95,10 @@ nav {
 }
 
 .nav-button {
+  all: unset;
   box-sizing: border-box;
   font-size: 25px;
+  font-family: var(--font-family);
   float: left;
   text-align: center;
   width: 10%;
@@ -89,10 +106,12 @@ nav {
   padding: 1px;
   margin: 0;
   border: 1px solid var(--white-color);
+  cursor: pointer;
+  border-radius: 0.7rem;
 }
 
-.nav-button:hover {
-  font-weight: 100;
+button.nav-button:hover {
+  font-weight: bold;
   text-decoration: underline;
 }
 
@@ -117,4 +136,14 @@ footer {
 
 h2 {
   margin: 0px;
+  font-size: 3rem; /* huge font in order to highlight movements from page to page */
+}
+
+a {
+  font-size: 3rem;
+}
+
+h1 {
+  color: var(--blue-color);
+  font-size: 3rem;
 }

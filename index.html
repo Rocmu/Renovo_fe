@@ -7,10 +7,18 @@
     <title>Kirjautumissivu</title>
   </head>
   <body>
-    <h1>Tervetuloa käyttämään Renovoa!</h1>
+    <header>
+      <img class="app-logo" src="/public/img/Renovo_logo.png" alt="Renovo logo">
+    </header>
+    <form id="login-form">
+      <input type="text" id="username" placeholder="sähköposti" required />
+      <input type="password" id="password" placeholder="salasana" required />
+      <button type="submit">Kirjaudu sisään</button>
+    </form>
+    <div id="error-message"></div>
     <div id="app">
       <a href="elements.html">Navbar & header</a>
     </div>
-    <script type="module" src="/src/scripts/main.js"></script>
+    <script type="module" src="/src/scripts/login.js"></script>
   </body>
 </html>
