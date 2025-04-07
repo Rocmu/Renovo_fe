@@ -25,3 +25,5 @@ dist-ssr
 
 .env
 .venv
+
+tests/login.robot
