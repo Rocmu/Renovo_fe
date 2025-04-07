@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.1 on win32)" generated="2025-04-07T09:52:12.668681" rpa="false" schemaversion="5">
+<suite id="s1" name="Login-Server-Test" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot">
+<test id="s1-t1" name="Login as Regular" line="8">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-07T09:52:13.035086" level="INFO">${body} = {'username': 'neasir@metropolia.fi', 'password': 'LiXamei3'}</msg>
+<var>${body}</var>
+<arg>username=${Username}</arg>
+<arg>password=${Password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.035086" elapsed="0.000000"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-04-07T09:52:13.800722" level="INFO">POST Request : url=http://127.0.0.1:3000/api/auth/kubios-login 
+ path_url=/api/auth/kubios-login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '60', 'Content-Type': 'application/json'} 
+ body=b'{"username": "neasir@metropolia.fi", "password": "LiXamei3"}' 
+ </msg>
+<msg time="2025-04-07T09:52:13.800722" level="INFO">POST Response : url=http://127.0.0.1:3000/api/auth/kubios-login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1856', 'ETag': 'W/"740-9VV9NCRt0GmHvh8x1N7kRSp7kjg"', 'Date': 'Mon, 07 Apr 2025 06:52:13 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Logged in successfully with Kubios","user":{"email":"neasir@metropolia.fi","family_name":"Siren","given_name":"Nea","sub":"8f9c0bcb-84fd-4903-b47c-c1cf1ea28dc8"},"user_id":3,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2liSEpHWlVWQ1dVTkRhREp0UmtsMVFYaFpXVWxQVVNJc0luTjFZaUk2SWpobU9XTXdZbU5pTFRnMFptUXRORGt3TXkxaU5EZGpMV014WTJZeFpXRXlPR1JqT0NJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU9HWTVZekJpWTJJdE9EUm1aQzAwT1RBekxXSTBOMk10WXpGalpqRmxZVEk0WkdNNElpd2laMmwyWlc1ZmJtRnRaU0k2SWs1bFlTSXNJbUYxWkNJNklqSnlPRE00Wlc5cFpERjJaV0l3Y1c1eFoyNDRNWEZoZFcwd0lpd2laWFpsYm5SZmFXUWlPaUpoT1RRMk1tSm1NQzB3T1dNekxUUTBNR1F0WWpjMllTMHdNRGRpWVRjMFltUTJNVEVpTENKMGIydGxibDkxYzJVaU9pSnBaQ0lzSW1GMWRHaGZkR2x0WlNJNk1UYzBOREF3T0Rjek5Dd2laWGh3SWpveE56UTBNREV5TXpNMExDSnBZWFFpT2pFM05EUXdNRGczTXpRc0ltWmhiV2xzZVY5dVlXMWxJam9pVTJseVpXNGlMQ0pxZEdraU9pSTFOall4WW1FeE5TMDROekptTFRSak56VXRZVGRrWlMwM056STNaRFZoTjJZd1pEVWlMQ0psYldGcGJDSTZJbTVsWVhOcGNrQnRaWFJ5YjNCdmJHbGhMbVpwSW4wLlBXZm1DR292Rm81UzRmckdmMmJFRUl2c3NJVGo3X2pYR3R4RFkwcGhKMGl6TV9nWUNNRUM5QlQtcmNhU2hkTDAtRkRWOXJFNVB5b2p5Q0Zlb3JKX3RxN1pHQlozZFRmTm1uemU5RnBhUFJ5RmVnd25IdElObTN4YkwyNlB1dWNNSGdNMWgxd09MMEJZWExqSzFFZXZKeEJyVnE5X1Q0VlR3Q0xwSk9sWUxJV3lWTmNCbEFFSGNsemM0dXB6b1NQMWd4ZkhPcS1xUUFLcVVCZURVUlZ0SGNTZ3dHM25IQ2dtSm9fUWhpbHppZHhrSXZwQmo2WUV6OWNSdFFPY1dCeTBVV3A3RzhKU0JPSWZzTHdRNWRsVTVxSmNwMU12RW40NGEwVHl3YmhON2pJWWxFV0xoeW00THRpeEVGZWtOOEVQM1NOTGhtYXI5N0FSUURnU2QzV294ZyIsImlhdCI6MTc0NDAwODczMywiZXhwIjoxNzQ0MDEyMzMzfQ.Z7ZxzQglaSHKCjEzWcODSGZ7b-I3RefQT7w9NUaK70c"} 
+ </msg>
+<msg time="2025-04-07T09:52:13.800722" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=http://127.0.0.1:3000/api/auth/kubios-login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.035086" elapsed="0.765636"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()}[message]</arg>
+<arg>Logged in successfully with Kubios</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.808067" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>user</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.810880" elapsed="0.001007"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-07T09:52:13.811887" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV...</msg>
+<var>${token}</var>
+<arg>${response.json()}[token]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.811887" elapsed="0.000000"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-07T09:52:13.813894" level="INFO">${user_id} = 3</msg>
+<var>${user_id}</var>
+<arg>${response.json()}[user_id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.811887" elapsed="0.002007"/>
+</kw>
+<kw name="Log To Console" owner="BuiltIn">
+<arg>${response.json()}[message]</arg>
+<doc>Logs the given message to the console.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.813894" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-07T09:52:13.816208" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjMsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV...</msg>
+<arg>${token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.816208" elapsed="0.000000"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-07T09:52:13.816208" level="INFO">${user_id} = 3</msg>
+<arg>${user_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-07T09:52:13.816208" elapsed="0.000000"/>
+</kw>
+<status status="PASS" start="2025-04-07T09:52:13.035086" elapsed="0.781122"/>
+</test>
+<status status="PASS" start="2025-04-07T09:52:12.673677" elapsed="1.155292"/>
+</suite>
+<statistics>
+<total>
+<stat pass="1" fail="0" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login-Server-Test" id="s1" pass="1" fail="0" skip="0">Login-Server-Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
