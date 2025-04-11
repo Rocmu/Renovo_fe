@@ -3,6 +3,12 @@
   background-color: var (--grey-color);
 }
 
+/* kaikille napeille hover => vaaleansininen väri */
+button:hover {
+  background-color: var(--hover-color);
+  color: var(--white-color);
+}
+
 .home-button {
   all: unset;
   box-sizing: border-box;
