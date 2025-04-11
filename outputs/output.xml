@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.2.2 (Python 3.12.1 on win32)" generated="2025-04-09T19:19:06.280390" rpa="false" schemaversion="5">
+<suite id="s1" name="Login-Server-Test" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot">
+<test id="s1-t1" name="Login as Regular" line="8">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-09T19:19:06.707192" level="FAIL">Variable '${MY_USERNAME}' not found.</msg>
+<var>${body}</var>
+<arg>username=${MY_USERNAME}</arg>
+<arg>password=$MY_PASSWORD</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="FAIL" start="2025-04-09T19:19:06.707192" elapsed="0.000000">Variable '${MY_USERNAME}' not found.</status>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<var>${response}</var>
+<arg>url=http://127.0.0.1:3000/api/auth/kubios-login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()}[message]</arg>
+<arg>Logged in successfully with Kubios</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>user</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+</kw>
+<status status="FAIL" start="2025-04-09T19:19:06.707192" elapsed="0.000000">Variable '${MY_USERNAME}' not found.</status>
+</test>
+<status status="FAIL" start="2025-04-09T19:19:06.280390" elapsed="0.429583"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Login-Server-Test" id="s1" pass="0" fail="1" skip="0">Login-Server-Test</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2025-04-09T19:19:06.705185" level="ERROR">Error in file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot' on line 4: Processing variable file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py' failed: Importing variable file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py' failed: ModuleNotFoundError: No module named 'dotenv'
+Traceback (most recent call last):
+  File "C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py", line 2, in &lt;module&gt;
+    from dotenv import load_dotenv
+PYTHONPATH:
+  C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\python312.zip
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\DLLs
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32\lib
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\Pythonwin</msg>
+</errors>
+</robot>
