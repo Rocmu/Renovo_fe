@@ -11,7 +11,7 @@ document.querySelectorAll("button[data-action]").forEach(button => {
         window.location.href = "/index.html";
         break;
       case "home-page":
-        window.location.href = "/elements.html";
+        window.location.href = "/home.html";
         break;
       case "calendar":
         window.location.href = "/calendar.html";
