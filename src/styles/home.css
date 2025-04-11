@@ -1,0 +1,22 @@
+/* Home Page Styles */
+::backdrop {
+  background-color: var (--grey-color);
+}
+
+.home-button {
+  all: unset;
+  box-sizing: border-box;
+  float: left;
+  text-align: center;
+  font-family: var(--font-family);
+  width: 15%;
+  height: auto;
+  color: var(--white-color);
+  background-color: var(--blue-color);
+  font-size: 25px;
+  padding: 5px;
+  line-height: 1.2rem;
+  margin: 10px;
+  border: 2px solid var(--blue-color);
+  border-radius: 0.7rem;
+}

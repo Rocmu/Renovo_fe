@@ -12,6 +12,17 @@
   box-sizing: border-box;
 }
 
+/* kaikille napeille hover => vaaleansininen väri */
+button:hover {
+  background-color: var(--hover-color);
+  color: var(--white-color);
+}
+
+/* kaikille napeille */
+button {
+  cursor: pointer;
+}
+
 body {
   margin: 0px;
   /* padding: 10px; */
@@ -49,14 +60,9 @@ header {
   padding: 2px;
   border: 2px solid var(--blue-color);
   line-height: 1;
-  cursor: pointer;
   border-radius: 0.7rem;
 }
 
-.return-button:hover {
-  font-weight: bold;
-  text-decoration: underline;
-}
 
 .logo-button {
   all: unset;
@@ -71,16 +77,12 @@ header {
   font-family: var(--font-family);
   /* margin: 0; */
   padding: 2px;
-  border: 2px solid var(--blue-color);
+  border: 2px solid var(--white-color);
   line-height: 1;
-  cursor: pointer;
   border-radius: 0.7rem;
 }
 
-.logo-button:hover {
-  font-weight: bold;
-  text-decoration: underline;
-}
+
 
 nav {
   color: var(--white-color);
@@ -105,16 +107,11 @@ nav {
   height: auto;
   padding: 1px;
   margin: 0;
-  border: 1px solid var(--white-color);
-  cursor: pointer;
+  border: 1px solid var(--blue-color);
   border-radius: 0.7rem;
 }
 
-button.nav-button:hover {
-  font-weight: bold;
-  text-decoration: underline;
-}
-
+/* clearfix for the header */
 .clearfix::after {
   content: "";
   clear: both;
@@ -134,16 +131,10 @@ footer {
   width: 100%;
 }
 
-h2 {
-  margin: 0px;
-  font-size: 3rem; /* huge font in order to highlight movements from page to page */
-}
-
 a {
   font-size: 3rem;
 }
 
 h1 {
   color: var(--blue-color);
-  font-size: 3rem;
 }
