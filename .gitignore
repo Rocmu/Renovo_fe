@@ -27,3 +27,5 @@ dist-ssr
 .venv
 
 tests/login.robot
+tests/__pycache__
+tests/login_env.py
