@@ -5,136 +5,69 @@
   --grey-color: #ededed;   /* taustan harmaa */
   --white-color: #FFF;  /* valkoinen */
   --text-color: #212322;
-  --font-family: Verdana, sans-serif; /* basic font, probably changed later */
-}
-
-* {
-  box-sizing: border-box;
-}
-
-/* kaikille napeille hover => vaaleansininen väri */
-button:hover {
-  background-color: var(--hover-color);
-  color: var(--white-color);
-}
-
-/* kaikille napeille */
-button {
-  cursor: pointer;
+  --font-family: Arial, sans-serif; /* basic font, probably changed later */
 }
 
 body {
-  margin: 0px;
-  /* padding: 10px; */
+  font-family: Arial, sans-serif;
 }
 
-header {
-  background-color: var(--white-color);
-  padding: 0.3rem;
-  width: 100%;
-  height: 8rem;
+.header {
+  background-color: white;
+  color: #014b9a;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+}
+
+.left-header {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 20px;
 }
 
-.app-logo {
-  display: block;
-  width: 20rem;
-  height: auto;
-  margin: 0;
+.back-button {
+  background-color: #014b9a;
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  font-size: 14px;
+  cursor: pointer;
+  border-radius: 4px;
 }
 
-.return-button {
-  all: unset; /** Resets default button styling */
-  box-sizing: border-box;
-  float: left;
-  text-align: left;
-  font-family: var(--font-family);
-  width: 15%;
-  height: auto;
-  position: relative;
-  color: var(--blue-color);
-  font-size: 30px;
-  /* margin: 0; */
-  padding: 2px;
-  border: 2px solid var(--blue-color);
-  line-height: 1;
-  border-radius: 0.7rem;
+.logo {
+  font-size: 22px;
+  font-weight: bold;
 }
 
-
-.logo-button {
-  all: unset;
-  position: relative;
-  box-sizing: border-box;
-  float: left;
-  text-align: center;
-  width: 15%;
-  height: auto;
-  color: var(--blue-color);
-  font-size: 40px;
-  font-family: var(--font-family);
-  /* margin: 0; */
-  padding: 2px;
-  border: 2px solid var(--white-color);
-  line-height: 1;
-  border-radius: 0.7rem;
+.right-header {
+  font-size: 14px;
 }
 
+.right-header button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  font-size: 14px;
+  background-color: #014b9a;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
 
-
-nav {
-  color: var(--white-color);
-  background-color: var(--blue-color);
-  margin: 0;
-  width: 100%;
-  height: 3rem;
-  float:left;
+.nav-bar {
+  background-color: #014b9a;
+  color: white;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  padding: 10px 20px;
+  gap: 25px;
 }
 
-.nav-button {
-  all: unset;
-  box-sizing: border-box;
-  font-size: 25px;
-  font-family: var(--font-family);
-  float: left;
-  text-align: center;
-  width: 10%;
-  height: auto;
-  padding: 1px;
-  margin: 0;
-  border: 1px solid var(--blue-color);
-  border-radius: 0.7rem;
-}
-
-/* clearfix for the header */
-.clearfix::after {
-  content: "";
-  clear: both;
-  display: table;
-}
-
-footer {
-  color: var(--white-color);
-  background-color: var(--blue-color);
-  text-align: center;
-  justify-content: center;
-  line-height: 50px;
-  position: fixed;
-  left: 0;
-  bottom: 0;
-  height: 50px;
-  width: 100%;
-}
-
-a {
-  font-size: 3rem;
-}
-
-h1 {
-  color: var(--blue-color);
+.nav-bar a {
+  color: white;
+  text-decoration: none;
+  font-size: 16px;
+  cursor: pointer;
 }
