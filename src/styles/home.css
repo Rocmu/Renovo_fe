@@ -1,15 +1,49 @@
 /* Home Page Styles */
-::backdrop {
-  background-color: var (--grey-color);
+body {
+  background-color: var(--grey-color);
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+}
+
+.home-text-div {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: left;
+  width: 50%;
+  height: auto;
+  padding: 20px;
+  background-color: var(--white-color);
+}
+
+#home-welcome {
+  width: 100%;
+
+}
+
+.home-img-div {
+  display: flex;
+  flex-direction: column;
+  align-items: right;
+  justify-content: left;
+  width: 50%;
+  height: auto;
+  padding: 20px;
 }
 
 .home-button {
   all: unset;
   box-sizing: border-box;
-  float: left;
   text-align: center;
   font-family: var(--font-family);
-  width: 15%;
   height: auto;
   color: var(--white-color);
   background-color: var(--blue-color);
@@ -19,4 +53,11 @@
   margin: 10px;
   border: 2px solid var(--blue-color);
   border-radius: 0.7rem;
+  cursor: pointer;
+  width: 50%;
+  }
+
+  .home-button:hover {
+    background-color: var(--hover-color);
+    color: var(--white-color);
 }

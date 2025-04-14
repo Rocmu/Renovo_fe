@@ -7,23 +7,48 @@
   <title>Renovo App</title>
  </head>
  <body>
+   <!-- Header -->
+   <div class="header">
+    <div class="left-header">
+      <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">Palaa Terveystaloon</button>
+      <div class="logo">Renovo</div>
+    </div>
+    <div class="right-header">
+      <span>Kaisa Käyttäjä</span>
+      <button id="log-out-user">Kirjaudu ulos</button>
+    </div>
+  </div>
+
+  <!-- Navigaatio -->
+  <div class="nav-bar">
+    <a href="home.html">Etusivu</a>
+    <a href="calendar.html">Kalenteri</a>
+    <a href="hrv.html">Tulokset</a>
+    <a href="info.html">HRV-info</a>
+  </div>
+
   <main class="main-content">
 
-    <div id="home-welcome">
-      <h1>Tervetuloa!</h1>
-      <h3>Renovo-sovellus seuraa ja arvioi kuormistustasi ja palautumistasi HRV-analyysia hyödyntäen.</h3>
-    </div>
+    <div class="home-content-div">
+      <div class="home-text-div" id="home-welcome">
+        <h1>Tervetuloa!</h1>
+        <h3>Renovo-sovellus seuraa ja arvioi kuormistustasi ja palautumistasi HRV-analyysia hyödyntäen.</h3>
+      </div>
 
-    <div id="home-calendar">
-      <h2>Kalenteri</h2>
-      <h4>
-        Kalenterin kautta voit lisätä työvuorosi sekä muut arjen tapahtumasi
-        Terveystalon ammattilaisten tarkasteltaviksi. Merkintöjen avulla saadaan
-        tärkeää tietoa tilanteestasi.
-      </h4>
-      <button class="home-button" data-action="calendar">Siirry kalenteriin</button>
+      <div id="home-calendar">
+        <div class="home-text-div">
+          <h2>Kalenteri</h2>
+          <h4>
+            Kalenterin kautta voit lisätä työvuorosi sekä muut arjen tapahtumasi
+            Terveystalon ammattilaisten tarkasteltaviksi. Merkintöjen avulla saadaan
+            tärkeää tietoa tilanteestasi.
+          </h4>
+          <a class="home-button" href="calendar.html">Siirry kalenteriin</a>
+        </div>
+        <div class="home-image-div">
+          <img src=/img/calendar.jpg alt="Kalenteri" />
+      </div>
     </div>
-
 
 
 
@@ -32,7 +57,7 @@
 
 
   </main>
-
+  <footer>Renovo App</footer>
   <script type="module" src="/src/scripts/main.js"></script>
   <script type="module" src="/src/scripts/home.js"></script>
  </body>
