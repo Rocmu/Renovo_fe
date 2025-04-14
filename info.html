@@ -1,24 +1,57 @@
 <!-- tänne tulee hrv-tietoa tietämättömille -->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Info</title>
-</head>
-<body>
-  <header>
-    <button class="return-button" data-action="return">Takaisin terveystaloon</button>
-    <button class="logo-button" data-action="home-page">Renovo</button>
-  </header>
-  <nav class="clearfix">
-    <button class="nav-button" data-action="home-page">Kotisivu</button>
-    <button class="nav-button" data-action="calendar">Kalenteri</button>
-    <button class="nav-button" data-action="hrv">Tulokset</button>
-    <button class="nav-button" data-action="info">Info</button>
-  </nav>
-    <h2>Tämä on infosivu käyttäjälle HRV tulosten ymmärtämistä varten</h2>
-  <footer>Renovo App</footer>
-  <script type="module" src="/src/scripts/main.js"></script>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info</title>
+    <link rel="stylesheet" href="/src/styles/info.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <div class="header">
+      <div class="left-header">
+        <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">
+          Palaa Terveystaloon
+        </button>
+        <div class="logo">Renovo</div>
+      </div>
+      <div class="right-header">
+        <span>Kaisa Käyttäjä</span>
+        <button id="log-out-user">Kirjaudu ulos</button>
+      </div>
+    </div>
+
+    <!-- Navigaatio -->
+    <div class="nav-bar">
+      <a href="home.html">Etusivu</a>
+      <a href="calendar.html">Kalenteri</a>
+      <a href="hrv.html">Tulokset</a>
+      <a href="info.html">HRV-info</a>
+    </div>
+
+    <!--Info boksit-->
+    <main class="info">
+      <div class="text-box">
+        <h2>Näin suoritat mittauksen.</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, odio? Numquam sed rerum ipsam autem,
+          cumque ratione odit suscipit itaque quis possimus ab quisquam explicabo voluptas fugiat blanditiis deserunt
+          praesentium consectetur aliquid nisi id in nostrum iusto eveniet. Sapiente quod voluptatum exercitationem
+          numquam magni culpa commodi autem, est officia omnis?
+        </p>
+      </div>
+      <div class="text-box">
+        <h2>Mikä on HRV?</h2>
+        <p>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, odio? Numquam sed rerum ipsam autem,
+          cumque ratione odit suscipit itaque quis possimus ab quisquam explicabo voluptas fugiat blanditiis deserunt
+          praesentium consectetur aliquid nisi id in nostrum iusto eveniet. Sapiente quod voluptatum exercitationem
+          numquam magni culpa commodi autem, est officia omnis?
+        </p>
+      </div>
+    </main>
+    <footer>Renovo App</footer>
+    <script type="module" src="/src/scripts/main.js"></script>
+  </body>
 </html>

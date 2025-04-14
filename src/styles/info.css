@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 0.5rem;
+  gap: 2rem;
+  max-width: 50rem;
+  min-width: 20rem;
+  margin: 0.5rem;
+}
+
+.text-box {
+  width: 100%;
+  border: 2px solid var(--blue-color);
+  border-radius: 1rem;
+  padding: 0.5rem;
+  color: var(--text-color);
+}
+
+footer {
+  background-color: var(--blue-color);
+  width: 100%;
+  color: var(--white-color);
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  text-align: center;
+  justify-content: center;
+}
