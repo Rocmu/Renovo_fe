@@ -1,0 +1,103 @@
+.hrv-results-container {
+  width: 90%;
+  margin: auto;
+}
+
+.hrv-results-container-header {
+  margin-top: 2em;
+}
+
+.hrv-results-container-header p {
+  max-width: 700px;
+}
+
+button#print-hrv-ten-days, button#print-hrv-thirty-days {
+  padding: 1em 2em 1em 2em;
+  color: var(--blue-color);
+  border: 2px solid var(--blue-color);
+  border-radius: 30px;
+  font-size: 2vh;
+}
+
+button#print-hrv-thirty-days {
+  background-color: var(--blue-color);
+  color: white;
+}
+
+button#print-hrv-ten-days:hover, button#print-hrv-thirty-days:hover {
+  background-color: var(--hover-color);
+  color: white;
+  border: 2px solid var(--hover-color);
+}
+
+.hrv-results-container-content {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+canvas#readiness-rmssd-chart {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px !important;
+  max-width: 750px !important;
+}
+
+canvas#sns-pns-chart {
+  width: 100% !important;
+  height: auto !important;
+  max-height: 400px !important;
+  max-width: 750px !important;
+}
+
+.hrv-results-container-footer {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  gap: 10px;
+}
+
+.hrv-results-container-footer div {
+  padding: 1em;
+}
+
+.results-readiness-text-box {
+  background-color: lightblue;
+  color: var(--text-color);
+}
+
+.results-rmssd-text-box {
+  background-color: var(--blue-color);
+  color: white;
+}
+
+.results-sns-text-box {
+  /*background-color: lightblue;*/
+  color: var(--text-color);
+}
+
+.results-pns-text-box {
+  background-color: orange;
+  color: var(--text-color);
+}
+
+@media only screen and (max-width: 1200px) {
+  .hrv-results-container-content {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 1000px) {
+  .hrv-results-container-footer {
+    flex-direction: column;
+  }
+}
+
+/* FOR MAIN CSS AS WELL */
+@media only screen and (max-width: 1000px) {
+  .hrv-results-container {
+    width: 100%;
+  }
+}
