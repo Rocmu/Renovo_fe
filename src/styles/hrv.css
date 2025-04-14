@@ -1,17 +1,30 @@
+body {
+  margin: 0;
+  padding: 0;
+  background-color: var(--grey-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
 .hrv-results-container {
   width: 90%;
   margin: auto;
 }
 
-.hrv-results-container-header {
+.hrv-results-container-header, .feedback-table {
   margin-top: 2em;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1em;
 }
 
-.hrv-results-container-header p {
+.hrv-results-container-header p, .feedback-buttons {
   max-width: 700px;
 }
 
-button#print-hrv-ten-days, button#print-hrv-thirty-days {
+button#print-hrv-ten-days, button#print-hrv-thirty-days, button#open-feedback-form, button#view-prev-feedback, input#post-feedback {
   padding: 1em 2em 1em 2em;
   color: var(--blue-color);
   border: 2px solid var(--blue-color);
@@ -19,12 +32,17 @@ button#print-hrv-ten-days, button#print-hrv-thirty-days {
   font-size: 2vh;
 }
 
-button#print-hrv-thirty-days {
+input#post-feedback {
+  margin-top: 1em;
+  background-color: orange;
+}
+
+button#print-hrv-thirty-days, button#open-feedback-form {
   background-color: var(--blue-color);
   color: white;
 }
 
-button#print-hrv-ten-days:hover, button#print-hrv-thirty-days:hover {
+button#print-hrv-ten-days:hover, button#print-hrv-thirty-days:hover, button#open-feedback-form:hover, button#view-prev-feedback:hover, input#post-feedback:hover {
   background-color: var(--hover-color);
   color: white;
   border: 2px solid var(--hover-color);
@@ -35,6 +53,9 @@ button#print-hrv-ten-days:hover, button#print-hrv-thirty-days:hover {
   display: flex;
   flex-direction: row;
   gap: 20px;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1em;
 }
 
 canvas#readiness-rmssd-chart {
@@ -81,6 +102,75 @@ canvas#sns-pns-chart {
 .results-pns-text-box {
   background-color: orange;
   color: var(--text-color);
+}
+
+.hrv-user-feedback {
+  margin-top: 2em;
+  background-color: white;
+  border-radius: 1rem;
+  padding: 1em
+}
+
+.feedback-form-container {
+  display: none;
+}
+
+form#feedback-form h4 {
+  color: var(--blue-color);
+}
+
+.feedback-buttons {
+  width: 100%;
+}
+
+textarea#feedback-text-id {
+  width: 50%;
+  min-height: 250px;
+}
+
+.feedback-table {
+  display: none;
+}
+
+.feedback-list-table {
+  width: 100%;
+}
+
+.feedback-list-table thead {
+  background-color: orange;
+}
+
+.feedback-list-table thead tr, .feedback-list-table tbody tr {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 20% 60%;
+  text-align: left;
+}
+
+td {
+  padding: 0.5em;
+}
+
+tr th:first-child, tr td:first-child {
+  text-align: center;
+}
+
+tr td:first-child, tr td:nth-child(2) {
+  border-right: 2px solid var(--grey-color);
+  border-bottom: 2px solid var(--grey-color);
+}
+
+tr td:last-child {
+  border-bottom: 2px solid var(--grey-color);
+  width: 100%;
+}
+
+footer {
+  background-color: var(--blue-color);
+  color: white;
+  padding: 1em;
+  margin-top: 2em;
+  text-align: center;
 }
 
 @media only screen and (max-width: 1200px) {
