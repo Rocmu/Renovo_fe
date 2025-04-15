@@ -29,3 +29,6 @@ dist-ssr
 tests/login.robot
 tests/__pycache__
 tests/login_env.py
+outputs/browser
+garbage
+garbage/browser
