@@ -8,7 +8,7 @@
   align-items:flex-start;
   padding: 0.5rem;
   gap: 2rem;
-  max-width: 50rem;
+  max-width: 60rem;
   min-width: 20rem;
   margin: auto;
   width: 80%;
@@ -37,4 +37,5 @@ footer {
 
 body {
   background-color: var(--grey-color);
+  margin: 0;
 }
