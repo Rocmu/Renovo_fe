@@ -13,14 +13,14 @@ body {
   margin: auto;
 }
 
-.hrv-results-container-header, .feedback-table {
+.hrv-results-container-header, .feedback-table, .container-footer-info-link {
   margin-top: 2em;
   background-color: white;
   border-radius: 1rem;
   padding: 1em;
 }
 
-.hrv-results-container-header p, .feedback-buttons {
+.hrv-results-container-header p, .feedback-buttons, .container-footer-info-link p {
   max-width: 700px;
 }
 
@@ -163,6 +163,24 @@ tr td:first-child, tr td:nth-child(2) {
 tr td:last-child {
   border-bottom: 2px solid var(--grey-color);
   width: 100%;
+}
+
+.container-footer-info-link {
+  background-color: var(--blue-color);
+  color: white;
+}
+
+.info-link-box-text {
+  margin-bottom: 1em;
+}
+
+div.container-footer-info-link a {
+  text-decoration: none;
+  color: orange;
+}
+
+.container-footer-info-link a:hover {
+  color: lightblue;
 }
 
 footer {
