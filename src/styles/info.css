@@ -39,3 +39,7 @@ body {
   background-color: var(--grey-color);
   margin: 0;
 }
+
+ol {
+  font-weight: bold;
+}
