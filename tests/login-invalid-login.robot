@@ -13,4 +13,5 @@ Login Test
     Type Text      //input[@id='username']        ${BAD_USERNAME}    delay=0.1 s
     Type Secret    //input[@id='password']    $BAD_PASSWORD      delay=0.1 s
     Click With Options    xpath=//button[@type='submit' and text()='Kirjaudu sisään']    delay=2 s
-    Get Title      ==    Renovo App
+
+    Wait For Condition    Text    Title   contains    Renovo App
