@@ -73,3 +73,10 @@ header {
   text-align: center;
 }
 
+#login-valid-confirm {
+  color: #cc0000;
+  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  margin: 0;
+  font-size: 2vh;
+}
