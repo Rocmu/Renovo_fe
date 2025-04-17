@@ -34,11 +34,15 @@ const loginUser = async (event) => {
 	const response = await fetchData(url, options);
 
 	if (response.error) {
+    const errorMessage = document.querySelector('#login-valid-confirm');
+    errorMessage.innerHTML = 'Sisäänkirjautuminen epäonnistui. Väärä käyttäjänimi/salasana.';
 		console.error('Error adding a new user:', response.error);
 		return;
 	}
 
 	if (response.message) {
+    const successMessage = document.querySelector('#login-valid-confirm');
+    successMessage.innerHTML = '';
 		console.log(response.message, 'success');
 		localStorage.setItem('token', response.token);
 		localStorage.setItem('nimi', response.user.email);
