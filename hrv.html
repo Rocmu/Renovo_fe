@@ -15,7 +15,7 @@
         <div class="logo">Renovo</div>
       </div>
       <div class="right-header">
-        <span>Kaisa Käyttäjä</span>
+        <span id="show-username-header"></span>
         <button id="log-out-user">Kirjaudu ulos</button>
       </div>
     </div>
@@ -32,15 +32,13 @@
     <div class="hrv-results-container">
         <div class="hrv-results-container-header">
             <h2>HRV analyysi ja tulokset</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Delectus magni autem quia fugiat eaque laborum aspernatur
-              iusto voluptatum, blanditiis laudantium cumque esse earum nisi
-              aut unde doloribus neque dolorem recusandae.
+            <p>Sovellus kerää HRV datasi Kubios HRV- sovelluksesta. Selaa edellisiä tuloksiasi, joita
+              työterveyslääkärisi käyttää kehosi palautumisen arvioinnissa.
             </p>
             <div class="hrv-buttons">
               <button id="print-hrv-ten-days">10 viimeistä päivää</button>
               <button id="print-hrv-thirty-days">30 viimeistä päivää</button>
-          </div>
+            </div>
         </div>
         <div class="hrv-results-container-content">
             <div>
@@ -55,37 +53,90 @@
         <div class="hrv-results-container-footer">
           <div class="results-readiness-text-box">
             <h4>Readiness</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-               vitae ratione voluptas dolor eum eius iste quis, quos, molestias
-               quibusdam consequatur aut optio! Id exercitationem, expedita nemo
-               mollitia dolor officiis.
+            <p>Readiness mittauksen tulos arvioi kehosi fysiologista
+              tilaa vertaamalla sykevälivaihtelua aiempiin tuloksiisi.
+              Päivittäin suoritetut mittaukset parantavat mittaustulosten
+              tarkkuutta, kun mittausdataa voidaan vertailla pidemmältä
+              ajanjaksolta.
             </p>
           </div>
           <div class="results-rmssd-text-box">
             <h4>RMSSD</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-               vitae ratione voluptas dolor eum eius iste quis, quos, molestias
-               quibusdam consequatur aut optio! Id exercitationem, expedita nemo
-               mollitia dolor officiis.
+            <p>RMSSD on yksi keskeisistä sykevälivaihtelun mittareista.
+              Arvot korreloivat vahvasti parasympaattisen hermoston toiminnan
+              kanssa ja on siksi hyödyllinen mittari palautumisen ja stressitilan
+              arvioinnissa. Korkeat arvot viittaavat parempaan sydämen autonomiseen
+              säätelyyn ja palautumiseen.
             </p>
           </div>
           <div class="results-sns-text-box">
             <h4>SNS index</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-               vitae ratione voluptas dolor eum eius iste quis, quos, molestias
-               quibusdam consequatur aut optio! Id exercitationem, expedita nemo
-               mollitia dolor officiis.
+            <p>SNS-indeksi kuvaa kuormitusta ja stressiä. Sympaattisen hermoston
+              ollessa aktiivinen arvo nousee ja kertoo kohonneesta kuormituksesta.
+              Arvot ovat normalisoituja jossa 0 kuvaa väestön keskiarvoa. Kohonnut
+              arvo kertoo aktiivisuuden olevan keskiarvoa korkeammalla ja madaltunut
+              arvo keskiarvoa matalammalla.
             </p>
           </div>
           <div class="results-pns-text-box">
             <h4>PNS index</h4>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident
-               vitae ratione voluptas dolor eum eius iste quis, quos, molestias
-               quibusdam consequatur aut optio! Id exercitationem, expedita nemo
-               mollitia dolor officiis.
+            <p>PNS-indeksi kuvaa palautumista ja rentoutumista. Suuremmat arvot viittaavat
+              korkeampaan parasympaattisen hermoston aktiivisuuteen ja parempaan palautumiseen.
+              Arvot ovat normalisoituja jossa 0 kuvaa väestön keskiarvoa. Tyypillisesti arvo
+              levossa on -2 ja +2 välillä.
             </p>
           </div>
         </div>
+        <div class="hrv-user-feedback">
+          <div class="feedback-buttons">
+            <h2>Palaute HRV tuloksista</h2>
+            <p>Koetko mittaustulokset paikkaansa pitäviksi? Oletko sitä mieltä, että data ei kuvasta
+              todellista terveydentilaasi? Jos haluat antaa palautetta mielestäsi virheellisistä tuloksista,
+              voit lähettää vapaamuotoisesti palautetta HRV tuloksistasi.
+            </p>
+            <button id="open-feedback-form">Anna palautetta tuloksista</button>
+            <button id="view-prev-feedback">Edelliset palautteesi</button>
+          </div>
+          <div class="feedback-form-container">
+            <form id="feedback-form">
+                  <h4>Palautelomake</h4>
+                  <textarea id="feedback-text-id" name="notes-n-id" placeholder="Kirjoita vapaamuotoisesti palautteesi tähän tekstikenttään." required></textarea>
+            </form>
+            <input
+                  name="submit"
+                  type="submit"
+                  value="Tallenna palaute"
+                  class="create-feedback"
+                  id="post-feedback"/>
+          </div>
+        </div>
+
+        <div class="feedback-table">
+          <h2>Tallennetut palautteesi</h2>
+          <table class="feedback-list-table">
+            <thead>
+              <tr>
+                <th>Nro</th>
+                <th>Päivämäärä</th>
+                <th>Palaute</th>
+              </tr>
+            </thead>
+            <tbody class="tbody">
+            </tbody>
+        </table>
+      </div>
+
+      <div class="container-footer-info-link">
+        <div class="info-link-box-text">
+          <h2>Vinkkejä ja ohjeita mittauksiin</h2>
+          <p>HRV arvoihisi vaikuttavat lukuiset tekijät ja olosuhteet. Mittauksessa kannattaa pyrkiä
+            noudattamaan tarkkoja ohjeistuksia, jotta työterveyslääkärisi saa tarkimmat mahdolliset tulokset.
+            Näin takaat myös jatkotoimenpiteiden vastaavan parhaiten omia henkilökohtaisia tarpeitasi.
+          </p>
+        </div>
+        <a href="info.html">Lue mittausohjeet</a>
+      </div>
+
     </div>
 
     </main>

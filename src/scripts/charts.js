@@ -46,7 +46,7 @@ const drawChartTen = async (userData) => {
 				x: {
 					title: {
 						display: true,
-						text: 'Päiväys(vvvv-kk-pvä)',
+						text: 'Päiväys',
 					},
 				},
 				y: {
@@ -148,7 +148,7 @@ const drawChartThirty = async (userData) => {
 				x: {
 					title: {
 						display: true,
-						text: 'Päivä',
+						text: 'Päiväys',
 					},
 				},
 				y: {
@@ -192,7 +192,7 @@ const drawChartThirty = async (userData) => {
 				x: {
 					title: {
 						display: true,
-						text: 'Päivä',
+						text: 'Päiväys',
 					},
 				},
 				y: {
