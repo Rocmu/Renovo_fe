@@ -1,63 +1,252 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.1 on win32)" generated="2025-04-09T19:19:06.280390" rpa="false" schemaversion="5">
-<suite id="s1" name="Login-Server-Test" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot">
-<test id="s1-t1" name="Login as Regular" line="8">
-<kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-04-09T19:19:06.707192" level="FAIL">Variable '${MY_USERNAME}' not found.</msg>
-<var>${body}</var>
-<arg>username=${MY_USERNAME}</arg>
-<arg>password=$MY_PASSWORD</arg>
-<doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="FAIL" start="2025-04-09T19:19:06.707192" elapsed="0.000000">Variable '${MY_USERNAME}' not found.</status>
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-04-17T15:12:37.323754" rpa="false" schemaversion="5">
+<suite id="s1" name="Login-Valid-Login &amp; Login-Invalid-Login &amp; Login-Server-Test">
+<suite id="s1-s1" name="Login-Valid-Login" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-valid-login.robot">
+<test id="s1-s1-t1" name="Login Test" line="12">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-04-17T15:12:37.912939" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Omistaja\\Documents\\hyte\\renovo-app\\Renovo_fe\\outputs\\browser\\traces\\temp\\62e8a0bc-dfdb-441e-8188-9bf57ae26b04"}</msg>
+<msg time="2025-04-17T15:12:37.939534" level="INFO">Starting Browser process C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\.venv\Lib\site-packages\Browser\wrapper\index.js using port 50708</msg>
+<msg time="2025-04-17T15:12:37.939672" level="INFO">Node startup parameters: ['node', 'C:\\Users\\Omistaja\\Documents\\hyte\\renovo-app\\Renovo_fe\\tests\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '50708']</msg>
+<msg time="2025-04-17T15:12:38.758703" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Omistaja\\Documents\\hyte\\renovo-app\\Renovo_fe\\outputs\\browser\\traces\\temp\\62e8a0bc-dfdb-441e-8188-9bf57ae26b04"}</msg>
+<arg>chromium</arg>
+<arg>headless=No</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-04-17T15:12:37.912245" elapsed="0.846762"/>
 </kw>
-<kw name="POST" owner="RequestsLibrary">
+<kw name="New Page" owner="Browser">
+<msg time="2025-04-17T15:12:38.951813" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173</msg>
+<msg time="2025-04-17T15:12:38.951950" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>http://localhost:5173</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-04-17T15:12:38.759487" elapsed="0.192661"/>
+</kw>
+<kw name="Get Title" owner="Browser">
+<msg time="2025-04-17T15:12:38.959606" level="INFO">Title: 'Kirjautumissivu'</msg>
+<arg>==</arg>
+<arg>Kirjautumissivu</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-04-17T15:12:38.952617" elapsed="0.007131"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-04-17T15:12:38.960911" level="INFO">Types the text '***' in the given field.</msg>
+<arg>//input[@id='username']</arg>
+<arg>${Username}</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-17T15:12:38.960190" elapsed="2.368844"/>
+</kw>
+<kw name="Type Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$Password</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given secret from ``variable_name`` into the text field
+found by ``selector``.</doc>
+<status status="PASS" start="2025-04-17T15:12:41.329425" elapsed="1.285487"/>
+</kw>
+<kw name="Click With Options" owner="Browser">
+<msg time="2025-04-17T15:12:42.616899" level="INFO">Clicks the element 'xpath=//button[@type='submit' and text()='Kirjaudu sisään']'.</msg>
+<arg>xpath=//button[@type='submit' and text()='Kirjaudu sisään']</arg>
+<arg>delay=2 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-17T15:12:42.615783" elapsed="2.069641"/>
+</kw>
+<kw name="Wait For Condition" owner="Browser">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-04-17T15:12:46.227305" level="INFO">Text: 'Renovo App'</msg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-17T15:12:44.687808" elapsed="1.539671"/>
+</kw>
+<arg>Text</arg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for a condition, defined with Browser getter keywords to become True.</doc>
+<status status="PASS" start="2025-04-17T15:12:44.686197" elapsed="1.541452"/>
+</kw>
+<msg time="2025-04-17T15:12:46.232293" level="INFO">Set timeout to: 10000</msg>
+<doc>Sisäänkirjautumistesti</doc>
+<status status="PASS" start="2025-04-17T15:12:37.910093" elapsed="8.318010"/>
+</test>
+<doc>Sisäänkirjautuminen, onnistunut</doc>
+<status status="PASS" start="2025-04-17T15:12:37.349174" elapsed="8.884443"/>
+</suite>
+<suite id="s1-s2" name="Login-Invalid-Login" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-invalid-login.robot">
+<test id="s1-s2-t1" name="Login Test" line="7">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-04-17T15:12:46.264632" level="INFO">Switching browser to browser=6669b0cf-dcb3-4840-8a3e-28908c11bd7f</msg>
+<msg time="2025-04-17T15:12:46.271784" level="INFO">Successfully changed active browser: browser=6669b0cf-dcb3-4840-8a3e-28908c11bd7f</msg>
+<msg time="2025-04-17T15:12:46.271995" level="INFO">Reusing existing browser with id: browser=6669b0cf-dcb3-4840-8a3e-28908c11bd7f</msg>
+<arg>chromium</arg>
+<arg>headless=No</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-04-17T15:12:46.262968" elapsed="0.009169"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-04-17T15:12:46.383806" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173</msg>
+<arg>http://localhost:5173</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-04-17T15:12:46.272860" elapsed="0.111226"/>
+</kw>
+<kw name="Get Title" owner="Browser">
+<msg time="2025-04-17T15:12:46.391044" level="INFO">Title: 'Kirjautumissivu'</msg>
+<arg>==</arg>
+<arg>Kirjautumissivu</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-04-17T15:12:46.384528" elapsed="0.006710"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-04-17T15:12:46.392635" level="INFO">Types the text 'esimerkki@gmail.fi' in the given field.</msg>
+<arg>//input[@id='username']</arg>
+<arg>${BAD_USERNAME}</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-17T15:12:46.391687" elapsed="2.140144"/>
+</kw>
+<kw name="Type Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$BAD_PASSWORD</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given secret from ``variable_name`` into the text field
+found by ``selector``.</doc>
+<status status="PASS" start="2025-04-17T15:12:48.532541" elapsed="1.782797"/>
+</kw>
+<kw name="Click With Options" owner="Browser">
+<msg time="2025-04-17T15:12:50.317422" level="INFO">Clicks the element 'xpath=//button[@type='submit' and text()='Kirjaudu sisään']'.</msg>
+<arg>xpath=//button[@type='submit' and text()='Kirjaudu sisään']</arg>
+<arg>delay=2 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-17T15:12:50.316122" elapsed="2.066124"/>
+</kw>
+<kw name="Wait For Condition" owner="Browser">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-04-17T15:13:02.409201" level="INFO">Text: 'Kirjautumissivu'</msg>
+<msg time="2025-04-17T15:13:12.456323" level="INFO">Keyword 'Take Screenshot  fail-screenshot-{index}' could not be run on failure:
+TimeoutError: page.screenshot: Timeout 10000ms exceeded.
+Call log:
+[2m  - taking page screenshot[22m
+[2m  - waiting for fonts to load...[22m
+[2m  - fonts loaded[22m
+</msg>
+<msg time="2025-04-17T15:13:12.456450" level="INFO">See also file:///C:/Users/Omistaja/Documents/hyte/renovo-app/Renovo_fe/outputs/playwright-log.txt for additional details.</msg>
+<msg time="2025-04-17T15:13:12.456778" level="FAIL">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</msg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="FAIL" start="2025-04-17T15:12:52.384826" elapsed="20.089701">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</status>
+</kw>
+<arg>Text</arg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for a condition, defined with Browser getter keywords to become True.</doc>
+<status status="FAIL" start="2025-04-17T15:12:52.383139" elapsed="20.091522">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</status>
+</kw>
+<msg time="2025-04-17T15:13:12.477309" level="INFO">Set timeout to: 10000</msg>
+<doc>Sisäänkirjautumistesti</doc>
+<status status="FAIL" start="2025-04-17T15:12:46.261439" elapsed="26.213735">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</status>
+</test>
+<doc>Sisäänkirjautuminen .env- tiedoston avulla, epäonnistunut</doc>
+<status status="FAIL" start="2025-04-17T15:12:46.238584" elapsed="26.240103"/>
+</suite>
+<suite id="s1-s3" name="Login-Server-Test" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot">
+<test id="s1-s3-t1" name="Login as Regular" line="8">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-17T15:13:12.494980" level="INFO">${body} = {'username': 'esimerkki@gmail.fi', 'password': '$BAD_PASSWORD'}</msg>
+<var>${body}</var>
+<arg>username=${BAD_USERNAME}</arg>
+<arg>password=$BAD_PASSWORD</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-17T15:13:12.494761" elapsed="0.000245"/>
+</kw>
+<kw name="POST">
+<msg time="2025-04-17T15:13:12.495831" level="FAIL">No keyword with name 'POST' found.</msg>
 <var>${response}</var>
 <arg>url=http://127.0.0.1:3000/api/auth/kubios-login</arg>
 <arg>json=${body}</arg>
-<doc>Sends a POST request.</doc>
-<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+<status status="FAIL" start="2025-04-17T15:13:12.495802" elapsed="0.000061">No keyword with name 'POST' found.</status>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${response.json()}[message]</arg>
 <arg>Logged in successfully with Kubios</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-04-17T15:13:12.496186" elapsed="0.000021"/>
 </kw>
 <kw name="Dictionary Should Contain Key" owner="Collections">
 <arg>${response.json()}</arg>
 <arg>user</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-04-17T15:13:12.496418" elapsed="0.000021"/>
 </kw>
-<status status="FAIL" start="2025-04-09T19:19:06.707192" elapsed="0.000000">Variable '${MY_USERNAME}' not found.</status>
+<status status="FAIL" start="2025-04-17T15:13:12.494250" elapsed="0.002395">No keyword with name 'POST' found.</status>
 </test>
-<status status="FAIL" start="2025-04-09T19:19:06.280390" elapsed="0.429583"/>
+<status status="FAIL" start="2025-04-17T15:13:12.482241" elapsed="0.015192"/>
+</suite>
+<status status="FAIL" start="2025-04-17T15:12:37.324792" elapsed="35.173350"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="1" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Login-Server-Test" id="s1" pass="0" fail="1" skip="0">Login-Server-Test</stat>
+<stat name="Login-Valid-Login &amp; Login-Invalid-Login &amp; Login-Server-Test" id="s1" pass="1" fail="2" skip="0">Login-Valid-Login &amp; Login-Invalid-Login &amp; Login-Server-Test</stat>
+<stat name="Login-Valid-Login" id="s1-s1" pass="1" fail="0" skip="0">Login-Valid-Login &amp; Login-Invalid-Login &amp; Login-Server-Test.Login-Valid-Login</stat>
+<stat name="Login-Invalid-Login" id="s1-s2" pass="0" fail="1" skip="0">Login-Valid-Login &amp; Login-Invalid-Login &amp; Login-Server-Test.Login-Invalid-Login</stat>
+<stat name="Login-Server-Test" id="s1-s3" pass="0" fail="1" skip="0">Login-Valid-Login &amp; Login-Invalid-Login &amp; Login-Server-Test.Login-Server-Test</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-04-09T19:19:06.705185" level="ERROR">Error in file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot' on line 4: Processing variable file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py' failed: Importing variable file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py' failed: ModuleNotFoundError: No module named 'dotenv'
+<msg time="2025-04-17T15:13:12.493048" level="ERROR">Error in file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot' on line 3: Importing library 'RequestsLibrary' failed: ModuleNotFoundError: No module named 'RequestsLibrary'
 Traceback (most recent call last):
-  File "C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py", line 2, in &lt;module&gt;
-    from dotenv import load_dotenv
+  None
 PYTHONPATH:
-  C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\python312.zip
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\DLLs
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32\lib
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\Pythonwin</msg>
+  C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\.venv\Scripts\robot.exe
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python313\python313.zip
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python313\DLLs
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python313\Lib
+  C:\Users\Omistaja\AppData\Local\Programs\Python\Python313
+  C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\.venv
+  C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\.venv\Lib\site-packages</msg>
 </errors>
 </robot>

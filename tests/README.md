@@ -1,6 +1,6 @@
 # Ohjelmistotestit
 
-## Sisäänkirjautuminen
+## Sisäänkirjautuminen (Päivitetty 17.4.2025)
 
 Taustapalvelimessa suoritettiin sisäänkirjautumis-testi. Testissä syötettiin käyttäjän käyttäjätunnukset, joiden avulla suoritettiin kirjautuminen Kubiokseen. Vastaus tulostettiin konsoliin.
 
@@ -17,6 +17,8 @@ Tulokset:
 - [report.html](../outputs/report.html)
 
 Testeistä suoritettiin yksi epäonnistunut.
+
+Huom! Testiä piti hiukan muuttaa asetusten vuoksi. Env- tiedostosta tulee nyt "huonot" käyttäjätunnukset. Lopputulos sama, eli epäonnistuu.
 
 ## Sisäänkirjautuminen (viikko 5)
 

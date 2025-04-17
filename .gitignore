@@ -32,3 +32,4 @@ tests/login_env.py
 outputs/browser
 garbage
 garbage/browser
+outputs/playwright-log.txt
