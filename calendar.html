@@ -14,7 +14,7 @@
         <div class="logo">Renovo</div>
       </div>
       <div class="right-header">
-        <span>Kaisa Käyttäjä</span>
+        <span id="show-username-header"></span>
         <button id="log-out-user">Kirjaudu ulos</button>
       </div>
     </div>
@@ -150,8 +150,55 @@
       </div>
     </div>
 
+        <!-- Työvuoron muokkausmodaali -->
+    <div id="editShiftModal" class="calendar-modal">
+      <div class="calendar-modal-content">
+        <span class="calendar-modal-close" onclick="closeModal('editShiftModal')">&times;</span>
+        <h2>Muokkaa työvuoroa</h2>
+        <form id="editShiftForm">
+          <input type="hidden" id="eventId">
+          <label>Päivämäärä: <input type="date" id="editDate" required></label>
+          <label>Alkaa: <input type="time" id="editStartTime" required></label>
+          <label>Päättyy: <input type="time" id="editEndTime" required></label>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna</button>
+            <button type="button" id="deleteShiftButton" style="background-color:red;color:white;">Poista</button>
+            <button type="button" onclick="closeModal('editShiftModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
+    <!-- muiden muokkausmodaali -->
+    <div id="editModal" class="calendar-modal">
+      <div class="calendar-modal-content" style="position: relative;">
+        <span class="calendar-modal-close" onclick="closeModal('editModal')">&times;</span>
+        <h2>Muokkaa tapahtumaa</h2>
+        <form id="editEventForm">
+          <input type="hidden" name="event_id">
+          <input type="hidden" name="event_type">
+          <label>Päivämäärä: <input type="date" name="date" required></label>
+          <label>Kuvaus / tyyppi: <input type="text" name="description" required></label>
+          <label>Alkaa: <input type="time" name="start_time"></label>
+          <label>Päättyy: <input type="time" name="end_time"></label>
+          <label>Taso / vaikutus / intensiteetti:
+            <select name="level">
+              <option value="Low">😊</option>
+              <option value="Medium">😐</option>
+              <option value="High">😫</option>
+            </select>
+          </label>
+          <label>Muistiinpanot: <textarea name="notes"></textarea></label>
+          <div class="calendar-modal-actions">
+            <button type="submit">Tallenna muutokset</button>
+            <button type="button" id="deleteEventButton" style="background-color:red;color:white;">Poista</button>
+            <button type="button" onclick="closeModal('editModal')">Peruuta</button>
+          </div>
+        </form>
+      </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
-    <script type="module" src="src/scripts/calendar.js"></script>
+    <script type="module" src="/src/scripts/calendar.js"></script>
   </body>
 </html>
-
