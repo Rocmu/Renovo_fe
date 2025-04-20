@@ -1,5 +1,3 @@
-// DRAWING CHARTS FOR HRV:HTML
-
 import Chart from 'chart.js/auto';
 //import 'chartjs-adapter-date-fns';
 
@@ -15,6 +13,9 @@ const drawChartTen = async (userData) => {
 	const sns = userData.sns;
 	const pns = userData.pns;
 	const labels = userData.daily_result;
+
+  const resultHeading = document.querySelector('.measurement-timespan');
+  resultHeading.innerHTML = `Mittaukset ajalta ${new Date(labels[0]).toLocaleDateString("fi-FI")} - ${new Date(labels[labels.length-1]).toLocaleDateString("fi-FI")}`;
 
 	const ctx = document.getElementById('readiness-rmssd-chart');
 
@@ -40,12 +41,22 @@ const drawChartTen = async (userData) => {
 			],
 		},
 		options: {
+      animation: {
+        y: {
+          duration: 550,
+          easing: 'easeOutSine',
+          loop: false
+        }
+      },
 			responsive: true,
 			locale: 'fi-FI',
 			scales: {
 				x: {
+          ticks: {
+            display: false
+          },
 					title: {
-						display: true,
+						display: false,
 						text: 'Päiväys',
 					},
 				},
@@ -53,7 +64,7 @@ const drawChartTen = async (userData) => {
 					beginAtZero: true,
 					title: {
 						display: true,
-						text: 'Readiness (%) / RMSSD',
+						text: 'Readiness (%) / RMSSD (ms)',
 					},
 				},
 			},
@@ -63,7 +74,7 @@ const drawChartTen = async (userData) => {
 	const btx = document.getElementById('sns-pns-chart');
 
 	new Chart(btx, {
-		type: 'bar',
+		type: 'line',
 		data: {
 			labels: labels,
 			datasets: [
@@ -84,12 +95,22 @@ const drawChartTen = async (userData) => {
 			],
 		},
 		options: {
+      animation: {
+        y: {
+          duration: 550,
+          easing: 'easeOutSine',
+          loop: false
+        }
+      },
 			responsive: true,
 			locale: 'fi-FI',
 			scales: {
 				x: {
+          ticks: {
+            display: false
+          },
 					title: {
-						display: true,
+						display: false,
 						text: 'Päiväys',
 					},
 				},
@@ -118,6 +139,9 @@ const drawChartThirty = async (userData) => {
 	const pns = userData.pns;
 	const labels = userData.daily_result;
 
+  const resultHeading = document.querySelector('.measurement-timespan');
+  resultHeading.innerHTML = `Mittaukset ajalta ${new Date(labels[0]).toLocaleDateString("fi-FI")} - ${new Date(labels[labels.length-1]).toLocaleDateString("fi-FI")}`;
+
 	const ctx = document.getElementById('readiness-rmssd-chart');
 
 	new Chart(ctx, {
@@ -142,12 +166,22 @@ const drawChartThirty = async (userData) => {
 			],
 		},
 		options: {
+      animation: {
+        y: {
+          duration: 550,
+          easing: 'easeOutSine',
+          loop: false
+        }
+      },
 			responsive: true,
 			locale: 'fi-FI',
 			scales: {
 				x: {
+          ticks: {
+            display: false
+          },
 					title: {
-						display: true,
+						display: false,
 						text: 'Päiväys',
 					},
 				},
@@ -155,7 +189,7 @@ const drawChartThirty = async (userData) => {
 					beginAtZero: true,
 					title: {
 						display: true,
-						text: 'Readiness / RMSSD',
+						text: 'Readiness / RMSSD (ms)',
 					},
 				},
 			},
@@ -165,7 +199,7 @@ const drawChartThirty = async (userData) => {
 	const btx = document.getElementById('sns-pns-chart');
 
 	new Chart(btx, {
-		type: 'bar',
+		type: 'line',
 		data: {
 			labels: labels,
 			datasets: [
@@ -186,12 +220,22 @@ const drawChartThirty = async (userData) => {
 			],
 		},
 		options: {
+      animation: {
+        y: {
+          duration: 550,
+          easing: 'easeOutSine',
+          loop: false
+        }
+      },
 			responsive: true,
 			locale: 'fi-FI',
 			scales: {
 				x: {
+          ticks: {
+            display: false
+          },
 					title: {
-						display: true,
+						display: false,
 						text: 'Päiväys',
 					},
 				},

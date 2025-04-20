@@ -41,7 +41,12 @@
             </div>
         </div>
         <div class="hrv-results-container-content">
-            <div>
+            <div class="hrv-canvas-heading">
+              <h2 class="measurement-timespan"></h2>
+            </div>
+            <div class="canvas-wrapper">
+
+              <div>
                 <h4>Readiness & RMSSD</h4>
                 <canvas id="readiness-rmssd-chart"></canvas>
             </div>
@@ -49,41 +54,33 @@
               <h4>SNS & PNS</h4>
                 <canvas id="sns-pns-chart"></canvas>
             </div>
+
+            </div>
         </div>
         <div class="hrv-results-container-footer">
           <div class="results-readiness-text-box">
             <h4>Readiness</h4>
-            <p>Readiness mittauksen tulos arvioi kehosi fysiologista
-              tilaa vertaamalla sykevälivaihtelua aiempiin tuloksiisi.
-              Päivittäin suoritetut mittaukset parantavat mittaustulosten
-              tarkkuutta, kun mittausdataa voidaan vertailla pidemmältä
-              ajanjaksolta.
+            <p>Readiness-indeksin tulos arvioi asteikolla 0–100 % kehosi fysiologista tilaa levon aikaisen sykevälivaihtelun avulla.
+              Arvion tarkkuus paranee mitä enemmän mittauksia on suoritettu. Tyypillisesti 68 % tuloksista on 50–75 % välillä.
             </p>
           </div>
           <div class="results-rmssd-text-box">
             <h4>RMSSD</h4>
-            <p>RMSSD on yksi keskeisistä sykevälivaihtelun mittareista.
-              Arvot korreloivat vahvasti parasympaattisen hermoston toiminnan
-              kanssa ja on siksi hyödyllinen mittari palautumisen ja stressitilan
-              arvioinnissa. Korkeat arvot viittaavat parempaan sydämen autonomiseen
-              säätelyyn ja palautumiseen.
+            <p>RMSDD on yksi keskeisistä sykevälivaihtelun mittareista, joka hyödyllinen palautumisen ja stressitilan
+              arvioinnissa. Suuremmat arvot viittaavat parempaan sydämen autonomiseen säätelyyn ja palautumiseen.
+              Tyypillisesti arvo on 19-75ms välillä.
             </p>
           </div>
           <div class="results-sns-text-box">
             <h4>SNS index</h4>
-            <p>SNS-indeksi kuvaa kuormitusta ja stressiä. Sympaattisen hermoston
-              ollessa aktiivinen arvo nousee ja kertoo kohonneesta kuormituksesta.
-              Arvot ovat normalisoituja jossa 0 kuvaa väestön keskiarvoa. Kohonnut
-              arvo kertoo aktiivisuuden olevan keskiarvoa korkeammalla ja madaltunut
-              arvo keskiarvoa matalammalla.
+            <p>SNS-indeksi kuvaa sympaattisen hermoston aktiivisuutta. Suuremmat arvot viittaavat kohonneeseen
+              stressiin ja kuormitukseen. 95 %:lla aikuisista arvo levossa on -2 ja 2 välillä.
             </p>
           </div>
           <div class="results-pns-text-box">
             <h4>PNS index</h4>
-            <p>PNS-indeksi kuvaa palautumista ja rentoutumista. Suuremmat arvot viittaavat
-              korkeampaan parasympaattisen hermoston aktiivisuuteen ja parempaan palautumiseen.
-              Arvot ovat normalisoituja jossa 0 kuvaa väestön keskiarvoa. Tyypillisesti arvo
-              levossa on -2 ja +2 välillä.
+            <p>PNS-indeksi kuvaa parasympaattisen hermoston aktiivisuutta. Suuremmat arvot viittaavat
+              parempaan palautumiseen ja rentoutumiseen. 95 %:lla aikuisista arvo levossa on -2 ja 2 välillä.
             </p>
           </div>
         </div>
