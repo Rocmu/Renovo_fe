@@ -58,6 +58,7 @@ body {
 }
 
 .fc-toolbar-title {
+  text-transform: capitalize;
   font-size: 24px;
   font-weight: bold;
 }
@@ -233,4 +234,13 @@ body {
 
 .hidden {
   display: none;
+}
+
+.fc-event.exercise-event,
+.fc-event.sickness-event,
+.fc-event.others-event {
+  background-color: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 0 !important;
 }
