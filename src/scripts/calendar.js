@@ -17,29 +17,6 @@ document.addEventListener('DOMContentLoaded', function () {
     },
 
     titleFormat: { year: 'numeric', month: 'long' },
-    titleFormatter: function(date) {
-      const monthName = date.toLocaleString('fi-FI', { month: 'long' });
-      const capitalizedMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
-      const year = date.getFullYear();
-      return capitalizedMonth + ' ' + year;
-    },
-    dayHeaderContent: function (arg) {
-      const dayName = arg.text.charAt(0).toUpperCase() + arg.text.slice(1);
-      return {html: '<span>' + dayName + '</span>'};
-    },
-    dayHeaderClassNames: function (arg) {
-      return ['custom-day-header', 'fc-day-' + arg.date.getDay()];
-    },
-    dayCellDidMount: function (info) {
-      const today = new Date();
-      if (
-        info.date.getFullYear() === today.getFullYear() &&
-        info.date.getMonth() === today.getMonth() &&
-        info.date.getDate() === today.getDate()
-      ) {
-        info.el.classList.add('today');
-      }
-    },
     events: async function (fetchInfo, successCallback, failureCallback) {
       try {
         const userId = localStorage.getItem('user_id');
