@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -13,11 +17,12 @@ body {
   margin: auto;
 }
 
-.hrv-results-container-header, .feedback-table, .container-footer-info-link {
+.hrv-results-container-header, .hrv-results-container-content, .feedback-table, .container-footer-info-link {
   margin-top: 2em;
   background-color: white;
   border-radius: 1rem;
   padding: 1em;
+  box-shadow: 10px 10px 5px #CCCCCC;
 }
 
 .hrv-results-container-header p, .feedback-buttons, .container-footer-info-link p {
@@ -48,17 +53,15 @@ button#print-hrv-ten-days:hover, button#print-hrv-thirty-days:hover, button#open
   border: 2px solid var(--hover-color);
 }
 
-.hrv-results-container-content {
-  margin-top: 2em;
-  background-color: white;
-  border-radius: 1rem;
-  padding: 1em;
-}
-
-.canvas-wrapper {
+.canvas-wrapper, .canvas-wrapper-2 {
   display: flex;
   flex-direction: row;
-  gap: 20px;
+  gap: 1em;
+}
+
+.canvas-wrapper h4, .canvas-wrapper-2 h4 {
+  color: #707070;
+  font-weight: 100;
 }
 
 .hrv-canvas-heading {
@@ -69,7 +72,7 @@ h2.measurement-timespan {
   margin-bottom: 0;
 }
 
-canvas#readiness-rmssd-chart {
+canvas#readiness-rmssd-chart, canvas#bpm-chart, canvas#age-chart {
   width: 100% !important;
   height: auto !important;
   max-height: 400px !important;
@@ -85,9 +88,11 @@ canvas#sns-pns-chart {
 
 .hrv-results-container-footer {
   margin-top: 2em;
-  display: flex;
+  /*display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-around;*/
+  display: grid;
+  grid-template-columns: auto auto auto auto;
   gap: 10px;
 }
 
@@ -115,11 +120,16 @@ canvas#sns-pns-chart {
   color: var(--text-color);
 }
 
+.results-phy-age-text-box p {
+  max-width: 600px;
+}
+
 .hrv-user-feedback {
   margin-top: 2em;
   background-color: white;
   border-radius: 1rem;
-  padding: 1em
+  padding: 1em;
+  box-shadow: 10px 10px 5px #CCCCCC;
 }
 
 .feedback-form-container {
@@ -202,8 +212,43 @@ footer {
   text-align: center;
 }
 
+/* SE VITUN STATUS PALLURA */
+
+#backTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: solid 5px var(--blue-color);
+  outline: none;
+  background-color: var(--hover-color);
+  color: white;
+  /*box-shadow: 1px 1px 6px #333;*/
+  cursor: pointer;
+  width: 65px;
+  height: 65px;
+  border-radius: 35px;
+}
+
+#backTopBtn:hover {
+  background-color: var(--blue-color);
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 4px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
 @media only screen and (max-width: 1200px) {
-  .canvas-wrapper{
+  .canvas-wrapper, .canvas-wrapper-2 {
     flex-direction: column;
   }
 }

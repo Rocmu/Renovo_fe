@@ -1,6 +1,6 @@
 <!--tänne header, nav ja footer-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,7 @@
     <main>
 
     <div class="hrv-results-container">
+
         <div class="hrv-results-container-header">
             <h2>HRV analyysi ja tulokset</h2>
             <p>Sovellus kerää HRV datasi Kubios HRV- sovelluksesta. Selaa edellisiä tuloksiasi, joita
@@ -47,13 +48,13 @@
             <div class="canvas-wrapper">
 
               <div>
-                <h4>Readiness & RMSSD</h4>
-                <canvas id="readiness-rmssd-chart"></canvas>
-            </div>
-            <div>
-              <h4>SNS & PNS</h4>
-                <canvas id="sns-pns-chart"></canvas>
-            </div>
+                  <h4>Readiness & RMSSD</h4>
+                  <canvas id="readiness-rmssd-chart"></canvas>
+              </div>
+              <div>
+                  <h4>SNS & PNS</h4>
+                  <canvas id="sns-pns-chart"></canvas>
+              </div>
 
             </div>
         </div>
@@ -83,6 +84,21 @@
               parempaan palautumiseen ja rentoutumiseen. 95 %:lla aikuisista arvo levossa on -2 ja 2 välillä.
             </p>
           </div>
+        </div>
+        <div class="hrv-results-container-content">
+          <div class="hrv-canvas-heading">
+            <h2 class="measurement-timespan-2"></h2>
+          </div>
+        <div class="canvas-wrapper-2">
+          <div>
+            <h4>Pulssi</h4>
+            <canvas id="bpm-chart"></canvas>
+          </div>
+          <div>
+            <h4>Fysiologinen ikä</h4>
+            <canvas id="age-chart"></canvas>
+          </div>
+        </div>
         </div>
         <div class="hrv-user-feedback">
           <div class="feedback-buttons">
@@ -138,6 +154,7 @@
 
     </main>
     <footer>Renovo App</footer>
+    <button id="backTopBtn" title="Go to top"><p><i class="arrow up"></i></p></button>
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/results.js"></script>
   </body>

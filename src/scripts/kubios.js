@@ -60,6 +60,11 @@ const getUserDataTen = async () => {
 	const userData = await fetchData(url, options);
 
 	if (userData.error) {
+    if (userData.error == 'jwt expired') {
+      localStorage.clear();
+      location.href="index.html";
+      return
+    }
     console.log('Virhe: ' + userData.error);
 		console.log('Käyttäjän tietojen haku Kubioksesta epäonnistui');
 		return;
@@ -81,6 +86,11 @@ const getUserDataThirty = async () => {
 	const userData = await fetchData(url, options);
 
 	if (userData.error) {
+    if (userData.error == 'jwt expired') {
+      localStorage.clear();
+      location.href="index.html";
+      return
+    }
     console.log('Virhe: ' + userData.error);
 		console.log('Käyttäjän tietojen haku Kubioksesta epäonnistui');
 		return;
