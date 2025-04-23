@@ -1,13 +1,17 @@
 import '../styles/hrv.css';
 import { getUserDataTen, getUserDataThirty } from "./kubios.js";
 import { displayFeedbackForm, registerFeedBack, getUserFeedback } from './feedback.js';
-import { newFunction } from './back-to-top.js';
+import { newFunction, revealTextOne } from './back-to-top.js';
 
 const printTenResults = document.querySelector('#print-hrv-ten-days');
 printTenResults.addEventListener('click', getUserDataTen);
 
 const printThirtyResults = document.querySelector('#print-hrv-thirty-days');
 printThirtyResults.addEventListener('click', getUserDataThirty);
+
+//Avaa ensimmäinen info-laatikko
+const infoBtnOne = document.querySelector('#canvas-one-text-boxes');
+infoBtnOne.addEventListener('click', revealTextOne);
 
 getUserDataTen();
 

@@ -22,4 +22,11 @@ function newFunction() {
   mybutton.addEventListener('click', topFunction);
 }
 
-export {newFunction}
+function revealTextOne(event) {
+
+  event.preventDefault();
+  const infoOne = document.querySelector('.hrv-results-container-footer');
+  infoOne.style.display = 'flex';
+}
+
+export {newFunction, revealTextOne}

@@ -140,7 +140,7 @@ const drawChartTen = async (userData) => {
 			datasets: [
 				{
           type: 'bar',
-					label: 'Pulssi',
+					label: 'BPM',
 					data: bpm,
 					borderWidth: 2,
 					borderColor: '#C66AB5',
