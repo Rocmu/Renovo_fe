@@ -210,7 +210,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
 
       return {
-        html: `<div title="${arg.event.title}">${iconMap[type] || '❔'}</div>`
+        html: `<div class="cal-icon" title="${arg.event.title}">${iconMap[type] || '❔'}</div>`
       };
     }
 
