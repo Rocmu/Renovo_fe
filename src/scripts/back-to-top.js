@@ -22,11 +22,40 @@ function newFunction() {
   mybutton.addEventListener('click', topFunction);
 }
 
+// Reveal hidden text boxes for readiness, rmssd, sns, pns
 function revealTextOne(event) {
-
   event.preventDefault();
   const infoOne = document.querySelector('.hrv-results-container-footer');
   infoOne.style.display = 'flex';
+  const windowWidth = window.innerWidth;
+
+  //Katsotaan selaimen koko
+  if (windowWidth >= 1200) {
+    console.log('leveys' + windowWidth)
+    const firstCanvas = document.querySelector('.canvas-wrapper')
+    firstCanvas.scrollIntoView();
+  } else {
+    console.log('leveys' + windowWidth)
+    infoOne.scrollIntoView();
+  }
 }
 
-export {newFunction, revealTextOne}
+// Reveal hidden text boxes for physiological age and bpm
+function revealTextTwo(event) {
+  event.preventDefault();
+  const infoTwo = document.querySelector('.hrv-results-container-footer-2');
+  infoTwo.style.display = 'flex';
+  const windowWidth = window.innerWidth;
+
+  //Katsotaan selaimen koko
+  if (windowWidth >= 1200) {
+    console.log('leveys' + windowWidth)
+    const secondCanvas = document.querySelector('.canvas-wrapper-2')
+    secondCanvas.scrollIntoView();
+  } else {
+    console.log('leveys' + windowWidth)
+    infoTwo.scrollIntoView();
+  }
+}
+
+export {newFunction, revealTextOne, revealTextTwo}

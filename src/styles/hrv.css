@@ -29,7 +29,7 @@ body {
   max-width: 700px;
 }
 
-button#print-hrv-ten-days, button#print-hrv-thirty-days, button#open-feedback-form, button#view-prev-feedback, input#post-feedback, button#canvas-one-text-boxes {
+button#print-hrv-ten-days, button#print-hrv-thirty-days, button#open-feedback-form, button#view-prev-feedback, input#post-feedback, button#canvas-one-text-boxes, button#canvas-two-text-boxes {
   padding: 1em 2em 1em 2em;
   color: var(--blue-color);
   border: 2px solid var(--blue-color);
@@ -53,13 +53,13 @@ button#print-hrv-ten-days:hover, button#print-hrv-thirty-days:hover, button#open
   border: 2px solid var(--hover-color);
 }
 
-button#canvas-one-text-boxes {
+button#canvas-one-text-boxes, button#canvas-two-text-boxes {
   margin-top: 1em;
   background-color: var(--hover-color);
   color: white;
 }
 
-button#canvas-one-text-boxes:hover {
+button#canvas-one-text-boxes:hover, button#canvas-two-text-boxes:hover {
   background-color: var(--blue-color);
 }
 
@@ -103,10 +103,24 @@ canvas#sns-pns-chart {
   justify-content: space-around;
   display: none;
   gap: 10px;
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
 .hrv-results-container-footer div, .hrv-results-container-footer-2 div {
   padding: 1em;
+}
+
+@keyframes appear{
+  from {
+    transform: translateX(-300px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
 }
 
 .results-readiness-text-box {
@@ -132,12 +146,12 @@ canvas#sns-pns-chart {
 .results-bpm-text-box {
   background-color: #C66AB5;
   color: white;
+  width: 25%;
 }
 
 .results-age-text-box {
   background-color: #999999;
-  grid-column-start: 2;
-  grid-column-end: 5;
+  width: 75%;
 }
 .results-age-text-box p {
   max-width: 600px;
