@@ -22,3 +22,8 @@ Huom! Testiä piti hiukan muuttaa asetusten vuoksi. Env- tiedostosta tulee nyt "
 - [Sisäänkirjautumistehtävän READ.me](tests/README.md)
 - [Epäonnistunut säänkirjautuminen, viikko 5](tests/login-invalid-login.robot)
 - [Onnistunut säänkirjautuminen, viikko 5](tests/login-valid-login.robot)
+
+### 3. viikko 6, tautapalvelimen testaus
+
+- [Taustapalvelintestin READ.me](tests/README.md)
+- [taustapalvelintesti, viikko 6](tests/server-test.robot)

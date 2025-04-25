@@ -1,6 +1,6 @@
 # Ohjelmistotestit
 
-## Sisäänkirjautuminen (Päivitetty 17.4.2025)
+## Sisäänkirjautuminen (Päivitetty 25.4.2025)
 
 Taustapalvelimessa suoritettiin sisäänkirjautumis-testi. Testissä syötettiin käyttäjän käyttäjätunnukset, joiden avulla suoritettiin kirjautuminen Kubiokseen. Vastaus tulostettiin konsoliin.
 
@@ -34,6 +34,22 @@ Tulokset:
 
 - Testi 1 [Sisäänkirjautuminen (invalid)](login-invalid-login.robot)
 - Testi 2 [Sisäänkirjautuminen (valid)](login-valid-login.robot)
+- [log.html](../outputs/log.html)
+- [output.xml](../outputs/output.xml)
+- [report.html](../outputs/report.html)
+
+## Taustapalvelimen testaus (viikko 6)
+
+Sovellukseen suoritettiin taustapalvelimen testaus, jossa haettiin käyttäjän työvuorot, jonka jälkeen syötettiin uusi vuoro.
+
+Testin suoritus:
+- 1. Taustapalvelin ja selain päälle `npm run dev`- komennolla.
+- 2. `source tests/.venv/Scripts/activate` -komennolla virtuaaliympäristö päälle.
+- 3. `robot --outputdir outputs tests/server-test.robot` -komennolla suoritettiin taustapalvelimen testit ja ohjattiin tulokset outputs-kansioon.
+
+Tulokset:
+
+- Testi [Taustapalvelin-vuorot-haku-syöttö](server-test.robot)
 - [log.html](../outputs/log.html)
 - [output.xml](../outputs/output.xml)
 - [report.html](../outputs/report.html)
