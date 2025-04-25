@@ -1,6 +1,6 @@
 # Ohjelmistotestit
 
-## Sisäänkirjautuminen (Päivitetty 25.4.2025)
+## Sisäänkirjautuminen (Päivitetty 17.4.2025)
 
 Taustapalvelimessa suoritettiin sisäänkirjautumis-testi. Testissä syötettiin käyttäjän käyttäjätunnukset, joiden avulla suoritettiin kirjautuminen Kubiokseen. Vastaus tulostettiin konsoliin.
 
