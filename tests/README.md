@@ -37,3 +37,19 @@ Tulokset:
 - [log.html](../outputs/log.html)
 - [output.xml](../outputs/output.xml)
 - [report.html](../outputs/report.html)
+
+## Taustapalvelimen testaus (viikko 6)
+
+Sovellukseen suoritettiin taustapalvelimen testaus, jossa haettiin käyttäjän työvuorot, jonka jälkeen syötettiin uusi vuoro.
+
+Testin suoritus:
+- 1. Taustapalvelin ja selain päälle `npm run dev`- komennolla.
+- 2. `source tests/.venv/Scripts/activate` -komennolla virtuaaliympäristö päälle.
+- 3. `robot --outputdir outputs tests/server-test.robot` -komennolla suoritettiin taustapalvelimen testit ja ohjattiin tulokset outputs-kansioon.
+
+Tulokset:
+
+- Testi [Taustapalvelin-vuorot-haku-syöttö](server-test.robot)
+- [log.html](../outputs/log.html)
+- [output.xml](../outputs/output.xml)
+- [report.html](../outputs/report.html)
