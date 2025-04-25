@@ -27,17 +27,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const userId = localStorage.getItem('user_id');
         const token = localStorage.getItem('token');
 
-        /* Hae kaikki tapahtumat
-        const shifts = await fetchData(`http://localhost:3000/api/shifts/user/${userId}`, {
-          method: 'GET',
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        });
-        */
-        //console.log(shifts)
-        // Muotoile tapahtumat FullCalendarille
-
         const [shifts, exercise, sickness, others] = await Promise.all([
           fetchData(`http://localhost:3000/api/shifts/user/${userId}`, {
             method: 'GET',
@@ -67,8 +56,6 @@ document.addEventListener('DOMContentLoaded', function () {
         ]);
 
         // Muotoile tapahtumat FullCalendarille
-
-        //const readiness = response.results.map((rivi) => rivi.result.readiness);
         const events = [
           ...shifts.map((shift) => ({
             id: `shift_${shift.shift_id || shift.id}`,
@@ -231,7 +218,7 @@ document.addEventListener('DOMContentLoaded', function () {
     const month = calendarDate.getMonth();
 
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-    formTable.innerHTML = '<div class="form-shift-header"><span>alkaa:</span><span>päättyy:</span></div>';
+    formTable.innerHTML = '<div class="form-shift-header"><span>Vuoron alkamis aika:</span><span>Vuoron päättymis aika:</span></div>';
 
     for (let i = 1; i <= daysInMonth; i++) {
       const row = document.createElement("div");
@@ -394,7 +381,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       alert(`${type.charAt(0).toUpperCase() + type.slice(1)} tallennettu!`);
       closeModal(`${type}Modal`);
-      calendar.refetchEvents(); // Päivitä kalenteri
+      calendar.refetchEvents();
     } catch (error) {
       console.error(`Error saving ${type}:`, error);
       alert(`Virhe tallennettaessa ${type}: ${error.message}`);

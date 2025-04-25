@@ -29,24 +29,57 @@
 
     <!-- Sisältö -->
     <div class="calendar-container">
-      <div class="calendar-title">Kalenteri</div>
-      <div class="calendar-description">
-        Painikkeiden avulla voit syöttää työvuorosi sekä muut rasitukseen ja palautumiseen vaikuttavat tapahtumat.
+
+      <!-- Yläosa: otsikko ja painikkeet -->
+      <div class="calendar-header">
+        <div class="calendar-title">Kalenteri</div>
+        <div class="calendar-description">
+          Painikkeiden avulla voit syöttää työvuorosi sekä muut rasitukseen ja palautumiseen vaikuttavat tapahtumat kalenteriin.
+          Voit muokata tai poistaa tallentamiasi tapahtumia painamalla kaleterista kyseistä tapahtumaa.
+          Kalenterin alapuolelta löydät lisäohjeistusta tapahtumien täyttöön tarvittaessa.
+        </div>
+        <div class="calendar-buttons">
+          <button id="openShiftModal">Lisää työvuoroja</button>
+          <button id="openExerciseModal">Lisää liikunta</button>
+          <button id="openSicknessModal">Lisää sairastuminen</button>
+          <button id="openOthersModal">Muut tapahtumat</button>
+        </div>
       </div>
 
-      <div class="calendar-buttons">
-        <button id="openShiftModal">Lisää työvuoroja</button>
-        <button id="openExerciseModal">Lisää liikunta</button>
-        <button id="openSicknessModal">Lisää sairastuminen</button>
-        <button id="openOthersModal">Muut tapahtumat</button>
+      <!-- Kalenterinäkymä -->
+      <div class="calendar-view">
+        <div id="calendarView"></div>
       </div>
 
-      <div id="calendarView"></div>
-
+      <!-- Info-osuus -->
       <div class="calendar-info">
-        (Tekstikappaleita, joissa kerrotaan yksitellen kaikkien tapahtumatyyppien vaikutuksista HRV-tuloksiin ja
-        neuvotaan, mihin kategorioihin oman arjen tapahtumat kuuluvat. Erityisesti "Muut"-kategoriaa tulee avata.)
+        <div class="calendar-info-box">
+          <h4>Työvuorot</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda, praesentium error,
+            molestias nobis odit consequatur soluta expedita architecto ut, excepturi itaque esse quae nam ipsa obcaecati quibusdam?
+            Quos, laudantium veritatis.</p>
+        </div>
+
+        <div class="calendar-info-box">
+          <h4>Liikunta</h4>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sint iste ullam, voluptatum officia rerum,
+            cum at saepe similique fuga accusamus quidem debitis facere quaerat iure, quos quam delectus itaque doloribus!</p>
+        </div>
+
+        <div class="calendar-info-box">
+          <h4>Sairastuminen</h4>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Nobis temporibus quod mollitia provident quae sequi magni,
+            cumque distinctio consequuntur ipsa ea laboriosam voluptate exercitationem placeat. Labore nesciunt nostrum magni at?</p>
+        </div>
+
+        <div class="calendar-info-box">
+          <h4>Muut</h4>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores ratione necessitatibus vel qui doloremque debitis
+            architecto saepe laudantium aliquam repellat sapiente maxime officia consequuntur,
+            eligendi sunt quos tempore accusantium dolorum?</p>
+        </div>
       </div>
+
     </div>
 
     <!-- Työvuorojen lisäysmodaali -->
@@ -57,7 +90,7 @@
         <p>Täytä alle työvuorojen alkamis- ja päättymisajat. Jätä vapaapäivät tyhjiksi.</p>
         <form id="shiftForm">
           <div class="form-shift-table">
-            <div class="form-shift-header"><span>alkaa:</span><span>päättyy:</span></div>
+            <div class="form-shift-header"><span>Vuoron alkamis aika:</span><span>Vuoron päättymis aika:</span></div>
           </div>
           <div class="calendar-modal-actions">
             <button type="submit">Tallenna</button>
@@ -197,7 +230,7 @@
         </form>
       </div>
     </div>
-
+    <footer>Renovo App</footer>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script type="module" src="/src/scripts/calendar.js"></script>
   </body>
