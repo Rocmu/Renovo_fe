@@ -1,63 +1,407 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<robot generator="Robot 7.2.2 (Python 3.12.1 on win32)" generated="2025-04-09T19:19:06.280390" rpa="false" schemaversion="5">
-<suite id="s1" name="Login-Server-Test" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot">
-<test id="s1-t1" name="Login as Regular" line="8">
+<robot generator="Robot 7.2.2 (Python 3.13.1 on win32)" generated="2025-04-25T10:06:51.848947" rpa="false" schemaversion="5">
+<suite id="s1" name="Login-Server-Test &amp; Login-Valid-Login &amp; Login-Invalid-Login &amp; Server-Test">
+<suite id="s1-s1" name="Login-Server-Test" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot">
+<test id="s1-s1-t1" name="Login as Regular" line="8">
 <kw name="Create Dictionary" owner="BuiltIn">
-<msg time="2025-04-09T19:19:06.707192" level="FAIL">Variable '${MY_USERNAME}' not found.</msg>
+<msg time="2025-04-25T10:06:52.210202" level="INFO">${body} = {'username': 'esimerkki@gmail.fi', 'password': '$BAD_PASSWORD'}</msg>
 <var>${body}</var>
-<arg>username=${MY_USERNAME}</arg>
-<arg>password=$MY_PASSWORD</arg>
+<arg>username=${BAD_USERNAME}</arg>
+<arg>password=$BAD_PASSWORD</arg>
 <doc>Creates and returns a dictionary based on the given ``items``.</doc>
-<status status="FAIL" start="2025-04-09T19:19:06.707192" elapsed="0.000000">Variable '${MY_USERNAME}' not found.</status>
+<status status="PASS" start="2025-04-25T10:06:52.209876" elapsed="0.000359"/>
 </kw>
 <kw name="POST" owner="RequestsLibrary">
+<msg time="2025-04-25T10:06:52.418587" level="INFO">POST Request : url=http://127.0.0.1:3000/api/auth/kubios-login 
+ path_url=/api/auth/kubios-login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '63', 'Content-Type': 'application/json'} 
+ body=b'{"username": "esimerkki@gmail.fi", "password": "$BAD_PASSWORD"}' 
+ </msg>
+<msg time="2025-04-25T10:06:52.418766" level="INFO">POST Response : url=http://127.0.0.1:3000/api/auth/kubios-login 
+ status=401, reason=Unauthorized 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '77', 'ETag': 'W/"4d-h0K6OC3J4zXd1pC0EWrYd51R7lA"', 'Date': 'Fri, 25 Apr 2025 07:06:52 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Login with Kubios failed due bad username/password","status":401} 
+ </msg>
+<msg time="2025-04-25T10:06:52.418996" level="FAIL">HTTPError: 401 Client Error: Unauthorized for url: http://127.0.0.1:3000/api/auth/kubios-login</msg>
 <var>${response}</var>
 <arg>url=http://127.0.0.1:3000/api/auth/kubios-login</arg>
 <arg>json=${body}</arg>
 <doc>Sends a POST request.</doc>
-<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+<status status="FAIL" start="2025-04-25T10:06:52.210608" elapsed="0.211280">HTTPError: 401 Client Error: Unauthorized for url: http://127.0.0.1:3000/api/auth/kubios-login</status>
 </kw>
 <kw name="Should Contain" owner="BuiltIn">
 <arg>${response.json()}[message]</arg>
 <arg>Logged in successfully with Kubios</arg>
 <doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
-<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-04-25T10:06:52.424085" elapsed="0.000045"/>
 </kw>
 <kw name="Dictionary Should Contain Key" owner="Collections">
 <arg>${response.json()}</arg>
 <arg>user</arg>
 <doc>Fails if ``key`` is not found from ``dictionary``.</doc>
-<status status="NOT RUN" start="2025-04-09T19:19:06.707192" elapsed="0.000000"/>
+<status status="NOT RUN" start="2025-04-25T10:06:52.424385" elapsed="0.000031"/>
 </kw>
-<status status="FAIL" start="2025-04-09T19:19:06.707192" elapsed="0.000000">Variable '${MY_USERNAME}' not found.</status>
+<status status="FAIL" start="2025-04-25T10:06:52.208846" elapsed="0.215861">HTTPError: 401 Client Error: Unauthorized for url: http://127.0.0.1:3000/api/auth/kubios-login</status>
 </test>
-<status status="FAIL" start="2025-04-09T19:19:06.280390" elapsed="0.429583"/>
+<status status="FAIL" start="2025-04-25T10:06:51.874425" elapsed="0.551519"/>
+</suite>
+<suite id="s1-s2" name="Login-Valid-Login" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-valid-login.robot">
+<test id="s1-s2-t1" name="Login Test" line="12">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-04-25T10:06:53.135603" level="INFO">{"browser": "chromium", "headless": false, "chromiumSandbox": false, "devtools": false, "handleSIGHUP": true, "handleSIGINT": true, "handleSIGTERM": true, "slowMo": 0.0, "timeout": 30000.0, "tracesDir": "C:\\Users\\Omistaja\\Documents\\hyte\\renovo-app\\Renovo_fe\\outputs\\browser\\traces\\temp\\ffe77528-26ce-4eb6-9bdb-990fcdc7854f"}</msg>
+<msg time="2025-04-25T10:06:53.166297" level="INFO">Starting Browser process C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\.venv\Lib\site-packages\Browser\wrapper\index.js using port 50944</msg>
+<msg time="2025-04-25T10:06:53.166607" level="INFO">Node startup parameters: ['node', 'C:\\Users\\Omistaja\\Documents\\hyte\\renovo-app\\Renovo_fe\\tests\\.venv\\Lib\\site-packages\\Browser\\wrapper\\index.js', '50944']</msg>
+<msg time="2025-04-25T10:06:53.903117" level="INFO">Successfully created browser with options: {"browser":"chromium","headless":false,"chromiumSandbox":false,"devtools":false,"handleSIGHUP":true,"handleSIGINT":true,"handleSIGTERM":true,"slowMo":0,"timeout":30000,"tracesDir":"C:\\Users\\Omistaja\\Documents\\hyte\\renovo-app\\Renovo_fe\\outputs\\browser\\traces\\temp\\ffe77528-26ce-4eb6-9bdb-990fcdc7854f"}</msg>
+<arg>chromium</arg>
+<arg>headless=No</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-04-25T10:06:53.134737" elapsed="0.768648"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-04-25T10:06:54.327636" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173</msg>
+<msg time="2025-04-25T10:06:54.327800" level="INFO">No context was open. New context was automatically opened when this page is created.</msg>
+<arg>http://localhost:5173</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-04-25T10:06:53.905435" elapsed="0.422681"/>
+</kw>
+<kw name="Get Title" owner="Browser">
+<msg time="2025-04-25T10:06:54.340505" level="INFO">Title: 'Kirjautumissivu'</msg>
+<arg>==</arg>
+<arg>Kirjautumissivu</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-04-25T10:06:54.328741" elapsed="0.011930"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-04-25T10:06:54.341968" level="INFO">Types the text '***' in the given field.</msg>
+<arg>//input[@id='username']</arg>
+<arg>${Username}</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-25T10:06:54.341171" elapsed="2.390699"/>
+</kw>
+<kw name="Type Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$Password</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given secret from ``variable_name`` into the text field
+found by ``selector``.</doc>
+<status status="PASS" start="2025-04-25T10:06:56.732296" elapsed="1.269739"/>
+</kw>
+<kw name="Click With Options" owner="Browser">
+<msg time="2025-04-25T10:06:58.003050" level="INFO">Clicks the element 'xpath=//button[@type='submit' and text()='Kirjaudu sisään']'.</msg>
+<arg>xpath=//button[@type='submit' and text()='Kirjaudu sisään']</arg>
+<arg>delay=2 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-25T10:06:58.002504" elapsed="2.037579"/>
+</kw>
+<kw name="Wait For Condition" owner="Browser">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-04-25T10:07:01.264786" level="INFO">Text: 'Renovo App'</msg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-25T10:07:00.041468" elapsed="1.223500"/>
+</kw>
+<arg>Text</arg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for a condition, defined with Browser getter keywords to become True.</doc>
+<status status="PASS" start="2025-04-25T10:07:00.040808" elapsed="1.224283"/>
+</kw>
+<msg time="2025-04-25T10:07:01.268786" level="INFO">Set timeout to: 10000</msg>
+<doc>Sisäänkirjautumistesti</doc>
+<status status="PASS" start="2025-04-25T10:06:53.131908" elapsed="8.133545"/>
+</test>
+<doc>Sisäänkirjautuminen, onnistunut</doc>
+<status status="PASS" start="2025-04-25T10:06:52.427068" elapsed="8.843104"/>
+</suite>
+<suite id="s1-s3" name="Login-Invalid-Login" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-invalid-login.robot">
+<test id="s1-s3-t1" name="Login Test" line="7">
+<kw name="New Browser" owner="Browser">
+<msg time="2025-04-25T10:07:01.276693" level="INFO">Switching browser to browser=21a3dff8-c33a-480a-a4c0-090be78b5c62</msg>
+<msg time="2025-04-25T10:07:01.281002" level="INFO">Successfully changed active browser: browser=21a3dff8-c33a-480a-a4c0-090be78b5c62</msg>
+<msg time="2025-04-25T10:07:01.281325" level="INFO">Reusing existing browser with id: browser=21a3dff8-c33a-480a-a4c0-090be78b5c62</msg>
+<arg>chromium</arg>
+<arg>headless=No</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Create a new playwright Browser with specified options.</doc>
+<status status="PASS" start="2025-04-25T10:07:01.276087" elapsed="0.005335"/>
+</kw>
+<kw name="New Page" owner="Browser">
+<msg time="2025-04-25T10:07:01.377112" level="INFO">Successfully initialized new page object and opened url: http://localhost:5173</msg>
+<arg>http://localhost:5173</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Open a new Page.</doc>
+<status status="PASS" start="2025-04-25T10:07:01.282153" elapsed="0.095128"/>
+</kw>
+<kw name="Get Title" owner="Browser">
+<msg time="2025-04-25T10:07:01.386832" level="INFO">Title: 'Kirjautumissivu'</msg>
+<arg>==</arg>
+<arg>Kirjautumissivu</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns the title of the current page.</doc>
+<status status="PASS" start="2025-04-25T10:07:01.377734" elapsed="0.009258"/>
+</kw>
+<kw name="Type Text" owner="Browser">
+<msg time="2025-04-25T10:07:01.388233" level="INFO">Types the text 'esimerkki@gmail.fi' in the given field.</msg>
+<arg>//input[@id='username']</arg>
+<arg>${BAD_USERNAME}</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given ``txt`` into the text field found by ``selector``.</doc>
+<status status="PASS" start="2025-04-25T10:07:01.387395" elapsed="2.133923"/>
+</kw>
+<kw name="Type Secret" owner="Browser">
+<arg>//input[@id='password']</arg>
+<arg>$BAD_PASSWORD</arg>
+<arg>delay=0.1 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Types the given secret from ``variable_name`` into the text field
+found by ``selector``.</doc>
+<status status="PASS" start="2025-04-25T10:07:03.521731" elapsed="1.742116"/>
+</kw>
+<kw name="Click With Options" owner="Browser">
+<msg time="2025-04-25T10:07:05.265175" level="INFO">Clicks the element 'xpath=//button[@type='submit' and text()='Kirjaudu sisään']'.</msg>
+<arg>xpath=//button[@type='submit' and text()='Kirjaudu sisään']</arg>
+<arg>delay=2 s</arg>
+<tag>PageContent</tag>
+<tag>Setter</tag>
+<doc>Simulates mouse click on the element found by ``selector``.</doc>
+<status status="PASS" start="2025-04-25T10:07:05.264382" elapsed="2.052996"/>
+</kw>
+<kw name="Wait For Condition" owner="Browser">
+<kw name="Get Text" owner="Browser">
+<msg time="2025-04-25T10:07:17.326115" level="INFO">Text: 'Kirjautumissivu'</msg>
+<msg time="2025-04-25T10:07:19.283118" level="INFO" html="true">&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td colspan="3"&gt;&lt;a href="browser/screenshot/fail-screenshot-1.png" target="_blank"&gt;&lt;img src="browser/screenshot/fail-screenshot-1.png" width="800px"/&gt;&lt;/a&gt;</msg>
+<msg time="2025-04-25T10:07:19.283306" level="INFO">See also file:///C:/Users/Omistaja/Documents/hyte/renovo-app/Renovo_fe/outputs/playwright-log-1745564812546461100.txt for additional details.</msg>
+<msg time="2025-04-25T10:07:19.283753" level="FAIL">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</msg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>Assertion</tag>
+<tag>Getter</tag>
+<tag>PageContent</tag>
+<doc>Returns text attribute of the element found by ``selector``.</doc>
+<status status="FAIL" start="2025-04-25T10:07:07.321961" elapsed="12.005533">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</status>
+</kw>
+<arg>Text</arg>
+<arg>Title</arg>
+<arg>contains</arg>
+<arg>Renovo App</arg>
+<tag>PageContent</tag>
+<tag>Wait</tag>
+<doc>Waits for a condition, defined with Browser getter keywords to become True.</doc>
+<status status="FAIL" start="2025-04-25T10:07:07.321262" elapsed="12.006387">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</status>
+</kw>
+<msg time="2025-04-25T10:07:19.330393" level="INFO">Set timeout to: 10000</msg>
+<doc>Sisäänkirjautumistesti</doc>
+<status status="FAIL" start="2025-04-25T10:07:01.275703" elapsed="18.052295">Text 'Kirjautumissivu' (str) should contain 'Renovo App' (str)</status>
+</test>
+<doc>Sisäänkirjautuminen .env- tiedoston avulla, epäonnistunut</doc>
+<status status="FAIL" start="2025-04-25T10:07:01.273064" elapsed="18.058525"/>
+</suite>
+<suite id="s1-s4" name="Server-Test" source="C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\server-test.robot">
+<kw name="Authenticate as Regular" type="SETUP">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-25T10:07:19.339379" level="INFO">${body} = "***"</msg>
+<var>${body}</var>
+<arg>username=${Username}</arg>
+<arg>password=${Password}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-25T10:07:19.339169" elapsed="0.000589"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-04-25T10:07:20.077536" level="INFO">POST Request : url=http://127.0.0.1:3000/api/auth/kubios-login 
+ path_url=/api/auth/kubios-login 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Content-Length': '63', 'Content-Type': 'application/json'} 
+ body=b'{"username": "***", "password": "***"}' 
+ </msg>
+<msg time="2025-04-25T10:07:20.077753" level="INFO">POST Response : url=http://127.0.0.1:3000/api/auth/kubios-login 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1760', 'ETag': 'W/"6e0-10tFYdJdMkGsNCxxd5UeuGI+9bk"', 'Date': 'Fri, 25 Apr 2025 07:07:20 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"Logged in successfully with Kubios","user":"***","user_id":1,"token":"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libGRVWlVScE9IQkxWMnRqYTI5aVNtUkljUzEwVVNJc0luTjFZaUk2SWpobU9XTXdZbU5pTFRnMFptUXRORGt3TXkxaU5EZGpMV014WTJZeFpXRXlPR1JqT0NJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU9HWTVZekJpWTJJdE9EUm1aQzAwT1RBekxXSTBOMk10WXpGalpqRmxZVEk0WkdNNElpd2laMmwyWlc1ZmJtRnRaU0k2SWs1bFlTSXNJbUYxWkNJNklqSnlPRE00Wlc5cFpERjJaV0l3Y1c1eFoyNDRNWEZoZFcwd0lpd2laWFpsYm5SZmFXUWlPaUl3Wm1OaFlUQTVNQzFoTmpZeUxUUTNNVGN0T1ROaU5TMHpNemhsTmpFek5USTBZVFVpTENKMGIydGxibDkxYzJVaU9pSnBaQ0lzSW1GMWRHaGZkR2x0WlNJNk1UYzBOVFUyTkRnek9Td2laWGh3SWpveE56UTFOVFk0TkRNNUxDSnBZWFFpT2pFM05EVTFOalE0TXprc0ltWmhiV2xzZVY5dVlXMWxJam9pVTJseVpXNGlMQ0pxZEdraU9pSXhNR0UyTVRNNU55MDNaR0ZtTFRRME5UZ3RPVGhqTVMwNE56UmpaRFk1TjJaaFlqQWlMQ0psYldGcGJDSTZJbTVsWVhOcGNrQnRaWFJ5YjNCdmJHbGhMbVpwSW4wLkU0NURwemdzQlFSazBOS2FZbExHYk8zdVd5cG4zbHdMenpaQ2UxaENDMnBER3FsaUUxZ2NhS3VreE5HQUJwdVNsTVAxVHBRTHhEMEptX09ocWJnajBkS1JkN3dRbEhXQkdxSUVtbkg4UmJiNUxSbXN5YXN1cGRFZVpFZ0dpV0RCVjVQdkdBVkgwUXQzZlh0TkhMY3ZoMFphWXl3NE5hMzZxcXFKZ0RMQUhVY1c5b1FLZy00RGxRcUdYb09JdFY4ekN1VFY1NlVIM0JsYm1ET1BlTUdPck5JRlZKdHk4a3ViNlZVNzl4U1FRYWd0bkREN1NYN2ZpUGtObFNZYWYyX2lKU0N0elhxQ2gtbHJWTTV5Y0RLdFVVQUl4WnF2bzdoY1RWSFR1alpUWlZKb0YxYnFOUXBpd2k0MG1NUWVTdlVnVFc1anA0cHVFSEFjQ3dwa2V2R25RdyIsImlhdCI6MTc0NTU2NDg0MCwiZXhwIjoxNzQ1NTY4NDQwfQ.3BmXxynSjzlJH7au3eafo0Nkd6azFqPZXwHHjtSgg8s"} 
+ </msg>
+<msg time="2025-04-25T10:07:20.078557" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>url=http://127.0.0.1:3000/api/auth/kubios-login</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-04-25T10:07:19.339905" elapsed="0.738997"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()}[message]</arg>
+<arg>Logged in successfully with Kubios</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.079556" elapsed="0.000881"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>user</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.080674" elapsed="0.000629"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-25T10:07:20.082075" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV...</msg>
+<var>${token}</var>
+<arg>${response.json()}[token]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.081469" elapsed="0.000810"/>
+</kw>
+<kw name="Set Variable" owner="BuiltIn">
+<msg time="2025-04-25T10:07:20.082985" level="INFO">${user_id} = 1</msg>
+<var>${user_id}</var>
+<arg>${response.json()}[user_id]</arg>
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.082433" elapsed="0.000679"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-25T10:07:20.083435" level="INFO">${token} = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV...</msg>
+<arg>${token}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.083252" elapsed="0.000351"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2025-04-25T10:07:20.083912" level="INFO">${user_id} = 1</msg>
+<arg>${user_id}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.083752" elapsed="0.000279"/>
+</kw>
+<status status="PASS" start="2025-04-25T10:07:19.338967" elapsed="0.745139"/>
+</kw>
+<test id="s1-s4-t1" name="Get User's Shifts" line="31">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-25T10:07:20.087349" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<var>${header}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.087116" elapsed="0.000365"/>
+</kw>
+<kw name="GET" owner="RequestsLibrary">
+<msg time="2025-04-25T10:07:20.093858" level="INFO">GET Request : url=http://127.0.0.1:3000/api/shifts/user/1 
+ path_url=/api/shifts/user/1 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libGRVWlVScE9IQkxWMnRqYTI5aVNtUkljUzEwVVNJc0luTjFZaUk2SWpobU9XTXdZbU5pTFRnMFptUXRORGt3TXkxaU5EZGpMV014WTJZeFpXRXlPR1JqT0NJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU9HWTVZekJpWTJJdE9EUm1aQzAwT1RBekxXSTBOMk10WXpGalpqRmxZVEk0WkdNNElpd2laMmwyWlc1ZmJtRnRaU0k2SWs1bFlTSXNJbUYxWkNJNklqSnlPRE00Wlc5cFpERjJaV0l3Y1c1eFoyNDRNWEZoZFcwd0lpd2laWFpsYm5SZmFXUWlPaUl3Wm1OaFlUQTVNQzFoTmpZeUxUUTNNVGN0T1ROaU5TMHpNemhsTmpFek5USTBZVFVpTENKMGIydGxibDkxYzJVaU9pSnBaQ0lzSW1GMWRHaGZkR2x0WlNJNk1UYzBOVFUyTkRnek9Td2laWGh3SWpveE56UTFOVFk0TkRNNUxDSnBZWFFpT2pFM05EVTFOalE0TXprc0ltWmhiV2xzZVY5dVlXMWxJam9pVTJseVpXNGlMQ0pxZEdraU9pSXhNR0UyTVRNNU55MDNaR0ZtTFRRME5UZ3RPVGhqTVMwNE56UmpaRFk1TjJaaFlqQWlMQ0psYldGcGJDSTZJbTVsWVhOcGNrQnRaWFJ5YjNCdmJHbGhMbVpwSW4wLkU0NURwemdzQlFSazBOS2FZbExHYk8zdVd5cG4zbHdMenpaQ2UxaENDMnBER3FsaUUxZ2NhS3VreE5HQUJwdVNsTVAxVHBRTHhEMEptX09ocWJnajBkS1JkN3dRbEhXQkdxSUVtbkg4UmJiNUxSbXN5YXN1cGRFZVpFZ0dpV0RCVjVQdkdBVkgwUXQzZlh0TkhMY3ZoMFphWXl3NE5hMzZxcXFKZ0RMQUhVY1c5b1FLZy00RGxRcUdYb09JdFY4ekN1VFY1NlVIM0JsYm1ET1BlTUdPck5JRlZKdHk4a3ViNlZVNzl4U1FRYWd0bkREN1NYN2ZpUGtObFNZYWYyX2lKU0N0elhxQ2gtbHJWTTV5Y0RLdFVVQUl4WnF2bzdoY1RWSFR1alpUWlZKb0YxYnFOUXBpd2k0MG1NUWVTdlVnVFc1anA0cHVFSEFjQ3dwa2V2R25RdyIsImlhdCI6MTc0NTU2NDg0MCwiZXhwIjoxNzQ1NTY4NDQwfQ.3BmXxynSjzlJH7au3eafo0Nkd6azFqPZXwHHjtSgg8s'} 
+ body=None 
+ </msg>
+<msg time="2025-04-25T10:07:20.093953" level="INFO">GET Response : url=http://127.0.0.1:3000/api/shifts/user/1 
+ status=200, reason=OK 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '1423', 'ETag': 'W/"58f-XiejvYiAxu+qX8IyvoX17hd+q0s"', 'Date': 'Fri, 25 Apr 2025 07:07:20 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body=[{"shift_id":1,"user_id":1,"start_date":"2025-04-12","start_time":"14:00:00","end_time":"18:30:00","end_date":"2025-04-12","created_at":"2025-04-23 13:11:51"},{"shift_id":2,"user_id":1,"start_date":"2025-04-16","start_time":"18:38:00","end_time":"19:38:00","end_date":"2025-04-16","created_at":"2025-04-23 13:38:23"},{"shift_id":3,"user_id":1,"start_date":"2025-04-18","start_time":"19:30:00","end_time":"03:30:00","end_date":"2025-04-19","created_at":"2025-04-23 14:08:18"},{"shift_id":4,"user_id":1,"start_date":"2025-04-07","start_time":"16:21:00","end_time":"00:21:00","end_date":"2025-04-07","created_at":"2025-04-24 13:21:46"},{"shift_id":5,"user_id":1,"start_date":"2025-04-25","start_time":"08:00:00","end_time":"16:00:00","end_date":"2025-04-25","created_at":"2025-04-25 09:42:30"},{"shift_id":6,"user_id":1,"start_date":"2025-04-25","start_time":"08:00:00","end_time":"16:00:00","end_date":"2025-04-25","created_at":"2025-04-25 09:43:30"},{"shift_id":7,"user_id":1,"start_date":"2025-04-25","start_time":"08:00:00","end_time":"16:00:00","end_date":"2025-04-25","created_at":"2025-04-25 09:45:06"},{"shift_id":8,"user_id":1,"start_date":"2025-04-25","start_time":"08:00:00","end_time":"16:00:00","end_date":"2025-04-25","created_at":"2025-04-25 09:47:13"},{"shift_id":9,"user_id":1,"start_date":"2025-04-25","start_time":"08:00:00","end_time":"16:00:00","end_date":"2025-04-25","created_at":"2025-04-25 10:06:17"}] 
+ </msg>
+<msg time="2025-04-25T10:07:20.094173" level="INFO">${response} = &lt;Response [200]&gt;</msg>
+<var>${response}</var>
+<arg>http://127.0.0.1:3000/api/shifts/user/${user_id}</arg>
+<arg>headers=${header}</arg>
+<doc>Sends a GET request.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.087788" elapsed="0.006471"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>200</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.094472" elapsed="0.000167"/>
+</kw>
+<status status="PASS" start="2025-04-25T10:07:20.084174" elapsed="0.010719"/>
+</test>
+<test id="s1-s4-t2" name="Post A New Shift" line="38">
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-25T10:07:20.098677" level="INFO">${header} = {'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJb...</msg>
+<var>${header}</var>
+<arg>Authorization=Bearer ${token}</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.098500" elapsed="0.000286"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2025-04-25T10:07:20.099259" level="INFO">${body} = {'user_id': 1, 'start_date': '2025-04-25', 'start_time': '08:00', 'end_time': '16:00', 'end_date': '2025-04-25'}</msg>
+<var>${body}</var>
+<arg>user_id=${user_id}</arg>
+<arg>start_date=2025-04-25</arg>
+<arg>start_time=08:00</arg>
+<arg>end_time=16:00</arg>
+<arg>end_date=2025-04-25</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.099064" elapsed="0.000285"/>
+</kw>
+<kw name="POST" owner="RequestsLibrary">
+<msg time="2025-04-25T10:07:20.109768" level="INFO">POST Request : url=http://127.0.0.1:3000/api/shifts 
+ path_url=/api/shifts 
+ headers={'User-Agent': 'python-requests/2.32.3', 'Accept-Encoding': 'gzip, deflate', 'Accept': '*/*', 'Connection': 'keep-alive', 'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjEsImt1Ymlvc0lkVG9rZW4iOiJleUpyYVdRaU9pSlFWRVJSVUdaTGJqVTJiWEI1UlU5cGNIVnhPR1JGVURCUGVYbEpNV2gxV2xRd01WSlZla2RYVVN0UlBTSXNJbUZzWnlJNklsSlRNalUySW4wLmV5SmhkRjlvWVhOb0lqb2libGRVWlVScE9IQkxWMnRqYTI5aVNtUkljUzEwVVNJc0luTjFZaUk2SWpobU9XTXdZbU5pTFRnMFptUXRORGt3TXkxaU5EZGpMV014WTJZeFpXRXlPR1JqT0NJc0ltVnRZV2xzWDNabGNtbG1hV1ZrSWpwMGNuVmxMQ0pwYzNNaU9pSm9kSFJ3Y3pwY0wxd3ZZMjluYm1sMGJ5MXBaSEF1WlhVdGQyVnpkQzB4TG1GdFlYcHZibUYzY3k1amIyMWNMMlYxTFhkbGMzUXRNVjkxVVcxQlp6UTFlSGtpTENKamIyZHVhWFJ2T25WelpYSnVZVzFsSWpvaU9HWTVZekJpWTJJdE9EUm1aQzAwT1RBekxXSTBOMk10WXpGalpqRmxZVEk0WkdNNElpd2laMmwyWlc1ZmJtRnRaU0k2SWs1bFlTSXNJbUYxWkNJNklqSnlPRE00Wlc5cFpERjJaV0l3Y1c1eFoyNDRNWEZoZFcwd0lpd2laWFpsYm5SZmFXUWlPaUl3Wm1OaFlUQTVNQzFoTmpZeUxUUTNNVGN0T1ROaU5TMHpNemhsTmpFek5USTBZVFVpTENKMGIydGxibDkxYzJVaU9pSnBaQ0lzSW1GMWRHaGZkR2x0WlNJNk1UYzBOVFUyTkRnek9Td2laWGh3SWpveE56UTFOVFk0TkRNNUxDSnBZWFFpT2pFM05EVTFOalE0TXprc0ltWmhiV2xzZVY5dVlXMWxJam9pVTJseVpXNGlMQ0pxZEdraU9pSXhNR0UyTVRNNU55MDNaR0ZtTFRRME5UZ3RPVGhqTVMwNE56UmpaRFk1TjJaaFlqQWlMQ0psYldGcGJDSTZJbTVsWVhOcGNrQnRaWFJ5YjNCdmJHbGhMbVpwSW4wLkU0NURwemdzQlFSazBOS2FZbExHYk8zdVd5cG4zbHdMenpaQ2UxaENDMnBER3FsaUUxZ2NhS3VreE5HQUJwdVNsTVAxVHBRTHhEMEptX09ocWJnajBkS1JkN3dRbEhXQkdxSUVtbkg4UmJiNUxSbXN5YXN1cGRFZVpFZ0dpV0RCVjVQdkdBVkgwUXQzZlh0TkhMY3ZoMFphWXl3NE5hMzZxcXFKZ0RMQUhVY1c5b1FLZy00RGxRcUdYb09JdFY4ekN1VFY1NlVIM0JsYm1ET1BlTUdPck5JRlZKdHk4a3ViNlZVNzl4U1FRYWd0bkREN1NYN2ZpUGtObFNZYWYyX2lKU0N0elhxQ2gtbHJWTTV5Y0RLdFVVQUl4WnF2bzdoY1RWSFR1alpUWlZKb0YxYnFOUXBpd2k0MG1NUWVTdlVnVFc1anA0cHVFSEFjQ3dwa2V2R25RdyIsImlhdCI6MTc0NTU2NDg0MCwiZXhwIjoxNzQ1NTY4NDQwfQ.3BmXxynSjzlJH7au3eafo0Nkd6azFqPZXwHHjtSgg8s', 'Content-Length': '112', 'Content-Type': 'application/json'} 
+ body=b'{"user_id": 1, "start_date": "2025-04-25", "start_time": "08:00", "end_time": "16:00", "end_date": "2025-04-25"}' 
+ </msg>
+<msg time="2025-04-25T10:07:20.109873" level="INFO">POST Response : url=http://127.0.0.1:3000/api/shifts 
+ status=201, reason=Created 
+ headers={'X-Powered-By': 'Express', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json; charset=utf-8', 'Content-Length': '45', 'ETag': 'W/"2d-mBmZ5WHJCOMMcERT3roVSsbiiH0"', 'Date': 'Fri, 25 Apr 2025 07:07:20 GMT', 'Connection': 'keep-alive', 'Keep-Alive': 'timeout=5'} 
+ body={"message":"New shift created","shift_id":10} 
+ </msg>
+<msg time="2025-04-25T10:07:20.109976" level="INFO">${response} = &lt;Response [201]&gt;</msg>
+<var>${response}</var>
+<arg>http://127.0.0.1:3000/api/shifts</arg>
+<arg>headers=${header}</arg>
+<arg>json=${body}</arg>
+<doc>Sends a POST request.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.099612" elapsed="0.010445"/>
+</kw>
+<kw name="Status Should Be" owner="RequestsLibrary">
+<arg>201</arg>
+<doc>Fails if response status code is different than the expected.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.110492" elapsed="0.000180"/>
+</kw>
+<kw name="Should Contain" owner="BuiltIn">
+<arg>${response.json()}[message]</arg>
+<arg>New shift created</arg>
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.111039" elapsed="0.000365"/>
+</kw>
+<kw name="Dictionary Should Contain Key" owner="Collections">
+<arg>${response.json()}</arg>
+<arg>shift_id</arg>
+<doc>Fails if ``key`` is not found from ``dictionary``.</doc>
+<status status="PASS" start="2025-04-25T10:07:20.111757" elapsed="0.000335"/>
+</kw>
+<status status="PASS" start="2025-04-25T10:07:20.097168" elapsed="0.015269"/>
+</test>
+<status status="PASS" start="2025-04-25T10:07:19.333963" elapsed="0.779257"/>
+</suite>
+<status status="FAIL" start="2025-04-25T10:06:51.851111" elapsed="28.262978"/>
 </suite>
 <statistics>
 <total>
-<stat pass="0" fail="1" skip="0">All Tests</stat>
+<stat pass="3" fail="2" skip="0">All Tests</stat>
 </total>
 <tag>
 </tag>
 <suite>
-<stat name="Login-Server-Test" id="s1" pass="0" fail="1" skip="0">Login-Server-Test</stat>
+<stat name="Login-Server-Test &amp; Login-Valid-Login &amp; Login-Invalid-Login &amp; Server-Test" id="s1" pass="3" fail="2" skip="0">Login-Server-Test &amp; Login-Valid-Login &amp; Login-Invalid-Login &amp; Server-Test</stat>
+<stat name="Login-Server-Test" id="s1-s1" pass="0" fail="1" skip="0">Login-Server-Test &amp; Login-Valid-Login &amp; Login-Invalid-Login &amp; Server-Test.Login-Server-Test</stat>
+<stat name="Login-Valid-Login" id="s1-s2" pass="1" fail="0" skip="0">Login-Server-Test &amp; Login-Valid-Login &amp; Login-Invalid-Login &amp; Server-Test.Login-Valid-Login</stat>
+<stat name="Login-Invalid-Login" id="s1-s3" pass="0" fail="1" skip="0">Login-Server-Test &amp; Login-Valid-Login &amp; Login-Invalid-Login &amp; Server-Test.Login-Invalid-Login</stat>
+<stat name="Server-Test" id="s1-s4" pass="2" fail="0" skip="0">Login-Server-Test &amp; Login-Valid-Login &amp; Login-Invalid-Login &amp; Server-Test.Server-Test</stat>
 </suite>
 </statistics>
 <errors>
-<msg time="2025-04-09T19:19:06.705185" level="ERROR">Error in file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login-server-test.robot' on line 4: Processing variable file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py' failed: Importing variable file 'C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py' failed: ModuleNotFoundError: No module named 'dotenv'
-Traceback (most recent call last):
-  File "C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests\login_env.py", line 2, in &lt;module&gt;
-    from dotenv import load_dotenv
-PYTHONPATH:
-  C:\Users\Omistaja\Documents\hyte\renovo-app\Renovo_fe\tests
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Scripts\robot.exe
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\python312.zip
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\DLLs
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\win32\lib
-  C:\Users\Omistaja\AppData\Local\Programs\Python\Python312\Lib\site-packages\Pythonwin</msg>
 </errors>
 </robot>
