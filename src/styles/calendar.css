@@ -451,6 +451,12 @@ body {
   display: none;
 }
 
+div.calendar-modal-content input[type="time"], div.calendar-modal-content input[type="date"], div.calendar-modal-content input[type="text"], div.calendar-modal-content  textarea {
+  padding: 0.5em;
+  width: 95%;
+  margin: auto;
+}
+
 footer {
   background-color: var(--blue-color);
   color: var(--white-color);
@@ -479,6 +485,12 @@ footer {
     width: 100%;
     flex-direction: row;
   }
+
+  div.calendar-modal-content input[type="time"], div.calendar-modal-content input[type="date"], div.calendar-modal-content input[type="text"], div.calendar-modal-content  textarea {
+    padding: 0.5em;
+    width: 95%;
+    margin: auto;
+  }
 }
 
 @media (max-width: 768px) {
@@ -502,9 +514,15 @@ footer {
     padding: 1px 2px;
   }
 
-  .calendar-modal-content {
+  .calendar-modal-content, .calendar-modal-content form#sicknessForm label input {
     width: 95%;
-    padding: 20px 15px;
+    /*padding: 20px 15px;*/
+  }
+
+  div.calendar-modal-content input[type="time"], div.calendar-modal-content input[type="date"], div.calendar-modal-content input[type="text"], div.calendar-modal-content  textarea {
+    padding: 0.5em;
+    width: 100%;
+    margin: auto;
   }
 
   div.calendar-buttons button {
@@ -554,12 +572,53 @@ footer {
     flex-direction: row;
   }
 
-  #fc-dom-1{
+  #fc-dom-1, .calendar-info-box, div.calendar-modal-content h2, div.form-shift-header {
     font-size: 4vw;
   }
 
-  .calendar-info-box {
-    font-size: 4vw;
+  div.calendar-modal-content p, div.form-shift-header, label  {
+    font-size: 3vw;
+  }
+
+  div.calendar-modal-content input[type="time"],
+  div.calendar-modal-content input[type="date"],
+  div.calendar-modal-content input[type="text"],
+  div.calendar-modal-content  textarea {
+    padding: 0.3em;
+    width: 95%;
+    margin: auto;
+    font-size: 3vw;
+  }
+
+  button[type="submit"],
+  button[type="button"]
+   {
+    font-size: 3vw;
+  }
+
+  .calendar-modal {
+    padding-top: 1em;
+  }
+
+  .calendar-modal-content {
+    width: 100%;
+    border-radius: 0;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    padding-left: 2px;
+    padding-right: 2px;
+  }
+
+  div.emoji-rating label[for="exercise-low"],
+  div.emoji-rating label[for="exercise-medium"],
+  div.emoji-rating label[for="exercise-high"],
+  div.emoji-rating label[for="sickness-low"],
+  div.emoji-rating label[for="sickness-medium"],
+  div.emoji-rating label[for="sickness-high"],
+  div.emoji-rating label[for="others-low"],
+  div.emoji-rating label[for="others-medium"],
+  div.emoji-rating label[for="others-high"] {
+    font-size: 10vw;
   }
 
 }
