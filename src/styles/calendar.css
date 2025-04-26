@@ -32,18 +32,18 @@ body {
   font-size: 1.8rem;
   font-weight: 600;
   color: var(--blue-color);
-  margin-bottom: 5px;
+  margin-bottom: 0.3rem;
 }
 
 .calendar-description {
-  margin-bottom: 15px;
+  margin-bottom: 0.9rem;
 }
 
 .calendar-buttons {
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
   justify-content: flex-start;
-  margin-bottom: 20px;
+  margin-bottom: 1.25rem;
 }
 
 .calendar-buttons button {
@@ -69,22 +69,22 @@ body {
 /* FullCalendar mukautukset kuukausinäkymälle */
 .fc .fc-toolbar {
   flex-wrap: wrap;
-  gap: 10px;
-  margin-bottom: 15px;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
 }
 
 .fc .fc-toolbar-title {
   font-size: 1.4rem;
   font-weight: 600;
   text-transform: capitalize;
-  margin: 0 10px;
+  margin: 0 0.6rem;
 }
 
 .fc .fc-button {
   background-color: var(--white-color);
   color: var(--blue-color);
   border-radius: 5px;
-  padding: 6px 12px;
+  padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
 }
 
@@ -101,14 +101,14 @@ body {
 .fc .fc-col-header-cell {
   text-transform: capitalize;
   background-color: #b3ceed;
-  padding: 10px 0;
+  padding: 0.6rem 0;
   border: 1px solid  #e9ecef;
 }
 
 .fc .fc-col-header-cell-cushion {
   color: var(--text-color);
   font-weight: 500;
-  padding: 5px;
+  padding: 0.3rem;
 }
 
 .fc .fc-toolbar.fc-header-toolbar {
@@ -128,7 +128,7 @@ body {
 }
 
 .fc .fc-toolbar-title {
-  margin: 0 5px;
+  margin: 0 0.3rem;
   font-size: 1.4rem;
   order: 2;
 }
@@ -136,15 +136,15 @@ body {
 .fc .fc-prev-button {
   order: 1;
   margin: 0;
-  padding: 5px 8px;
-  min-width: 30px;
+  padding: 0.3rem 0.5rem;
+  min-width: 1.9rem;
 }
 
 .fc .fc-next-button {
   order: 3;
   margin: 0;
-  padding: 5px 8px;
-  min-width: 30px;
+  padding: 0.3rem 0.5rem;
+  min-width: 1.9rem;
 }
 
 .fc .fc-daygrid-day {
@@ -153,7 +153,7 @@ body {
 
 .fc .fc-daygrid-day-frame {
   min-height: 100px;
-  padding: 3px;
+  padding: 0.2rem;
 }
 
 .fc .fc-daygrid-day-top {
@@ -162,7 +162,7 @@ body {
 
 .fc .fc-daygrid-day-number {
   font-size: 0.9rem;
-  padding: 5px;
+  padding: 0.3rem;
   color: var(--text-color);
 }
 
@@ -177,8 +177,8 @@ body {
 
 .fc-event {
   font-size: 0.8rem;
-  padding: 2px 4px;
-  margin: 2px 0;
+  padding: 0.125rem 0.25rem;
+  margin: 0.125rem 0;
   border-radius: 3px;
   border: none;
   cursor: pointer;
@@ -208,7 +208,7 @@ body {
   display: none;
   position: fixed;
   z-index: 1000;
-  padding-top: 60px;
+  padding-top: 3.75rem;
   left: 0;
   top: 0;
   width: 100%;
@@ -220,7 +220,7 @@ body {
 .calendar-modal-content {
   background-color: var(--white-color);
   margin: auto;
-  padding: 25px;
+  padding: 1.6rem;
   border-radius: 1rem;
   width: 90%;
   max-width: 500px;
@@ -232,8 +232,8 @@ body {
 
 .calendar-modal-close {
   position: absolute;
-  top: 15px;
-  right: 20px;
+  top: 0.94rem;
+  right: 1.25rem;
   font-size: 1.5rem;
   font-weight: bold;
   color: var(--text-color);
@@ -252,7 +252,7 @@ body {
 
 .calendar-modal-content label {
   display: block;
-  margin: 15px 0 5px;
+  margin: 0.94rem 0 0.3rem;
   font-weight: 600;
   color: var(--text-color);
 }
@@ -264,8 +264,8 @@ body {
 .calendar-modal-content textarea {
   background-color: var(--white-color);
   width: 100%;
-  padding: 10px;
-  margin-bottom: 5px;
+  padding: 0.625rem;
+  margin-bottom: 0.3rem;
   border-radius: 0.5rem;
   border: 1px solid var(--text-color);
   font-family: inherit;
@@ -281,7 +281,7 @@ body {
 }
 
 .calendar-modal-content textarea {
-  min-height: 100px;
+  min-height: 6.25rem;
   resize: vertical;
 }
 
@@ -294,27 +294,27 @@ body {
   display: flex;
   justify-content: space-between;
   font-weight: 600;
-  margin-bottom: 15px;
+  margin-bottom: 0.94rem;
 }
 
 .form-row {
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
   align-items: center;
-  margin-bottom: 10px;
+  margin-bottom: 0.625rem;
   background-color: #ffffff;
   border-radius: 6px;
 }
 
 .form-row input {
   flex: 1;
-  padding: 8px;
+  padding: 0.5rem;
 }
 
 /* Emoji-arvostelu */
 .emoji-rating {
   display: flex;
-  gap: 20px;
+  gap: 1.25rem;
 }
 
 .emoji-rating input[type="radio"] {
@@ -341,14 +341,14 @@ body {
   content: "✓";
   position: absolute;
   font-size: 0.8rem;
+  bottom: -0.3125rem;
+  right: -0.3125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  line-height: 1.125rem;
   color: var(--blue-color);
-  bottom: -5px;
-  right: -5px;
   background: var(--white-color);
   border-radius: 50%;
-  width: 18px;
-  height: 18px;
-  line-height: 18px;
   text-align: center;
 }
 
@@ -356,14 +356,14 @@ body {
 .calendar-modal-actions {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  margin-top: 20px;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
 }
 
 .calendar-modal-actions button {
   border-radius: 30px;
   font-size: 0.9rem;
-  padding: 10px 20px;
+  padding: 0.625rem 1.25rem;
   cursor: pointer;
   border: 1px solid transparent;
 }
@@ -395,7 +395,7 @@ body {
 .calendar-info-box {
   flex: 1 1 200px;
   max-width: 300px;
-  padding: 20px;
+  padding: 1.25rem;
   border-radius: 12px;
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
@@ -422,12 +422,12 @@ body {
 /* Toast-viestit */
 .toast {
   position: fixed;
-  bottom: 20px;
   left: 50%;
   transform: translateX(-50%);
   background: var(--blue-color);
   color: var(--white-color);
-  padding: 12px 24px;
+  padding: 0.75rem 1.5rem;
+  bottom: 1.25rem;
   font-weight: 500;
   z-index: 9999;
   animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
