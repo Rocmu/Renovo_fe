@@ -1,7 +1,7 @@
 import '../styles/hrv.css';
 import { getUserDataTen, getUserDataThirty } from "./kubios.js";
 import { displayFeedbackForm, registerFeedBack, getUserFeedback } from './feedback.js';
-import { newFunction, revealTextOne, revealTextTwo } from './back-to-top.js';
+import { goBackToTop, revealTextOne, revealTextTwo } from './back-to-top.js';
 
 const printTenResults = document.querySelector('#print-hrv-ten-days');
 printTenResults.addEventListener('click', getUserDataTen);
@@ -30,4 +30,4 @@ postFeedbackBtn.addEventListener('click', registerFeedBack);
 const getFeedbackBtn = document.querySelector('#view-prev-feedback');
 getFeedbackBtn.addEventListener('click', getUserFeedback);
 
-newFunction();
+goBackToTop();

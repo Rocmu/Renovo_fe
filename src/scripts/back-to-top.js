@@ -1,4 +1,4 @@
-function newFunction() {
+function goBackToTop() {
   const mybutton = document.getElementById("backTopBtn");
 
   // When the user scrolls down 20px from the top of the document, show the button
@@ -58,4 +58,4 @@ function revealTextTwo(event) {
   }
 }
 
-export {newFunction, revealTextOne, revealTextTwo}
+export {goBackToTop, revealTextOne, revealTextTwo}
