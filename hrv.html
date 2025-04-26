@@ -1,6 +1,6 @@
 <!--tänne header, nav ja footer-->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,6 +30,7 @@
     <main>
 
     <div class="hrv-results-container">
+
         <div class="hrv-results-container-header">
             <h2>HRV analyysi ja tulokset</h2>
             <p>Sovellus kerää HRV datasi Kubios HRV- sovelluksesta. Selaa edellisiä tuloksiasi, joita
@@ -41,49 +42,76 @@
             </div>
         </div>
         <div class="hrv-results-container-content">
-            <div>
-                <h4>Readiness & RMSSD</h4>
-                <canvas id="readiness-rmssd-chart"></canvas>
+            <div class="hrv-canvas-heading">
+              <h2 class="measurement-timespan"></h2>
             </div>
-            <div>
-              <h4>SNS & PNS</h4>
-                <canvas id="sns-pns-chart"></canvas>
+            <div class="canvas-wrapper">
+
+              <div>
+                  <h4>Readiness & RMSSD</h4>
+                  <canvas id="readiness-rmssd-chart"></canvas>
+              </div>
+              <div>
+                  <h4>SNS & PNS</h4>
+                  <canvas id="sns-pns-chart"></canvas>
+              </div>
+
             </div>
+            <button id="canvas-one-text-boxes">Mitä arvot tarkoittavat?</button>
         </div>
         <div class="hrv-results-container-footer">
           <div class="results-readiness-text-box">
             <h4>Readiness</h4>
-            <p>Readiness mittauksen tulos arvioi kehosi fysiologista
-              tilaa vertaamalla sykevälivaihtelua aiempiin tuloksiisi.
-              Päivittäin suoritetut mittaukset parantavat mittaustulosten
-              tarkkuutta, kun mittausdataa voidaan vertailla pidemmältä
-              ajanjaksolta.
+            <p>Readiness-indeksin tulos arvioi asteikolla 0–100 % kehosi fysiologista tilaa levon aikaisen sykevälivaihtelun avulla.
+              Arvion tarkkuus paranee mitä enemmän mittauksia on suoritettu. Tyypillisesti 68 % tuloksista on 50–75 % välillä.
             </p>
           </div>
           <div class="results-rmssd-text-box">
             <h4>RMSSD</h4>
-            <p>RMSSD on yksi keskeisistä sykevälivaihtelun mittareista.
-              Arvot korreloivat vahvasti parasympaattisen hermoston toiminnan
-              kanssa ja on siksi hyödyllinen mittari palautumisen ja stressitilan
-              arvioinnissa. Korkeat arvot viittaavat parempaan sydämen autonomiseen
-              säätelyyn ja palautumiseen.
+            <p>RMSDD on yksi keskeisistä sykevälivaihtelun mittareista, joka hyödyllinen palautumisen ja stressitilan
+              arvioinnissa. Suuremmat arvot viittaavat parempaan sydämen autonomiseen säätelyyn ja palautumiseen.
+              Tyypillisesti arvo on 19-75ms välillä.
             </p>
           </div>
           <div class="results-sns-text-box">
             <h4>SNS index</h4>
-            <p>SNS-indeksi kuvaa kuormitusta ja stressiä. Sympaattisen hermoston
-              ollessa aktiivinen arvo nousee ja kertoo kohonneesta kuormituksesta.
-              Arvot ovat normalisoituja jossa 0 kuvaa väestön keskiarvoa. Kohonnut
-              arvo kertoo aktiivisuuden olevan keskiarvoa korkeammalla ja madaltunut
-              arvo keskiarvoa matalammalla.
+            <p>SNS-indeksi kuvaa sympaattisen hermoston aktiivisuutta. Suuremmat arvot viittaavat kohonneeseen
+              stressiin ja kuormitukseen. 95 %:lla aikuisista arvo levossa on -2 ja 2 välillä.
             </p>
           </div>
           <div class="results-pns-text-box">
             <h4>PNS index</h4>
-            <p>PNS-indeksi kuvaa palautumista ja rentoutumista. Suuremmat arvot viittaavat
-              korkeampaan parasympaattisen hermoston aktiivisuuteen ja parempaan palautumiseen.
-              Arvot ovat normalisoituja jossa 0 kuvaa väestön keskiarvoa. Tyypillisesti arvo
-              levossa on -2 ja +2 välillä.
+            <p>PNS-indeksi kuvaa parasympaattisen hermoston aktiivisuutta. Suuremmat arvot viittaavat
+              parempaan palautumiseen ja rentoutumiseen. 95 %:lla aikuisista arvo levossa on -2 ja 2 välillä.
+            </p>
+          </div>
+        </div>
+        <div class="hrv-results-container-content">
+          <div class="hrv-canvas-heading">
+            <h2 class="measurement-timespan-2"></h2>
+          </div>
+        <div class="canvas-wrapper-2">
+          <div>
+            <h4>Pulssi</h4>
+            <canvas id="bpm-chart"></canvas>
+          </div>
+          <div>
+            <h4>Fysiologinen ikä</h4>
+            <canvas id="age-chart"></canvas>
+          </div>
+        </div>
+          <button id="canvas-two-text-boxes">Mitä arvot tarkoittavat?</button>
+        </div>
+        <div class="hrv-results-container-footer-2">
+          <div class="results-bpm-text-box">
+              <h4>BPM</h4>
+              <p>BPM on sykkeesi keskiarvo.</p>
+          </div>
+          <div class="results-age-text-box">
+            <h4>Physiologinen ikä</h4>
+            <p>Fysiologinen ikä kehon hyvinvoinin kuvaaja, joka tarkoittaa kehon ja elinten toiminnan laatua,
+              suhteessa biologiseen ikääsi. Fysiologiset iät ovat omakohtaisia ja saattavat poiketa suuresti eri ihmisten välillä,
+              joilla on sama kronologinen ikä. Fysiologinen ikä on hyödyllinen ikäkohtaisten terveysongelmien ennakoinnissa.
             </p>
           </div>
         </div>
@@ -141,6 +169,7 @@
 
     </main>
     <footer>Renovo App</footer>
+    <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/results.js"></script>
   </body>
