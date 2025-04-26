@@ -1,78 +1,214 @@
+
+/* Perusasettelut */
 body {
   font-family: Arial, sans-serif;
-  background: #f4f4f4;
+  background-color: var(--grey-color);
   margin: 0;
   padding: 0;
+  line-height: 1.5;
 }
 
+/* Kalenterin pääkontti */
 .calendar-container {
-  padding: 20px;
-  max-width: 900px;
-  margin: auto;
-  background: white;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  width: 95%;
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--grey-color);
+}
+
+.calendar-header,
+.calendar-view,
+.calendar-info {
+  background-color: var(--white-color);
+  border-radius: 1rem;
+  padding: 1em;
 }
 
 .calendar-title {
-  font-size: 22px;
-  font-weight: bold;
-  margin-bottom: 10px;
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--blue-color);
+  margin-bottom: 0.3rem;
 }
 
 .calendar-description {
-  margin-bottom: 20px;
+  margin-bottom: 0.9rem;
 }
 
 .calendar-buttons {
   display: flex;
-  gap: 20px;
-  justify-content: center;
-  margin-bottom: 20px;
+  gap: 1.25rem;
+  justify-content: flex-start;
+  margin-bottom: 1.25rem;
 }
 
 .calendar-buttons button {
-  background-color: #005bdb;
-  color: white;
-  padding: 10px;
-  border: none;
-  border-radius: 6px;
+  padding: 1em 2em 1em 2em;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  border-radius: 30px;
+  border-color: transparent;
+  font-size: 2vh;
   cursor: pointer;
-  font-size: 17px;
 }
 
-#calendarView .fc-daygrid-day.today {
-  background-color: #e1f0ff !important;
+.calendar-buttons button:hover {
+  background-color: var(--hover-color);
 }
 
-.fc .fc-col-header-cell.fc-day { /* Keskiviikko */
-  background-color: #ccccff;
+/* Kalenterin itse asettelu */
+#calendar {
+  width: 100%;
+  margin: 0 auto;
+}
+
+/* FullCalendar mukautukset kuukausinäkymälle */
+.fc .fc-toolbar {
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: 0.9rem;
+}
+
+.fc .fc-toolbar-title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  text-transform: capitalize;
+  margin: 0 0.6rem;
+}
+
+.fc .fc-button {
+  background-color: var(--white-color);
+  color: var(--blue-color);
+  border-radius: 5px;
+  padding: 0.4rem 0.8rem;
+  font-size: 0.9rem;
+}
+
+.fc .fc-button:hover {
+  background-color: var(--hover-color);
+}
+
+.fc .fc-button-primary:not(:disabled).fc-button-active {
+  background-color: var(--text-color);
+  color: var(--white-color);
+}
+
+/* Viikonpäiväotsikot */
+.fc .fc-col-header-cell {
+  text-transform: capitalize;
+  background-color: #b3ceed;
+  padding: 0.6rem 0;
+  border: 1px solid  #e9ecef;
 }
 
 .fc .fc-col-header-cell-cushion {
-  color: #333;
+  color: var(--text-color);
+  font-weight: 500;
+  padding: 0.3rem;
+}
+
+.fc .fc-toolbar.fc-header-toolbar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.fc .fc-toolbar-chunk {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  gap: 5px;
+}
+
+.fc .fc-toolbar-title {
+  margin: 0 0.3rem;
+  font-size: 1.4rem;
+  order: 2;
+}
+
+.fc .fc-prev-button {
+  order: 1;
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+  min-width: 1.9rem;
+}
+
+.fc .fc-next-button {
+  order: 3;
+  margin: 0;
+  padding: 0.3rem 0.5rem;
+  min-width: 1.9rem;
+}
+
+.fc .fc-daygrid-day {
+  border: 1px solid  #e9ecef;
+}
+
+.fc .fc-daygrid-day-frame {
+  min-height: 100px;
+  padding: 0.2rem;
+}
+
+.fc .fc-daygrid-day-top {
+  justify-content: center;
+}
+
+.fc .fc-daygrid-day-number {
+  font-size: 0.9rem;
+  padding: 0.3rem;
+  color: var(--text-color);
+}
+
+.fc .fc-daygrid-day.fc-day-today {
+  background-color:  #d9e3f8;
+}
+
+.fc .fc-daygrid-day.fc-day-today .fc-daygrid-day-number {
   font-weight: bold;
-  text-transform: capitalize;
+  color: var(--blue-color);
 }
 
-.fc .today {
-  background-color: #e6f7ff;
+.fc-event {
+  font-size: 0.8rem;
+  padding: 0.125rem 0.25rem;
+  margin: 0.125rem 0;
+  border-radius: 3px;
+  border: none;
+  cursor: pointer;
 }
 
-.fc-toolbar-title {
-  font-size: 24px;
-  font-weight: bold;
+.fc-event:hover {
+  opacity: 0.9;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
 }
 
-.calendar-info {
-  font-size: 12px;
-  margin-top: 20px;
-  color: #555;
+.fc-event.exercise-event {
+  background-color: rgba(40, 167, 69, 0.15);
+  color: #28a745;
+}
+
+.fc-event.sickness-event {
+  background-color: rgba(220, 53, 69, 0.15);
+  color: #dc3545;
+}
+
+.fc-event.others-event {
+  background-color: rgba(255, 193, 7, 0.15);
+  color: #d39e00;
 }
 
 .calendar-modal {
   display: none;
   position: fixed;
   z-index: 1000;
-  padding-top: 60px;
+  padding-top: 3.75rem;
   left: 0;
   top: 0;
   width: 100%;
@@ -82,67 +218,43 @@ body {
 }
 
 .calendar-modal-content {
-  background-color: white;
+  background-color: var(--white-color);
   margin: auto;
-  padding: 20px;
-  border-radius: 10px;
-  width: 400px;
+  padding: 1.6rem;
+  border-radius: 1rem;
+  width: 90%;
+  max-width: 500px;
   max-height: 80vh;
   overflow-y: auto;
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 
-.form-shift-table {
-  margin-top: 15px;
-}
-
-.form-shift-header {
-  display: flex;
-  justify-content: space-between;
+.calendar-modal-close {
+  position: absolute;
+  top: 0.94rem;
+  right: 1.25rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.form-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 6px;
-}
-
-.form-row label {
-  width: 40px;
-}
-
-.form-row input {
-  width: 42%;
-  padding: 3px;
-}
-
-.calendar-modal-actions {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20px;
-}
-
-.calendar-modal-actions button {
-  background-color: #005bdb;
-  color: white;
-  border: none;
-  padding: 8px 16px;
-  font-size: 14px;
+  color: var(--text-color);
   cursor: pointer;
-  border-radius: 5px;
 }
 
-.calendar-modal-actions button:last-child {
-  background-color: #666;
+.calendar-modal-close:hover {
+  color: var(--text-color);
+}
+
+.calendar-modal-content h2 {
+  margin-top: 0;
+  color: var(--blue-color);
+  font-size: 1.5rem;
 }
 
 .calendar-modal-content label {
   display: block;
-  margin-top: 10px;
-  font-weight: bold;
+  margin: 0.94rem 0 0.3rem;
+  font-weight: 600;
+  color: var(--text-color);
 }
 
 .calendar-modal-content input[type="date"],
@@ -150,43 +262,70 @@ body {
 .calendar-modal-content input[type="text"],
 .calendar-modal-content select,
 .calendar-modal-content textarea {
+  background-color: var(--white-color);
   width: 100%;
-  padding: 6px;
-  margin-top: 4px;
-  box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  padding: 0.625rem;
+  margin-bottom: 0.3rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--text-color);
+  font-family: inherit;
+  font-size: 0.9rem;
 }
 
+.calendar-modal-content input:focus,
+.calendar-modal-content select:focus,
+.calendar-modal-content textarea:focus {
+  outline: none;
+  border-color: var(--blue-color);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.calendar-modal-content textarea {
+  min-height: 6.25rem;
+  resize: vertical;
+}
+
+/* Vuorolomakkeen tyylit */
+.form-shift-table {
+  width: 100%;
+}
+
+.form-shift-header {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 600;
+  margin-bottom: 0.94rem;
+}
+
+.form-row {
+  display: flex;
+  gap: 1.25rem;
+  align-items: center;
+  margin-bottom: 0.625rem;
+  background-color: #ffffff;
+  border-radius: 6px;
+}
+
+.form-row input {
+  flex: 1;
+  padding: 0.5rem;
+}
+
+/* Emoji-arvostelu */
 .emoji-rating {
   display: flex;
-  gap: 15px;
-  margin-top: 8px;
+  gap: 1.25rem;
 }
 
 .emoji-rating input[type="radio"] {
   display: none;
 }
 
-.emoji-rating input[type="radio"]:checked + label::after {
-  content: "✓";
-  position: absolute;
-  font-size: 12px;
-  color: #005bdb;
-  bottom: -5px;
-  right: -5px;
-  background: white;
-  border-radius: 50%;
-  width: 16px;
-  height: 16px;
-  line-height: 16px;
-  text-align: center;
-}
-
 .emoji-rating label {
-  font-size: 24px;
+  font-size: 2rem;
   cursor: pointer;
   transition: transform 0.2s;
+  position: relative;
 }
 
 .emoji-rating label:hover {
@@ -195,24 +334,172 @@ body {
 
 .emoji-rating input[type="radio"]:checked + label {
   transform: scale(1.3);
-  filter: drop-shadow(0 0 3px rgba(0, 91, 219, 0.5));
+  filter: drop-shadow(0 0 3px rgba(0, 91, 219, 0.3));
 }
 
-.calendar-modal-content textarea {
-  resize: vertical;
-  min-height: 60px;
-}
-
-.calendar-modal-close {
+.emoji-rating input[type="radio"]:checked + label::after {
+  content: "✓";
   position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 24px;
-  font-weight: bold;
-  color: #999;
-  cursor: pointer;
+  font-size: 0.8rem;
+  bottom: -0.3125rem;
+  right: -0.3125rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  line-height: 1.125rem;
+  color: var(--blue-color);
+  background: var(--white-color);
+  border-radius: 50%;
+  text-align: center;
 }
 
-.calendar-modal-close:hover {
+/* Modaalin painikkeet */
+.calendar-modal-actions {
+  display: flex;
+  justify-content: center;
+  gap: 0.625rem;
+  margin-top: 1.25rem;
+}
+
+.calendar-modal-actions button {
+  border-radius: 30px;
+  font-size: 0.9rem;
+  padding: 0.625rem 1.25rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+
+.calendar-modal-actions button:first-child {
+  background-color: var(--blue-color);
+  color: var(--white-color);
+}
+
+.calendar-modal-actions button:first-child:hover {
+  background-color: var(--hover-color);
+}
+
+.calendar-modal-actions button:last-child {
+  color: var(--text-color);
+}
+
+.calendar-modal-actions button:last-child:hover {
+  background-color: #d1d7dc;
+}
+
+.calendar-info {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.calendar-info-box {
+  flex: 1 1 200px;
+  max-width: 300px;
+  padding: 1.25rem;
+  border-radius: 12px;
+  color: white;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Eriväriset laatikot */
+.calendar-info-box:nth-child(1) {
+  background-color: #4a90e2; /* sininen */
+}
+
+.calendar-info-box:nth-child(2) {
+  background-color: #50e3c2; /* turkoosi */
   color: #000;
+}
+
+.calendar-info-box:nth-child(3) {
+  background-color: #f5a623; /* oranssi */
+}
+
+.calendar-info-box:nth-child(4) {
+  background-color: #bd10e0; /* violetti */
+}
+
+/* Toast-viestit */
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue-color);
+  color: var(--white-color);
+  padding: 0.75rem 1.5rem;
+  bottom: 1.25rem;
+  font-weight: 500;
+  z-index: 9999;
+  animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
+.hidden {
+  display: none;
+}
+
+footer {
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  padding: 1em;
+  margin-top: 2em;
+  text-align: center;
+}
+
+/* Responsiivisuus */
+@media (max-width: 992px) {
+  .fc .fc-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .fc .fc-toolbar-chunk {
+    margin-bottom: 10px;
+  }
+
+  .fc .fc-daygrid-day-frame {
+    min-height: 80px;
+  }
+}
+
+@media (max-width: 768px) {
+  .calendar-container {
+    width: 100%;
+    border-radius: 0;
+    margin: 0;
+    padding: 15px;
+  }
+
+  .fc .fc-daygrid-day-frame {
+    min-height: 60px;
+  }
+
+  .fc .fc-daygrid-day-number {
+    font-size: 0.8rem;
+  }
+
+  .fc-event {
+    font-size: 0.7rem;
+    padding: 1px 2px;
+  }
+
+  .calendar-modal-content {
+    width: 95%;
+    padding: 20px 15px;
+  }
+}
+
+/* Varmista, että kuukausinäkymä on oletusarvoisesti käytössä */
+.fc .fc-dayGridMonth-button.fc-button-active {
+  background-color: var(--blue-color) !important;
+  color: var(--white-color) !important;
 }

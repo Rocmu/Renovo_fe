@@ -1,11 +1,17 @@
-import "../styles/main.css";
-import "../styles/calendar.css";
+import '../styles/main.css';
+import '../styles/calendar.css';
+import { showToast } from './toast.js';
+import {fetchData} from './fetch.js';
 
-document.addEventListener('DOMContentLoaded', function() {
+let currentCalendar = null;
+document.addEventListener('DOMContentLoaded', function () {
+
   // Kalenterin alustus
   const calendarEl = document.getElementById('calendarView');
   const calendar = new FullCalendar.Calendar(calendarEl, {
+
     initialView: 'dayGridMonth',
+    timeZone: 'local',
     locale: 'fi',
     firstDay: 1,
     headerToolbar: {
@@ -14,53 +20,211 @@ document.addEventListener('DOMContentLoaded', function() {
       right: 'next'
     },
 
-    // Muotoillaan kuukauden nimi isolla alkukirjaimella
     titleFormat: { year: 'numeric', month: 'long' },
-    titleFormatter: function(date) {
-      const monthName = date.toLocaleString('fi-FI', { month: 'long' });
-      const capitalizedMonth = monthName.charAt(0).toUpperCase() + monthName.slice(1);
-      const year = date.getFullYear();
-      return capitalizedMonth + ' ' + year;
-    },
 
-    // Muotoillaan viikonpäivät isolla alkukirjaimella
-    dayHeaderContent: function(arg) {
-      const dayName = arg.text.charAt(0).toUpperCase() + arg.text.slice(1);
-      return { html: '<span>' + dayName + '</span>' };
-    },
+    events: async function (fetchInfo, successCallback, failureCallback) {
+      try {
+        const userId = localStorage.getItem('user_id');
+        const token = localStorage.getItem('token');
 
-    // Lisätään luokat viikonpäiville värejä varten
-    dayHeaderClassNames: function(arg) {
-      return ['custom-day-header', 'fc-day-' + arg.date.getDay()];
-    },
+        const [shifts, exercise, sickness, others] = await Promise.all([
+          fetchData(`http://localhost:3000/api/shifts/user/${userId}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
 
-    dayCellDidMount: function(info) {
-      const today = new Date();
-      if (
-        info.date.getFullYear() === today.getFullYear() &&
-        info.date.getMonth() === today.getMonth() &&
-        info.date.getDate() === today.getDate()
-      ) {
-        info.el.classList.add('today');
+          fetchData(`http://localhost:3000/api/exercise/user/${userId}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
+          fetchData(`http://localhost:3000/api/sickness/user/${userId}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
+          fetchData(`http://localhost:3000/api/others/user/${userId}`, {
+            method: 'GET',
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }),
+        ]);
+
+        // Muotoile tapahtumat FullCalendarille
+        const events = [
+          ...shifts.map((shift) => ({
+            id: `shift_${shift.shift_id || shift.id}`,
+            title: 'Työvuoro',
+            start: `${shift.start_date.slice(0, 10)}T${shift.start_time.slice(0, 10)}`,
+            end: `${shift.end_date.slice(0, 10)}T${shift.end_time.slice(0, 10)}`,
+            backgroundColor: '#0044cc',
+            textColor: 'white',
+            extendedProps: {
+              type: 'shift',
+              _id: shift.shift_id || shift.id,
+            },
+          })),
+          ...exercise.map((ex) => ({
+            id: `ex_${ex.Exercise_id}`,
+            title: ex.exercise_type,
+            start: ex.exercise_date.slice(0, 10),
+            className: ['exercise-event'],
+            extendedProps: {
+              type: 'exercise',
+              level: ex.level,
+              notes: ex.notes,
+            },
+          })),
+          ...sickness.map((sick) => ({
+            id: `sick_${sick.Sickness_id}`,
+            title: sick.description,
+            start: sick.sickness_date.slice(0, 10),
+            className: ['sickness-event'],
+            extendedProps: {
+              type: 'sickness',
+              impact: sick.impact,
+              notes: sick.notes,
+            },
+          })),
+          ...others.map((other) => ({
+            id: `other_${other.Others_id}`,
+            title: other.description,
+            start: other.others_date.slice(0, 10),
+            className: ['others-event'],
+            extendedProps: {
+              type: 'others',
+              intensity: other.intensity,
+              notes: other.notes,
+            },
+          })),
+        ];
+
+        console.log(events)
+
+        successCallback(events);
+      } catch (error) {
+        console.error('Error fetching events:', error);
+        failureCallback(error);
       }
+    },
+     // Hiiren hover -efekti tapahtumien päällä
+     eventMouseEnter: function(info) {
+      info.el.style.cursor = 'pointer';
+      info.el.title = 'Klikkaa muokataksesi';
+    },
+
+    eventClick: function(info) {
+      const event = info.event;
+      const props = event.extendedProps;
+
+      if (props.type === 'shift') {
+        // Käsittele työvuoro erikseen
+        document.getElementById('editShiftModal').style.display = 'block';
+        document.getElementById('editDate').value = event.startStr.split('T')[0];
+        document.getElementById('editStartTime').value = event.startStr.split('T')[1].slice(0, 5);
+        document.getElementById('editEndTime').value = event.endStr.split('T')[1].slice(0, 5);
+        document.getElementById('eventId').value = props._id;
+      } else {
+        // Käsittele muut tapahtumat (liikunta, sairastumiset jne.)
+        const modal = document.getElementById('editModal');
+        const form = modal.querySelector('#editEventForm');
+
+        // Aseta otsikko tyypin mukaan
+        const titleMap = {
+          exercise: 'Muokkaa liikuntasuoritusta',
+          sickness: 'Muokkaa sairastumista',
+          others: 'Muokkaa muuta tapahtumaa'
+        };
+        modal.querySelector('h2').textContent = titleMap[props.type] || 'Muokkaa tapahtumaa';
+
+        // Piilota kaikki kentät aluksi
+        form.start_time.closest('label').style.display = 'none';
+        form.end_time.closest('label').style.display = 'none';
+        form.level.closest('label').style.display = 'none';
+
+        // Näytä tarvittavat kentät
+        switch (props.type) {
+          case 'exercise':
+            form.start_time.closest('label').style.display = 'block';
+            form.end_time.closest('label').style.display = 'block';
+            form.level.closest('label').style.display = 'block';
+            break;
+          case 'sickness':
+          case 'others':
+            form.level.closest('label').style.display = 'block';
+            break;
+        }
+
+        // Täytä lomake
+        form.event_id.value = event.id;
+        form.event_type.value = props.type;
+        form.date.value = event.startStr.split('T')[0];
+        form.description.value = event.title;
+
+        if (event.startStr.includes('T')) {
+          form.start_time.value = event.startStr.split('T')[1].slice(0, 5);
+        }
+
+        if (event.endStr && event.endStr.includes('T')) {
+          form.end_time.value = event.endStr.split('T')[1].slice(0, 5);
+        }
+
+        form.level.value = props.level || props.impact || props.intensity || '';
+        form.notes.value = props.notes || '';
+
+        modal.style.display = 'block';
+      }
+    },
+
+    eventContent: function(arg) {
+      const iconMap = {
+        exercise: '🏃‍♂️',
+        sickness: '🤒',
+        others: '📌'
+      };
+
+      const type = arg.event.extendedProps.type;
+
+      if (type === 'shift') {
+        return {
+          html: `<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${arg.event.title}</div>`
+        };
+      }
+
+      return {
+        html: `<div title="${arg.event.title}">${iconMap[type] || '❔'}</div>`
+      };
     }
+
   });
+  currentCalendar = calendar;
   calendar.render();
 
-  // Työvuoromodaalin käsittely
-  const shiftModal = document.getElementById('shiftModal');
-  const formTable = document.querySelector('.form-shift-table');
+  // Lataa tapahtumat sivun latauksen yhteydessä
+  calendar.refetchEvents();
+
+  const shiftModal = document.getElementById("shiftModal");
+  const formTable = document.querySelector(".form-shift-table");
+  const openShiftModalBtn = document.getElementById("openShiftModal");
 
   function generateDaysOfMonth() {
-    const now = new Date();
-    const daysInMonth = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
-    formTable.innerHTML = '<div class="form-shift-header"><span>alkaa:</span><span>päättyy:</span></div>';
+    const calendarDate = currentCalendar.getDate();
+    const year = calendarDate.getFullYear();
+    const month = calendarDate.getMonth();
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    formTable.innerHTML = '<div class="form-shift-header"><span>Vuoron alkamis aika:</span><span>Vuoron päättymis aika:</span></div>';
 
     for (let i = 1; i <= daysInMonth; i++) {
-      const row = document.createElement('div');
-      row.className = 'form-row';
+      const row = document.createElement("div");
+      row.className = "form-row";
       row.innerHTML = `
-        <label>${i}.${now.getMonth() + 1}.</label>
+        <label>${i}.${month + 1}.</label>
         <input type="time" name="start_${i}">
         <span>-</span>
         <input type="time" name="end_${i}">
@@ -87,30 +251,371 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('othersModal').style.display = 'block';
   });
 
-  // Lomakkeiden lähetyslogiikka
-  document.getElementById('shiftForm').addEventListener('submit', function(e) {
+  document.getElementById('shiftForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    alert("Työvuorot tallennettu!");
+
+    // Hae näkyvä kuukausi kalenterista
+    const calendarDate = currentCalendar.getDate();
+    const year = calendarDate.getFullYear();
+    const month = calendarDate.getMonth(); // 0-indeksoitu
+
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const userId = localStorage.getItem('user_id');
+    const token = localStorage.getItem('token');
+
+    let savedCount = 0;
+    const errors = [];
+
+    for (let i = 1; i <= daysInMonth; i++) {
+      const startInput = document.querySelector(`[name="start_${i}"]`);
+      const endInput = document.querySelector(`[name="end_${i}"]`);
+
+      if (startInput && endInput && startInput.value && endInput.value) {
+        try {
+          const startTime = startInput.value;
+          const endTime = endInput.value;
+
+          const startDate = new Date(year, month, i);
+          let endDate = new Date(year, month, i);
+
+          const [startHours, startMinutes] = startTime.split(':').map(Number);
+          const [endHours, endMinutes] = endTime.split(':').map(Number);
+
+          startDate.setHours(startHours, startMinutes);
+          endDate.setHours(endHours, endMinutes);
+
+          const isNightShift = endDate < startDate;
+          if (isNightShift) {
+            endDate.setDate(endDate.getDate() + 1);
+          }
+
+          const startDateStr = startDate.toISOString().split('T')[0];
+          const endDateStr = endDate.toISOString().split('T')[0];
+
+          const shift = {
+            user_id: parseInt(userId),
+            start_date: startDateStr,
+            start_time: `${String(startHours).padStart(2, '0')}:${String(startMinutes).padStart(2, '0')}:00`,
+            end_date: endDateStr,
+            end_time: `${String(endHours).padStart(2, '0')}:${String(endMinutes).padStart(2, '0')}:00`,
+            is_night_shift: isNightShift
+          };
+
+          const response = await fetch('http://localhost:3000/api/shifts', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify(shift)
+          });
+
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          savedCount++;
+        } catch (err) {
+          console.error(`Tallennusvirhe päivälle ${i}.${month + 1}:`, err);
+          errors.push(`Päivä ${i}.${month + 1}. ei tallentunut: ${err.message}`);
+        }
+      }
+    }
+
+    // Näytä palaute ja päivitä kalenteri
+    if (errors.length > 0) {
+      showToast(`Virheitä tallennuksessa: ${errors.join(', ')}`);
+    } else if (savedCount > 0) {
+      showToast(`Tallennettu ${savedCount} työvuoro(a)`);
+      calendar.refetchEvents(); // TÄRKEÄ – päivittää kaikki kuukaudet
+    } else {
+      showToast('Ei tallennettuja työvuoroja');
+    }
+
     closeModal('shiftModal');
   });
 
-  ['exerciseForm', 'sicknessForm', 'othersForm'].forEach(formId => {
-    document.getElementById(formId).addEventListener('submit', function(e) {
-      e.preventDefault();
-      alert("Tieto tallennettu!");
-      closeModal(this.closest('.calendar-modal').id);
+  // muiden lomakkeiden lähetyslogiikka
+  document.getElementById('exerciseForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    await submitForm('exerciseForm', 'exercise', 'http://localhost:3000/api/exercise');
+  });
+
+  document.getElementById('sicknessForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    await submitForm('sicknessForm', 'sickness', 'http://localhost:3000/api/sickness');
+  });
+
+  document.getElementById('othersForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+    await submitForm('othersForm', 'others', 'http://localhost:3000/api/others');
+  });
+
+  // Yleinen lomakkeen lähetysfunktio
+  async function submitForm(formId, type, url) {
+    const form = document.getElementById(formId);
+    const formData = new FormData(form);
+    const data = {};
+    formData.forEach((value, key) => {
+      data[key] = value;
     });
+
+    data.user_id = localStorage.getItem('user_id');
+
+    try {
+      const token = localStorage.getItem('token');
+      const options = {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      };
+
+      const response = await fetchData(url, options);
+
+      if (response.error) {
+        throw new Error(response.error);
+      }
+
+      alert(`${type.charAt(0).toUpperCase() + type.slice(1)} tallennettu!`);
+      closeModal(`${type}Modal`);
+      calendar.refetchEvents();
+    } catch (error) {
+      console.error(`Error saving ${type}:`, error);
+      alert(`Virhe tallennettaessa ${type}: ${error.message}`);
+    }
+  }
+
+  document.getElementById('editShiftForm').addEventListener('submit', async function(e) {
+    e.preventDefault();
+
+    const shiftId = document.getElementById('eventId').value;
+    const editDate = document.getElementById('editDate').value;
+    const editStartTime = document.getElementById('editStartTime').value;
+    const editEndTime = document.getElementById('editEndTime').value;
+
+    try {
+      const token = localStorage.getItem('token');
+      const userId = localStorage.getItem('user_id');
+
+      const updatedShift = {
+        user_id: userId,
+        start_date: editDate,
+        start_time: editStartTime + ':00',
+        end_date: editDate,
+        end_time: editEndTime + ':00'
+      };
+
+      const response = await fetchData(`http://localhost:3000/api/shifts/${shiftId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify(updatedShift)
+      });
+
+      if (response.error) throw new Error(response.error);
+
+      // Päivitä kalenterissa
+      const event = calendar.getEventById(`shift_${shiftId}`);
+      if (event) {
+        event.setDates(
+          `${updatedShift.start_date}T${updatedShift.start_time}`,
+          `${updatedShift.end_date}T${updatedShift.end_time}`
+        );
+      }
+
+      showToast('Työvuoro päivitetty!');
+      closeModal('editShiftModal');
+    } catch (error) {
+      console.error('Virhe työvuoron päivityksessä:', error);
+      showToast('Virhe päivitettäessä työvuoroa: ' + error.message);
+    }
+  });
+
+  // Työvuoron poistaminen
+  document.getElementById('deleteShiftButton').addEventListener('click', async function() {
+    if (!confirm('Haluatko varmasti poistaa tämän työvuoron?')) return;
+
+    const shiftId = document.getElementById('eventId').value;
+
+    console.log('what' + shiftId)
+
+    try {
+      const token = localStorage.getItem('token');
+      const response = await fetchData(`http://localhost:3000/api/shifts/${shiftId}`, {
+        method: 'DELETE',
+        headers: {
+          'Authorization': `Bearer ${token}`
+        }
+      });
+
+      if (response.error) throw new Error(response.error);
+
+      // Poista kalenterista
+      const event = calendar.getEventById(`shift_${shiftId}`);
+      if (event) {
+        event.remove();
+      }
+
+      showToast('Työvuoro poistettu!');
+      closeModal('editShiftModal');
+    } catch (error) {
+      console.error('Virhe työvuoron poistossa:', error);
+      showToast('Virhe poistettaessa työvuoroa: ' + error.message);
+    }
+  });
+
+  document.getElementById('editEventForm').addEventListener('submit', async function (e) {
+    e.preventDefault();
+
+    const userId = localStorage.getItem('user_id');
+
+    const form = e.target;
+    const id = form.event_id.value;
+    const type = form.event_type.value;
+
+    console.log(type)
+
+    // Ensure ID is correctly parsed
+    const eventId = id.split('_')[1]; // Extract the actual ID (e.g., "123" from "ex_123")
+    if (!eventId) {
+      alert('Tapahtuman ID on puutteellinen!');
+      return;
+    }
+
+    const urlMap = {
+      exercise: `http://localhost:3000/api/exercise/${eventId}`,
+      sickness: `http://localhost:3000/api/sickness/${eventId}`,
+      others: `http://localhost:3000/api/others/${eventId}`,
+    };
+
+    let data = {
+    };
+
+    // Tästä suuttuu
+    if (type === 'exercise') {
+      form.start_time.closest('label').style.display = 'block';
+      form.end_time.closest('label').style.display = 'block';
+      form.level.closest('label').style.display = 'block';
+      data = {
+        user_id: userId,
+        [`${type}_date`]: form.date.value,
+        exercise_type: form.description.value,
+        start_time: form.start_time.value,
+        end_time: form.end_time.value,
+        level: form.level.value,
+        notes: form.notes.value,
+      };
+      console.log(data)
+    } else if (type === 'sickness') {
+      form.start_time.closest('label').style.display = 'none';
+      form.end_time.closest('label').style.display = 'none';
+      form.level.closest('label').style.display = 'block';
+      data = {
+        user_id: userId,
+        [`${type}_date`]: form.date.value,
+        description: form.description.value,
+        impact: form.level.value,
+        notes: form.notes.value,
+      };
+      console.log(data)
+    } else if (type === 'others') {
+      form.start_time.closest('label').style.display = 'none';
+      form.end_time.closest('label').style.display = 'none';
+      form.level.closest('label').style.display = 'block';
+      data = {
+        user_id: userId,
+        [`${type}_date`]: form.date.value,
+        description: form.description.value,
+        intensity: form.level.value,
+        notes: form.notes.value,
+      };
+     console.log(data)
+    }
+
+    try {
+      const token = localStorage.getItem('token');
+      const options = {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${token}`,
+        },
+        body: JSON.stringify(data),
+      };
+
+      const response = await fetchData(urlMap[type], options);
+
+      if (response.error) throw new Error(response.error);
+
+      alert('Tapahtuma päivitetty!');
+      closeModal('editModal');
+      calendar.refetchEvents();
+    } catch (error) {
+      alert('Virhe päivitettäessä tapahtumaa: ' + error.message);
+    }
+  });
+
+  document.getElementById('deleteEventButton').addEventListener('click', async function () {
+    const form = document.getElementById('editEventForm');
+    const id = form.event_id.value;
+    const type = form.event_type.value;
+
+    const eventId = id.split('_')[1]; // Extract event ID
+    if (!eventId) {
+      alert('Tapahtuman ID on puutteellinen!');
+      return;
+    }
+
+    const urlMap = {
+      exercise: `http://localhost:3000/api/exercise/${eventId}`,
+      sickness: `http://localhost:3000/api/sickness/${eventId}`,
+      others: `http://localhost:3000/api/others/${eventId}`,
+    };
+
+    if (!confirm('Haluatko varmasti poistaa tämän tapahtuman?')) return;
+
+    try {
+      const token = localStorage.getItem('token');
+      const options = {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+
+      const response = await fetchData(urlMap[type], options);
+
+      if (response.error) throw new Error(response.error);
+
+      alert('Tapahtuma poistettu!');
+      closeModal('editModal');
+      calendar.refetchEvents();
+    } catch (error) {
+      alert('Virhe poistettaessa tapahtumaa: ' + error.message);
+    }
   });
 
   // sulkemisfunktio kaikille modaaleille
-  window.closeModal = function(modalId) {
+  window.closeModal = function (modalId) {
     document.getElementById(modalId).style.display = 'none';
   };
 
   // Klikkaus modalin ulkopuolelle sulkee modaalin
-  window.onclick = function(event) {
+  window.onclick = function (event) {
     if (event.target.classList.contains('calendar-modal')) {
       closeModal(event.target.id);
     }
   };
+
+  // Uloskirjautuminen
+  document.getElementById('log-out-user').addEventListener('click', function () {
+    localStorage.removeItem('user_id');
+    localStorage.removeItem('token');
+    window.location.href = 'index.html';
+  });
 });

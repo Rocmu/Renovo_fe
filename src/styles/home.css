@@ -1,4 +1,8 @@
 /* Home Page Styles */
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-color: var(--grey-color);
   margin: 0;
@@ -8,34 +12,45 @@ body {
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  align-items:flex-start;
+  padding: 0.5rem;
+  gap: 2rem;
+  max-width: 60rem;
+  min-width: 20rem;
+  margin: auto;
   width: 80%;
+  background-color: var(--grey-color);
+
 }
 
-.home-text-div {
+.home-div {
   display: flex;
   flex-direction: column;
   align-items: left;
   justify-content: left;
   width: 60%;
-  height: auto;
-  padding: 20px;
-  background-color: var(--white-color);
+  max-height: 350px;
+  padding: 0 0 2em 2em;
+
 }
 
-#home-welcome {
+#home-welcome, #home-calendar, #home-results, #home-info, #home-problem {
+  display: flex;
+  background-color: var(--white-color);
+  margin-bottom: 1em;
   width: 100%;
 }
 
-.home-img-div {
+
+.home-div > div {
+  padding: 1em;
+}
+.home-div {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 50%;
-  max-height: 350px;
-  padding: 20px;
+  flex-wrap: wrap;
+}
+.home-div > div{
+  flex: 1 350px;
 }
 
 .home-button {
@@ -59,4 +74,9 @@ main {
   .home-button:hover {
     background-color: var(--hover-color);
     color: var(--white-color);
+}
+
+img {
+  max-width: 350px;
+  height: auto;
 }

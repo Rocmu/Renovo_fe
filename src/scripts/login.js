@@ -45,7 +45,8 @@ const loginUser = async (event) => {
     successMessage.innerHTML = '';
 		console.log(response.message, 'success');
 		localStorage.setItem('token', response.token);
-		localStorage.setItem('nimi', response.user.email);
+		//localStorage.setItem('nimi', response.user.email);
+    localStorage.setItem('nimi', response.user);
     localStorage.setItem('user_id', response.user_id);
 		location.href = 'home.html';
 	}
