@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- Header -->
-    <div class="header">
+    <header>
       <div class="left-header">
         <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">Palaa Terveystaloon</button>
         <div class="logo">Renovo</div>
@@ -17,15 +17,31 @@
         <span id="show-username-header"></span>
         <button id="log-out-user">Kirjaudu ulos</button>
       </div>
-    </div>
+    </header>
 
     <!-- Navigaatio -->
-    <div class="nav-bar">
-      <a href="home.html">Etusivu</a>
-      <a href="calendar.html">Kalenteri</a>
-      <a href="hrv.html">Tulokset</a>
-      <a href="info.html">HRV-info</a>
+  <div class="nav-bar">
+    <div id="mob-nav">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
     </div>
+    <div class="logo-mob">Renovo</div>
+    <a href="home.html">Etusivu</a>
+    <a href="calendar.html">Kalenteri</a>
+    <a href="hrv.html">Tulokset</a>
+    <a href="info.html">HRV-info</a>
+  </div>
+
+  <!-- Mobiili Navigaatio -->
+  <div class="mob-nav-bar">
+    <ul>
+        <li><a href="home.html">Etusivu</a></li>
+        <li><a href="calendar.html">Kalenteri</a></li>
+        <li><a href="hrv.html">Tulokset</a></li>
+        <li><a href="info.html">HRV-info</a></li>
+    </ul>
+  </div>
 
     <!-- Sisältö -->
     <div class="calendar-container">
@@ -36,7 +52,9 @@
         <div class="calendar-description">
           Painikkeiden avulla voit syöttää työvuorosi sekä muut rasitukseen ja palautumiseen vaikuttavat tapahtumat kalenteriin.
           Voit muokata tai poistaa tallentamiasi tapahtumia painamalla kaleterista kyseistä tapahtumaa.
-          Kalenterin alapuolelta löydät lisäohjeistusta tapahtumien täyttöön tarvittaessa.
+        </div>
+        <div class="calendar-description">
+          <b>Kalenterin alapuolelta löydät lisäohjeistusta tapahtumien täyttöön tarvittaessa.</b>
         </div>
         <div class="calendar-buttons">
           <button id="openShiftModal">Lisää työvuoroja</button>
@@ -231,6 +249,7 @@
       </div>
     </div>
     <footer>Renovo App</footer>
+    <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/calendar.js"></script>

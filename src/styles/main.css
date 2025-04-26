@@ -8,11 +8,15 @@
   --font-family: Arial, sans-serif; /* basic font, probably changed later */
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Arial, sans-serif;
 }
 
-.header {
+header {
   background-color: white;
   color: #014b9a;
   display: flex;
@@ -70,4 +74,170 @@ body {
   text-decoration: none;
   font-size: 16px;
   cursor: pointer;
+  display: block;
+  padding: 1em;
+}
+
+.nav-bar a:hover {
+  background-color: lightblue;
+  color: var(--blue-color);
+  border-radius: 30px;
+}
+
+.mob-nav-bar {
+  display: none;
+  flex-direction: column;
+  width: 100%;
+  padding-left: 0;
+  background-color: var(--blue-color);
+}
+
+.mob-nav-bar ul {
+  margin-top: 0;
+  padding-left: 0;
+}
+
+.mob-nav-bar li {
+  width: 100%;
+  list-style-type: none;
+  padding-top: 7px;
+  padding-bottom: 7px;
+  padding-left: 1em;
+}
+
+.mob-nav-bar li:hover {
+  background-color: var(--hover-color);
+}
+
+.mob-nav-bar a {
+  text-decoration: none;
+  font-size: 12px;
+  color: white;
+}
+
+footer {
+  background-color: var(--blue-color);
+  color: white;
+  padding: 1em;
+  margin-top: 2em;
+  text-align: center;
+  font-family: Arial, sans-serif
+}
+
+/* BACK TO TOP */
+
+#backTopBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: solid 5px var(--blue-color);
+  outline: none;
+  background-color: var(--hover-color);
+  color: white;
+  /*box-shadow: 1px 1px 6px #333;*/
+  cursor: pointer;
+  width: 65px;
+  height: 65px;
+  border-radius: 35px;
+}
+
+#backTopBtn:hover {
+  background-color: var(--blue-color);
+}
+
+.arrow {
+  border: solid white;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 4px;
+}
+
+.up {
+  -webkit-transform: rotate(-135deg);
+  transform: rotate(-135deg);
+}
+
+div.logo-mob {
+  display: none;
+}
+
+@media only screen and (max-width: 550px) {
+
+  header {
+    padding: 3px;
+  }
+
+  header .left-header button.back-button /*header .left-header .logo */ {
+    font-size: 3vw;
+    padding: 5px;
+  }
+
+  span#show-username-header, button#log-out-user {
+    font-size: 3vw;
+  }
+
+  div.logo-mob {
+    display: block;
+  }
+
+  div.logo {
+    display: none;
+  }
+
+  .nav-bar {
+    height: 40px;
+    padding: 0;
+  }
+
+  #mob-nav {
+    background-color: #00317a;
+    height: 100%;
+    width: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  #mob-nav:hover {
+    background-color: var(--hover-color);
+  }
+
+  #mob-nav div {
+    width: 15px;
+    height: 3px;
+    margin-bottom: 4px;
+    background-color: white;
+  }
+
+  #mob-nav div:last-child {
+    margin-bottom: 0;
+  }
+
+  #mob-nav button {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+  }
+
+  .nav-bar a {
+    display: none;
+  }
+
+  footer {
+    font-size: 3vw;
+  }
+
+  #backTopBtn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .arrow {
+    border-width: 0 3px 3px 0;
+    padding-left: 4px;
+  }
 }

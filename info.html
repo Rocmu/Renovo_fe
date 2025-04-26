@@ -9,7 +9,7 @@
   </head>
   <body>
     <!-- Header -->
-    <div class="header">
+    <header>
       <div class="left-header">
         <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">
           Palaa Terveystaloon
@@ -20,15 +20,31 @@
         <span id="show-username-header"></span>
         <button id="log-out-user">Kirjaudu ulos</button>
       </div>
-    </div>
+    </header>
 
     <!-- Navigaatio -->
-    <div class="nav-bar">
-      <a href="home.html">Etusivu</a>
-      <a href="calendar.html">Kalenteri</a>
-      <a href="hrv.html">Tulokset</a>
-      <a href="info.html">HRV-info</a>
+  <div class="nav-bar">
+    <div id="mob-nav">
+      <div class="line-1"></div>
+      <div class="line-2"></div>
+      <div class="line-3"></div>
     </div>
+    <div class="logo-mob">Renovo</div>
+    <a href="home.html">Etusivu</a>
+    <a href="calendar.html">Kalenteri</a>
+    <a href="hrv.html">Tulokset</a>
+    <a href="info.html">HRV-info</a>
+  </div>
+
+  <!-- Mobiili Navigaatio -->
+  <div class="mob-nav-bar">
+    <ul>
+        <li><a href="home.html">Etusivu</a></li>
+        <li><a href="calendar.html">Kalenteri</a></li>
+        <li><a href="hrv.html">Tulokset</a></li>
+        <li><a href="info.html">HRV-info</a></li>
+    </ul>
+  </div>
 
     <!--Info boksit-->
     <main class="info-column">
@@ -170,6 +186,7 @@
       </div>
     </main>
     <footer>Renovo App</footer>
+    <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/info.js"></script>
   </body>

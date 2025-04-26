@@ -21,10 +21,14 @@ body {
 }
 
 .calendar-header,
-.calendar-view,
-.calendar-info {
+.calendar-view {
   background-color: var(--white-color);
   border-radius: 1rem;
+  padding: 1em;
+  box-shadow: 10px 10px 5px #CCCCCC;
+}
+
+.calendar-info {
   padding: 1em;
 }
 
@@ -37,6 +41,7 @@ body {
 
 .calendar-description {
   margin-bottom: 0.9rem;
+  max-width: 600px;
 }
 
 .calendar-buttons {
@@ -396,7 +401,6 @@ body {
   flex: 1 1 200px;
   max-width: 300px;
   padding: 1.25rem;
-  border-radius: 12px;
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
@@ -456,6 +460,7 @@ footer {
 }
 
 /* Responsiivisuus */
+
 @media (max-width: 992px) {
   .fc .fc-toolbar {
     flex-direction: column;
@@ -468,6 +473,11 @@ footer {
 
   .fc .fc-daygrid-day-frame {
     min-height: 80px;
+  }
+
+  .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr {
+    width: 100%;
+    flex-direction: row;
   }
 }
 
@@ -496,10 +506,60 @@ footer {
     width: 95%;
     padding: 20px 15px;
   }
+
+  div.calendar-buttons button {
+    font-size: 12px;
+  }
 }
 
 /* Varmista, että kuukausinäkymä on oletusarvoisesti käytössä */
 .fc .fc-dayGridMonth-button.fc-button-active {
   background-color: var(--blue-color) !important;
   color: var(--white-color) !important;
+}
+
+@media (max-width: 550px) {
+
+  .calendar-title {
+    margin-left: 0;
+    font-size: 6vw;
+  }
+
+  .calendar-description {
+    margin-left: 0;
+    font-size: 4vw;
+  }
+
+  .calendar-container {
+    width: 95%;
+    max-width: 95%;
+    padding: 0;
+    margin: auto;
+  }
+
+  div.calendar-header {
+    margin-top: 2em;
+  }
+
+  div.calendar-buttons {
+    flex-direction: column;
+  }
+
+  div.calendar-buttons button {
+    font-size: 3vw;
+  }
+
+  .fc-header-toolbar.fc-toolbar.fc-toolbar-ltr {
+    width: 100%;
+    flex-direction: row;
+  }
+
+  #fc-dom-1{
+    font-size: 4vw;
+  }
+
+  .calendar-info-box {
+    font-size: 4vw;
+  }
+
 }
