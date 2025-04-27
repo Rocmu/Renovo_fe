@@ -495,7 +495,7 @@ footer {
 
 @media (max-width: 768px) {
   .calendar-container {
-    width: 100%;
+    width: 95%;
     border-radius: 0;
     margin: 0;
     padding: 15px;
@@ -553,6 +553,14 @@ footer {
     max-width: 95%;
     padding: 0;
     margin: auto;
+  }
+
+  div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
+    height: 500px;
+  }
+
+  thead, .fc .fc-daygrid-day-number {
+    font-size: 3vw;
   }
 
   div.calendar-header {

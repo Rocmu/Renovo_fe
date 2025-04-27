@@ -11,6 +11,7 @@ body {
 .hrv-results-container {
   width: 90%;
   margin: auto;
+  max-width: 1150px;
 }
 
 .hrv-results-container-header, .hrv-results-container-content, .feedback-table, .container-footer-info-link {
@@ -25,12 +26,18 @@ body {
   max-width: 700px;
 }
 
-button#print-hrv-ten-days, button#print-hrv-thirty-days, button#open-feedback-form, button#view-prev-feedback, input#post-feedback, button#canvas-one-text-boxes, button#canvas-two-text-boxes {
+button#print-hrv-ten-days,
+button#print-hrv-thirty-days,
+button#open-feedback-form,
+button#view-prev-feedback,
+input#post-feedback,
+button#canvas-one-text-boxes,
+button#canvas-two-text-boxes {
   padding: 1em 2em 1em 2em;
   color: var(--blue-color);
   border: 2px solid var(--blue-color);
   border-radius: 30px;
-  font-size: 2vh;
+  /*font-size: 2vh;*/
 }
 
 input#post-feedback {
@@ -245,17 +252,85 @@ footer {
   .canvas-wrapper, .canvas-wrapper-2 {
     flex-direction: column;
   }
+
+  .canvas-wrapper div {
+    width: 95%;
+  }
+
+  canvas#readiness-rmssd-chart,
+  canvas#bpm-chart,
+  canvas#age-chart,
+  canvas#sns-pns-chart {
+    width: 100% !important;
+    height: auto !important;
+    max-width: 100%;
+    min-width: 100%;
+  }
+
 }
 
 @media only screen and (max-width: 1000px) {
   .hrv-results-container-footer {
     flex-direction: column;
   }
+
 }
 
 /* FOR MAIN CSS AS WELL */
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 550px) {
+
   .hrv-results-container {
+    width: 95%;
+  }
+
+  .hrv-results-container-footer {
+    flex-direction: column;
+    width: 100%;
+    max-width: 100%;
+  }
+
+  h2 {
+    font-size: 5vw;
+  }
+
+  p, h4, div.container-footer-info-link {
+    font-size: 4vw;
+  }
+
+  button#print-hrv-ten-days,
+  button#print-hrv-thirty-days,
+  button#open-feedback-form,
+  button#view-prev-feedback,
+  input#post-feedback,
+  button#canvas-one-text-boxes,
+  button#canvas-two-text-boxes,
+  input#post-feedback.create-feedback {
+    width: 100%;
+    font-size: 3vw;
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+  }
+
+  .hrv-results-container-footer-2 {
+    flex-direction: column;
+  }
+
+  .results-bpm-text-box, .results-age-text-box {
     width: 100%;
   }
+
+  textarea {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .tbody tr td:first-child, tr th:first-child {
+    display: none;
+  }
+
+  .feedback-list-table thead tr, .feedback-list-table tbody tr {
+    grid-template-columns: 25% 75%;
+    font-size: 3vw;
+  }
+
 }
