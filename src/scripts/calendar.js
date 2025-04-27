@@ -400,12 +400,26 @@ document.addEventListener('DOMContentLoaded', function () {
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('user_id');
 
+      // Tarkista onko kyseessä yövuoro (loppuaika < alkuaika)
+      const startDate = new Date(`${editDate}T${editStartTime}`);
+      const endDate = new Date(`${editDate}T${editEndTime}`);
+      const isNightShift = endDate < startDate;
+
+      // Jos yövuoro.
+      let endDateStr = editDate;
+      if (isNightShift) {
+        const nextDay = new Date(startDate);
+        nextDay.setDate(nextDay.getDate() + 1);
+        endDateStr = nextDay.toISOString().split('T')[0];
+      }
+
       const updatedShift = {
         user_id: userId,
         start_date: editDate,
         start_time: editStartTime + ':00',
-        end_date: editDate,
-        end_time: editEndTime + ':00'
+        end_date: endDateStr, // Käytä korjattua päivämäärää yövuoroille
+        end_time: editEndTime + ':00',
+        is_night_shift: isNightShift
       };
 
       const response = await fetchData(`http://localhost:3000/api/shifts/${shiftId}`, {
