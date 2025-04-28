@@ -126,6 +126,17 @@ canvas#sns-pns-chart {
   }
 }
 
+@keyframes disappear {
+  from {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+  to {
+    transform: translateX(-300px);
+    opacity: 0%;
+  }
+}
+
 .results-readiness-text-box {
   background-color: lightblue;
   color: var(--text-color);

@@ -22,40 +22,60 @@ function goBackToTop() {
   mybutton.addEventListener('click', topFunction);
 }
 
-// Reveal hidden text boxes for readiness, rmssd, sns, pns
-function revealTextOne(event) {
+// Toggle hidden text boxes for readiness, rmssd, sns, pns
+function toggleTextOne(event) {
   event.preventDefault();
   const infoOne = document.querySelector('.hrv-results-container-footer');
-  infoOne.style.display = 'flex';
+  const buttonOne = document.querySelector('#canvas-one-text-boxes'); // <- haetaan nappi
   const windowWidth = window.innerWidth;
 
-  //Katsotaan selaimen koko
-  if (windowWidth >= 1200) {
-    console.log('leveys' + windowWidth)
-    const firstCanvas = document.querySelector('.canvas-wrapper')
-    firstCanvas.scrollIntoView();
+  if (infoOne.style.display === 'flex') {
+    // Piilotetaan animaatiolla
+    infoOne.style.animation = 'disappear 1s ease-out forwards';
+    buttonOne.textContent = 'Näytä valmiustiedot';
+    setTimeout(() => {
+      infoOne.style.display = 'none';
+    }, 1000);
   } else {
-    console.log('leveys' + windowWidth)
-    infoOne.scrollIntoView();
+    // Näytetään animaatiolla
+    infoOne.style.display = 'flex';
+    infoOne.style.animation = 'appear 1s ease-out forwards';
+    buttonOne.textContent = 'Piilota valmiustiedot';
+    if (windowWidth >= 1200) {
+      const firstCanvas = document.querySelector('.canvas-wrapper');
+      firstCanvas.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      infoOne.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
 
-// Reveal hidden text boxes for physiological age and bpm
-function revealTextTwo(event) {
+// Toggle hidden text boxes for physiological age and bpm
+function toggleTextTwo(event) {
   event.preventDefault();
   const infoTwo = document.querySelector('.hrv-results-container-footer-2');
-  infoTwo.style.display = 'flex';
+  const buttonTwo = document.querySelector('#canvas-two-text-boxes'); // <- haetaan nappi
   const windowWidth = window.innerWidth;
 
-  //Katsotaan selaimen koko
-  if (windowWidth >= 1200) {
-    console.log('leveys' + windowWidth)
-    const secondCanvas = document.querySelector('.canvas-wrapper-2')
-    secondCanvas.scrollIntoView();
+  if (infoTwo.style.display === 'flex') {
+    // Piilotetaan animaatiolla
+    infoTwo.style.animation = 'disappear 1s ease-out forwards';
+    buttonTwo.textContent = 'Näytä ikä ja bpm';
+    setTimeout(() => {
+      infoTwo.style.display = 'none';
+    }, 1000);
   } else {
-    console.log('leveys' + windowWidth)
-    infoTwo.scrollIntoView();
+    // Näytetään animaatiolla
+    infoTwo.style.display = 'flex';
+    infoTwo.style.animation = 'appear 1s ease-out forwards';
+    buttonTwo.textContent = 'Piilota ikä ja bpm';
+    if (windowWidth >= 1200) {
+      const secondCanvas = document.querySelector('.canvas-wrapper-2');
+      secondCanvas.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      infoTwo.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
 
-export {goBackToTop, revealTextOne, revealTextTwo}
+export {goBackToTop, toggleTextOne, toggleTextTwo}

@@ -22,14 +22,26 @@ body {
 
 .calendar-header,
 .calendar-view {
+  position: relative;
   background-color: var(--white-color);
   border-radius: 1rem;
   padding: 1em;
   box-shadow: 10px 10px 5px #CCCCCC;
+  overflow: hidden;
 }
 
-.calendar-info {
-  padding: 1em;
+.calendar-bg-img {
+  position: absolute;
+  top: 1em;
+  right: 2em;
+  width: 200px;
+  z-index: 0;
+}
+
+.calendar-header,
+.calendar-view > *:not(.calendar-bg-img) {
+  position: relative;
+  z-index: 1;
 }
 
 .calendar-title {
@@ -390,37 +402,82 @@ body {
   background-color: #d1d7dc;
 }
 
+.calendar-view button {
+  padding: 1em 2em 1em 2em;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  border-radius: 30px;
+  border-color: transparent;
+  font-size: 2vh;
+  cursor: pointer;
+}
+
+button#event-instructions {
+  margin-top: 1em;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+}
+
+button#event-instructions:hover {
+  background-color: var(--hover-color);
+}
+
 .calendar-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
+  display: none;
+  gap: 10px;
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
-.calendar-info-box {
-  flex: 1 1 200px;
-  max-width: 300px;
-  padding: 1.25rem;
+.calendar-info div {
+  flex: 1;
+  padding: 0 1em 1em 1em;
+  min-width: 0;
+}
+
+@keyframes appear{
+  from {
+    transform: translateX(-300px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes disappear {
+  from {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+  to {
+    transform: translateX(-300px);
+    opacity: 0%;
+  }
+}
+
+.shift-info-box {
+  background-color: lightblue;
+  color: var(--text-color);
+}
+
+.exercise-info-box {
+  background-color: var(--blue-color);
   color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Eriväriset laatikot */
-.calendar-info-box:nth-child(1) {
-  background-color: #4a90e2; /* sininen */
+.sickness-info-box {
+  background-color: #999999;
+  color: var(--text-color);
 }
 
-.calendar-info-box:nth-child(2) {
-  background-color: #50e3c2; /* turkoosi */
-  color: #000;
-}
-
-.calendar-info-box:nth-child(3) {
-  background-color: #f5a623; /* oranssi */
-}
-
-.calendar-info-box:nth-child(4) {
-  background-color: #bd10e0; /* violetti */
+.others-info-box {
+  background-color: orange;
+  color: var(--text-color);
 }
 
 /* Toast-viestit */
