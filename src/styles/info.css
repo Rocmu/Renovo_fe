@@ -5,6 +5,7 @@
 body {
   background-color: var(--grey-color);
   margin: 0;
+  line-height: 1.5;
 }
 
 .info-column {
@@ -13,10 +14,9 @@ body {
   align-items:flex-start;
   padding: 0.5rem;
   gap: 2rem;
-  max-width: 60rem;
-  min-width: 20rem;
   margin: auto;
-  width: 80%;
+  width: 95%;
+  max-width: 1200px;
   background-color: var(--grey-color);
   margin-top: 2em;
 }
@@ -35,15 +35,18 @@ body {
 }
 
 .text-box p {
-  max-width: 600px;
+  max-width: 85%;
 }
 
 ol {
   font-weight: bold;
+  color: var(--blue-color);
 }
 
 li {
   margin-bottom: 10px;
+  max-width: 85%;
+  color: var(--blue-color);
 }
 
 @media only screen and (max-width: 550px) {

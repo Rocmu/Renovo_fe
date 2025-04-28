@@ -319,8 +319,9 @@ body {
   gap: 1.25rem;
   align-items: center;
   margin-bottom: 0.625rem;
-  background-color: #ffffff;
+  background-color: var(--white-color);
   border-radius: 6px;
+  text-transform: capitalize;
 }
 
 .form-row input {

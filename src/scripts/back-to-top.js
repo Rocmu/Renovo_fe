@@ -32,7 +32,7 @@ function toggleTextOne(event) {
   if (infoOne.style.display === 'flex') {
     // Piilotetaan animaatiolla
     infoOne.style.animation = 'disappear 1s ease-out forwards';
-    buttonOne.textContent = 'Näytä valmiustiedot';
+    buttonOne.textContent = 'Mitä arvot tarkoittavat?';
     setTimeout(() => {
       infoOne.style.display = 'none';
     }, 1000);
@@ -40,7 +40,7 @@ function toggleTextOne(event) {
     // Näytetään animaatiolla
     infoOne.style.display = 'flex';
     infoOne.style.animation = 'appear 1s ease-out forwards';
-    buttonOne.textContent = 'Piilota valmiustiedot';
+    buttonOne.textContent = 'Piilota';
     if (windowWidth >= 1200) {
       const firstCanvas = document.querySelector('.canvas-wrapper');
       firstCanvas.scrollIntoView({ behavior: 'smooth' });
@@ -60,7 +60,7 @@ function toggleTextTwo(event) {
   if (infoTwo.style.display === 'flex') {
     // Piilotetaan animaatiolla
     infoTwo.style.animation = 'disappear 1s ease-out forwards';
-    buttonTwo.textContent = 'Näytä ikä ja bpm';
+    buttonTwo.textContent = 'Mitä arvot tarkoittavat?';
     setTimeout(() => {
       infoTwo.style.display = 'none';
     }, 1000);
@@ -68,7 +68,7 @@ function toggleTextTwo(event) {
     // Näytetään animaatiolla
     infoTwo.style.display = 'flex';
     infoTwo.style.animation = 'appear 1s ease-out forwards';
-    buttonTwo.textContent = 'Piilota ikä ja bpm';
+    buttonTwo.textContent = 'Piilota';
     if (windowWidth >= 1200) {
       const secondCanvas = document.querySelector('.canvas-wrapper-2');
       secondCanvas.scrollIntoView({ behavior: 'smooth' });
