@@ -36,8 +36,6 @@ Huom! Testiä piti hiukan muuttaa asetusten vuoksi. Env- tiedostosta tulee nyt "
 
 ### linkki käytössä olevaan back-end-sovellukseen/APIin
 
-### linkki API-dokumentaatioon (apidoc)
-
 ### rautalankamallit tai linkki niihin
 
 ### listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
