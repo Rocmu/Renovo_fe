@@ -28,7 +28,7 @@ const loginUser = async (event) => {
 			'Content-type': 'application/json',
 		},
 	};
-	console.log(options);
+	//console.log(options);
 
 	// Hae data
 	const response = await fetchData(url, options);
