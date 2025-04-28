@@ -27,3 +27,27 @@ Huom! Testiä piti hiukan muuttaa asetusten vuoksi. Env- tiedostosta tulee nyt "
 
 - [Taustapalvelintestin READ.me](tests/README.md)
 - [taustapalvelintesti, viikko 6](tests/server-test.robot)
+
+### README PALAUTUKSET
+
+### kuvakaappaukset sovelluksen käyttöliittymästä
+
+### linkki julkaistuun sovellukseen (front-end)
+
+### linkki käytössä olevaan back-end-sovellukseen/APIin
+
+### linkki API-dokumentaatioon (apidoc)
+
+### rautalankamallit tai linkki niihin
+
+### listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
+
+### mahdolliset tiedossa olevat bugit/ongelmat
+
+### referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
+
+### linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
+
+### readmen tekemiseen voi käyttää koodieditoria tai esim. readme.so-sovellusta.
+
+### varmistakaa, että opettajille on pääsy/käyttöoikeudet kaikkeen edellymainittuun materialiin
