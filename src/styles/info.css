@@ -30,12 +30,14 @@ body {
   background-color: var(--white-color);
 }
 
-.text-box h2 {
+.text-box h2, h3 {
   color: var(--blue-color);
+  margin-left: 20px;
 }
 
 .text-box p {
   max-width: 85%;
+  margin-left: 20px;
 }
 
 ol {

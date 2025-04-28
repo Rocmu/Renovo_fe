@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
             end: `${shift.end_date.slice(0, 10)}T${shift.end_time.slice(0, 10)}`,
             backgroundColor: '#0044cc',
             textColor: 'white',
+            className: ['shift-event'],
             extendedProps: {
               type: 'shift',
               _id: shift.shift_id || shift.id,
