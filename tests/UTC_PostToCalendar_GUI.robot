@@ -23,16 +23,44 @@ Post a new Shift, Exercise, Sickness and Others entry
 
     Click With Options    xpath=(//a[@href='calendar.html' and text()='Kalenteri'])[1]    delay=0.1 s
 
+    #Click Shift Modal Open
     Click With Options    xpath=//button[@id='openShiftModal' and text()='Lisää työvuoroja']    delay=0.5 s
 
+    #Input shift data
     Type Text      //input[@name='start_1']        08:00    delay=0.1 s
     Type Text      //input[@name='end_1']        16:00    delay=0.1 s
 
-    ${submit_shift}=    Get Element    xpath=//form[@id='shiftForm']
+    #Press Enter to send form
+    Keyboard Key    press    Enter
 
-    Mouse Move Relative To    ${submit_shift}
-    Scroll To    ${submit_shift}    bottom    50%
+    #Click Exercise Modal Open
+    Click With Options    xpath=//button[@id='openExerciseModal' and text()='Lisää liikunta']    delay=0.5 s
+
+    #Input exercise data
+    Type Text      //input[@name='exercise_date']        30.04.2025    delay=0.1 s
+    Type Text      //input[@name='exercise_type']        Jooga    delay=0.1 s
+    #Type Text      //input[@name='start_time']        1330    delay=0.1 s
 
     Keyboard Key    press    Enter
+    Keyboard Key    press    ArrowDown
+    Keyboard Key    press    ArrowDown
+    Keyboard Key    press    ArrowRight
+    Keyboard Key    press    ArrowUp
+
+    Keyboard Key    press    Enter
+    Keyboard Key    press    ArrowDown
+    Keyboard Key    press    ArrowRight
+    Keyboard Key    press    ArrowUp
+
+    Keyboard Key    press    Enter
+    Click With Options    //label[@for='exercise-low']
+    Keyboard Key    press    ArrowDown
+    Keyboard Key    press    ArrowDown
+
+    Mouse Move Relative To    id=exerciseForm    -10    -300
+    Mouse Button              down
+
+    #Press Enter to send form
+    #Keyboard Key    press    Enter
 
 
