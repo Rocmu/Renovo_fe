@@ -64,10 +64,18 @@ Sovelluksen repositio muutettiin julkiseksi, ja sille luotiin Github.io- sivu, j
 Renovo_fe/
 ├── tests/
 │   └── asennustesti.py
-│   └── test2.robot
-│   └── testX.robot
-│   └── testX.robot
-│   └── testX.robot
+│   └── login-invalid-login.robot
+│   └── login-server-test.robot
+│   └── login-server-test.robot
+│   └── login-valid-login.robot
+│   └── server-test.robot
+│   └── UTC_HRV_failed_Server.robot
+│   └── UTC_HRVMeasurements_GUI.robot
+│   └── UTC_HRVMeasurements_Server.robot
+│   └── UTC_InvalidLogin_GUI.robot
+│   └── UTC_InvalidLogin_Server.robot
+│   └── UTC_PostToCalendar_GUI.robot
+│   └── UTC_ValidLogin_Server.robot
 │   └── requirements.txt
 │   └── README.md
 └── outputs/
@@ -102,27 +110,27 @@ Seuraavaksi esitellään luodut ohjelmistotestit. Huomioitavaa on, että käytt�
 
 Sovellukselle tehdään testejä, joissa syötetään oikeita/vääriä tunnuksia ja katsotaan, että ohjelmisto palauttaa oikean vastauksen. Sulkuihin on merkitty, mitkä käyttötapaukset testataan.
 
-- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Onnistunut kirjautuminen vie etusivulle, jossa näkyvät sovelluksen käyttöohjeet. ---> Testi: [login-valid-login.robot](login-valid-login.robot) (Käyttötapaukset UTC_1, UTC_2 ja UTC_9)
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Onnistunut kirjautuminen vie etusivulle, jossa näkyvät sovelluksen käyttöohjeet. ---> Testi: [login-valid-login.robot](login-valid-login.robot) (Käyttötapaukset UTC_1, UTC_2 ja UTC_9) (tehty 29.04.2025)
 
-- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella. ---> Testi: [UTC_ValidLogin_Server.robot](UTC_ValidLogin_Server.robot) (Käyttötapaukset UTC_1 ja UTC_2)
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella. ---> Testi: [UTC_ValidLogin_Server.robot](UTC_ValidLogin_Server.robot) (Käyttötapaukset UTC_1 ja UTC_2) (tehty 30.04.2025)
 
-- Huonoilla käyttäjätunnuksilla kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [UTC_InvalidLogin_GUI.robot](UTC_InvalidLogin_GUI.robot) (Käyttötapaukset UTC_1 ja UTC_2)
+- Huonoilla käyttäjätunnuksilla kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [UTC_InvalidLogin_GUI.robot](UTC_InvalidLogin_GUI.robot) (Käyttötapaukset UTC_1 ja UTC_2) (tehty 29.04.2025)
 
-- Huonoilla käyttäjätunnuksilla (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [UTC_InvalidLogin_Server.robot](UTC_InvalidLogin_Server.robot) (Käyttötapaukset UTC_1 ja UTC_2)
+- Huonoilla käyttäjätunnuksilla (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [UTC_InvalidLogin_Server.robot](UTC_InvalidLogin_Server.robot) (Käyttötapaukset UTC_1 ja UTC_2) (tehty 29.04.2025)
 
 #### Mittaukset
 
 Renovo sovellukselle tehdään testejä, jossa tarkastellaan käyttäjän mittaustuloksia. Mikäli käyttäjää ei vielä löydy sovelluksesta, hänet luodaan kirjautumisen ohessa.
 
-- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella, jonka jälkeen pyydetään tuloksia 30 päivältä (viimeisten 10:n päivän tulokset näytetään automaattisesti oikealla sivulla) ja kirjaudutaan ulos. ---> Testi: [UTC_HRVMeasurements_GUI.robot](UTC_HRVMeasurements_GUI.robot) ---> (Käyttötapaukset UTC_1, UTC_2, UTC_3, UTC_9 ja UTC_10)
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella, jonka jälkeen pyydetään tuloksia 30 päivältä (viimeisten 10:n päivän tulokset näytetään automaattisesti oikealla sivulla) ja kirjaudutaan ulos. ---> Testi: [UTC_HRVMeasurements_GUI.robot](UTC_HRVMeasurements_GUI.robot) ---> (Käyttötapaukset UTC_1, UTC_2, UTC_3, UTC_9 ja UTC_10) (tehty 29.04.2025)
 
-- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella, jonka jälkeen pyydetään tulokset viimeiseltä 10 ja 30 päivältä. ---> Testi: [UTC_HRVMeasurements_Server.robot](UTC_HRVMeasurements_Server.robot) ---> (Käyttötapaukset UTC_1, UTC_2 ja UTC_3)
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella, jonka jälkeen pyydetään tulokset viimeiseltä 10 ja 30 päivältä. ---> Testi: [UTC_HRVMeasurements_Server.robot](UTC_HRVMeasurements_Server.robot) ---> (Käyttötapaukset UTC_1, UTC_2 ja UTC_3) (tehty 29.04.2025)
 
-- Luvaton pyyntö mittaustuloksien tuloksesta taustapalvelimen puolella. Testistä jätetään sisäänkirjautuminen pois kokonaan. Pyynnön tulee palauttaa viesti pyynnön luvattomuudesta. Testiä ei suoriteta käyttöliittymän puolella, sillä pyyntöä ei kykene suorittamaan UI:n kautta ilman sisäänkirjautumista. ---> Testi: [UTC_HRV_failed_Server.robot](UTC_HRV_failed_Server.robot) (Käyttötapaus UTC_3)
+- Luvaton pyyntö mittaustuloksien tuloksesta taustapalvelimen puolella. Testistä jätetään sisäänkirjautuminen pois kokonaan. Pyynnön tulee palauttaa viesti pyynnön luvattomuudesta. Testiä ei suoriteta käyttöliittymän puolella, sillä pyyntöä ei kykene suorittamaan UI:n kautta ilman sisäänkirjautumista. ---> Testi: [UTC_HRV_failed_Server.robot](UTC_HRV_failed_Server.robot) (Käyttötapaus UTC_3) (tehty 29.04.2025)
 
 #### Kalenteri
 
-- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttämisen jälkeen sovelluksesta kirjaudutaan ulos. [UTC_PostToCalendar_GUI.robot](UTC_PostToCalendar_GUI.robot) (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10)
+- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttämisen jälkeen sovelluksesta kirjaudutaan ulos. [UTC_PostToCalendar_GUI.robot](UTC_PostToCalendar_GUI.robot) (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10) (tehty 30.04.2025)
 
 - Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7)
 

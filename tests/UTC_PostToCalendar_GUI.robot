@@ -23,8 +23,10 @@ Post a new Shift, Exercise, Sickness and Others entry
 
     Click With Options    xpath=(//a[@href='calendar.html' and text()='Kalenteri'])[1]    delay=0.1 s
 
+    Wait For Load State    domcontentloaded    timeout=3s
+
     #Click Shift Modal Open
-    Click With Options    xpath=//button[@id='openShiftModal' and text()='Lisää työvuoroja']    delay=0.5 s
+    Click With Options    xpath=//button[@id='openShiftModal' and text()='Lisää työvuoroja']    delay=1 s
 
     #Input shift data
     Type Text      //input[@name='start_1']        08:00    delay=0.1 s
@@ -39,28 +41,34 @@ Post a new Shift, Exercise, Sickness and Others entry
     #Input exercise data
     Type Text      //input[@name='exercise_date']        30.04.2025    delay=0.1 s
     Type Text      //input[@name='exercise_type']        Jooga    delay=0.1 s
-    #Type Text      //input[@name='start_time']        1330    delay=0.1 s
-
-    Keyboard Key    press    Enter
-    Keyboard Key    press    ArrowDown
-    Keyboard Key    press    ArrowDown
-    Keyboard Key    press    ArrowRight
-    Keyboard Key    press    ArrowUp
-
-    Keyboard Key    press    Enter
-    Keyboard Key    press    ArrowDown
-    Keyboard Key    press    ArrowRight
-    Keyboard Key    press    ArrowUp
-
-    Keyboard Key    press    Enter
+    Type Text      //input[@id='exercise_start_time']        1330    delay=0.1 s
+    Type Text      //input[@id='exercise_end_time']        1430    delay=0.1 s
     Click With Options    //label[@for='exercise-low']
-    Keyboard Key    press    ArrowDown
-    Keyboard Key    press    ArrowDown
+    Type Text      //textarea[@id='exerciseTextArea']        Ohjelmistotesti    delay=0.1 s
+    Click With Options    //button[@id='saveMyExercise']
 
-    Mouse Move Relative To    id=exerciseForm    -10    -300
-    Mouse Button              down
+    #Click Sickness Modal Open
+    Click With Options    xpath=//button[@id='openSicknessModal' and text()='Lisää sairastuminen']    delay=0.5 s
 
-    #Press Enter to send form
-    #Keyboard Key    press    Enter
+    #Input sickness data
+    Type Text      //input[@name='sickness_date']        29.04.2025    delay=0.1 s
+    Type Text      //input[@id='sick_description']        Migreeni    delay=0.1 s
+    Click With Options    //label[@for='sickness-medium']
+    Type Text      //textarea[@id='sicknessTextArea']        Ohjelmistotesti    delay=0.1 s
+    Click With Options    //button[@id='saveMySickness']
+
+    #Click Others Modal Open
+    Click With Options    xpath=//button[@id='openOthersModal' and text()='Muut tapahtumat']    delay=0.5 s
+
+    #Input others data
+    Type Text      //input[@name='others_date']        28.04.2025    delay=0.1 s
+    Type Text      //input[@id='other_description']        Migreeni    delay=0.1 s
+    Click With Options    //label[@for='others-high']
+    Type Text      //textarea[@id='othersTextArea']        Ohjelmistotesti    delay=0.1 s
+    Click With Options    //button[@id='saveMyOthers']
+
+    Click With Options    xpath=//button[@id='log-out-user' and text()='Kirjaudu ulos']    delay=2 s
+
+    Wait For Condition    Text    Title   contains    Kirjautumissivu
 
 
