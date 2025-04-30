@@ -18,7 +18,7 @@ const loginUser = async (event) => {
 	};
 
 	// Endpoint
-	const url = 'thehyte.northeurope.cloudapp.azure.com/api/auth/kubios-login';
+	const url = 'https://thehyte.northeurope.cloudapp.azure.com/api/auth/kubios-login';
 
 	// Options
 	const options = {
