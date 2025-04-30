@@ -202,6 +202,8 @@ document.addEventListener('DOMContentLoaded', function () {
         others: '📌'
       };
 
+      const type = arg.event.extendedProps.type;
+
       if (arg.event.extendedProps.type === 'shift') {
         return {
           html: `<div class="custom-shift-event"
