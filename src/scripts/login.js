@@ -48,7 +48,7 @@ const loginUser = async (event) => {
 		//localStorage.setItem('nimi', response.user.email);
     localStorage.setItem('nimi', response.user);
     localStorage.setItem('user_id', response.user_id);
-		location.href = 'home.html';
+		location.href = 'https://thehyte.northeurope.cloudapp.azure.com/home.html';
 	}
 
 	console.log(response);
