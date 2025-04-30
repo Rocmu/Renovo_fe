@@ -72,6 +72,7 @@ document.addEventListener('DOMContentLoaded', function () {
             end: `${shift.end_date.slice(0, 10)}T${shift.end_time.slice(0, 10)}`,
             backgroundColor: '#0044cc',
             textColor: 'white',
+            className: ['shift-event'],
             extendedProps: {
               type: 'shift',
               _id: shift.shift_id || shift.id,
@@ -635,6 +636,30 @@ document.addEventListener('DOMContentLoaded', function () {
       alert('Virhe poistettaessa tapahtumaa: ' + error.message);
     }
   });
+
+  function toggleInfo(event) {
+    event.preventDefault();
+    const info = document.querySelector('.calendar-info');
+    const button = document.querySelector('#event-instructions');
+
+    if (info.style.display === 'flex') {
+      // Suljetaan animaatiolla
+      info.style.animation = 'disappear 1s ease-out forwards';
+      button.textContent = 'Lisätietoa tapahtumien tallennuksesta';
+      setTimeout(() => {
+        info.style.display = 'none';
+      }, 1000); // Odotetaan että animaatio ehtii loppua
+    } else {
+      // Avataan animaatiolla
+      info.style.display = 'flex';
+      info.style.animation = 'appear 1s ease-out forwards';
+      button.textContent = 'Piilota lisätiedot';
+      info.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  const infoBtnOne = document.querySelector('#event-instructions');
+  infoBtnOne.addEventListener('click', toggleInfo);
 
   // MODAL CLOSING FUNCTION
   window.closeModal = function (modalId) {
