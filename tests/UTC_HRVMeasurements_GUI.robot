@@ -9,7 +9,7 @@ ${Username}    crypt:p7Wl4yv6DONY7nHE9vU9aSGZJUupaJqnwdbDOc/icmt9qrhPnEW7U3EURlL
 ${Password}    crypt:SNsMiRq3+ZXKvNZV1JauH1zZ7iBOJagqrf8/QS7xJG/mwcsXtlXTuwn/09aY6q1uIm43m+6h5YOMXcQ=
 
 *** Test Cases ***
-UTC_1, UTC_2 ja UTC_3
+Get HRV Measurements
     [Documentation]    Sisäänkirjautuminen, mittaustulosten pyyntö ja uloskirjautuminen.
     New Browser    chromium    headless=No
 

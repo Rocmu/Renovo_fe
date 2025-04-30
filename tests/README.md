@@ -96,35 +96,41 @@ Viimeiseksi dokumentaatioon on kerätty suoritetut ohjelmistotestit, joissa olla
 
 ### Testit
 
-Seuraavaksi esitellään luodut ohjelmistotestit. Huomioitavaa on, että käyttötapauksia ollaan testattu samoissa testeissä. Esimerkiksi kirjautuminen (ja mahdollisesti rekistöröinti) ovat pakollisia vaatimuksia muiden käyttötapausten testaamiseksi. Mikäli käyttötapausta ei voida testata tietyssä kohteessa (UI tai taustapalvelin), tästä myös mainitaan. Esimerkiksi uloskirjautuminen testataan vain käyttöliittymän puolella ja liitetään suureen osaan muista testeistä.
+Seuraavaksi esitellään luodut ohjelmistotestit. Huomioitavaa on, että käyttötapauksia ollaan testattu samoissa testeissä. Esimerkiksi kirjautuminen (ja mahdollisesti rekistöröinti) ovat pakollisia vaatimuksia muiden käyttötapausten testaamiseksi. Mikäli käyttötapausta ei voida testata tietyssä kohteessa (UI tai taustapalvelin), tästä myös mainitaan. Esimerkiksi uloskirjautuminen testataan vain käyttöliittymän puolella ja liitetään mukaan suureen osaan muista testeistä.
 
-Test Suite 1: Kirjautuminen.
+#### Kirjautuminen.
 
-- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. ---> Testi: [login-valid-login.robot](login-valid-login.robot) (Käyttötapaukset UTC_1 ja UTC_2)
+Sovellukselle tehdään testejä, joissa syötetään oikeita/vääriä tunnuksia ja katsotaan, että ohjelmisto palauttaa oikean vastauksen. Sulkuihin on merkitty, mitkä käyttötapaukset testataan.
 
-- Tähän onnistunut taustapalvelimeen kirjautuminen!!!!!!!!!! KESKEN !
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Onnistunut kirjautuminen vie etusivulle, jossa näkyvät sovelluksen käyttöohjeet. ---> Testi: [login-valid-login.robot](login-valid-login.robot) (Käyttötapaukset UTC_1, UTC_2 ja UTC_9)
 
-- Huonoilla käyttäjätunnuksilla kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [utc_123_invalid_login_ui.robot](utc_123_invalid_login_ui.robot) (Käyttötapaukset UTC_1 ja UTC_2)
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella. ---> Testi: [UTC_ValidLogin_Server.robot](UTC_ValidLogin_Server.robot) (Käyttötapaukset UTC_1 ja UTC_2)
 
-- Huonoilla käyttäjätunnuksilla (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [utc_123_invalid_login_server.robot](utc_123_invalid_login_server.robot) (Käyttötapaukset UTC_1 ja UTC_2)
+- Huonoilla käyttäjätunnuksilla kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [UTC_InvalidLogin_GUI.robot](UTC_InvalidLogin_GUI.robot) (Käyttötapaukset UTC_1 ja UTC_2)
 
-Test Suite 2: Mittaukset
+- Huonoilla käyttäjätunnuksilla (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella. Kirjautumisen tulee palauttaa haluttu vastaus virheellisistä tunnuksista. Epäonnistunut kirjautuminen ei mahdollista tulosten tarkastelua. ---> Testi: [UTC_InvalidLogin_Server.robot](UTC_InvalidLogin_Server.robot) (Käyttötapaukset UTC_1 ja UTC_2)
+
+#### Mittaukset
 
 Renovo sovellukselle tehdään testejä, jossa tarkastellaan käyttäjän mittaustuloksia. Mikäli käyttäjää ei vielä löydy sovelluksesta, hänet luodaan kirjautumisen ohessa.
 
-- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella, jonka jälkeen pyydetään tuloksia 30 päivältä (viimeisten 10:n päivän tulokset näytetään automaattisesti oikealla sivulla) ja kirjaudutaan ulos. ---> Testi: [utc_123_valid_login_ui.robot](utc_123_valid_login_ui.robot) --->
-(Käyttötapaukset UTC_1, UTC_2, UTC_3 ja UTC_10)
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella, jonka jälkeen pyydetään tuloksia 30 päivältä (viimeisten 10:n päivän tulokset näytetään automaattisesti oikealla sivulla) ja kirjaudutaan ulos. ---> Testi: [UTC_HRVMeasurements_GUI.robot](UTC_HRVMeasurements_GUI.robot) ---> (Käyttötapaukset UTC_1, UTC_2, UTC_3, UTC_9 ja UTC_10)
 
-- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella, jonka jälkeen pyydetään tulokset viimeiseltä 10 ja 30 päivältä. ---> Testi: [utc_123_valid_login_server.robot](utc_123_valid_login_server.robot) --->
-(Käyttötapaukset UTC_1, UTC_2 ja UTC_3)
+- Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) taustapalvelimen puolella, jonka jälkeen pyydetään tulokset viimeiseltä 10 ja 30 päivältä. ---> Testi: [UTC_HRVMeasurements_Server.robot](UTC_HRVMeasurements_Server.robot) ---> (Käyttötapaukset UTC_1, UTC_2 ja UTC_3)
 
-- Luvaton pyyntö mittaustuloksien tuloksesta taustapalvelimen puolella. Testistä jätetään sisäänkirjautuminen pois kokonaan. Pyynnön tulee palauttaa viesti pyynnön luvattomuudesta. Testiä ei suoriteta käyttöliittymän puolella, sillä pyyntöä ei kykene suorittamaan UI:n kautta ilman sisäänkirjautumista. ---> Testi: [utc_123_invalid_request_server.robot](utc_123_invalid_request_server.robot) (Käyttötapaus UTC_3)
+- Luvaton pyyntö mittaustuloksien tuloksesta taustapalvelimen puolella. Testistä jätetään sisäänkirjautuminen pois kokonaan. Pyynnön tulee palauttaa viesti pyynnön luvattomuudesta. Testiä ei suoriteta käyttöliittymän puolella, sillä pyyntöä ei kykene suorittamaan UI:n kautta ilman sisäänkirjautumista. ---> Testi: [UTC_HRV_failed_Server.robot](UTC_HRV_failed_Server.robot) (Käyttötapaus UTC_3)
 
-Test Suite 3: Kalenteri
+#### Kalenteri
 
-Test Suite 4: Käyttöohjeet
+- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttämisen jälkeen sovelluksesta kirjaudutaan ulos. [UTC_PostToCalendar_GUI.robot](UTC_PostToCalendar_GUI.robot) (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10)
 
-Testien suoritus:
+- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7)
+
+- Virheellinen kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10)
+
+- Virheellinen kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7)
+
+#### Testien suoritus:
 - 1. Taustapalvelin ja selain päälle `npm run dev`- komennolla.
 - 2. `source tests/.venv/Scripts/activate` -komennolla virtuaaliympäristö päälle.
 - 3. `robot --outputdir outputs tests/<testin_nimi>`> -komennolla suoritettiin ohjelmistotestit ja ohjattiin tulokset outputs-kansioon.
