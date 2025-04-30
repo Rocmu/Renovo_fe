@@ -3,6 +3,7 @@ body {
   padding: 0;
   background-color: var(--grey-color);
   line-height: 1.5;
+  font-family: var(--font-family);
 }
 
 * {
@@ -23,6 +24,26 @@ body {
   box-shadow: 10px 10px 5px #CCCCCC;
 }
 
+.hrv-results-container-header {
+  background-image: url("/img/background.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--white-color);
+}
+
+.hrv-results-container-header h2 {
+  color: var(--white-color);
+  font-size: 1.8rem;
+}
+
+.hrv-results-container-content, .hrv-user-feedback h2 {
+  color: var(--blue-color);
+}
+
+.info-link-box-text h2 {
+  color: var(--white-color);
+}
+
 .hrv-results-container-header p, .feedback-buttons, .container-footer-info-link p {
   max-width: 700px;
 }
@@ -34,12 +55,13 @@ button#view-prev-feedback,
 input#post-feedback,
 button#canvas-one-text-boxes,
 button#canvas-two-text-boxes {
+  font-family: var(--font-family);
   padding: 1em 2em 1em 2em;
   background-color: var(--blue-color);
   color: var(--white-color);
   border-radius: 30px;
   border-color: transparent;
-  font-size: 2vh;
+  font-size: 2.1vh;
   cursor: pointer;
 }
 

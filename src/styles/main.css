@@ -5,7 +5,7 @@
   --grey-color: #ededed;   /* taustan harmaa */
   --white-color: #FFF;  /* valkoinen */
   --text-color: #212322;
-  --font-family: Arial, sans-serif; /* basic font, probably changed later */
+  --font-family: 'Poppins', sans-serif; /* basic font, probably changed later */
 }
 
 html {
@@ -13,10 +13,11 @@ html {
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
 }
 
 header {
+  font-family: var(--font-family);
   background-color: var(--white-color);
   color: var(--blue-color);
   display: flex;
@@ -26,12 +27,14 @@ header {
 }
 
 .left-header {
+  font-family: var(--font-family);
   display: flex;
   align-items: center;
   gap: 20px;
 }
 
 .back-button {
+  font-family: var(--font-family);
   background-color: var(--blue-color);
   color: var(--white-color);
   border: none;
@@ -45,15 +48,18 @@ header {
 }
 
 .logo {
+  font-family: var(--font-family);
   font-size: 22px;
   font-weight: bold;
 }
 
 .right-header {
+  font-family: var(--font-family);
   font-size: 14px;
 }
 
 .right-header button {
+  font-family: var(--font-family);
   margin-left: 10px;
   padding: 5px 10px;
   font-size: 14px;
@@ -68,6 +74,7 @@ header {
 }
 
 .nav-bar {
+  font-family: var(--font-family);
   background-color: var(--blue-color);
   color: var(--white-color);
   display: flex;
@@ -124,6 +131,7 @@ header {
 }
 
 footer {
+  font-family: var(--font-family);
   background-color: var(--blue-color);
   color: var(--white-color);
   padding: 1em;

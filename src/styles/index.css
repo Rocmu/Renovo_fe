@@ -8,7 +8,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin: 0;
-  background-color: #ededed;
+  background-image: url("/img/background.png");
+  background-size: cover;
+  background-position: center;
 
 }
 
@@ -16,15 +18,14 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*padding: 1rem;*/
   height: 10rem;
   position: relative;
 }
 
-/* Might be replaced later */
 .app-logo {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  height: auto; /* Barely small enough not to overlap form input */
+  height: auto;
   width: 30%;
   max-width: 400px;
   min-width: 100px;
@@ -32,7 +33,7 @@ header {
 }
 
 #login-form {
-  margin-top: 3rem; /* Helps prevent overlap with header */
+  margin-top: 3rem;
   max-width: 400px;
   width: 100%;
   margin: auto;
@@ -54,6 +55,7 @@ header {
 }
 
 #login-form input {
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   padding: 0.75rem;
   font-size: 1rem;
@@ -69,6 +71,7 @@ header {
 }
 
 #login-form button {
+  font-family: 'Poppins', sans-serif;
   padding: 0.75rem;
   background-color: #0046AD;
   color: white;
@@ -98,6 +101,7 @@ header {
 }
 
 footer {
+  font-family: 'Poppins', sans-serif;
   background-color: #CCCCCC;
   color: white;
   padding: 1em;
