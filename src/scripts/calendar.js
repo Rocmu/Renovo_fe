@@ -204,10 +204,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       if (arg.event.extendedProps.type === 'shift') {
         return {
-          html: `<div class="custom-shift-event"
-                    style="width:95%; margin:0 auto; background:#0044cc; color:white">
-                  ${arg.event.title}
-                </div>`
+          html: `<div class="custom-shift-event" style="width:95%; margin:0 auto; background:#0044cc; color:white"> ${arg.event.title}</div>`
         };
       }
       return {

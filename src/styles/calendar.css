@@ -440,11 +440,18 @@ TÄSSÄ NE PRKL:N TYÖVUORO PALKIT!
   width: 40% !important;
   margin-left: auto !important;
   margin-right: auto !important;
+  margin-top: 50px !important;
 }
 
 .fc-daygrid-day-frame {
   padding-left: 5px !important;
   padding-right: 5px !important;
+  display: grid !important;
+  grid-template-rows: auto 1fr !important; /* Päivän numero ylhäällä, tapahtumat alhaalla */
+}
+
+.fc-daygrid-day-events {
+  align-self: end !important; /* Kiinnittää alareunaan */
 }
 
 @keyframes appear{
