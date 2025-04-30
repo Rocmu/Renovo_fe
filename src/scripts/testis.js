@@ -28,26 +28,26 @@ document.addEventListener('DOMContentLoaded', function () {
         const token = localStorage.getItem('token');
 
         const [shifts, exercise, sickness, others] = await Promise.all([
-          fetchData(`http://localhost:3000/api/shifts/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/shifts/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          fetchData(`http://localhost:3000/api/exercise/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/exercise/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
-          fetchData(`http://localhost:3000/api/sickness/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/sickness/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
-          fetchData(`http://localhost:3000/api/others/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/others/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,

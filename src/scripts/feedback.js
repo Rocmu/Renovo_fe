@@ -38,7 +38,7 @@ const registerFeedBack = async (event) => {
   };
 
   // ENDPOINT
-  const url = 'http://localhost:3000/api/disagreement';
+  const url = 'https://thehyte.northeurope.cloudapp.azure.com/api/disagreement';
 
   let token = localStorage.getItem('token');
 
@@ -73,7 +73,7 @@ const getUserFeedback = async () => {
 
   let user_id = localStorage.getItem('user_id')
 
-  const url = `http://localhost:3000/api/disagreement/user/${user_id}`;
+  const url = `https://thehyte.northeurope.cloudapp.azure.com/api/disagreement/user/${user_id}`;
 
   let token = localStorage.getItem('token');
 

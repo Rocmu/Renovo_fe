@@ -51,7 +51,7 @@ const getUserDataTen = async () => {
 
   tenActive();
 
-	const url = 'http://localhost:3000/api/kubios/user-data-ten';
+	const url = 'https://thehyte.northeurope.cloudapp.azure.com/api/kubios/user-data-ten';
 	const token = localStorage.getItem('token');
 	const headers = { Authorization: `Bearer ${token}` };
 	const options = {
@@ -77,7 +77,7 @@ const getUserDataThirty = async () => {
 
   thirtyActive();
 
-	const url = 'http://localhost:3000/api/kubios/user-data-thirty';
+	const url = 'https://thehyte.northeurope.cloudapp.azure.com/api/kubios/user-data-thirty';
 	const token = localStorage.getItem('token');
 	const headers = { Authorization: `Bearer ${token}` };
 	const options = {

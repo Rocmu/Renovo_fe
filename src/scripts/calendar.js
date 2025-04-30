@@ -35,26 +35,26 @@ document.addEventListener('DOMContentLoaded', function () {
 
         // FETCH ALL EVENT TYPES IN PARALLEL
         const [shifts, exercise, sickness, others] = await Promise.all([
-          fetchData(`http://localhost:3000/api/shifts/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/shifts/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
 
-          fetchData(`http://localhost:3000/api/exercise/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/exercise/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
-          fetchData(`http://localhost:3000/api/sickness/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/sickness/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
             },
           }),
-          fetchData(`http://localhost:3000/api/others/user/${userId}`, {
+          fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/others/user/${userId}`, {
             method: 'GET',
             headers: {
               Authorization: `Bearer ${token}`,
@@ -322,7 +322,7 @@ document.addEventListener('DOMContentLoaded', function () {
             is_night_shift: isNightShift
           };
 
-          const response = await fetch('http://localhost:3000/api/shifts', {
+          const response = await fetch('https://thehyte.northeurope.cloudapp.azure.com/api/shifts', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -358,17 +358,17 @@ document.addEventListener('DOMContentLoaded', function () {
   // OTHER FORM SUBMISSIONS
   document.getElementById('exerciseForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    await submitForm('exerciseForm', 'exercise', 'http://localhost:3000/api/exercise');
+    await submitForm('exerciseForm', 'exercise', 'https://thehyte.northeurope.cloudapp.azure.com/api/exercise');
   });
 
   document.getElementById('sicknessForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    await submitForm('sicknessForm', 'sickness', 'http://localhost:3000/api/sickness');
+    await submitForm('sicknessForm', 'sickness', 'https://thehyte.northeurope.cloudapp.azure.com/api/sickness');
   });
 
   document.getElementById('othersForm').addEventListener('submit', async function (e) {
     e.preventDefault();
-    await submitForm('othersForm', 'others', 'http://localhost:3000/api/others');
+    await submitForm('othersForm', 'others', 'https://thehyte.northeurope.cloudapp.azure.com/api/others');
   });
 
   // GENERAL FORM SUBMISSION FUNCTION
@@ -443,7 +443,7 @@ document.addEventListener('DOMContentLoaded', function () {
         is_night_shift: isNightShift
       };
 
-      const response = await fetchData(`http://localhost:3000/api/shifts/${shiftId}`, {
+      const response = await fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/shifts/${shiftId}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -481,7 +481,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
     try {
       const token = localStorage.getItem('token');
-      const response = await fetchData(`http://localhost:3000/api/shifts/${shiftId}`, {
+      const response = await fetchData(`https://thehyte.northeurope.cloudapp.azure.com/api/shifts/${shiftId}`, {
         method: 'DELETE',
         headers: {
           'Authorization': `Bearer ${token}`
@@ -524,9 +524,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const urlMap = {
-      exercise: `http://localhost:3000/api/exercise/${eventId}`,
-      sickness: `http://localhost:3000/api/sickness/${eventId}`,
-      others: `http://localhost:3000/api/others/${eventId}`,
+      exercise: `https://thehyte.northeurope.cloudapp.azure.com/api/exercise/${eventId}`,
+      sickness: `https://thehyte.northeurope.cloudapp.azure.com/api/sickness/${eventId}`,
+      others: `https://thehyte.northeurope.cloudapp.azure.com/api/others/${eventId}`,
     };
 
     let data = {
@@ -609,9 +609,9 @@ document.addEventListener('DOMContentLoaded', function () {
     }
 
     const urlMap = {
-      exercise: `http://localhost:3000/api/exercise/${eventId}`,
-      sickness: `http://localhost:3000/api/sickness/${eventId}`,
-      others: `http://localhost:3000/api/others/${eventId}`,
+      exercise: `https://thehyte.northeurope.cloudapp.azure.com/api/exercise/${eventId}`,
+      sickness: `https://thehyte.northeurope.cloudapp.azure.com/api/sickness/${eventId}`,
+      others: `https://thehyte.northeurope.cloudapp.azure.com/api/others/${eventId}`,
     };
 
     if (!confirm('Haluatko varmasti poistaa tämän tapahtuman?')) return;

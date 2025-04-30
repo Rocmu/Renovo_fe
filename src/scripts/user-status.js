@@ -4,7 +4,7 @@ const getUserStatus = async () => {
 
   let user_id = localStorage.getItem('user_id');
 
-  const url = `http://localhost:3000/api/kubios/${user_id}`;
+  const url = `https://thehyte.northeurope.cloudapp.azure.com/api/kubios/${user_id}`;
 
   let token = localStorage.getItem('token');
 
@@ -19,7 +19,7 @@ const getUserStatus = async () => {
   if (response.error) {
     if (userData.error == 'jwt expired') {
       localStorage.clear();
-      location.href="index.html";
+      location.href="https://thehyte.northeurope.cloudapp.azure.com/index.html";
       return
     }
       console.error('Error:', response.error);
