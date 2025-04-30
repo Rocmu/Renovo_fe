@@ -1,7 +1,7 @@
 
 /* Perusasettelut */
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
   background-color: var(--grey-color);
   margin: 0;
   padding: 0;
@@ -22,6 +22,7 @@ body {
 
 .calendar-header,
 .calendar-view {
+  font-family: var(--font-family);
   position: relative;
   background-color: var(--white-color);
   border-radius: 1rem;
@@ -30,33 +31,28 @@ body {
   overflow: hidden;
 }
 
-.calendar-bg-img {
-  position: absolute;
-  top: 1em;
-  right: 2em;
-  width: 200px;
-  z-index: 0;
-}
-
-.calendar-header,
-.calendar-view > *:not(.calendar-bg-img) {
-  position: relative;
-  z-index: 1;
+.calendar-header {
+  background-image: url("/img/background.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--white-color);
 }
 
 .calendar-title {
+  font-family: var(--font-family);
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--blue-color);
+  color: var(--white-color);
   margin-bottom: 0.3rem;
 }
 
 .calendar-description {
   margin-bottom: 0.9rem;
-  max-width: 600px;
+  max-width: 700px;
 }
 
 .calendar-buttons {
+  font-family: var(--font-family);
   display: flex;
   gap: 1.25rem;
   justify-content: flex-start;
@@ -64,12 +60,13 @@ body {
 }
 
 .calendar-buttons button {
+  font-family: var(--font-family);
   padding: 1em 2em 1em 2em;
   background-color: var(--blue-color);
   color: var(--white-color);
   border-radius: 30px;
-  border-color: transparent;
-  font-size: 2vh;
+  border-color: var(--white-color);
+  font-size: 2.1vh;
   cursor: pointer;
 }
 
@@ -100,18 +97,14 @@ body {
 .fc .fc-button {
   background-color: var(--white-color);
   color: var(--blue-color);
-  border-radius: 5px;
-  padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
 }
 
 .fc .fc-button:hover {
-  background-color: var(--hover-color);
-}
-
-.fc .fc-button-primary:not(:disabled).fc-button-active {
-  background-color: var(--text-color);
-  color: var(--white-color);
+  background-color: var(--blue-color);
+  border-radius: 50px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
 }
 
 /* Viikonpäiväotsikot */
@@ -145,23 +138,20 @@ body {
 }
 
 .fc .fc-toolbar-title {
+  color: var(--blue-color);
   margin: 0 0.3rem;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   order: 2;
 }
 
-.fc .fc-prev-button {
+.fc .fc-prev-button, .fc .fc-next-button {
   order: 1;
   margin: 0;
-  padding: 0.3rem 0.5rem;
+  padding: 0.1rem 0.1rem;
+  font-size: 1.4rem;
   min-width: 1.9rem;
-}
-
-.fc .fc-next-button {
-  order: 3;
-  margin: 0;
-  padding: 0.3rem 0.5rem;
-  min-width: 1.9rem;
+  border-radius: 50%;
+  border-color: var(--blue-color);
 }
 
 .fc .fc-daygrid-day {
@@ -279,6 +269,7 @@ body {
 .calendar-modal-content input[type="text"],
 .calendar-modal-content select,
 .calendar-modal-content textarea {
+  font-family: var(--font-family);
   background-color: var(--white-color);
   width: 100%;
   padding: 0.625rem;
@@ -292,12 +283,14 @@ body {
 .calendar-modal-content input:focus,
 .calendar-modal-content select:focus,
 .calendar-modal-content textarea:focus {
+  font-family: var(--font-family);
   outline: none;
   border-color: var(--blue-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .calendar-modal-content textarea {
+  font-family: var(--font-family);
   min-height: 6.25rem;
   resize: vertical;
 }
@@ -379,6 +372,7 @@ body {
 }
 
 .calendar-modal-actions button {
+  font-family: var(--font-family);
   border-radius: 30px;
   font-size: 0.9rem;
   padding: 0.625rem 1.25rem;
@@ -404,12 +398,13 @@ body {
 }
 
 .calendar-view button {
+  font-size: 2.1vh;
+  font-family: var(--font-family);
   padding: 1em 2em 1em 2em;
   background-color: var(--blue-color);
   color: var(--white-color);
   border-radius: 30px;
   border-color: transparent;
-  font-size: 2vh;
   cursor: pointer;
 }
 
@@ -437,6 +432,19 @@ button#event-instructions:hover {
   flex: 1;
   padding: 0 1em 1em 1em;
   min-width: 0;
+}
+/*
+TÄSSÄ NE PRKL:N TYÖVUORO PALKIT!
+*/
+.fc-event.shift-event {
+  width: 40% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+.fc-daygrid-day-frame {
+  padding-left: 5px !important;
+  padding-right: 5px !important;
 }
 
 @keyframes appear{

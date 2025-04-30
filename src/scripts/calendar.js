@@ -202,14 +202,14 @@ document.addEventListener('DOMContentLoaded', function () {
         others: '📌'
       };
 
-      const type = arg.event.extendedProps.type;
-
-      if (type === 'shift') {
+      if (arg.event.extendedProps.type === 'shift') {
         return {
-          html: `<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${arg.event.title}</div>`
+          html: `<div class="custom-shift-event"
+                    style="width:95%; margin:0 auto; background:#0044cc; color:white">
+                  ${arg.event.title}
+                </div>`
         };
       }
-
       return {
         html: `<div title="${arg.event.title}">${iconMap[type] || '❔'}</div>`
       };
