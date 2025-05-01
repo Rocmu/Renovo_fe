@@ -32,17 +32,17 @@ body {
 }
 
 .calendar-header {
-  background-image: url("/img/background.png");
+
   background-size: cover;
   background-position: center;
-  color: var(--white-color);
+  color: var(--blue-color);
 }
 
 .calendar-title {
   font-family: var(--font-family);
   font-size: 1.8rem;
   font-weight: 600;
-  color: var(--white-color);
+  color: var(--blue-color);
   margin-bottom: 0.3rem;
 }
 

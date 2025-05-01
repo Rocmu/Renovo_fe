@@ -25,14 +25,14 @@ body {
 }
 
 .hrv-results-container-header {
-  background-image: url("/img/background.png");
+
   background-size: cover;
   background-position: center;
-  color: var(--white-color);
+  color: var(--blue-color);
 }
 
 .hrv-results-container-header h2 {
-  color: var(--white-color);
+  color: var(--blue-color);
   font-size: 1.8rem;
 }
 
