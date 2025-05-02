@@ -66,7 +66,6 @@ Renovo_fe/
 │   └── asennustesti.py
 │   └── login-invalid-login.robot
 │   └── login-server-test.robot
-│   └── login-server-test.robot
 │   └── login-valid-login.robot
 │   └── server-test.robot
 │   └── UTC_HRV_failed_Server.robot
@@ -74,7 +73,9 @@ Renovo_fe/
 │   └── UTC_HRVMeasurements_Server.robot
 │   └── UTC_InvalidLogin_GUI.robot
 │   └── UTC_InvalidLogin_Server.robot
+│   └── UTC_InvalidPostToCalendar_GUI.robot
 │   └── UTC_PostToCalendar_GUI.robot
+│   └── UTC_PostToCalendar_Server.robot
 │   └── UTC_ValidLogin_Server.robot
 │   └── requirements.txt
 │   └── README.md
@@ -104,7 +105,7 @@ Viimeiseksi dokumentaatioon on kerätty suoritetut ohjelmistotestit, joissa olla
 
 ### Testit
 
-Seuraavaksi esitellään luodut ohjelmistotestit. Huomioitavaa on, että käyttötapauksia ollaan testattu samoissa testeissä. Esimerkiksi kirjautuminen (ja mahdollisesti rekistöröinti) ovat pakollisia vaatimuksia muiden käyttötapausten testaamiseksi. Mikäli käyttötapausta ei voida testata tietyssä kohteessa (UI tai taustapalvelin), tästä myös mainitaan. Esimerkiksi uloskirjautuminen testataan vain käyttöliittymän puolella ja liitetään mukaan suureen osaan muista testeistä.
+Seuraavaksi esitellään luodut ohjelmistotestit. Huomioitavaa on, että käyttötapauksia ollaan testattu samoissa testeissä. Esimerkiksi kirjautuminen (ja mahdollisesti rekistöröinti) ovat pakollisia vaatimuksia muiden käyttötapausten testaamiseksi. Mikäli käyttötapausta ei voida testata tietyssä kohteessa (UI tai taustapalvelin), tästä myös mainitaan. Esimerkiksi uloskirjautuminen (UTC_10) testataan vain käyttöliittymän puolella ja liitetään mukaan suureen osaan muista testeistä. Samoin käyttöohjeet (UTC_9) ovat estusivulla, johon päädytään aina onnistuneen sisäänkirjautumisen jälkeen, joten sitä ei testata erikseen.
 
 #### Kirjautuminen.
 
@@ -128,15 +129,25 @@ Renovo sovellukselle tehdään testejä, jossa tarkastellaan käyttäjän mittau
 
 - Luvaton pyyntö mittaustuloksien tuloksesta taustapalvelimen puolella. Testistä jätetään sisäänkirjautuminen pois kokonaan. Pyynnön tulee palauttaa viesti pyynnön luvattomuudesta. Testiä ei suoriteta käyttöliittymän puolella, sillä pyyntöä ei kykene suorittamaan UI:n kautta ilman sisäänkirjautumista. ---> Testi: [UTC_HRV_failed_Server.robot](UTC_HRV_failed_Server.robot) (Käyttötapaus UTC_3) (tehty 29.04.2025)
 
-#### Kalenteri
+#### Kalenteri, merkintöjen lisäys
 
-- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttämisen jälkeen sovelluksesta kirjaudutaan ulos. [UTC_PostToCalendar_GUI.robot](UTC_PostToCalendar_GUI.robot) (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10) (tehty 30.04.2025)
+- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttämisen jälkeen sovelluksesta kirjaudutaan ulos. [UTC_PostToCalendar_GUI.robot](UTC_PostToCalendar_GUI.robot) (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7, UTC_9 ja UTC_10) (tehty 30.04.2025)
 
-- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7)
+- Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa [UTC_PostToCalendar_Server.robot](UTC_PostToCalendar_Server.robot) (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7) (tehty 02.05.2025)
 
-- Virheellinen kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10)
+- Kalenterimerkintöjen epäonnistunut syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttämisen jälkeen sovelluksesta kirjaudutaan ulos. Syöttökentässä on "required" HTML- koodissa, eikä pyyntö suostu lähtemään, mikäli kenttä on tyhjä.Siksi testissä painetaan "Tallenna" napin sijasta "Sulje" -nappia. [UTC_InvalidPostToCalendar_GUI.robot](UTC_InvalidPostToCalendar_GUI.robot) (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10) (tehty 2.5.2025)
 
-- Virheellinen kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (Käyttötapaus UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7)
+- Virheellinen kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7)
+
+#### Kalenteri, merkintöjen poistaminen
+
+- Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen poistamisen jälkeen sovelluksesta kirjaudutaan ulos. (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10)
+
+- Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (UTC_1, UTC_2 ja UTC_8)
+
+- Kalenterimerkintöjen epäonnistunut poistaminen onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen epäonnistuneen poistamisen jälkeen sovelluksesta kirjaudutaan ulos. (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10)
+
+- Kalenterimerkintöjen epäonnistunut poistaminen onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (UTC_1, UTC_2 ja UTC_8)
 
 #### Testien suoritus:
 - 1. Taustapalvelin ja selain päälle `npm run dev`- komennolla.

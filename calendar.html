@@ -107,7 +107,7 @@
     <!-- Työvuorojen lisäysmodaali -->
     <div id="shiftModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
-        <span class="calendar-modal-close" onclick="closeModal('shiftModal')">&times;</span>
+        <span class="calendar-modal-close" id="shiftCloseX" onclick="closeModal('shiftModal')">&times;</span>
         <h2>Työvuorojen lisääminen</h2>
         <p>Täytä alle työvuorojen alkamis- ja päättymisajat. Jätä vapaapäivät tyhjiksi.</p>
         <form id="shiftForm">
@@ -125,7 +125,7 @@
     <!-- Liikunta Modaali -->
     <div id="exerciseModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
-        <span class="calendar-modal-close" onclick="closeModal('exerciseModal')">&times;</span>
+        <span class="calendar-modal-close" id="exerciseCloseX" onclick="closeModal('exerciseModal')">&times;</span>
         <h2>Lisää liikunta</h2>
         <form id="exerciseForm">
           <label>Päivämäärä: <input type="date" name="exercise_date" required></label>
@@ -154,7 +154,7 @@
     <!-- Sairastuminen Modaali -->
     <div id="sicknessModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
-        <span class="calendar-modal-close" onclick="closeModal('sicknessModal')">&times;</span>
+        <span class="calendar-modal-close" id="sicknessCloseX" onclick="closeModal('sicknessModal')">&times;</span>
         <h2>Lisää sairastuminen</h2>
         <form id="sicknessForm">
           <label>Päivämäärä: <input type="date" name="sickness_date" required></label>
@@ -181,7 +181,7 @@
     <!-- Muut tapahtumat Modaali -->
     <div id="othersModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
-        <span class="calendar-modal-close" onclick="closeModal('othersModal')">&times;</span>
+        <span class="calendar-modal-close" id="othersCloseX" onclick="closeModal('othersModal')">&times;</span>
         <h2>Muu tapahtuma</h2>
         <form id="othersForm">
           <label>Päivämäärä: <input type="date" name="others_date" required></label>
@@ -252,7 +252,7 @@
         </form>
       </div>
     </div>
-    <footer>Renovo App</footer>
+    <footer>Student Project@Renovo App 2025</footer>
     <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script type="module" src="/src/scripts/main.js"></script>
