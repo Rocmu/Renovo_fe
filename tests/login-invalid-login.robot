@@ -1,7 +1,7 @@
 *** Settings ***
 Documentation     Sisäänkirjautuminen .env- tiedoston avulla, epäonnistunut
 Library           Browser    auto_closing_level=KEEP
-Variables         login_env.py
+Variables         load_env.py
 
 *** Test Cases ***
 Login Test

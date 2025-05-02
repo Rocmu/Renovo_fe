@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Onnistunut työvuoro, -liikunta, -sairaus ja poikkeusmerkintöjen syöttäminen
+Documentation     Epäonnistunut työvuoro, -liikunta, -sairaus ja poikkeusmerkintöjen syöttäminen
 Library           Browser    auto_closing_level=KEEP
 Library     CryptoLibrary     variable_decryption=True
 

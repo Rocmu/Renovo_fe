@@ -3,7 +3,7 @@ Documentation     Sisäänkirjautuminen huonoilla tunnuksilla käyttöliittymäs
 Library           Browser    auto_closing_level=KEEP
 Library     CryptoLibrary     variable_decryption=True
 
-Variables         login_env.py
+Variables         load_env.py
 
 *** Test Cases ***
 Login Test

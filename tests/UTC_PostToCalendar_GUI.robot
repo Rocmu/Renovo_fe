@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Onnistunut työvuoro, -liikunta, -sairaus ja poikkeusmerkintöjen syöttäminen
+Documentation     Onnistunut työvuoro, -liikunta, -sairaus ja poikkeusmerkintöjen syöttäminen käyttöliittymässä.
 Library           Browser    auto_closing_level=KEEP
 Library     CryptoLibrary     variable_decryption=True
 
@@ -39,7 +39,7 @@ Post a new Shift, Exercise, Sickness and Others entry
     Click With Options    xpath=//button[@id='openExerciseModal' and text()='Lisää liikunta']    delay=0.5 s
 
     #Input exercise data
-    Type Text      //input[@name='exercise_date']        30.04.2025    delay=0.1 s
+    Type Text      //input[@name='exercise_date']        25.05.2025    delay=0.1 s
     Type Text      //input[@name='exercise_type']        Jooga    delay=0.1 s
     Type Text      //input[@id='exercise_start_time']        1330    delay=0.1 s
     Type Text      //input[@id='exercise_end_time']        1430    delay=0.1 s
@@ -51,7 +51,7 @@ Post a new Shift, Exercise, Sickness and Others entry
     Click With Options    xpath=//button[@id='openSicknessModal' and text()='Lisää sairastuminen']    delay=0.5 s
 
     #Input sickness data
-    Type Text      //input[@name='sickness_date']        29.04.2025    delay=0.1 s
+    Type Text      //input[@name='sickness_date']        16.05.2025    delay=0.1 s
     Type Text      //input[@id='sick_description']        Migreeni    delay=0.1 s
     Click With Options    //label[@for='sickness-medium']
     Type Text      //textarea[@id='sicknessTextArea']        OhjelmistotestiGUI    delay=0.1 s
@@ -61,7 +61,7 @@ Post a new Shift, Exercise, Sickness and Others entry
     Click With Options    xpath=//button[@id='openOthersModal' and text()='Muut tapahtumat']    delay=0.5 s
 
     #Input others data
-    Type Text      //input[@name='others_date']        28.04.2025    delay=0.1 s
+    Type Text      //input[@name='others_date']        12.05.2025    delay=0.1 s
     Type Text      //input[@id='other_description']        Migreeni    delay=0.1 s
     Click With Options    //label[@for='others-high']
     Type Text      //textarea[@id='othersTextArea']        OhjelmistotestiGUI    delay=0.1 s

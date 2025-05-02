@@ -10,6 +10,11 @@ const drawChartTen = async (userData) => {
 
 	console.log('UserData 10:', userData);
 
+  if (userData.length == 0) {
+    nullHRVTen();
+    return
+  }
+
 	const readiness = userData.readiness;
 	const rmssd = userData.rmssd;
 	const sns = userData.sns;
@@ -23,6 +28,14 @@ const drawChartTen = async (userData) => {
 
   const resultHeading2 = document.querySelector('.measurement-timespan-2');
   resultHeading2.innerHTML = `Mittaukset ajalta ${labels[0]} - ${labels[labels.length-1]}`;
+
+  if (userData.daily_result == 0) {
+    resultHeading.innerHTML = '';
+    resultHeading.innerHTML = 'Ei tuloksia tältä ajalta';
+
+    resultHeading2.innerHTML = '';
+    resultHeading2.innerHTML = 'Ei tuloksia tältä ajalta';
+  }
 
 	const ctx = document.getElementById('readiness-rmssd-chart');
 
@@ -250,6 +263,14 @@ const drawChartThirty = async (userData) => {
 
   const resultHeading2 = document.querySelector('.measurement-timespan-2');
   resultHeading2.innerHTML = `Mittaukset ajalta ${labels[0]} - ${labels[labels.length-1]}`;
+
+  if (userData.daily_result == 0) {
+    resultHeading.innerHTML = '';
+    resultHeading.innerHTML = 'Ei tuloksia tältä ajalta';
+
+    resultHeading2.innerHTML = '';
+    resultHeading2.innerHTML = 'Ei tuloksia tältä ajalta';
+  }
 
 	const ctx = document.getElementById('readiness-rmssd-chart');
 

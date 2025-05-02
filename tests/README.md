@@ -1,6 +1,55 @@
 # Ohjelmistotestit
 
-## Sisäänkirjautuminen (Päivitetty 17.4.2025)
+Tässä dokumentissa on raportoitu projektiryhmän kevään 2025 suorittamat ohjelmistotestit. Ohessa lukijalle esitellään testausaikataulu, tiedostorakenne, viikoittaiset pakollliset ryhmätestit sekä Renovo sovelluksen käyttötapauksien mukaan rakennetut testit, joilla varmistetaan sovelluksen soveltuvuuden sille asetettuihin vaatimuksiin.
+
+Tämä dokumentaatio löytyy myös projektin Github.io sivulta ---> [Linkki Github.io](https://nappulat.github.io/FeTesting/)
+
+## Aikataulu
+
+- #### Viikko 4: Palautettu projektin repositiori opettajalle ja suoritettu ensimmäinen (tahalleen) epäonnistunut sisäänkirjautumistesti [Testi](login-server-test.robot)
+
+- #### Viikko 5: Tehty projektille sisäänkirjautumistesti. Testattu sisäänkirjautumista sekä onnistuneesti (toimiva tunnus ja salasana) ja niin, että sisäänkirjautuminen epäonnistuu (väärä tunnus ja/tai salasana) Testi 1 [Sisäänkirjautuminen (invalid)](login-invalid-login.robot) Testi 2 [Sisäänkirjautuminen (valid)](login-valid-login.robot)
+
+- ### Viikko 6: Projektin ensimmäiset taustapalvelimen testit [Taustapalvelin-vuorot-haku-syöttö](server-test.robot)
+
+- ### Viikko 7: [Github.io](https://nappulat.github.io/FeTesting/)
+
+- ### Viikko 7-8: Käyttötapaukset ja niihin perustuvat testit. [Dokumentaatio](#testit)
+
+## Rakenne
+
+Projektin testitiedostojen rakenne.
+
+```
+Renovo_fe/
+├── tests/
+│   └── asennustesti.py
+│   └── login-invalid-login.robot
+│   └── login-server-test.robot
+│   └── login-valid-login.robot
+│   └── server-test.robot
+│   └── UTC_DeleteFromCalendar_Server.robot
+│   └── UTC_HRV_failed_Server.robot
+│   └── UTC_HRVMeasurements_GUI.robot
+│   └── UTC_HRVMeasurements_Server.robot
+│   └── UTC_InvalidDeleteFromCalendar_Server.robot
+│   └── UTC_InvalidLogin_GUI.robot
+│   └── UTC_InvalidLogin_Server.robot
+│   └── UTC_InvalidPostToCalendar_GUI.robot
+│   └── UTC_InvalidPostToCalendar_Server.robot
+│   └── UTC_PostToCalendar_GUI.robot
+│   └── UTC_PostToCalendar_Server.robot
+│   └── UTC_ValidLogin_Server.robot
+│   └── requirements.txt
+│   └── README.md
+└── outputs/
+│   └── log.html
+│   └── output.xml
+│   └── report.html
+│   └── README.md
+```
+
+## Sisäänkirjautuminen (Päivitetty 2.5.2025, päivitetty resurssitiedoston nimi)
 
 Taustapalvelimessa suoritettiin sisäänkirjautumis-testi. Testissä syötettiin käyttäjän käyttäjätunnukset, joiden avulla suoritettiin kirjautuminen Kubiokseen. Vastaus tulostettiin konsoliin.
 
@@ -20,7 +69,7 @@ Testeistä suoritettiin yksi epäonnistunut.
 
 Huom! Testiä piti hiukan muuttaa asetusten vuoksi. Env- tiedostosta tulee nyt "huonot" käyttäjätunnukset. Lopputulos sama, eli epäonnistuu.
 
-## Sisäänkirjautuminen (viikko 5)
+## Sisäänkirjautuminen (viikko 5) (Päivitetty 2.5.2025 päivitetty resurssitiedoston nimi ja tunnarit)
 
 Sovellukseen suoritettiin kaksi sisäänkirjautumistestiä, joissa toisesta kirjauduttiin ensin väärillä tunnuksilla (invalid) ja toisessa oikeilla tunnuksilla (valid).
 
@@ -38,7 +87,7 @@ Tulokset:
 - [output.xml](../outputs/output.xml)
 - [report.html](../outputs/report.html)
 
-## Taustapalvelimen testaus (viikko 6)
+## Taustapalvelimen testaus (viikko 6) (Päivitetty 2.5.2025 päivitetty tunnarit)
 
 Sovellukseen suoritettiin taustapalvelimen testaus, jossa haettiin käyttäjän työvuorot, jonka jälkeen syötettiin uusi vuoro.
 
@@ -58,36 +107,7 @@ Tulokset:
 
 Sovelluksen repositio muutettiin julkiseksi, ja sille luotiin Github.io- sivu, josta opettajat pystyvät katsomaan testien raportteja, koodiratkaisuja ja raportteja.
 
-## Rakenne KESKEN!
-
-```
-Renovo_fe/
-├── tests/
-│   └── asennustesti.py
-│   └── login-invalid-login.robot
-│   └── login-server-test.robot
-│   └── login-valid-login.robot
-│   └── server-test.robot
-│   └── UTC_HRV_failed_Server.robot
-│   └── UTC_HRVMeasurements_GUI.robot
-│   └── UTC_HRVMeasurements_Server.robot
-│   └── UTC_InvalidLogin_GUI.robot
-│   └── UTC_InvalidLogin_Server.robot
-│   └── UTC_InvalidPostToCalendar_GUI.robot
-│   └── UTC_InvalidPostToCalendar_Server.robot
-│   └── UTC_PostToCalendar_GUI.robot
-│   └── UTC_PostToCalendar_Server.robot
-│   └── UTC_ValidLogin_Server.robot
-│   └── requirements.txt
-│   └── README.md
-└── outputs/
-│   └── log.html
-│   └── output.xml
-│   └── report.html
-│   └── README.md
-```
-
-## Käyttötapaukset ja niitä vastaavat testit (viikko 7 ja 8) KESKEN!
+## Käyttötapaukset ja niitä vastaavat testit (viikko 7 ja 8) (Päivitetty 2.5.2025)
 
 Viimeiseksi dokumentaatioon on kerätty suoritetut ohjelmistotestit, joissa ollaan testattu sovelluksen kykyä täyttää vaatimusmäärittelyyn luetellut käyttötapaukset. Ensin lukijalle esitellään kaikki käyttötapaukset, joiden pohjalta testit on tehty. Tämän jälkeen esitellään kaikki suunnitellut ohjelmistotestit, niiden tavoitteet, testauksen kohde (UI tai taustapalvelin), sekä onnistumisen kriteerit.
 
@@ -142,23 +162,26 @@ Renovo sovellukselle tehdään testejä, jossa tarkastellaan käyttäjän mittau
 
 #### Kalenteri, merkintöjen poistaminen
 
-- Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen poistamisen jälkeen sovelluksesta kirjaudutaan ulos. [UTC_DeleteFromCalendar_GUI.robot](UTC_DeleteFromCalendar_GUI.robot) (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10) KESKEN!
+- Ei ehditty testata kalenterimerkintöjen poistoa käyttöliittymässä. (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10)
 
 - Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. [UTC_DeleteFromCalendar_Server.robot](UTC_DeleteFromCalendar_Server.robot) (UTC_1, UTC_2 ja UTC_8) (tehty 2.5.2025)
 
-- Kalenterimerkintöjen epäonnistunut poistaminen onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen epäonnistuneen poistamisen jälkeen sovelluksesta kirjaudutaan ulos. (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10)
+- Ei ehditty testata kalenterimerkintöjen epäonnistunutta poistoa käyttöliittymässä. (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10)
 
-- Kalenterimerkintöjen epäonnistunut poistaminen onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (UTC_1, UTC_2 ja UTC_8)
+- Kalenterimerkintöjen epäonnistunut poistaminen onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. [UTC_InvalidDeleteFromCalendar_Server.robot](UTC_DeleteFromCalendar_Server.robot) (UTC_1, UTC_2 ja UTC_8)
 
 #### Testien suoritus:
 - 1. Taustapalvelin ja selain päälle `npm run dev`- komennolla.
 - 2. `source tests/.venv/Scripts/activate` -komennolla virtuaaliympäristö päälle.
 - 3. `robot --outputdir outputs tests/<testin_nimi>`> -komennolla suoritettiin ohjelmistotestit ja ohjattiin tulokset outputs-kansioon.
+- 4. Lopuksi kaikki testit suoritettiin komennolla: `robot --outputdir outputs tests/login-invalid-login.robot tests/login-server-test.robot tests/login-valid-login.robot tests/UTC_ValidLogin_Server.robot tests/UTC_InvalidLogin_GUI.robot tests/UTC_InvalidLogin_Server.robot tests/UTC_HRVMeasurements_GUI.robot tests/UTC_HRVMeasurements_Server.robot tests/UTC_HRV_failed_Server.robot tests/UTC_PostToCalendar_GUI.robot tests/UTC_PostToCalendar_Server.robot tests/UTC_InvalidPostToCalendar_GUI.robot tests/UTC_InvalidPostToCalendar_Server.robot tests/UTC_DeleteFromCalendar_Server.robot tests/UTC_InvalidDeleteFromCalendar_Server.robot tests/server-test.robot`
 
-## Lokit, tulostukset ja raportit
+## Yhteenveto, lokit, tulostukset ja raportit
+
+Kaiken kaikkiaan 31 testiä, 29 onnistuu.
+
+2 Epäonnistuvaa ovat ensimmäisiltä viikoilta 4 ([login-server-test.robot](login-server-test.robot)) ja 5 ([login-server-test.robot](login-server-test.robot)). Nämä on jätetty epäonnistuneiksi dokumentaatiota varten.
 
 #### Lokit ---> [log.html](../outputs/log.html)
 #### Raportit ---> [report.html](../outputs/report.html)
 #### Tulostukset ---> [output.xml](../outputs/output.xml)
-
-

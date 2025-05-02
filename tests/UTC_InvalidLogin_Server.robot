@@ -2,7 +2,7 @@
 Documentation     Sisäänkirjautuminen huonoilla tunnuksilla taustapalvelimessa.
 Library    Collections
 Library    RequestsLibrary
-Variables  login_env.py
+Variables  load_env.py
 
 *** Test Cases ***
 
