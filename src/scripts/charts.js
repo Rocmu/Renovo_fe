@@ -10,11 +10,6 @@ const drawChartTen = async (userData) => {
 
 	console.log('UserData 10:', userData);
 
-  if (userData.length == 0) {
-    nullHRVTen();
-    return
-  }
-
 	const readiness = userData.readiness;
 	const rmssd = userData.rmssd;
 	const sns = userData.sns;
