@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Onnistunut sisäänkirjautuminen ja kalenterimerkintöjen poistaminen taustapalvelimessa.
+Documentation     Onnistunut sisäänkirjautuminen ja kalenterimerkintöjen epäonnistunut poistaminen taustapalvelimessa.
 Library    Collections
 Library    RequestsLibrary
 Library     CryptoLibrary     variable_decryption=True
@@ -31,28 +31,24 @@ Authenticate as Regular
 Delete a Shift Record
 
     ${header}    Create Dictionary    Authorization=Bearer ${token}
-    ${response}    DELETE    http://localhost:3000/api/shifts/2   headers=${header}
-    Status Should Be    200
-    Should Contain    ${response.json()}[message]    Shift deleted
+    ${response}    DELETE    http://localhost:3000/api/shifts/2   headers=${header}    expected_status=404
+    Should Contain    ${response.json()}[message]    Shift not found
 
 Delete an Exercise Record
 
     ${header}    Create Dictionary    Authorization=Bearer ${token}
-    ${response}    DELETE    http://localhost:3000/api/exercise/2   headers=${header}
-    Status Should Be    200
-    Should Contain    ${response.json()}[message]    Exercise deleted
+    ${response}    DELETE    http://localhost:3000/api/exercise/2   headers=${header}    expected_status=404
+    Should Contain    ${response.json()}[message]    Exercise not found
 
 Delete a Sickness Record
 
     ${header}    Create Dictionary    Authorization=Bearer ${token}
-    ${response}    DELETE    http://localhost:3000/api/sickness/2   headers=${header}
-    Status Should Be    200
-    Should Contain    ${response.json()}[message]    Sickness record deleted
+    ${response}    DELETE    http://localhost:3000/api/sickness/2   headers=${header}    expected_status=404
+    Should Contain    ${response.json()}[message]    Sickness record not found
 
 
 Delete an Others Record
 
     ${header}    Create Dictionary    Authorization=Bearer ${token}
-    ${response}    DELETE    http://localhost:3000/api/others/2   headers=${header}
-    Status Should Be    200
-    Should Contain    ${response.json()}[message]    Others record deleted
+    ${response}    DELETE    http://localhost:3000/api/others/2   headers=${header}    expected_status=404
+    Should Contain    ${response.json()}[message]    Others record not found

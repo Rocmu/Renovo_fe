@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Onnistunut sisäänkirjautuminen ja kalenterimerkintöjen syöttö taustapalvelimessa.
+Documentation     Onnistunut sisäänkirjautuminen ja työvuoro, -liikunta, -sairaus ja poikkeusmerkintöjen syöttö taustapalvelimessa.
 Library    Collections
 Library    RequestsLibrary
 Library     CryptoLibrary     variable_decryption=True

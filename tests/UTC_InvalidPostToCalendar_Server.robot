@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation     Onnistunut sisäänkirjautuminen ja epäonnistunut kalenterimerkintöjen syöttö taustapalvelimessa.
+Documentation     Epäonnistunut sisäänkirjautuminen ja epäonnistunut kalenterimerkintöjen syöttö taustapalvelimessa.
 Library    Collections
 Library    RequestsLibrary
 Library     CryptoLibrary     variable_decryption=True
