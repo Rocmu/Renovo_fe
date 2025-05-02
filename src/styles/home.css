@@ -46,11 +46,11 @@ main {
   background-size: cover;
   background-position: center;
   margin-top: 2em;
-  color: var(--white-color);
+  color: var(--blue-color);
 }
 
 #home-welcome h1 {
-  color: var(--white-color);
+  color: var(--blue-color);
   margin-left: 20px;
   font-size: 2.5em;
 }

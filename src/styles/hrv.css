@@ -28,7 +28,11 @@ body {
   background-image: url("/img/mountains.png");
   background-size: cover;
   background-position: center;
-  color: var(--white-color);
+  color: var(--blue-color);
+}
+
+.hrv-results-container-header h2, .hrv-results-container-header p, .hrv-results-container-header div {
+  margin-left: 20px;
 }
 
 .hrv-results-container-header h2, .hrv-results-container-header p, .hrv-results-container-header div {

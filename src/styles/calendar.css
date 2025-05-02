@@ -35,7 +35,11 @@ body {
   background-image: url("/img/mountains.png");
   background-size: cover;
   background-position: center;
-  color: var(--white-color);
+  color: var(--blue-color);
+}
+
+.calendar-title, .calendar-description, .calendar-buttons {
+  margin-left: 20px;
 }
 
 .calendar-title, .calendar-description, .calendar-buttons {
