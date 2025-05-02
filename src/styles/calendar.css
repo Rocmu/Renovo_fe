@@ -58,6 +58,7 @@ body {
   margin-bottom: 0.9rem;
   max-width: 700px;
   font-size: 1.17em;
+  color: var(--white-color);
 }
 
 .calendar-description b {

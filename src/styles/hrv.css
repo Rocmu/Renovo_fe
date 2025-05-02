@@ -28,11 +28,7 @@ body {
   background-image: url("/img/mountains.png");
   background-size: cover;
   background-position: center;
-  color: var(--blue-color);
-}
-
-.hrv-results-container-header h2, .hrv-results-container-header p, .hrv-results-container-header div {
-  margin-left: 20px;
+  color: var(--white-color);
 }
 
 .hrv-results-container-header h2, .hrv-results-container-header p, .hrv-results-container-header div {
@@ -108,7 +104,6 @@ button#canvas-one-text-boxes, button#canvas-two-text-boxes {
   margin-top: 1em;
   background-color: var(--blue-color);
   color: var(--white-color);
-  margin-left: 20px;
 }
 
 button#canvas-one-text-boxes:hover, button#canvas-two-text-boxes:hover {
@@ -128,7 +123,6 @@ button#canvas-one-text-boxes:hover, button#canvas-two-text-boxes:hover {
 
 .hrv-canvas-heading {
   width: 100%;
-  margin-left: 20px;
 }
 
 h2.measurement-timespan {
