@@ -25,15 +25,19 @@ body {
 }
 
 .hrv-results-container-header {
-
+  background-image: url("/img/mountains.png");
   background-size: cover;
   background-position: center;
-  color: var(--blue-color);
+  color: var(--white-color);
+}
+
+.hrv-results-container-header h2, .hrv-results-container-header p, .hrv-results-container-header div {
+  margin-left: 20px;
 }
 
 .hrv-results-container-header h2 {
-  color: var(--blue-color);
-  font-size: 1.8rem;
+  color: var(--white-color);
+  font-size: 2rem;
 }
 
 .hrv-results-container-content, .hrv-user-feedback h2 {
@@ -44,8 +48,22 @@ body {
   color: var(--white-color);
 }
 
+.hrv-buttons {
+  margin-top: 30px;
+}
+
 .hrv-results-container-header p, .feedback-buttons, .container-footer-info-link p {
   max-width: 700px;
+  font-size: 1.17em;
+
+}
+
+.feedback-buttons {
+  margin-left: 20px;
+}
+
+.container-footer-info-link a, .info-link-box-text {
+  margin-left: 20px;
 }
 
 button#print-hrv-ten-days,
@@ -73,6 +91,7 @@ input#post-feedback {
 button#print-hrv-ten-days, button#open-feedback-form, button#view-prev-feedback {
   background-color: var(--blue-color);
   color: var(--white-color);
+  margin-right: 20px;
 }
 
 button#print-hrv-ten-days:hover, button#print-hrv-thirty-days:hover, button#open-feedback-form:hover, button#view-prev-feedback:hover, input#post-feedback:hover {

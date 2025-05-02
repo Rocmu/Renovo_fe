@@ -79,18 +79,17 @@ header {
   color: var(--white-color);
   display: flex;
   align-items: center;
-  padding: 8px 20px;
+  padding: 6px 20px;
   gap: 25px;
 }
 
 .nav-bar a {
   color: var(--white-color);
   text-decoration: none;
-  font-size: 2.1vh;
+  font-size: 2.2vh;
   cursor: pointer;
   display: block;
   padding: 0.5em;
-  letter-spacing: 1px;
 }
 
 .nav-bar a:hover {

@@ -32,23 +32,38 @@ body {
 }
 
 .calendar-header {
-
+  background-image: url("/img/mountains.png");
   background-size: cover;
   background-position: center;
   color: var(--blue-color);
 }
 
+.calendar-title, .calendar-description, .calendar-buttons {
+  margin-left: 20px;
+}
+
+.calendar-title, .calendar-description, .calendar-buttons {
+  margin-left: 20px;
+}
+
 .calendar-title {
   font-family: var(--font-family);
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--blue-color);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--white-color);
   margin-bottom: 0.3rem;
 }
 
 .calendar-description {
   margin-bottom: 0.9rem;
   max-width: 700px;
+  font-size: 1.17em;
+  color: var(--white-color);
+}
+
+.calendar-description b {
+  font-weight: normal;
+  font-size: 0.8em;
 }
 
 .calendar-buttons {
@@ -56,7 +71,6 @@ body {
   display: flex;
   gap: 1.25rem;
   justify-content: flex-start;
-  margin-bottom: 1.25rem;
 }
 
 .calendar-buttons button {
@@ -65,7 +79,7 @@ body {
   background-color: var(--blue-color);
   color: var(--white-color);
   border-radius: 30px;
-  border-color: var(--white-color);
+  border-style: none;
   font-size: 2.1vh;
   cursor: pointer;
 }

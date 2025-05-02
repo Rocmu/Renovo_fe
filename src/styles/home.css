@@ -42,7 +42,7 @@ main {
 }
 
 #home-welcome {
-
+  background-image: url("/img/mountains.png");
   background-size: cover;
   background-position: center;
   margin-top: 2em;
@@ -50,7 +50,7 @@ main {
 }
 
 #home-welcome h1 {
-  color: var(--blue-color);
+  color: var(--white-color);
   margin-left: 20px;
   font-size: 2.5em;
 }
@@ -58,6 +58,9 @@ main {
 #home-welcome h3 {
   max-width: 600px;
   font-weight: normal;
+  margin-bottom: 30px;
+  margin-top: 0;
+  color: var(--white-color);
 }
 
 #home-calendar, #home-results, #home-info, #home-problem {
@@ -71,7 +74,7 @@ main {
 
 .home-div h2 {
   color: var(--blue-color);
-  font-size: 1.8rem;
+  font-size: 2rem;
   }
 
 .home-div h2, .home-div h4, a.home-button, #home-welcome h3 {
@@ -81,6 +84,7 @@ main {
 .home-div h4 {
   font-size: 18px;
   font-weight: 100;
+  padding-bottom: 30px;
 }
 
 .home-button {
