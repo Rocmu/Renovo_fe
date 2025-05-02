@@ -22,6 +22,31 @@ body {
   margin-top: 2em;
 }
 
+.header-box {
+  width: 100%;
+  box-shadow: 10px 10px 5px #CCCCCC;
+  border-radius: 1rem;
+  padding: 1em;
+  background-image: url("/img/mountains.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--white-color);
+}
+
+.header-box h1, p {
+  margin-left: 20px;
+  max-width: 700px;
+}
+
+.header-box h1 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header-box p {
+  font-size: 1.17em;
+}
+
 .text-box {
   width: 100%;
   box-shadow: 10px 10px 5px #CCCCCC;
@@ -34,11 +59,14 @@ body {
 .text-box h2, h3 {
   color: var(--blue-color);
   margin-left: 20px;
+  font-size: 1.5em;
+
 }
 
 .text-box p {
   max-width: 85%;
   margin-left: 20px;
+  font-size: 1.17em;
 }
 
 ol {
@@ -50,6 +78,7 @@ li {
   margin-bottom: 10px;
   max-width: 85%;
   color: var(--blue-color);
+  font-size: 1.17em;
 }
 
 @media only screen and (max-width: 550px) {

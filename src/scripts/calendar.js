@@ -120,6 +120,11 @@ document.addEventListener('DOMContentLoaded', function () {
         successCallback(events);
       } catch (error) {
         console.error('Error fetching events:', error);
+        if (error == 'jwt expired') {
+          localStorage.clear();
+          location.href='index.html';
+          return
+        }
         failureCallback(error);
       }
     },
@@ -334,6 +339,11 @@ document.addEventListener('DOMContentLoaded', function () {
           });
 
           if (!response.ok) {
+            if (response.status == 403) {
+              localStorage.clear();
+              location.href='index.html';
+              return
+            }
             throw new Error(`HTTP error! status: ${response.status}`);
           }
 
@@ -398,6 +408,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const response = await fetchData(url, options);
 
       if (response.error) {
+        if (response.error == 'jwt expired') {
+          localStorage.clear();
+          location.href='index.html';
+          return
+        }
         throw new Error(response.error);
       }
 
@@ -407,6 +422,11 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (error) {
       console.error(`Error saving ${type}:`, error);
       alert(`Virhe tallennettaessa ${type}: ${error.message}`);
+      if (error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
     }
   }
 
@@ -454,6 +474,12 @@ document.addEventListener('DOMContentLoaded', function () {
         body: JSON.stringify(updatedShift)
       });
 
+      if (response.error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
+
       if (response.error) throw new Error(response.error);
 
       // UPDATE SHIFT IN CALENDAR
@@ -468,6 +494,11 @@ document.addEventListener('DOMContentLoaded', function () {
       showToast('Työvuoro päivitetty!');
       closeModal('editShiftModal');
     } catch (error) {
+      if (error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
       console.error('Virhe työvuoron päivityksessä:', error);
       showToast('Virhe päivitettäessä työvuoroa: ' + error.message);
     }
@@ -489,6 +520,12 @@ document.addEventListener('DOMContentLoaded', function () {
           'Authorization': `Bearer ${token}`
         }
       });
+
+      if (response.error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
 
       if (response.error) throw new Error(response.error);
 
@@ -594,6 +631,11 @@ document.addEventListener('DOMContentLoaded', function () {
       closeModal('editModal');
       calendar.refetchEvents();
     } catch (error) {
+      if (error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
       alert('Virhe päivitettäessä tapahtumaa: ' + error.message);
     }
   });
@@ -629,6 +671,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const response = await fetchData(urlMap[type], options);
 
+      if (response.error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
+
       if (response.error) throw new Error(response.error);
 
       alert('Tapahtuma poistettu!');
@@ -645,14 +693,12 @@ document.addEventListener('DOMContentLoaded', function () {
     const button = document.querySelector('#event-instructions');
 
     if (info.style.display === 'flex') {
-      // Suljetaan animaatiolla
       info.style.animation = 'disappear 1s ease-out forwards';
       button.textContent = 'Lisätietoa tapahtumien tallennuksesta';
       setTimeout(() => {
         info.style.display = 'none';
-      }, 1000); // Odotetaan että animaatio ehtii loppua
+      }, 1000);
     } else {
-      // Avataan animaatiolla
       info.style.display = 'flex';
       info.style.animation = 'appear 1s ease-out forwards';
       button.textContent = 'Piilota lisätiedot';
@@ -668,10 +714,4 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById(modalId).style.display = 'none';
   };
 
-  // CLICK OUTSIDE MODAL TO CLOSE
-  window.onclick = function (event) {
-    if (event.target.classList.contains('calendar-modal')) {
-      closeModal(event.target.id);
-    }
-  };
 });
