@@ -74,6 +74,7 @@ Renovo_fe/
 │   └── UTC_InvalidLogin_GUI.robot
 │   └── UTC_InvalidLogin_Server.robot
 │   └── UTC_InvalidPostToCalendar_GUI.robot
+│   └── UTC_InvalidPostToCalendar_Server.robot
 │   └── UTC_PostToCalendar_GUI.robot
 │   └── UTC_PostToCalendar_Server.robot
 │   └── UTC_ValidLogin_Server.robot
@@ -135,15 +136,15 @@ Renovo sovellukselle tehdään testejä, jossa tarkastellaan käyttäjän mittau
 
 - Kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa [UTC_PostToCalendar_Server.robot](UTC_PostToCalendar_Server.robot) (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7) (tehty 02.05.2025)
 
-- Kalenterimerkintöjen epäonnistunut syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttämisen jälkeen sovelluksesta kirjaudutaan ulos. Syöttökentässä on "required" HTML- koodissa, eikä pyyntö suostu lähtemään, mikäli kenttä on tyhjä.Siksi testissä painetaan "Tallenna" napin sijasta "Sulje" -nappia. [UTC_InvalidPostToCalendar_GUI.robot](UTC_InvalidPostToCalendar_GUI.robot) (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10) (tehty 2.5.2025)
+- Kalenterimerkintöjen epäonnistunut syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen syöttöyrityksen jälkeen sovelluksesta kirjaudutaan ulos. Syöttökentässä on "required" HTML- koodissa, eikä pyyntö suostu lähtemään, mikäli kenttä on tyhjä.Siksi testissä painetaan "Tallenna" napin sijasta "Sulje" -nappia. [UTC_InvalidPostToCalendar_GUI.robot](UTC_InvalidPostToCalendar_GUI.robot) (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7 ja UTC_10) (tehty 2.5.2025)
 
-- Virheellinen kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7)
+- Virheellinen kalenterimerkintöjen syöttäminen kalenteriin onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. [UTC_InvalidPostToCalendar_Server.robot](UTC_InvalidPostToCalendar_Server.robot)(Käyttötapaukset UTC_1, UTC_2, UTC_4, UTC_5, UTC_6, UTC_7) (tehty 2.5.2025)
 
 #### Kalenteri, merkintöjen poistaminen
 
-- Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen poistamisen jälkeen sovelluksesta kirjaudutaan ulos. (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10)
+- Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen poistamisen jälkeen sovelluksesta kirjaudutaan ulos. [UTC_DeleteFromCalendar_GUI.robot](UTC_DeleteFromCalendar_GUI.robot) (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10) KESKEN!
 
-- Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. (UTC_1, UTC_2 ja UTC_8)
+- Kalenterimerkintöjen poistaminen onnistuneen sisäänkirjautumisen jälkeen taustapalvelimessa. [UTC_DeleteFromCalendar_Server.robot](UTC_DeleteFromCalendar_Server.robot) (UTC_1, UTC_2 ja UTC_8) (tehty 2.5.2025)
 
 - Kalenterimerkintöjen epäonnistunut poistaminen onnistuneen sisäänkirjautumisen jälkeen käyttöliittymässä. Merkintöjen epäonnistuneen poistamisen jälkeen sovelluksesta kirjaudutaan ulos. (UTC_1, UTC_2, UTC_8, UTC_9 ja UTC_10)
 
