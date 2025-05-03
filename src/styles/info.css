@@ -33,12 +33,12 @@ body {
   color: var(--white-color);
 }
 
-.header-box h1, p {
+.header-box h2, p:not(#backTopBtn p) {
   margin-left: 20px;
   max-width: 700px;
 }
 
-.header-box h1 {
+.header-box h2 {
   font-size: 2rem;
   font-weight: bold;
 }
@@ -59,8 +59,15 @@ body {
 .text-box h2, h3 {
   color: var(--blue-color);
   margin-left: 20px;
-  font-size: 1.5em;
+}
 
+.text-box h2 {
+  font-size: 1.5em;
+}
+
+.text-box h3 {
+  font-size: 1.17em;
+  font-weight: bold;
 }
 
 .text-box p {

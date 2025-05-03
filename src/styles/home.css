@@ -82,7 +82,7 @@ main {
 }
 
 .home-div h4 {
-  font-size: 18px;
+  font-size: 1.17em;
   font-weight: 100;
   padding-bottom: 30px;
 }
@@ -99,11 +99,15 @@ main {
   font-size: 2.1vh;
   text-decoration: none;
   max-width: 250px;
-  }
+}
 
-  .home-button:hover {
-    background-color: var(--hover-color);
-    color: var(--white-color);
+.home-button:not(#home-calendar .home-button) {
+  margin-top: 25px;
+}
+
+.home-button:hover {
+  background-color: var(--hover-color);
+  color: var(--white-color);
 }
 
 img {

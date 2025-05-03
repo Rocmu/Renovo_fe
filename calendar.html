@@ -35,7 +35,7 @@
     <a href="home.html">Etusivu</a>
     <a href="calendar.html">Kalenteri</a>
     <a href="hrv.html">Tulokset</a>
-    <a href="info.html">HRV-info</a>
+    <a href="info.html">Info</a>
   </div>
 
   <!-- Mobiili Navigaatio -->
@@ -44,7 +44,7 @@
         <li><a href="home.html">Etusivu</a></li>
         <li><a href="calendar.html">Kalenteri</a></li>
         <li><a href="hrv.html">Tulokset</a></li>
-        <li><a href="info.html">HRV-info</a></li>
+        <li><a href="info.html">Info</a></li>
     </ul>
   </div>
 
@@ -114,9 +114,11 @@
         <span class="calendar-modal-close" id="shiftCloseX" onclick="closeModal('shiftModal')">&times;</span>
         <h2>Työvuorojen lisääminen</h2>
         <p>Täytä alle työvuorojen alkamis- ja päättymisajat. Jätä vapaapäivät tyhjiksi.</p>
+        <p>HUOM! Jos työvuoro loppuu seuraavan vuorokauden puolella merkitse loppumisajankohta normaalisti.
+           Älä merkitse loppumisaikaa seuraavan päivän sarakkeeseen, sovellus tunnistaa automaattisesti vuorokaudenylityksen.</p>
         <form id="shiftForm">
           <div class="form-shift-table">
-            <div class="form-shift-header"><span>Vuoron alkamis aika:</span><span>Vuoron päättymis aika:</span></div>
+            <div class="form-shift-header"><span>Vuoron aloitus:</span><span>Vuoron lopetus:</span></div>
           </div>
           <div class="calendar-modal-actions">
             <button type="submit">Tallenna</button>
@@ -131,12 +133,13 @@
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" id="exerciseCloseX" onclick="closeModal('exerciseModal')">&times;</span>
         <h2>Lisää liikunta</h2>
+        <p>*Pakolliset</p>
         <form id="exerciseForm">
-          <label>Päivämäärä: <input type="date" name="exercise_date" required></label>
-          <label>Liikuntatyyppi: <input type="text" name="exercise_type" required></label>
-          <label>Alkaa: <input type="time" name="start_time" id="exercise_start_time" required></label>
-          <label>Päättyy: <input type="time" name="end_time" id="exercise_end_time" required></label>
-          <label>Taso:
+          <label>*Päivämäärä: <input type="date" name="exercise_date" required></label>
+          <label>*Liikuntatyyppi: <input type="text" name="exercise_type" required></label>
+          <label>*Alkaa: <input type="time" name="start_time" id="exercise_start_time" required></label>
+          <label>*Päättyy: <input type="time" name="end_time" id="exercise_end_time" required></label>
+          <label>*Taso:
             <div class="emoji-rating">
               <input type="radio" id="exercise-low" name="level" value="Low" required>
               <label for="exercise-low">😊</label>
@@ -160,10 +163,11 @@
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" id="sicknessCloseX" onclick="closeModal('sicknessModal')">&times;</span>
         <h2>Lisää sairastuminen</h2>
+        <p>*Pakolliset</p>
         <form id="sicknessForm">
-          <label>Päivämäärä: <input type="date" name="sickness_date" required></label>
-          <label>Kuvaus: <input type="text" name="description" id="sick_description" required></label>
-          <label>Vaikutus:
+          <label>*Päivämäärä: <input type="date" name="sickness_date" required></label>
+          <label>*Kuvaus: <input type="text" name="description" id="sick_description" required></label>
+          <label>*Vaikutus:
             <div class="emoji-rating">
               <input type="radio" id="sickness-low" name="impact" value="Low" required>
               <label for="sickness-low">😊</label>
@@ -187,10 +191,11 @@
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" id="othersCloseX" onclick="closeModal('othersModal')">&times;</span>
         <h2>Muu tapahtuma</h2>
+        <p>*Pakolliset</p>
         <form id="othersForm">
-          <label>Päivämäärä: <input type="date" name="others_date" required></label>
-          <label>Kuvaus: <input type="text" name="description" id="other_description" required></label>
-          <label>Intensiteetti:
+          <label>*Päivämäärä: <input type="date" name="others_date" required></label>
+          <label>*Kuvaus: <input type="text" name="description" id="other_description" required></label>
+          <label>*Intensiteetti:
             <div class="emoji-rating">
               <input type="radio" id="others-low" name="intensity" value="Low" required>
               <label for="others-low">😊</label>
@@ -260,6 +265,6 @@
     <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script type="module" src="/src/scripts/main.js"></script>
-    <script type="module" src="/src/scripts/calendar.js"></script>
+    <script type="module" src="/src/scripts/calendar-core.js"></script>
   </body>
 </html>

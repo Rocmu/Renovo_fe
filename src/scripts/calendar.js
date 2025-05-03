@@ -26,6 +26,10 @@ document.addEventListener('DOMContentLoaded', function () {
     },
     titleFormat: { year: 'numeric', month: 'long' },
 
+    eventClassNames: function(arg) {
+      return arg.event.extendedProps.type + '-event';
+    },
+
     // FETCH EVENTS ASYNCHRONOUSLY
     events: async function (fetchInfo, successCallback, failureCallback) {
       try {
@@ -70,12 +74,11 @@ document.addEventListener('DOMContentLoaded', function () {
             title: 'Työvuoro',
             start: `${shift.start_date.slice(0, 10)}T${shift.start_time.slice(0, 10)}`,
             end: `${shift.end_date.slice(0, 10)}T${shift.end_time.slice(0, 10)}`,
-            backgroundColor: '#0044cc',
-            textColor: 'white',
             className: ['shift-event'],
             extendedProps: {
               type: 'shift',
               _id: shift.shift_id || shift.id,
+              is_night_shift: shift.is_night_shift
             },
           })),
           // EXERCISE EVENTS
@@ -201,24 +204,37 @@ document.addEventListener('DOMContentLoaded', function () {
 
     // CUSTOM EVENT RENDERING
     eventContent: function(arg) {
+      const { event } = arg;
+      const props = event.extendedProps;
+
+      // Työvuoroille erityinen renderöinti
+      if (props.type === 'shift') {
+        const startTime = event.start ? event.start.toLocaleTimeString('fi-FI', {hour: '2-digit', minute:'2-digit'}) : '';
+        const endTime = event.end ? event.end.toLocaleTimeString('fi-FI', {hour: '2-digit', minute:'2-digit'}) : '';
+
+        return {
+          html: `
+            <div class="custom-shift-event">
+              <div class="shift-time">${startTime} - ${endTime}</div>
+            </div>
+          `,
+        };
+      }
+
+      // Muille tapahtumatyypeille
       const iconMap = {
-        exercise: '🏃‍♂️',
+        exercise: '🏋️',
         sickness: '🤒',
         others: '📌'
       };
 
-      const type = arg.event.extendedProps.type;
-
-      if (arg.event.extendedProps.type === 'shift') {
-        return {
-          html: `<div class="custom-shift-event"
-                    style="width:95%; margin:0 auto; background:#0044cc; color:white">
-                  ${arg.event.title}
-                </div>`
-        };
-      }
       return {
-        html: `<div title="${arg.event.title}">${iconMap[type] || '❔'}</div>`
+        html: `
+          <div class="event-container">
+            <span class="event-icon">${iconMap[props.type] || '❔'}</span>
+            <span class="event-text">${event.title}</span>
+          </div>
+        `
       };
     }
   });

@@ -1,5 +1,3 @@
-
-/* Perusasettelut */
 body {
   font-family: var(--font-family);
   background-color: var(--grey-color);
@@ -36,10 +34,6 @@ body {
   background-size: cover;
   background-position: center;
   color: var(--blue-color);
-}
-
-.calendar-title, .calendar-description, .calendar-buttons {
-  margin-left: 20px;
 }
 
 .calendar-title, .calendar-description, .calendar-buttons {
@@ -169,13 +163,17 @@ body {
   border-color: var(--blue-color);
 }
 
+/* Päiväsolun kontti */
 .fc .fc-daygrid-day {
-  border: 1px solid  #e9ecef;
+  height: 100px !important; /* Kiinteä korkeus */
+  min-height: 0 !important;
 }
 
+/* Sisäinen kehys */
 .fc .fc-daygrid-day-frame {
-  min-height: 100px;
-  padding: 0.2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .fc .fc-daygrid-day-top {
@@ -197,33 +195,51 @@ body {
   color: var(--blue-color);
 }
 
-.fc-event {
-  font-size: 0.8rem;
-  padding: 0.125rem 0.25rem;
-  margin: 0.125rem 0;
-  border-radius: 3px;
+.event-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+/* Tapahtumien säiliö */
+.fc .fc-daygrid-day-events {
+  margin-top: auto; /* Työntää alareunaan */
+  flex-shrink: 0; /* Estää kutistumisen */
+}
+
+/* Työvuorojen spesifiset tyylit */
+.fc .shift-event {
+  max-width: 40%;
+  margin: 2px auto !important;
+}
+
+/* Mukautetut työvuoro-elementit */
+.custom-shift-event {
+  color: white;
+  background-color: grey;
+  margin-top: auto; /* Työntää alareunaan */
+  flex-shrink: 0;
+}
+
+.shift-time {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* muut tapahtumat */
+.fc .exercise-event, .sickness-event, .others-event {
+  position: static;
+  margin-top: 2px;
+  background: none;
   border: none;
-  cursor: pointer;
 }
 
-.fc-event:hover {
-  opacity: 0.9;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-.fc-event.exercise-event {
-  background-color: rgba(40, 167, 69, 0.15);
-  color: #28a745;
-}
-
-.fc-event.sickness-event {
-  background-color: rgba(220, 53, 69, 0.15);
-  color: #dc3545;
-}
-
-.fc-event.others-event {
-  background-color: rgba(255, 193, 7, 0.15);
-  color: #d39e00;
+.event-icon {
+  font-size: 1.2em;
+  margin-right: 3px;
+  display: inline-block;
 }
 
 .calendar-modal {
@@ -250,6 +266,11 @@ body {
   overflow-y: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
+}
+
+.calendar-modal-content p:not(#shiftModal p) {
+  font-size: 0.9rem;
+  color: #888888;
 }
 
 .calendar-modal-close {
@@ -317,9 +338,15 @@ body {
 
 .form-shift-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 140px;
   font-weight: 600;
   margin-bottom: 0.94rem;
+}
+
+.calendar-modal-content p:nth-of-type(2) {
+  font-size: 0.9rem;
+  color: #888888;
 }
 
 .form-row {
@@ -405,11 +432,12 @@ body {
 }
 
 .calendar-modal-actions button:last-child {
-  color: var(--text-color);
+  color: var(--white-color);
+  background-color: rgb(86, 86, 86);
 }
 
 .calendar-modal-actions button:last-child:hover {
-  background-color: #d1d7dc;
+  background-color: grey;
 }
 
 .calendar-view button {
@@ -448,19 +476,7 @@ button#event-instructions:hover {
   padding: 0 1em 1em 1em;
   min-width: 0;
 }
-/*
-TÄSSÄ NE PRKL:N TYÖVUORO PALKIT!
-*/
-.fc-event.shift-event {
-  width: 40% !important;
-  margin-left: auto !important;
-  margin-right: auto !important;
-}
 
-.fc-daygrid-day-frame {
-  padding-left: 5px !important;
-  padding-right: 5px !important;
-}
 
 @keyframes appear{
   from {
