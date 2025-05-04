@@ -165,7 +165,7 @@ body {
 
 /* Daycell container */
 .fc .fc-daygrid-day {
-  height: 100px !important; /* Kiinteä korkeus */
+  height: 100px !important;
   min-height: 0 !important;
 }
 
@@ -213,19 +213,26 @@ body {
 .fc .shift-event {
   /*max-width: 40%;*/
   margin: 7px auto !important;
+  background: none;
+  border-style: none;
 }
 
 /* Customized shift elements */
 .custom-shift-event {
-  color: white;
-  background-color: grey;
+  color:  var(--white-color);
+  background-color: var(--blue-color);
   margin-top: auto; /* Push to bottom */
   flex-shrink: 0;
-  width: 100%;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 80%;
 }
 
 #night-shift {
   background-color: var(--blue-color);
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 5px;
 }
 
 .shift-time {
@@ -239,7 +246,6 @@ body {
   margin-top: 2px;
   margin-left: 4px;
   width: 100%;
-  background: none;
   border: none;
   background-color: var(--grey-color);
   color: var(--white-color);
