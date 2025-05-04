@@ -23,13 +23,14 @@ main {
 
 }
 
+
 .home-div {
   display: flex;
   flex-direction: column;
-  justify-content: left;
+  /*justify-content: left;
   width: 60%;
   max-height: 350px;
-
+  */
 }
 
 #home-welcome, #home-calendar, #home-results, #home-info, #home-problem {
@@ -66,12 +67,12 @@ main {
 #home-calendar, #home-results, #home-info, #home-problem {
   align-items: center;
 }
-
+/*
 .home-div {
   display: flex;
   flex-wrap: wrap;
 }
-
+*/
 .home-div h2 {
   color: var(--blue-color);
   font-size: 2rem;
