@@ -565,6 +565,11 @@ footer {
 /* Responsiivisuus */
 
 @media (max-width: 992px) {
+
+  .calendar-buttons button, button#event-instructions {
+    padding: 0.5em 1em 0.5em 1em;
+  }
+
   .fc .fc-toolbar {
     flex-direction: column;
     align-items: flex-start;
@@ -588,6 +593,17 @@ footer {
     width: 95%;
     margin: auto;
   }
+
+  div.calendar-info {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+
+  #log-out-user img {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -596,6 +612,28 @@ footer {
     border-radius: 0;
     margin: 0;
     padding: 15px;
+  }
+
+  div.calendar-buttons {
+    flex-direction: column;
+  }
+
+  .calendar-header {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .calendar-header::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-color: var(--blue-color);
+    opacity: 0.5;
+  }
+
+  .calendar-buttons button {
+    padding: 1em 2em 1em 2em;
   }
 
   .fc .fc-daygrid-day-frame {
@@ -622,18 +660,27 @@ footer {
     margin: auto;
   }
 
-  div.calendar-buttons button {
-    font-size: 12px;
+  div.calendar-buttons button, button#event-instructions  {
+    font-size: 3vw;
   }
-}
 
-/* Varmista, että kuukausinäkymä on oletusarvoisesti käytössä */
+  /* Varmista, että kuukausinäkymä on oletusarvoisesti käytössä */
 .fc .fc-dayGridMonth-button.fc-button-active {
   background-color: var(--blue-color) !important;
   color: var(--white-color) !important;
 }
 
+div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
+  height: 650px;
+}
+
+}
+
 @media (max-width: 550px) {
+
+  div.calendar-buttons {
+    margin-left: 0;
+  }
 
   .calendar-title {
     margin-left: 0;
@@ -645,15 +692,16 @@ footer {
     font-size: 4vw;
   }
 
-  .calendar-container {
+  .calendar-container, button#event-instructions {
     width: 95%;
     max-width: 95%;
     padding: 0;
     margin: auto;
   }
 
-  div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
-    height: 500px;
+  button#event-instructions {
+    padding: 1em 2em 1em 2em;
+    margin-top: 1em;
   }
 
   thead, .fc .fc-daygrid-day-number {
@@ -664,11 +712,7 @@ footer {
     margin-top: 2em;
   }
 
-  div.calendar-buttons {
-    flex-direction: column;
-  }
-
-  div.calendar-buttons button {
+  div.calendar-buttons button, button#event-instructions {
     font-size: 3vw;
   }
 
@@ -724,6 +768,10 @@ footer {
   div.emoji-rating label[for="others-medium"],
   div.emoji-rating label[for="others-high"] {
     font-size: 10vw;
+  }
+
+  .calendar-info div {
+    font-size: 4vw;
   }
 
 }

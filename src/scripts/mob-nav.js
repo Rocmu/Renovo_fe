@@ -3,11 +3,9 @@ function mobNav () {
     const hideMobNavBtn = document.querySelector('#mob-nav');
     const revealMobNav = document.querySelector('.mob-nav-bar');
 
-    //const lines = document.querySelector('.line-1');
-
     const checkStatus = hideMobNavBtn.classList.contains('hide-nav');
 
-    //Sulkee navigaation ja palauttaa navigaation defaultin
+    //Close mobile navigation and return default (Browser navigation)
     if (checkStatus) {
 
       hideMobNavBtn.innerHTML = '';
@@ -23,11 +21,9 @@ function mobNav () {
       hideMobNavBtn.appendChild(lineTwo);
       hideMobNavBtn.appendChild(lineThree);
 
-      //lineOne.style.backgroundColor = "white";
-
-    //Avaa navigaation ja poistaa navigaation defaultin
+    //Open mobile navigation and remove default (Browser navigation)
     } else {
-      revealMobNav.style.display = 'block';
+      revealMobNav.style.display = 'flex';
       hideMobNavBtn.classList.add('hide-nav');
       hideMobNavBtn.classList.remove('line-1');
       hideMobNavBtn.classList.remove('line-2');

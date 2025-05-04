@@ -23,26 +23,26 @@ function closeFeedbackTable() {
 const registerFeedBack = async (event) => {
   event.preventDefault();
 
-  //GET CORRECT FORM
+  //Get correct form
   const feedBackForm = document.querySelector('#feedback-form');
 
-  //GET VALUES
+  //Ger values
   const notes = feedBackForm.querySelector('#feedback-text-id').value.trim();
 
   const user_id = localStorage.getItem('user_id')
 
-  // ENTRY DATA FOR REQUEST
+  // Data for request
   const bodyData = {
       user_id: user_id,
       notes: notes,
   };
 
-  // ENDPOINT
+  // Endpoint
   const url = 'http://localhost:3000/api/disagreement';
 
   let token = localStorage.getItem('token');
 
-  // OPTIONS
+  // Options
   const options = {
       body: JSON.stringify(bodyData),
       method: 'POST',
@@ -52,7 +52,7 @@ const registerFeedBack = async (event) => {
       },
   };
 
-  // SEND REQUEST FOR POSTING DATA
+  // Send a request for posting data
   const response = await fetchData(url, options);
 
   if (response.error) {

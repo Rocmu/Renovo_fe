@@ -125,8 +125,8 @@ img {
 
 @media only screen and (max-width: 850px) {
   main {
-    width: 100%;
-    min-width: 100%;
+    width: 95%;
+    min-width: 95%;
   }
 
   .home-div {
@@ -141,8 +141,25 @@ img {
     flex-direction: column;
   }
 
-  img {
+  img, #log-out-user img {
     display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  #home-welcome {
+    position: relative;
+    isolation: isolate;
+  }
+
+  #home-welcome::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-color: var(--blue-color);
+    opacity: 0.5;
   }
 }
 

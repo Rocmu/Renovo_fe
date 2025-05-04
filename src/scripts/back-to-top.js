@@ -30,14 +30,14 @@ function toggleTextOne(event) {
   const windowWidth = window.innerWidth;
 
   if (infoOne.style.display === 'flex') {
-    // Piilotetaan animaatiolla
+    // Hide with animation
     infoOne.style.animation = 'disappear 1s ease-out forwards';
     buttonOne.textContent = 'Mitä arvot tarkoittavat?';
     setTimeout(() => {
       infoOne.style.display = 'none';
     }, 1000);
   } else {
-    // Näytetään animaatiolla
+    // Display with animation
     infoOne.style.display = 'flex';
     infoOne.style.animation = 'appear 1s ease-out forwards';
     buttonOne.textContent = 'Piilota';
@@ -58,14 +58,14 @@ function toggleTextTwo(event) {
   const windowWidth = window.innerWidth;
 
   if (infoTwo.style.display === 'flex') {
-    // Piilotetaan animaatiolla
+    // Hide with animation
     infoTwo.style.animation = 'disappear 1s ease-out forwards';
     buttonTwo.textContent = 'Mitä arvot tarkoittavat?';
     setTimeout(() => {
       infoTwo.style.display = 'none';
     }, 1000);
   } else {
-    // Näytetään animaatiolla
+    // Display with animations
     infoTwo.style.display = 'flex';
     infoTwo.style.animation = 'appear 1s ease-out forwards';
     buttonTwo.textContent = 'Piilota';

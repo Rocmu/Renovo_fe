@@ -50,6 +50,8 @@ body {
 
 .hrv-buttons {
   margin-top: 30px;
+  display: flex;
+  flex-direction: row;
 }
 
 .hrv-results-container-header p, .feedback-buttons, .container-footer-info-link p {
@@ -334,6 +336,57 @@ footer {
     flex-direction: column;
   }
 
+  textarea {
+    width: 100%;
+    min-width: 100%;
+  }
+
+}
+
+@media only screen and (max-width: 850px) {
+
+  #log-out-user img {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .hrv-results-container-header {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .hrv-results-container-header::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-color: var(--blue-color);
+    opacity: 0.5;
+  }
+
+  button#print-hrv-ten-days,
+  button#print-hrv-thirty-days,
+  button#open-feedback-form,
+  button#view-prev-feedback,
+  input#post-feedback,
+  button#canvas-one-text-boxes,
+  button#canvas-two-text-boxes,
+  input#post-feedback.create-feedback {
+    width: 100%;
+    font-size: 3vw;
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+  }
+
+  .hrv-buttons {
+    flex-direction: column;
+  }
+
+  .feedback-buttons, .feedback-form-container {
+    margin-left: 0px;
+  }
+
 }
 
 /* FOR MAIN CSS AS WELL */
@@ -343,17 +396,27 @@ footer {
     width: 95%;
   }
 
+  .hrv-results-container-header h2,
+  .hrv-results-container-header p,
+  .hrv-results-container-header div {
+    margin-left: 0px;
+  }
+
   .hrv-results-container-footer {
     flex-direction: column;
     width: 100%;
     max-width: 100%;
   }
 
+  .hrv-results-container-header h2 {
+    font-size: 6vw;
+  }
+
   h2 {
     font-size: 5vw;
   }
 
-  p, h4, div.container-footer-info-link {
+  .hrv-results-container p , h4, div.container-footer-info-link, form#feedback-form h4 {
     font-size: 4vw;
   }
 
@@ -377,11 +440,6 @@ footer {
 
   .results-bpm-text-box, .results-age-text-box {
     width: 100%;
-  }
-
-  textarea {
-    width: 100%;
-    min-width: 100%;
   }
 
   .tbody tr td:first-child, tr th:first-child {
