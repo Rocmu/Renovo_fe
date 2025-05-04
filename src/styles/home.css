@@ -123,6 +123,7 @@ img {
   flex: 1;
 }
 
+/* Responsiveness */
 @media only screen and (max-width: 850px) {
   main {
     width: 95%;

@@ -135,7 +135,7 @@ footer {
   font-family: Arial, sans-serif
 }
 
-/* BACK TO TOP */
+/* Back to top- button styling for all pages */
 
 #backTopBtn {
   display: none;
@@ -147,7 +147,6 @@ footer {
   outline: none;
   background-color: var(--hover-color);
   color: var(--white-color);
-  /*box-shadow: 1px 1px 6px #333;*/
   cursor: pointer;
   width: 65px;
   height: 65px;
@@ -174,6 +173,7 @@ div.logo-mob {
   display: none;
 }
 
+/* Responsiveness */
 @media only screen and (max-width: 800px) {
 
   header {

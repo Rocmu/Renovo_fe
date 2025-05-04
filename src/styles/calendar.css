@@ -6,7 +6,7 @@ body {
   line-height: 1.5;
 }
 
-/* Kalenterin pääkontti */
+/* Calendar container */
 .calendar-container {
   display: flex;
   flex-direction: column;
@@ -83,13 +83,13 @@ body {
   background-color: var(--hover-color);
 }
 
-/* Kalenterin itse asettelu */
+/* Calendar set up */
 #calendar {
   width: 100%;
   margin: 0 auto;
 }
 
-/* FullCalendar mukautukset kuukausinäkymälle */
+/* FullCalendar settings for month view */
 .fc .fc-toolbar {
   flex-wrap: wrap;
   gap: 0.6rem;
@@ -116,7 +116,7 @@ body {
   transition: all 0.3s ease;
 }
 
-/* Viikonpäiväotsikot */
+/* Weekday headings */
 .fc .fc-col-header-cell {
   text-transform: capitalize;
   background-color: #b3ceed;
@@ -163,13 +163,13 @@ body {
   border-color: var(--blue-color);
 }
 
-/* Päiväsolun kontti */
+/* Daycell container */
 .fc .fc-daygrid-day {
   height: 100px !important; /* Kiinteä korkeus */
   min-height: 0 !important;
 }
 
-/* Sisäinen kehys */
+/* Internal frame */
 .fc .fc-daygrid-day-frame {
   height: 100%;
   display: flex;
@@ -203,24 +203,29 @@ body {
   color: var(--text-color);
 }
 
-/* Tapahtumien säiliö */
+/* Events container */
 .fc .fc-daygrid-day-events {
-  margin-top: auto; /* Työntää alareunaan */
-  flex-shrink: 0; /* Estää kutistumisen */
+  margin-top: auto; /* Push to bottom */
+  flex-shrink: 0; /* Prevents shrinking */
 }
 
-/* Työvuorojen spesifiset tyylit */
+/* Specific styling for events */
 .fc .shift-event {
-  max-width: 40%;
-  margin: 2px auto !important;
+  /*max-width: 40%;*/
+  margin: 7px auto !important;
 }
 
-/* Mukautetut työvuoro-elementit */
+/* Customized shift elements */
 .custom-shift-event {
   color: white;
   background-color: grey;
-  margin-top: auto; /* Työntää alareunaan */
+  margin-top: auto; /* Push to bottom */
   flex-shrink: 0;
+  width: 100%;
+}
+
+#night-shift {
+  background-color: var(--blue-color);
 }
 
 .shift-time {
@@ -228,18 +233,36 @@ body {
   text-align: center;
 }
 
-/* muut tapahtumat */
+/* Styling for other events*/
 .fc .exercise-event, .sickness-event, .others-event {
   position: static;
   margin-top: 2px;
+  margin-left: 4px;
+  width: 100%;
   background: none;
   border: none;
+  background-color: var(--grey-color);
+  color: var(--white-color);
+  margin-bottom: auto;
+}
+
+.custom-shift-event:hover,
+#night-shift:hover {
+  background-color: var(--hover-color);
+}
+
+.exercise-event:hover,
+.sickness-event:hover,
+.others-event:hover {
+  background-color: orange;
 }
 
 .event-icon {
   font-size: 1.2em;
-  margin-right: 3px;
   display: inline-block;
+  background-color: var(--grey-color);
+  border-radius: 2px;
+  border: 1px solid orange;
 }
 
 .calendar-modal {
@@ -331,7 +354,7 @@ body {
   resize: vertical;
 }
 
-/* Vuorolomakkeen tyylit */
+/* Styling for the shift form */
 .form-shift-table {
   width: 100%;
 }
@@ -364,7 +387,7 @@ body {
   padding: 0.5rem;
 }
 
-/* Emoji-arvostelu */
+/* Emoji- ranking */
 .emoji-rating {
   display: flex;
   gap: 1.25rem;
@@ -405,7 +428,7 @@ body {
   text-align: center;
 }
 
-/* Modaalin painikkeet */
+/* Modale buttons */
 .calendar-modal-actions {
   display: flex;
   justify-content: center;
@@ -520,7 +543,7 @@ button#event-instructions:hover {
   color: var(--text-color);
 }
 
-/* Toast-viestit */
+/* Toast message */
 .toast {
   position: fixed;
   left: 50%;
@@ -562,8 +585,7 @@ footer {
   text-align: center;
 }
 
-/* Responsiivisuus */
-
+/* Responsiveness */
 @media (max-width: 992px) {
 
   .calendar-buttons button, button#event-instructions {
@@ -674,6 +696,17 @@ div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
   height: 650px;
 }
 
+}
+
+@media (max-width: 630px) {
+  span.event-text {
+    display: none;
+  }
+
+  .event-icon {
+    width: 100%;
+    text-align: center;
+  }
 }
 
 @media (max-width: 550px) {

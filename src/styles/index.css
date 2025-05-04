@@ -83,7 +83,7 @@ header {
 }
 
 #login-form button:hover {
-  background-color: orange; /* --hover-color did not work */
+  background-color: orange;
 }
 
 #error-message {
@@ -110,6 +110,7 @@ footer {
   font-family: Arial, sans-serif
 }
 
+/* Responsiveness */
 @media only screen and (max-width: 750px) {
 
   #login-form {
@@ -119,19 +120,24 @@ footer {
 
 }
 
-@media only screen and (max-width: 460px) {
+@media only screen and (max-width: 550px) {
 
   #login-form {
     padding-top: 1em;
     padding-bottom: 1em;
     padding-right: 0;
     padding-left: 0;
+    width: 95%;
   }
 
   input#username, input#password, form#login-form button {
     width: 95%;
     margin: auto;
     font-size: 4vw;
+  }
+
+  footer {
+    font-size: 3vw;
   }
 
 }

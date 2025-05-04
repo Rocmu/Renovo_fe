@@ -1,7 +1,7 @@
 import { getCurrentCalendar } from './calendar-core.js';
 
 export function initializeModalHandlers(calendar) {
-  // MODAL OPENING LOGIC
+  // Modal opening login
   document.getElementById('openShiftModal').addEventListener('click', () => {
     generateDaysOfMonth(calendar);
     document.getElementById('shiftModal').style.display = 'block';
@@ -19,7 +19,7 @@ export function initializeModalHandlers(calendar) {
     document.getElementById('othersModal').style.display = 'block';
   });
 
-  // MODAL CLOSING FUNCTION
+  // Modal closing function
   window.closeModal = function(modalId) {
     document.getElementById(modalId).style.display = 'none';
   };

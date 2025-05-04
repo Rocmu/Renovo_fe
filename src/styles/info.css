@@ -88,6 +88,7 @@ li {
   font-size: 1.17em;
 }
 
+/* Responsiveness */
 @media only screen and (max-width: 850px) {
 
   #log-out-user img {

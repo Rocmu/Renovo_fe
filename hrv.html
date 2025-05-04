@@ -1,4 +1,3 @@
-<!--tänne header, nav ja footer-->
 <!DOCTYPE html>
 <html lang="fi">
   <head>
@@ -25,7 +24,7 @@
       </div>
     </header>
 
-    <!-- Navigaatio -->
+    <!-- Navigation -->
   <div class="nav-bar">
     <div id="mob-nav">
       <div class="line-1"></div>
@@ -39,18 +38,17 @@
     <a href="info.html">Info</a>
   </div>
 
-  <!-- Mobiili Navigaatio -->
+  <!-- Mobile Navigation -->
   <div class="mob-nav-bar">
-
         <a href="home.html">Etusivu</a>
         <a href="calendar.html">Kalenteri</a>
         <a href="hrv.html">Tulokset</a>
         <a href="info.html">Info</a>
-
   </div>
 
+    <!-- Content -->
     <div class="hrv-results-container">
-
+      <!-- Content header: Page heading and buttons -->
         <div class="hrv-results-container-header">
             <h2>HRV analyysi ja tulokset</h2>
             <p>Sovellus kerää HRV datasi Kubios HRV- sovelluksesta. Selaa edellisiä tuloksiasi, joita
@@ -61,6 +59,8 @@
               <button id="print-hrv-thirty-days">30 viimeistä päivää</button>
             </div>
         </div>
+
+        <!-- Results container 1: charts for Readiness, RMSSD, SNS and PNS -->
         <div class="hrv-results-container-content">
             <div class="hrv-canvas-heading">
               <h2 class="measurement-timespan"></h2>
@@ -79,6 +79,8 @@
             </div>
             <button id="canvas-one-text-boxes">Mitä arvot tarkoittavat?</button>
         </div>
+
+        <!-- Results container 1 footer: info boxes for Readiness, RMSSD, SNS and PNS -->
         <div class="hrv-results-container-footer">
           <div class="results-readiness-text-box">
             <h4>Readiness</h4>
@@ -106,6 +108,8 @@
             </p>
           </div>
         </div>
+
+        <!-- Results container 2: charts for BPM and physiological age -->
         <div class="hrv-results-container-content">
           <div class="hrv-canvas-heading">
             <h2 class="measurement-timespan-2"></h2>
@@ -122,6 +126,8 @@
         </div>
           <button id="canvas-two-text-boxes">Mitä arvot tarkoittavat?</button>
         </div>
+
+        <!-- Results container 2 footer: info boxes for BPM and physiological age -->
         <div class="hrv-results-container-footer-2">
           <div class="results-bpm-text-box">
               <h4>BPM</h4>
@@ -135,6 +141,8 @@
             </p>
           </div>
         </div>
+
+        <!-- Feedback form container: feedback buttons and feedback form -->
         <div class="hrv-user-feedback">
           <div class="feedback-buttons">
             <h2>Palaute HRV tuloksista</h2>
@@ -159,6 +167,7 @@
           </div>
         </div>
 
+        <!-- Feedback table container: feedback table for printing user feedback -->
         <div class="feedback-table">
           <h2>Tallennetut palautteesi</h2>
           <table class="feedback-list-table">
@@ -174,6 +183,7 @@
         </table>
       </div>
 
+      <!-- Content container footer: A tip to checkout info.html -->
       <div class="container-footer-info-link">
         <div class="info-link-box-text">
           <h2>Vinkkejä ja ohjeita mittauksiin</h2>
@@ -184,10 +194,10 @@
         </div>
         <a href="info.html">Lue mittausohjeet</a>
       </div>
-
     </div>
-
     </main>
+
+    <!-- Footer -->
     <footer>Student Project@Renovo App 2025</footer>
     <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script type="module" src="/src/scripts/main.js"></script>

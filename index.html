@@ -8,17 +8,21 @@
     <title>Kirjautumissivu</title>
   </head>
   <body>
+
+    <!-- Header -->
     <header>
       <img class="app-logo" src="/public/img/Renovo_logo.png" alt="Renovo logo">
     </header>
+
+    <!-- Content: login form and submit button -->
     <form id="login-form">
       <p id="login-valid-confirm"></p>
       <input type="text" id="username" placeholder="sähköposti" required />
       <input type="password" id="password" placeholder="salasana" required />
       <button type="submit">Kirjaudu sisään</button>
     </form>
-    <div id="error-message"></div>
 
+    <!-- Footer -->
     <footer>Student Project@Renovo App 2025</footer>
     <script type="module" src="/src/scripts/login.js"></script>
   </body>

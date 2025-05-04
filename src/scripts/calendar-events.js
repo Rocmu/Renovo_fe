@@ -73,7 +73,7 @@ export async function initializeEventHandlers(fetchInfo, successCallback, failur
         },
       })),
     ];
-
+    console.log(events)
     successCallback(events);
   } catch (error) {
     console.error('Error fetching events:', error);

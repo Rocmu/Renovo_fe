@@ -24,7 +24,7 @@
       </div>
     </header>
 
-    <!-- Navigaatio -->
+    <!-- Navigation -->
   <div class="nav-bar">
     <div id="mob-nav">
       <div class="line-1"></div>
@@ -38,7 +38,7 @@
     <a href="info.html">Info</a>
   </div>
 
-  <!-- Mobiili Navigaatio -->
+  <!-- Mobile Navigation -->
   <div class="mob-nav-bar">
 
         <a href="home.html">Etusivu</a>
@@ -48,10 +48,9 @@
 
   </div>
 
-    <!-- Sisältö -->
+    <!-- Content -->
     <div class="calendar-container">
-
-      <!-- Yläosa: otsikko ja painikkeet -->
+      <!-- Content-header: Page heading and buttons -->
       <div class="calendar-header">
         <div class="calendar-title">Kalenteri</div>
         <div class="calendar-description">
@@ -69,13 +68,13 @@
         </div>
       </div>
 
-      <!-- Kalenterinäkymä -->
+      <!-- Calender container and calendar view -->
       <div class="calendar-view">
         <div id="calendarView"></div>
         <button id="event-instructions">Lisätietoa tapahtumien tallennuksesta</button>
       </div>
 
-      <!-- Info-osuus -->
+      <!-- Info -->
       <div class="calendar-info">
         <div class="shift-info-box">
           <h4>Työvuorot</h4>
@@ -108,7 +107,7 @@
 
     </div>
 
-    <!-- Työvuorojen lisäysmodaali -->
+    <!-- Modale for creating shift records -->
     <div id="shiftModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" id="shiftCloseX" onclick="closeModal('shiftModal')">&times;</span>
@@ -128,7 +127,7 @@
       </div>
     </div>
 
-    <!-- Liikunta Modaali -->
+    <!-- Modale for creating exercise records -->
     <div id="exerciseModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" id="exerciseCloseX" onclick="closeModal('exerciseModal')">&times;</span>
@@ -158,7 +157,7 @@
       </div>
     </div>
 
-    <!-- Sairastuminen Modaali -->
+    <!-- Modale for creating sickness records -->
     <div id="sicknessModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" id="sicknessCloseX" onclick="closeModal('sicknessModal')">&times;</span>
@@ -186,7 +185,7 @@
       </div>
     </div>
 
-    <!-- Muut tapahtumat Modaali -->
+    <!-- Modale for creating others records -->
     <div id="othersModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" id="othersCloseX" onclick="closeModal('othersModal')">&times;</span>
@@ -214,7 +213,7 @@
       </div>
     </div>
 
-        <!-- Työvuoron muokkausmodaali -->
+        <!-- Modale for updating shift records -->
     <div id="editShiftModal" class="calendar-modal">
       <div class="calendar-modal-content">
         <span class="calendar-modal-close" onclick="closeModal('editShiftModal')">&times;</span>
@@ -233,7 +232,7 @@
       </div>
     </div>
 
-    <!-- muiden muokkausmodaali -->
+    <!-- Modale for updating exercise, sickness and others records -->
     <div id="editModal" class="calendar-modal">
       <div class="calendar-modal-content" style="position: relative;">
         <span class="calendar-modal-close" onclick="closeModal('editModal')">&times;</span>
@@ -261,6 +260,8 @@
         </form>
       </div>
     </div>
+
+    <!-- Footer -->
     <footer>Student Project@Renovo App 2025</footer>
     <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>

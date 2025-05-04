@@ -8,10 +8,10 @@ import { initializeFormHandlers } from './calendar-forms.js';
 import { initializeModalHandlers } from './calendar-modals.js';
 import { initializeInfoHandlers } from './calendar-info.js';
 
-// GLOBAL VARIABLE TO STORE CURRENT CALENDAR INSTANCE
+// Global variable to store current calendar instance
 export let currentCalendar = null;
 
-// INITIALIZE WHEN DOM IS LOADED
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
   // INITIALIZE FULLCALENDAR
   const calendarEl = document.getElementById('calendarView');
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function () {
     initialView: 'dayGridMonth',
     timeZone: 'local',
     locale: 'fi',
-    firstDay: 1, // MONDAY AS FIRST DAY OF WEEK
+    firstDay: 1, // Monday as first day of week
     headerToolbar: {
       left: 'prev',
       center: 'title',
@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function () {
     eventContent: renderEventContent
   });
 
-  // STORE AND RENDER CALENDAR
+  // Store and render calendar
   currentCalendar = calendar;
   calendar.render();
   calendar.refetchEvents();
@@ -61,14 +61,29 @@ function renderEventContent(arg) {
   if (props.type === 'shift') {
     const startTime = event.start ? event.start.toLocaleTimeString('fi-FI', {hour: '2-digit', minute:'2-digit'}) : '';
     const endTime = event.end ? event.end.toLocaleTimeString('fi-FI', {hour: '2-digit', minute:'2-digit'}) : '';
+    const start = parseInt(startTime.slice(0, 2))
+    const end = parseInt(endTime.slice(0, 2))
+    const difference = start - end
+    console.log(start + ' ' + end)
+    // Create html element for shift, additional class if a night shift
+    if (difference >= 0) {
+      return {
+        html: `
+          <div class="custom-shift-event" id="night-shift">
+            <div class="shift-time">🌙 ${startTime} - ${endTime}</div>
+          </div>
+        `,
+      };
+    } else {
+      return {
+        html: `
+          <div class="custom-shift-event">
+            <div class="shift-time">☀️ ${startTime} - ${endTime}</div>
+          </div>
+        `,
+      };
+    }
 
-    return {
-      html: `
-        <div class="custom-shift-event">
-          <div class="shift-time">${startTime} - ${endTime}</div>
-        </div>
-      `,
-    };
   }
 
   const iconMap = {
