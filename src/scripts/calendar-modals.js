@@ -22,6 +22,14 @@ export function initializeModalHandlers(calendar) {
   // Modal closing function
   window.closeModal = function(modalId) {
     document.getElementById(modalId).style.display = 'none';
+
+    // Reset all forms once the modal closes
+    document.getElementById("shiftForm").reset();
+    document.getElementById("exerciseForm").reset();
+    document.getElementById("sicknessForm").reset();
+    document.getElementById("othersForm").reset();
+    document.getElementById("editShiftForm").reset();
+    document.getElementById("editEventForm").reset();
   };
 }
 
