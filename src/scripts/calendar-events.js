@@ -8,19 +8,19 @@ export async function initializeEventHandlers(fetchInfo, successCallback, failur
     const token = localStorage.getItem('token');
 
     const [shifts, exercise, sickness, others] = await Promise.all([
-      fetchData(`http://localhost:3000/api/shifts/user/${userId}`, {
+      fetchData(`/api/shifts/user/${userId}`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${token}` },
       }),
-      fetchData(`http://localhost:3000/api/exercise/user/${userId}`, {
+      fetchData(`/api/exercise/user/${userId}`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${token}` },
       }),
-      fetchData(`http://localhost:3000/api/sickness/user/${userId}`, {
+      fetchData(`/api/sickness/user/${userId}`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${token}` },
       }),
-      fetchData(`http://localhost:3000/api/others/user/${userId}`, {
+      fetchData(`/api/others/user/${userId}`, {
         method: 'GET',
         headers: { Authorization: `Bearer ${token}` },
       }),

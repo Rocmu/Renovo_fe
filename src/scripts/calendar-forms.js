@@ -12,17 +12,17 @@ export function initializeFormHandlers(calendar) {
   // Other form submissions
   document.getElementById('exerciseForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    await submitForm('exerciseForm', 'exercise', 'http://localhost:3000/api/exercise', calendar);
+    await submitForm('exerciseForm', 'exercise', '/api/exercise', calendar);
   });
 
   document.getElementById('sicknessForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    await submitForm('sicknessForm', 'sickness', 'http://localhost:3000/api/sickness', calendar);
+    await submitForm('sicknessForm', 'sickness', '/api/sickness', calendar);
   });
 
   document.getElementById('othersForm').addEventListener('submit', async function(e) {
     e.preventDefault();
-    await submitForm('othersForm', 'others', 'http://localhost:3000/api/others', calendar);
+    await submitForm('othersForm', 'others', '/api/others', calendar);
   });
 
   // Edit shift form
@@ -94,7 +94,7 @@ async function handleShiftFormSubmit(calendar) {
           is_night_shift: isNightShift
         };
 
-        const response = await fetch('http://localhost:3000/api/shifts', {
+        const response = await fetch('/api/shifts', {
           method: 'POST',
           headers: {
             'Content-Type': 'application/json',
@@ -208,7 +208,7 @@ async function handleEditShiftForm(calendar) {
       is_night_shift: isNightShift
     };
 
-    const response = await fetchData(`http://localhost:3000/api/shifts/${shiftId}`, {
+    const response = await fetchData(`/api/shifts/${shiftId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -253,7 +253,7 @@ async function handleDeleteShift(calendar) {
 
   try {
     const token = localStorage.getItem('token');
-    const response = await fetchData(`http://localhost:3000/api/shifts/${shiftId}`, {
+    const response = await fetchData(`/api/shifts/${shiftId}`, {
       method: 'DELETE',
       headers: {
         'Authorization': `Bearer ${token}`
@@ -294,9 +294,9 @@ async function handleEditEventForm(calendar) {
   }
 
   const urlMap = {
-    exercise: `http://localhost:3000/api/exercise/${eventId}`,
-    sickness: `http://localhost:3000/api/sickness/${eventId}`,
-    others: `http://localhost:3000/api/others/${eventId}`,
+    exercise: `/api/exercise/${eventId}`,
+    sickness: `/api/sickness/${eventId}`,
+    others: `/api/others/${eventId}`,
   };
 
   let data = {};
@@ -369,9 +369,9 @@ async function handleDeleteEvent(calendar) {
   }
 
   const urlMap = {
-    exercise: `http://localhost:3000/api/exercise/${eventId}`,
-    sickness: `http://localhost:3000/api/sickness/${eventId}`,
-    others: `http://localhost:3000/api/others/${eventId}`,
+    exercise: `/api/exercise/${eventId}`,
+    sickness: `/api/sickness/${eventId}`,
+    others: `/api/others/${eventId}`,
   };
 
   if (!confirm('Haluatko varmasti poistaa tämän tapahtuman?')) return;
