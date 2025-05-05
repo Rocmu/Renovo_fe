@@ -1,6 +1,5 @@
 import { fetchData } from './fetch';
 import { drawChartTen, drawChartThirty } from './charts';
-import { logout } from './log-out.js';
 
 function tenActive() {
   const chooseTenBtn = document.querySelector('#print-hrv-ten-days');

@@ -1,6 +1,8 @@
 *** Settings ***
-Documentation     Sisäänkirjautuminen .env- tiedoston avulla, epäonnistunut
+Documentation     Sisäänkirjautuminen huonoilla tunnuksilla käyttöliittymässä.
 Library           Browser    auto_closing_level=KEEP
+Library     CryptoLibrary     variable_decryption=True
+
 Variables         load_env.py
 
 *** Test Cases ***
@@ -14,4 +16,4 @@ Login Test
     Type Secret    //input[@id='password']    $BAD_PASSWORD      delay=0.1 s
     Click With Options    xpath=//button[@type='submit' and text()='Kirjaudu sisään']    delay=2 s
 
-    Wait For Condition    Text    Title   contains    Renovo App
+    Wait For Condition    Text    //p[@id='login-valid-confirm']   contains    Sisäänkirjautuminen epäonnistui. Väärä käyttäjänimi/salasana.

@@ -1,28 +1,30 @@
-<!-- tänne tulee hrv-tietoa tietämättömille -->
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fi">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Info</title>
-    <!-- <link rel="stylesheet" href="/src/styles/info.css" /> -->
   </head>
   <body>
+
     <!-- Header -->
     <header>
       <div class="left-header">
         <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">
-          Palaa Terveystaloon
+          ↩ <span class="return-to-terveystalo">Takaisin</span> Terveystaloon
         </button>
         <div class="logo">Renovo</div>
       </div>
       <div class="right-header">
         <span id="show-username-header"></span>
-        <button id="log-out-user">Kirjaudu ulos</button>
+        <button id="log-out-user">
+          <img src="/img/logout.png" alt="Kirjaudu ulos" class="logout-icon">
+          Kirjaudu ulos</button>
       </div>
     </header>
 
-    <!-- Navigaatio -->
+    <!-- Navigation -->
   <div class="nav-bar">
     <div id="mob-nav">
       <div class="line-1"></div>
@@ -33,21 +35,30 @@
     <a href="home.html">Etusivu</a>
     <a href="calendar.html">Kalenteri</a>
     <a href="hrv.html">Tulokset</a>
-    <a href="info.html">HRV-info</a>
+    <a href="info.html">Info</a>
   </div>
 
-  <!-- Mobiili Navigaatio -->
+  <!-- Mobile Navigation -->
   <div class="mob-nav-bar">
-    <ul>
-        <li><a href="home.html">Etusivu</a></li>
-        <li><a href="calendar.html">Kalenteri</a></li>
-        <li><a href="hrv.html">Tulokset</a></li>
-        <li><a href="info.html">HRV-info</a></li>
-    </ul>
+        <a href="home.html">Etusivu</a>
+        <a href="calendar.html">Kalenteri</a>
+        <a href="hrv.html">Tulokset</a>
+        <a href="info.html">Info</a>
   </div>
 
-    <!--Info boksit-->
+    <!-- Content-->
     <main class="info-column">
+      <!-- Content heading: Page heading and instructions-->
+      <div class="header-box">
+        <h2>Info</h2>
+        <p>
+          Tältä sivulta löydät lisätietoa sykevälivaihtelusta (HRV),
+          ohjeet mittauksen suorittamiseen sekä tarkemmat kuvaukset mittauksista.
+          Lisäksi vastauksia usein kysyttyihin kysymyksiin.
+        </p>
+      </div>
+
+      <!-- Text box: measurement instructions-->
       <div class="text-box">
         <h2>Näin suoritat mittauksen.</h2>
         <p>
@@ -63,6 +74,8 @@
           <li>Varmista mittauksen laatu sen päätyttyä.</li>
         </ol>
       </div>
+
+      <!-- Text box: information about HRV-->
       <div class="text-box">
         <h2>Mikä on HRV?</h2>
         <p>
@@ -78,6 +91,8 @@
           madaltunut sykevälivaihtelu lisääntyneeseen stressiin ja alentuneeseen terveydentilaan.
         </p>
       </div>
+
+      <!-- Text box: information about PNS-->
       <div class="text-box">
         <h2>PNS-indeksi</h2>
         <p>
@@ -93,6 +108,8 @@
           korkeampaan ja negatiiviset arvot keskiarvoa alhaisempaan palautumiseen ja rentoutumiseen.
         </p>
       </div>
+
+      <!-- Text box: information about SNS-->
       <div class="text-box">
         <h2>SNS-indeksi</h2>
         <p>
@@ -108,6 +125,8 @@
           seurauksena arvot voivat nousta huomattavasti korkeammalle jopa 5–35.
         </p>
       </div>
+
+      <!-- Text box: information about RMSSD-->
       <div class="text-box">
         <h2>RMSDD</h2>
         <p>
@@ -119,6 +138,8 @@
           on 19-75ms.
         </p>
       </div>
+
+      <!-- Text box: information about Readiness-->
       <div class="text-box">
         <h2>Readiness</h2>
         <p>
@@ -156,8 +177,10 @@
           kuormitusta, jota voit käyttää apuna stressinhallinnassa ja palautumisessa.
         </p>
       </div>
+
+      <!-- Text box: frequently asked questions-->
       <div class="text-box">
-        <h2>FAQ</h2>
+        <h2>Usein kysytyt kysymykset</h2>
         <h3>Miten readiness-indeksi lasketaan?</h3>
         <p>
           Readiness arvo lasketaan vertaamalla tämänhetkistä leposykevälivaihteluasi aiempiin mittaustuloksiisisi jopa
@@ -185,7 +208,9 @@
         </p>
       </div>
     </main>
-    <footer>Renovo App</footer>
+
+    <!-- Footer -->
+    <footer>Student Project@Renovo App 2025</footer>
     <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/info.js"></script>

@@ -1,14 +1,12 @@
-
-/* Perusasettelut */
 body {
-  font-family: Arial, sans-serif;
+  font-family: var(--font-family);
   background-color: var(--grey-color);
   margin: 0;
   padding: 0;
   line-height: 1.5;
 }
 
-/* Kalenterin pääkontti */
+/* Calendar container */
 .calendar-container {
   display: flex;
   flex-direction: column;
@@ -22,42 +20,62 @@ body {
 
 .calendar-header,
 .calendar-view {
+  font-family: var(--font-family);
+  position: relative;
   background-color: var(--white-color);
   border-radius: 1rem;
   padding: 1em;
   box-shadow: 10px 10px 5px #CCCCCC;
+  overflow: hidden;
 }
 
-.calendar-info {
-  padding: 1em;
+.calendar-header {
+  background-image: url("/img/mountains.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--blue-color);
+}
+
+.calendar-title, .calendar-description, .calendar-buttons {
+  margin-left: 20px;
 }
 
 .calendar-title {
-  font-size: 1.8rem;
-  font-weight: 600;
-  color: var(--blue-color);
-  margin-bottom: 0.3rem;
+  font-family: var(--font-family);
+  font-size: 2rem;
+  font-weight: bold;
+  color: var(--white-color);
+  margin-top: 1em;
+  margin-bottom: 1em;
 }
 
 .calendar-description {
   margin-bottom: 0.9rem;
-  max-width: 600px;
+  max-width: 700px;
+  font-size: 1.17em;
+  color: var(--white-color);
+}
+
+.calendar-description b {
+  font-weight: normal;
+  font-size: 0.8em;
 }
 
 .calendar-buttons {
+  font-family: var(--font-family);
   display: flex;
   gap: 1.25rem;
   justify-content: flex-start;
-  margin-bottom: 1.25rem;
 }
 
 .calendar-buttons button {
+  font-family: var(--font-family);
   padding: 1em 2em 1em 2em;
   background-color: var(--blue-color);
   color: var(--white-color);
   border-radius: 30px;
-  border-color: transparent;
-  font-size: 2vh;
+  border-style: none;
+  font-size: 2.1vh;
   cursor: pointer;
 }
 
@@ -65,13 +83,13 @@ body {
   background-color: var(--hover-color);
 }
 
-/* Kalenterin itse asettelu */
+/* Calendar set up */
 #calendar {
   width: 100%;
   margin: 0 auto;
 }
 
-/* FullCalendar mukautukset kuukausinäkymälle */
+/* FullCalendar settings for month view */
 .fc .fc-toolbar {
   flex-wrap: wrap;
   gap: 0.6rem;
@@ -88,21 +106,17 @@ body {
 .fc .fc-button {
   background-color: var(--white-color);
   color: var(--blue-color);
-  border-radius: 5px;
-  padding: 0.4rem 0.8rem;
   font-size: 0.9rem;
 }
 
 .fc .fc-button:hover {
-  background-color: var(--hover-color);
+  background-color: var(--blue-color);
+  border-radius: 50px;
+  opacity: 0.3;
+  transition: all 0.3s ease;
 }
 
-.fc .fc-button-primary:not(:disabled).fc-button-active {
-  background-color: var(--text-color);
-  color: var(--white-color);
-}
-
-/* Viikonpäiväotsikot */
+/* Weekday headings */
 .fc .fc-col-header-cell {
   text-transform: capitalize;
   background-color: #b3ceed;
@@ -133,32 +147,33 @@ body {
 }
 
 .fc .fc-toolbar-title {
+  color: var(--blue-color);
   margin: 0 0.3rem;
-  font-size: 1.4rem;
+  font-size: 1.8rem;
   order: 2;
 }
 
-.fc .fc-prev-button {
+.fc .fc-prev-button, .fc .fc-next-button {
   order: 1;
   margin: 0;
-  padding: 0.3rem 0.5rem;
+  padding: 0.1rem 0.1rem;
+  font-size: 1.4rem;
   min-width: 1.9rem;
+  border-radius: 50%;
+  border-color: var(--blue-color);
 }
 
-.fc .fc-next-button {
-  order: 3;
-  margin: 0;
-  padding: 0.3rem 0.5rem;
-  min-width: 1.9rem;
-}
-
+/* Daycell container */
 .fc .fc-daygrid-day {
-  border: 1px solid  #e9ecef;
+  height: 100px !important;
+  min-height: 0 !important;
 }
 
+/* Internal frame */
 .fc .fc-daygrid-day-frame {
-  min-height: 100px;
-  padding: 0.2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .fc .fc-daygrid-day-top {
@@ -180,33 +195,80 @@ body {
   color: var(--blue-color);
 }
 
-.fc-event {
-  font-size: 0.8rem;
-  padding: 0.125rem 0.25rem;
-  margin: 0.125rem 0;
-  border-radius: 3px;
+.event-text {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: var(--font-family);
+  color: var(--text-color);
+}
+
+/* Events container */
+.fc .fc-daygrid-day-events {
+  margin-top: auto; /* Push to bottom */
+  flex-shrink: 0; /* Prevents shrinking */
+}
+
+/* Specific styling for events */
+.fc .shift-event {
+  /*max-width: 40%;*/
+  margin: 7px auto !important;
+  background: none;
+  border-style: none;
+}
+
+/* Customized shift elements */
+.custom-shift-event {
+  color:  var(--white-color);
+  background-color: var(--blue-color);
+  margin-top: auto; /* Push to bottom */
+  flex-shrink: 0;
+  border-radius: 5px;
+  margin: 0 auto;
+  width: 80%;
+}
+
+#night-shift {
+  background-color: var(--blue-color);
+  width: 40%;
+  margin: 0 auto;
+  border-radius: 5px;
+}
+
+.shift-time {
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Styling for other events*/
+.fc .exercise-event, .sickness-event, .others-event {
+  position: static;
+  margin-top: 2px;
+  margin-left: 4px;
+  width: 100%;
   border: none;
-  cursor: pointer;
+  background-color: var(--grey-color);
+  color: var(--white-color);
+  margin-bottom: auto;
 }
 
-.fc-event:hover {
-  opacity: 0.9;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+.custom-shift-event:hover,
+#night-shift:hover {
+  background-color: var(--hover-color);
 }
 
-.fc-event.exercise-event {
-  background-color: rgba(40, 167, 69, 0.15);
-  color: #28a745;
+.exercise-event:hover,
+.sickness-event:hover,
+.others-event:hover {
+  background-color: orange;
 }
 
-.fc-event.sickness-event {
-  background-color: rgba(220, 53, 69, 0.15);
-  color: #dc3545;
-}
-
-.fc-event.others-event {
-  background-color: rgba(255, 193, 7, 0.15);
-  color: #d39e00;
+.event-icon {
+  font-size: 1.2em;
+  display: inline-block;
+  background-color: var(--grey-color);
+  border-radius: 2px;
+  border: 1px solid orange;
 }
 
 .calendar-modal {
@@ -233,6 +295,11 @@ body {
   overflow-y: auto;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   position: relative;
+}
+
+.calendar-modal-content p:not(#shiftModal p) {
+  font-size: 0.9rem;
+  color: #888888;
 }
 
 .calendar-modal-close {
@@ -267,6 +334,7 @@ body {
 .calendar-modal-content input[type="text"],
 .calendar-modal-content select,
 .calendar-modal-content textarea {
+  font-family: var(--font-family);
   background-color: var(--white-color);
   width: 100%;
   padding: 0.625rem;
@@ -280,26 +348,34 @@ body {
 .calendar-modal-content input:focus,
 .calendar-modal-content select:focus,
 .calendar-modal-content textarea:focus {
+  font-family: var(--font-family);
   outline: none;
   border-color: var(--blue-color);
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .calendar-modal-content textarea {
+  font-family: var(--font-family);
   min-height: 6.25rem;
   resize: vertical;
 }
 
-/* Vuorolomakkeen tyylit */
+/* Styling for the shift form */
 .form-shift-table {
   width: 100%;
 }
 
 .form-shift-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 140px;
   font-weight: 600;
   margin-bottom: 0.94rem;
+}
+
+.calendar-modal-content p:nth-of-type(2) {
+  font-size: 0.9rem;
+  color: #888888;
 }
 
 .form-row {
@@ -307,8 +383,9 @@ body {
   gap: 1.25rem;
   align-items: center;
   margin-bottom: 0.625rem;
-  background-color: #ffffff;
+  background-color: var(--white-color);
   border-radius: 6px;
+  text-transform: capitalize;
 }
 
 .form-row input {
@@ -316,7 +393,7 @@ body {
   padding: 0.5rem;
 }
 
-/* Emoji-arvostelu */
+/* Emoji- ranking */
 .emoji-rating {
   display: flex;
   gap: 1.25rem;
@@ -357,7 +434,7 @@ body {
   text-align: center;
 }
 
-/* Modaalin painikkeet */
+/* Modale buttons */
 .calendar-modal-actions {
   display: flex;
   justify-content: center;
@@ -366,6 +443,7 @@ body {
 }
 
 .calendar-modal-actions button {
+  font-family: var(--font-family);
   border-radius: 30px;
   font-size: 0.9rem;
   padding: 0.625rem 1.25rem;
@@ -383,47 +461,95 @@ body {
 }
 
 .calendar-modal-actions button:last-child {
-  color: var(--text-color);
+  color: var(--white-color);
+  background-color: rgb(86, 86, 86);
 }
 
 .calendar-modal-actions button:last-child:hover {
-  background-color: #d1d7dc;
+  background-color: grey;
+}
+
+.calendar-view button {
+  font-size: 2.1vh;
+  font-family: var(--font-family);
+  padding: 1em 2em 1em 2em;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+  border-radius: 30px;
+  border-color: transparent;
+  cursor: pointer;
+}
+
+button#event-instructions {
+  margin-top: 1em;
+  background-color: var(--blue-color);
+  color: var(--white-color);
+}
+
+button#event-instructions:hover {
+  background-color: var(--hover-color);
 }
 
 .calendar-info {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
+  flex-direction: row;
+  justify-content: space-around;
+  display: none;
+  gap: 10px;
+  animation-name: appear;
+  animation-duration: 1s;
+  animation-timing-function: ease-out;
 }
 
-.calendar-info-box {
-  flex: 1 1 200px;
-  max-width: 300px;
-  padding: 1.25rem;
+.calendar-info div {
+  flex: 1;
+  padding: 0 1em 1em 1em;
+  min-width: 0;
+}
+
+
+@keyframes appear{
+  from {
+    transform: translateX(-300px);
+    opacity: 0%;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+}
+
+@keyframes disappear {
+  from {
+    transform: translateX(0);
+    opacity: 100%;
+  }
+  to {
+    transform: translateX(-300px);
+    opacity: 0%;
+  }
+}
+
+.shift-info-box {
+  background-color: lightblue;
+  color: var(--text-color);
+}
+
+.exercise-info-box {
+  background-color: var(--blue-color);
   color: white;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Eriväriset laatikot */
-.calendar-info-box:nth-child(1) {
-  background-color: #4a90e2; /* sininen */
+.sickness-info-box {
+  background-color: #999999;
+  color: var(--text-color);
 }
 
-.calendar-info-box:nth-child(2) {
-  background-color: #50e3c2; /* turkoosi */
-  color: #000;
+.others-info-box {
+  background-color: orange;
+  color: var(--text-color);
 }
 
-.calendar-info-box:nth-child(3) {
-  background-color: #f5a623; /* oranssi */
-}
-
-.calendar-info-box:nth-child(4) {
-  background-color: #bd10e0; /* violetti */
-}
-
-/* Toast-viestit */
+/* Toast message */
 .toast {
   position: fixed;
   left: 50%;
@@ -465,9 +591,13 @@ footer {
   text-align: center;
 }
 
-/* Responsiivisuus */
-
+/* Responsiveness */
 @media (max-width: 992px) {
+
+  .calendar-buttons button, button#event-instructions {
+    padding: 0.5em 1em 0.5em 1em;
+  }
+
   .fc .fc-toolbar {
     flex-direction: column;
     align-items: flex-start;
@@ -491,6 +621,17 @@ footer {
     width: 95%;
     margin: auto;
   }
+
+  div.calendar-info {
+    flex-direction: column;
+  }
+}
+
+@media only screen and (max-width: 850px) {
+
+  #log-out-user img {
+    display: none;
+  }
 }
 
 @media (max-width: 768px) {
@@ -499,6 +640,28 @@ footer {
     border-radius: 0;
     margin: 0;
     padding: 15px;
+  }
+
+  div.calendar-buttons {
+    flex-direction: column;
+  }
+
+  .calendar-header {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .calendar-header::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-color: var(--blue-color);
+    opacity: 0.5;
+  }
+
+  .calendar-buttons button {
+    padding: 1em 2em 1em 2em;
   }
 
   .fc .fc-daygrid-day-frame {
@@ -525,18 +688,38 @@ footer {
     margin: auto;
   }
 
-  div.calendar-buttons button {
-    font-size: 12px;
+  div.calendar-buttons button, button#event-instructions  {
+    font-size: 3vw;
   }
-}
 
-/* Varmista, että kuukausinäkymä on oletusarvoisesti käytössä */
+  /* Varmista, että kuukausinäkymä on oletusarvoisesti käytössä */
 .fc .fc-dayGridMonth-button.fc-button-active {
   background-color: var(--blue-color) !important;
   color: var(--white-color) !important;
 }
 
+div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
+  height: 650px;
+}
+
+}
+
+@media (max-width: 630px) {
+  span.event-text {
+    display: none;
+  }
+
+  .event-icon {
+    width: 100%;
+    text-align: center;
+  }
+}
+
 @media (max-width: 550px) {
+
+  div.calendar-buttons {
+    margin-left: 0;
+  }
 
   .calendar-title {
     margin-left: 0;
@@ -548,15 +731,16 @@ footer {
     font-size: 4vw;
   }
 
-  .calendar-container {
+  .calendar-container, button#event-instructions {
     width: 95%;
     max-width: 95%;
     padding: 0;
     margin: auto;
   }
 
-  div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
-    height: 500px;
+  button#event-instructions {
+    padding: 1em 2em 1em 2em;
+    margin-top: 1em;
   }
 
   thead, .fc .fc-daygrid-day-number {
@@ -567,11 +751,7 @@ footer {
     margin-top: 2em;
   }
 
-  div.calendar-buttons {
-    flex-direction: column;
-  }
-
-  div.calendar-buttons button {
+  div.calendar-buttons button, button#event-instructions {
     font-size: 3vw;
   }
 
@@ -627,6 +807,10 @@ footer {
   div.emoji-rating label[for="others-medium"],
   div.emoji-rating label[for="others-high"] {
     font-size: 10vw;
+  }
+
+  .calendar-info div {
+    font-size: 4vw;
   }
 
 }

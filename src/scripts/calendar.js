@@ -1,32 +1,43 @@
+// Import styles and utilities
 import '../styles/main.css';
 import '../styles/calendar.css';
 import { showToast } from './toast.js';
 import {fetchData} from './fetch.js';
 
+// Global variable to store current calendar instance
 let currentCalendar = null;
+
+// Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
 
-  // Kalenterin alustus
+  // Initialize FullCalendar
   const calendarEl = document.getElementById('calendarView');
   const calendar = new FullCalendar.Calendar(calendarEl, {
 
+    // Calendar configuration
     initialView: 'dayGridMonth',
     timeZone: 'local',
     locale: 'fi',
-    firstDay: 1,
+    firstDay: 1, // Monday as first day of week
     headerToolbar: {
       left: 'prev',
       center: 'title',
       right: 'next'
     },
-
     titleFormat: { year: 'numeric', month: 'long' },
 
+    eventClassNames: function(arg) {
+      return arg.event.extendedProps.type + '-event';
+    },
+
+    // Fetch events asynchronously
     events: async function (fetchInfo, successCallback, failureCallback) {
       try {
+        // Get user ID and token from local storage
         const userId = localStorage.getItem('user_id');
         const token = localStorage.getItem('token');
 
+        // Fetch all event types in parallel
         const [shifts, exercise, sickness, others] = await Promise.all([
           fetchData(`http://localhost:3000/api/shifts/user/${userId}`, {
             method: 'GET',
@@ -55,20 +66,22 @@ document.addEventListener('DOMContentLoaded', function () {
           }),
         ]);
 
-        // Muotoile tapahtumat FullCalendarille
+        // Format events for FullCalendars
         const events = [
+          // Shift events
           ...shifts.map((shift) => ({
             id: `shift_${shift.shift_id || shift.id}`,
             title: 'Työvuoro',
             start: `${shift.start_date.slice(0, 10)}T${shift.start_time.slice(0, 10)}`,
             end: `${shift.end_date.slice(0, 10)}T${shift.end_time.slice(0, 10)}`,
-            backgroundColor: '#0044cc',
-            textColor: 'white',
+            className: ['shift-event'],
             extendedProps: {
               type: 'shift',
               _id: shift.shift_id || shift.id,
+              is_night_shift: shift.is_night_shift
             },
           })),
+          // Exercise events
           ...exercise.map((ex) => ({
             id: `ex_${ex.Exercise_id}`,
             title: ex.exercise_type,
@@ -80,6 +93,7 @@ document.addEventListener('DOMContentLoaded', function () {
               notes: ex.notes,
             },
           })),
+          // Sickness events
           ...sickness.map((sick) => ({
             id: `sick_${sick.Sickness_id}`,
             title: sick.description,
@@ -91,6 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
               notes: sick.notes,
             },
           })),
+          // Other events
           ...others.map((other) => ({
             id: `other_${other.Others_id}`,
             title: other.description,
@@ -105,36 +120,42 @@ document.addEventListener('DOMContentLoaded', function () {
         ];
 
         console.log(events)
-
         successCallback(events);
       } catch (error) {
         console.error('Error fetching events:', error);
+        if (error == 'jwt expired') {
+          localStorage.clear();
+          location.href='index.html';
+          return
+        }
         failureCallback(error);
       }
     },
-     // Hiiren hover -efekti tapahtumien päällä
-     eventMouseEnter: function(info) {
+
+    // Mouse hover effect for events
+    eventMouseEnter: function(info) {
       info.el.style.cursor = 'pointer';
       info.el.title = 'Klikkaa muokataksesi';
     },
 
+    // Handle event clicks
     eventClick: function(info) {
       const event = info.event;
       const props = event.extendedProps;
 
+      // Handle shift event separately
       if (props.type === 'shift') {
-        // Käsittele työvuoro erikseen
         document.getElementById('editShiftModal').style.display = 'block';
         document.getElementById('editDate').value = event.startStr.split('T')[0];
         document.getElementById('editStartTime').value = event.startStr.split('T')[1].slice(0, 5);
         document.getElementById('editEndTime').value = event.endStr.split('T')[1].slice(0, 5);
         document.getElementById('eventId').value = props._id;
       } else {
-        // Käsittele muut tapahtumat (liikunta, sairastumiset jne.)
+        // Handle other event types (exercise, sickenss, others)
         const modal = document.getElementById('editModal');
         const form = modal.querySelector('#editEventForm');
 
-        // Aseta otsikko tyypin mukaan
+        // Set title based on event type
         const titleMap = {
           exercise: 'Muokkaa liikuntasuoritusta',
           sickness: 'Muokkaa sairastumista',
@@ -142,12 +163,12 @@ document.addEventListener('DOMContentLoaded', function () {
         };
         modal.querySelector('h2').textContent = titleMap[props.type] || 'Muokkaa tapahtumaa';
 
-        // Piilota kaikki kentät aluksi
+        // Hide all fields initially
         form.start_time.closest('label').style.display = 'none';
         form.end_time.closest('label').style.display = 'none';
         form.level.closest('label').style.display = 'none';
 
-        // Näytä tarvittavat kentät
+        // Show relevant fields based on event type
         switch (props.type) {
           case 'exercise':
             form.start_time.closest('label').style.display = 'block';
@@ -160,7 +181,7 @@ document.addEventListener('DOMContentLoaded', function () {
             break;
         }
 
-        // Täytä lomake
+        // Fill the form
         form.event_id.value = event.id;
         form.event_type.value = props.type;
         form.date.value = event.startStr.split('T')[0];
@@ -181,37 +202,54 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     },
 
+    // Custom event rendering
     eventContent: function(arg) {
+      const { event } = arg;
+      const props = event.extendedProps;
+
+      // A specific rendering for shifts
+      if (props.type === 'shift') {
+        const startTime = event.start ? event.start.toLocaleTimeString('fi-FI', {hour: '2-digit', minute:'2-digit'}) : '';
+        const endTime = event.end ? event.end.toLocaleTimeString('fi-FI', {hour: '2-digit', minute:'2-digit'}) : '';
+
+        return {
+          html: `
+            <div class="custom-shift-event">
+              <div class="shift-time">${startTime} - ${endTime}</div>
+            </div>
+          `,
+        };
+      }
+
+      // rendering for other events
       const iconMap = {
-        exercise: '🏃‍♂️',
+        exercise: '🏋️',
         sickness: '🤒',
         others: '📌'
       };
 
-      const type = arg.event.extendedProps.type;
-
-      if (type === 'shift') {
-        return {
-          html: `<div style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${arg.event.title}</div>`
-        };
-      }
-
       return {
-        html: `<div title="${arg.event.title}">${iconMap[type] || '❔'}</div>`
+        html: `
+          <div class="event-container">
+            <span class="event-icon">${iconMap[props.type] || '❔'}</span>
+            <span class="event-text">${event.title}</span>
+          </div>
+        `
       };
     }
-
   });
+
+  // Store and render calendar
   currentCalendar = calendar;
   calendar.render();
-
-  // Lataa tapahtumat sivun latauksen yhteydessä
   calendar.refetchEvents();
 
+  // Shift modal elements
   const shiftModal = document.getElementById("shiftModal");
   const formTable = document.querySelector(".form-shift-table");
   const openShiftModalBtn = document.getElementById("openShiftModal");
 
+  // Generate day inputs for current month
   function generateDaysOfMonth() {
     const calendarDate = currentCalendar.getDate();
     const year = calendarDate.getFullYear();
@@ -221,19 +259,22 @@ document.addEventListener('DOMContentLoaded', function () {
     formTable.innerHTML = '<div class="form-shift-header"><span>Vuoron alkamis aika:</span><span>Vuoron päättymis aika:</span></div>';
 
     for (let i = 1; i <= daysInMonth; i++) {
-      const row = document.createElement("div");
-      row.className = "form-row";
-      row.innerHTML = `
-        <label>${i}.${month + 1}.</label>
-        <input type="time" name="start_${i}">
-        <span>-</span>
-        <input type="time" name="end_${i}">
-      `;
-      formTable.appendChild(row);
+        const date = new Date(year, month, i);
+        const weekdayAbbr = date.toLocaleDateString('fi-FI', { weekday: 'short' });
+
+        const row = document.createElement("div");
+        row.className = "form-row";
+        row.innerHTML = `
+            <label>${weekdayAbbr} ${i}.${month + 1}.</label>
+            <input type="time" name="start_${i}">
+            <span>-</span>
+            <input type="time" name="end_${i}">
+        `;
+        formTable.appendChild(row);
     }
   }
 
-  // Modaalien avauslogiikka
+  // Modal opening logic
   document.getElementById('openShiftModal').addEventListener('click', () => {
     generateDaysOfMonth();
     shiftModal.style.display = 'block';
@@ -251,13 +292,14 @@ document.addEventListener('DOMContentLoaded', function () {
     document.getElementById('othersModal').style.display = 'block';
   });
 
+  // Shift form submission
   document.getElementById('shiftForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
-    // Hae näkyvä kuukausi kalenterista
+    // Get current month from calendar
     const calendarDate = currentCalendar.getDate();
     const year = calendarDate.getFullYear();
-    const month = calendarDate.getMonth(); // 0-indeksoitu
+    const month = calendarDate.getMonth(); // 0-BASED
 
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const userId = localStorage.getItem('user_id');
@@ -266,6 +308,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let savedCount = 0;
     const errors = [];
 
+    // Process each day's shift data
     for (let i = 1; i <= daysInMonth; i++) {
       const startInput = document.querySelector(`[name="start_${i}"]`);
       const endInput = document.querySelector(`[name="end_${i}"]`);
@@ -284,6 +327,7 @@ document.addEventListener('DOMContentLoaded', function () {
           startDate.setHours(startHours, startMinutes);
           endDate.setHours(endHours, endMinutes);
 
+          // Chech for night shift (ends the next day)
           const isNightShift = endDate < startDate;
           if (isNightShift) {
             endDate.setDate(endDate.getDate() + 1);
@@ -311,6 +355,11 @@ document.addEventListener('DOMContentLoaded', function () {
           });
 
           if (!response.ok) {
+            if (response.status == 403) {
+              localStorage.clear();
+              location.href='index.html';
+              return
+            }
             throw new Error(`HTTP error! status: ${response.status}`);
           }
 
@@ -322,12 +371,11 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     }
 
-    // Näytä palaute ja päivitä kalenteri
     if (errors.length > 0) {
       showToast(`Virheitä tallennuksessa: ${errors.join(', ')}`);
     } else if (savedCount > 0) {
       showToast(`Tallennettu ${savedCount} työvuoro(a)`);
-      calendar.refetchEvents(); // TÄRKEÄ – päivittää kaikki kuukaudet
+      calendar.refetchEvents(); // IMPORTANT! - Refresh all months
     } else {
       showToast('Ei tallennettuja työvuoroja');
     }
@@ -335,7 +383,7 @@ document.addEventListener('DOMContentLoaded', function () {
     closeModal('shiftModal');
   });
 
-  // muiden lomakkeiden lähetyslogiikka
+  // Other form submissions
   document.getElementById('exerciseForm').addEventListener('submit', async function (e) {
     e.preventDefault();
     await submitForm('exerciseForm', 'exercise', 'http://localhost:3000/api/exercise');
@@ -351,7 +399,7 @@ document.addEventListener('DOMContentLoaded', function () {
     await submitForm('othersForm', 'others', 'http://localhost:3000/api/others');
   });
 
-  // Yleinen lomakkeen lähetysfunktio
+  // General form submission function
   async function submitForm(formId, type, url) {
     const form = document.getElementById(formId);
     const formData = new FormData(form);
@@ -376,6 +424,11 @@ document.addEventListener('DOMContentLoaded', function () {
       const response = await fetchData(url, options);
 
       if (response.error) {
+        if (response.error == 'jwt expired') {
+          localStorage.clear();
+          location.href='index.html';
+          return
+        }
         throw new Error(response.error);
       }
 
@@ -385,9 +438,15 @@ document.addEventListener('DOMContentLoaded', function () {
     } catch (error) {
       console.error(`Error saving ${type}:`, error);
       alert(`Virhe tallennettaessa ${type}: ${error.message}`);
+      if (error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
     }
   }
 
+  // Edit shift form submission
   document.getElementById('editShiftForm').addEventListener('submit', async function(e) {
     e.preventDefault();
 
@@ -400,12 +459,12 @@ document.addEventListener('DOMContentLoaded', function () {
       const token = localStorage.getItem('token');
       const userId = localStorage.getItem('user_id');
 
-      // Tarkista onko kyseessä yövuoro (loppuaika < alkuaika)
+      // Check for night shift (end time < start time)
       const startDate = new Date(`${editDate}T${editStartTime}`);
       const endDate = new Date(`${editDate}T${editEndTime}`);
       const isNightShift = endDate < startDate;
 
-      // Jos yövuoro.
+      // Handle night shift (end date is next day)
       let endDateStr = editDate;
       if (isNightShift) {
         const nextDay = new Date(startDate);
@@ -417,7 +476,7 @@ document.addEventListener('DOMContentLoaded', function () {
         user_id: userId,
         start_date: editDate,
         start_time: editStartTime + ':00',
-        end_date: endDateStr, // Käytä korjattua päivämäärää yövuoroille
+        end_date: endDateStr, // USE ADJUSTED DATE FOR NIGHT SHIFTS
         end_time: editEndTime + ':00',
         is_night_shift: isNightShift
       };
@@ -431,9 +490,15 @@ document.addEventListener('DOMContentLoaded', function () {
         body: JSON.stringify(updatedShift)
       });
 
+      if (response.error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
+
       if (response.error) throw new Error(response.error);
 
-      // Päivitä kalenterissa
+      // Update shift in calendar
       const event = calendar.getEventById(`shift_${shiftId}`);
       if (event) {
         event.setDates(
@@ -445,12 +510,17 @@ document.addEventListener('DOMContentLoaded', function () {
       showToast('Työvuoro päivitetty!');
       closeModal('editShiftModal');
     } catch (error) {
+      if (error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
       console.error('Virhe työvuoron päivityksessä:', error);
       showToast('Virhe päivitettäessä työvuoroa: ' + error.message);
     }
   });
 
-  // Työvuoron poistaminen
+  // Delete shift
   document.getElementById('deleteShiftButton').addEventListener('click', async function() {
     if (!confirm('Haluatko varmasti poistaa tämän työvuoron?')) return;
 
@@ -467,9 +537,15 @@ document.addEventListener('DOMContentLoaded', function () {
         }
       });
 
+      if (response.error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
+
       if (response.error) throw new Error(response.error);
 
-      // Poista kalenterista
+      // Remove shift form calendar
       const event = calendar.getEventById(`shift_${shiftId}`);
       if (event) {
         event.remove();
@@ -483,6 +559,7 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
+  // Edit event form submission
   document.getElementById('editEventForm').addEventListener('submit', async function (e) {
     e.preventDefault();
 
@@ -494,8 +571,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
     console.log(type)
 
-    // Ensure ID is correctly parsed
-    const eventId = id.split('_')[1]; // Extract the actual ID (e.g., "123" from "ex_123")
+    // Parse event ID correctly
+    const eventId = id.split('_')[1]; // EXTRACT THE ACTUAL ID
     if (!eventId) {
       alert('Tapahtuman ID on puutteellinen!');
       return;
@@ -510,7 +587,7 @@ document.addEventListener('DOMContentLoaded', function () {
     let data = {
     };
 
-    // Tästä suuttuu
+    // Build data object based on event type
     if (type === 'exercise') {
       form.start_time.closest('label').style.display = 'block';
       form.end_time.closest('label').style.display = 'block';
@@ -570,16 +647,22 @@ document.addEventListener('DOMContentLoaded', function () {
       closeModal('editModal');
       calendar.refetchEvents();
     } catch (error) {
+      if (error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
       alert('Virhe päivitettäessä tapahtumaa: ' + error.message);
     }
   });
 
+  // Delete event
   document.getElementById('deleteEventButton').addEventListener('click', async function () {
     const form = document.getElementById('editEventForm');
     const id = form.event_id.value;
     const type = form.event_type.value;
 
-    const eventId = id.split('_')[1]; // Extract event ID
+    const eventId = id.split('_')[1]; // EXTRACT EVENT ID
     if (!eventId) {
       alert('Tapahtuman ID on puutteellinen!');
       return;
@@ -604,6 +687,12 @@ document.addEventListener('DOMContentLoaded', function () {
 
       const response = await fetchData(urlMap[type], options);
 
+      if (response.error == 'jwt expired') {
+        localStorage.clear();
+        location.href='index.html';
+        return
+      }
+
       if (response.error) throw new Error(response.error);
 
       alert('Tapahtuma poistettu!');
@@ -614,22 +703,31 @@ document.addEventListener('DOMContentLoaded', function () {
     }
   });
 
-  // sulkemisfunktio kaikille modaaleille
+  function toggleInfo(event) {
+    event.preventDefault();
+    const info = document.querySelector('.calendar-info');
+    const button = document.querySelector('#event-instructions');
+
+    if (info.style.display === 'flex') {
+      info.style.animation = 'disappear 1s ease-out forwards';
+      button.textContent = 'Lisätietoa tapahtumien tallennuksesta';
+      setTimeout(() => {
+        info.style.display = 'none';
+      }, 1000);
+    } else {
+      info.style.display = 'flex';
+      info.style.animation = 'appear 1s ease-out forwards';
+      button.textContent = 'Piilota lisätiedot';
+      info.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  const infoBtnOne = document.querySelector('#event-instructions');
+  infoBtnOne.addEventListener('click', toggleInfo);
+
+  // Modal closing function
   window.closeModal = function (modalId) {
     document.getElementById(modalId).style.display = 'none';
   };
 
-  // Klikkaus modalin ulkopuolelle sulkee modaalin
-  window.onclick = function (event) {
-    if (event.target.classList.contains('calendar-modal')) {
-      closeModal(event.target.id);
-    }
-  };
-
-  // Uloskirjautuminen
-  document.getElementById('log-out-user').addEventListener('click', function () {
-    localStorage.removeItem('user_id');
-    localStorage.removeItem('token');
-    window.location.href = 'index.html';
-  });
 });

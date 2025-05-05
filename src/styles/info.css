@@ -3,8 +3,10 @@
 }
 
 body {
+  font-family: var(--font-family);
   background-color: var(--grey-color);
   margin: 0;
+  line-height: 1.5;
 }
 
 .info-column {
@@ -13,12 +15,36 @@ body {
   align-items:flex-start;
   padding: 0.5rem;
   gap: 2rem;
-  max-width: 60rem;
-  min-width: 20rem;
   margin: auto;
-  width: 80%;
+  width: 95%;
+  max-width: 1200px;
   background-color: var(--grey-color);
   margin-top: 2em;
+}
+
+.header-box {
+  width: 100%;
+  box-shadow: 10px 10px 5px #CCCCCC;
+  border-radius: 1rem;
+  padding: 1em;
+  background-image: url("/img/mountains.png");
+  background-size: cover;
+  background-position: center;
+  color: var(--white-color);
+}
+
+.header-box h2, p:not(#backTopBtn p) {
+  margin-left: 20px;
+  max-width: 700px;
+}
+
+.header-box h2 {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.header-box p {
+  font-size: 1.17em;
 }
 
 .text-box {
@@ -30,20 +56,61 @@ body {
   background-color: var(--white-color);
 }
 
-.text-box h2 {
+.text-box h2, h3 {
   color: var(--blue-color);
+  margin-left: 20px;
+}
+
+.text-box h2 {
+  font-size: 1.5em;
+}
+
+.text-box h3 {
+  font-size: 1.17em;
+  font-weight: bold;
 }
 
 .text-box p {
-  max-width: 600px;
+  max-width: 85%;
+  margin-left: 20px;
+  font-size: 1.17em;
 }
 
 ol {
   font-weight: bold;
+  color: var(--blue-color);
 }
 
 li {
   margin-bottom: 10px;
+  max-width: 85%;
+  color: var(--blue-color);
+  font-size: 1.17em;
+}
+
+/* Responsiveness */
+@media only screen and (max-width: 850px) {
+
+  #log-out-user img {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+
+  .header-box {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .header-box::after {
+    content: '';
+    position: absolute;
+    z-index: -1;
+    inset: 0;
+    background-color: var(--blue-color);
+    opacity: 0.5;
+  }
 }
 
 @media only screen and (max-width: 550px) {
@@ -57,12 +124,19 @@ li {
     padding-left: 1em;
   }
 
-  .text-box p, .text-box ol li, .text-box ul li {
+  .text-box p, .text-box ol li, .text-box ul li, .header-box p {
     font-size: 4vw;
     max-width: 100%;
   }
 
-  .text-box h2, .text-box h3 {
+  .text-box h2, .text-box h3, .header-box h2 {
     font-size: 5vw;
+  }
+
+  .header-box h2,
+  p:not(#backTopBtn p),
+  .text-box h2,
+  .text-box h3 {
+    margin-left: 0;
   }
 }

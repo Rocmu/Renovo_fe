@@ -1,25 +1,29 @@
-<!-- tästä tulee etusivu, jolle ohjautuu kirjautumisen jälkeen -->
- <!DOCTYPE html>
+<!DOCTYPE html>
  <html lang="fi">
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
   <title>Renovo App</title>
  </head>
  <body>
    <!-- Header -->
    <header>
     <div class="left-header">
-      <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">Palaa Terveystaloon</button>
+      <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">
+        ↩ <span class="return-to-terveystalo">Takaisin</span> Terveystaloon
+      </button>
       <div class="logo">Renovo</div>
     </div>
     <div class="right-header">
       <span id="show-username-header"></span>
-      <button id="log-out-user">Kirjaudu ulos</button>
+      <button id="log-out-user">
+        <img src="/img/logout.png" alt="Kirjaudu ulos" class="logout-icon">
+        Kirjaudu ulos</button>
     </div>
   </header>
 
-  <!-- Navigaatio -->
+  <!-- Navigation -->
   <div class="nav-bar">
     <div id="mob-nav">
       <div class="line-1"></div>
@@ -30,30 +34,29 @@
     <a href="home.html">Etusivu</a>
     <a href="calendar.html">Kalenteri</a>
     <a href="hrv.html">Tulokset</a>
-    <a href="info.html">HRV-info</a>
+    <a href="info.html">Info</a>
   </div>
 
-  <!-- Mobiili Navigaatio -->
+  <!-- Mobile Navigation -->
   <div class="mob-nav-bar">
-    <ul>
-        <li><a href="home.html">Etusivu</a></li>
-        <li><a href="calendar.html">Kalenteri</a></li>
-        <li><a href="hrv.html">Tulokset</a></li>
-        <li><a href="info.html">HRV-info</a></li>
-    </ul>
-  </div>
+        <a href="home.html">Etusivu</a>
+        <a href="calendar.html">Kalenteri</a>
+        <a href="hrv.html">Tulokset</a>
+        <a href="info.html">Info</a>
 
+  </div>
+  <!-- Content -->
   <main class="main-content">
 
-    <!--<div>-->
+    <!-- Content header, welcome to site -->
       <div class="home-div" id="home-welcome">
         <h1>Tervetuloa!</h1>
         <h3>Renovo-sovellus seuraa ja arvioi kuormistustasi ja palautumistasi HRV-analyysia hyödyntäen.</h3>
       </div>
 
+      <!-- Calendar box, guide to calendar -->
       <div id="home-calendar">
         <div class="home-div">
-          <!--<div class="home-text-container">-->
           <h2>Kalenteri</h2>
           <h4>
             Kalenterin kautta voit lisätä työvuorosi sekä muut arjen tapahtumasi
@@ -61,20 +64,19 @@
             tärkeää tietoa tilanteestasi.
           </h4>
           <a class="home-button" href="calendar.html">Siirry kalenteriin</a>
-        <!--</div>-->
         </div>
         <div class="home-div-left">
           <img src="/img/calendar.jpg" alt="Kalenteri">
         </div>
-
-
       </div>
+
+      <!-- Results box, guide to view results -->
       <div id="home-results">
         <div class="home-div">
           <!--<div class="home-text-container">-->
           <h2>Tulokset</h2>
           <h4>
-            Tulossivulla voit tarkastella omaa mittaushistoriaasi erilaisten kuvaajien avulla.
+            Tulossivulla voit tarkastella omia mittaustuloksiasi sekä mittaushistoriaasi erilaisten kuvaajien avulla.
           </h4>
           <a class="home-button" href="hrv.html">Siirry tuloksiin</a>
         <!--</div>-->
@@ -82,21 +84,23 @@
         <div class="home-div-left">
           <img src="/img/results.jpg" alt="Tulokset">
         </div>
-
       </div>
+
+      <!-- Info box, guide to view additional information abotu HRV -->
       <div id="home-info">
         <div class="home-div">
-          <h2>HRV-info</h2>
+          <h2>Info</h2>
           <h4>
-            Infosivulta löydät ohjeet suoritettaviin mittauksiin sekä tietoa sykevälivaihtelusta ja palautumisesta sekä niihin vaikuttavista tekijöistä.
+            Infosivulta löydät ohjeet mittauksien suorittamiseen sekä tietoa sykevälivaihtelusta ja palautumisesta sekä niihin vaikuttavista tekijöistä.
           </h4>
           <a class="home-button" href="info.html">Tutustu</a>
         </div>
         <div class="home-div-left">
           <img src="/img/info.jpg" alt="HRV-info">
         </div>
-
       </div>
+
+      <!-- Problems box, guide to correct outlets for issues or questions -->
       <div id="home-problem">
         <div class="home-div">
           <h2>Ongelmatilanteet</h2>
@@ -108,12 +112,11 @@
         <div class="home-div-left">
           <img src="/img/problem.jpg" alt="Ongelmatilanteet">
         </div>
-
       </div>
-    <!--</div>-->
-
   </main>
-  <footer>Renovo App</footer>
+
+  <!-- Footer -->
+  <footer>Student Project@Renovo App 2025</footer>
   <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
   <script type="module" src="/src/scripts/main.js"></script>
   <script type="module" src="/src/scripts/home.js"></script>

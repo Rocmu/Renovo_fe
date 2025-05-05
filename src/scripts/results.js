@@ -1,7 +1,7 @@
 import '../styles/hrv.css';
 import { getUserDataTen, getUserDataThirty } from "./kubios.js";
 import { displayFeedbackForm, registerFeedBack, getUserFeedback } from './feedback.js';
-import { goBackToTop, revealTextOne, revealTextTwo } from './back-to-top.js';
+import { goBackToTop, toggleTextOne, toggleTextTwo } from './back-to-top.js';
 
 const printTenResults = document.querySelector('#print-hrv-ten-days');
 printTenResults.addEventListener('click', getUserDataTen);
@@ -9,24 +9,24 @@ printTenResults.addEventListener('click', getUserDataTen);
 const printThirtyResults = document.querySelector('#print-hrv-thirty-days');
 printThirtyResults.addEventListener('click', getUserDataThirty);
 
-//Avaa ensimmäinen info-laatikko
+//Open first info-box
 const infoBtnOne = document.querySelector('#canvas-one-text-boxes');
-infoBtnOne.addEventListener('click', revealTextOne);
+infoBtnOne.addEventListener('click', toggleTextOne);
 
-//Avaa toinen info-laatikko
+//Open second info-box
 const infoBtnTwo = document.querySelector('#canvas-two-text-boxes');
-infoBtnTwo.addEventListener('click', revealTextTwo);
+infoBtnTwo.addEventListener('click', toggleTextTwo);
 
 getUserDataTen();
 
 const openFeedbackFormBtn = document.querySelector('#open-feedback-form');
 openFeedbackFormBtn.addEventListener('click', displayFeedbackForm);
 
-// Tallenna uusi palaute
+// Save new feedback
 const postFeedbackBtn = document.querySelector('#post-feedback');
 postFeedbackBtn.addEventListener('click', registerFeedBack);
 
-// hae kaikki palautteet
+// Fetch all feedback
 const getFeedbackBtn = document.querySelector('#view-prev-feedback');
 getFeedbackBtn.addEventListener('click', getUserFeedback);
 

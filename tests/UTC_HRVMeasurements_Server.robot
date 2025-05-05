@@ -1,4 +1,5 @@
 *** Settings ***
+Documentation     Onnistunut sisäänkirjautuminen ja HRV mittaustulosten pyyntö taustapalvelimessa.
 Library    Collections
 Library    RequestsLibrary
 Library     CryptoLibrary     variable_decryption=True
@@ -9,8 +10,6 @@ Suite Setup    Authenticate as Regular
 
 ${Username}    crypt:Rjv8RYjWPp72oh1mY1wAE/5lzYGPwGmMA+Av09jQ1gfGEA6wffCSNA8Fcr0LmquPMVaTP6ePNW2PDgkWJZu5Zmt3loU=
 ${Password}    crypt:oDNjvOw2FZFOo8kcHVJzgdRa4z2uT3QNjHzM/+eUXHladU7DzzwgNCpRMdP+ZQqe9ubpacwAg0Vpc0M=
-
-*** Test Cases ***
 
 *** Keywords ***
 Authenticate as Regular
@@ -28,21 +27,17 @@ Authenticate as Regular
     Set Suite Variable    ${user_id}
 
 *** Test Cases ***
-Get User's Shifts
+
+Get User's Results From Past Ten Days
 
     ${header}    Create Dictionary    Authorization=Bearer ${token}
-    ${response}    GET    http://127.0.0.1:3000/api/shifts/user/${user_id}    headers=${header}
+    ${response}    GET    http://127.0.0.1:3000/api/kubios/user-data-ten    headers=${header}
     Status Should Be    200
     #Log To Console    ${response.json()}
 
-Post A New Shift
+Get User's Results From Past Thirty Days
 
     ${header}    Create Dictionary    Authorization=Bearer ${token}
-    ${body}    Create Dictionary    user_id=${user_id}    start_date=2025-04-25    start_time=08:00    end_time=16:00    end_date=2025-04-25
-    ${response}    POST    http://127.0.0.1:3000/api/shifts   headers=${header}   json=${body}
-    Status Should Be    201
-
-    Should Contain    ${response.json()}[message]    New shift created
-    Dictionary Should Contain Key    ${response.json()}  shift_id
+    ${response}    GET    http://127.0.0.1:3000/api/kubios/user-data-thirty    headers=${header}
+    Status Should Be    200
     #Log To Console    ${response.json()}
-

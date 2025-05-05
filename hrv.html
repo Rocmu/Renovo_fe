@@ -1,9 +1,9 @@
-<!--tänne header, nav ja footer-->
 <!DOCTYPE html>
 <html lang="fi">
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
 
     <title>Renovo App</title>
   </head>
@@ -11,16 +11,20 @@
     <!-- Header -->
     <header>
       <div class="left-header">
-        <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">Palaa Terveystaloon</button>
+        <button class="back-button" onclick="window.location.href='https://www.terveystalo.com'">
+          ↩ <span class="return-to-terveystalo">Takaisin</span> Terveystaloon
+        </button>
         <div class="logo">Renovo</div>
       </div>
       <div class="right-header">
         <span id="show-username-header"></span>
-        <button id="log-out-user">Kirjaudu ulos</button>
+        <button id="log-out-user">
+          <img src="/img/logout.png" alt="Kirjaudu ulos" class="logout-icon">
+          Kirjaudu ulos</button>
       </div>
     </header>
 
-    <!-- Navigaatio -->
+    <!-- Navigation -->
   <div class="nav-bar">
     <div id="mob-nav">
       <div class="line-1"></div>
@@ -31,21 +35,20 @@
     <a href="home.html">Etusivu</a>
     <a href="calendar.html">Kalenteri</a>
     <a href="hrv.html">Tulokset</a>
-    <a href="info.html">HRV-info</a>
+    <a href="info.html">Info</a>
   </div>
 
-  <!-- Mobiili Navigaatio -->
+  <!-- Mobile Navigation -->
   <div class="mob-nav-bar">
-    <ul>
-        <li><a href="home.html">Etusivu</a></li>
-        <li><a href="calendar.html">Kalenteri</a></li>
-        <li><a href="hrv.html">Tulokset</a></li>
-        <li><a href="info.html">HRV-info</a></li>
-    </ul>
+        <a href="home.html">Etusivu</a>
+        <a href="calendar.html">Kalenteri</a>
+        <a href="hrv.html">Tulokset</a>
+        <a href="info.html">Info</a>
   </div>
 
+    <!-- Content -->
     <div class="hrv-results-container">
-
+      <!-- Content header: Page heading and buttons -->
         <div class="hrv-results-container-header">
             <h2>HRV analyysi ja tulokset</h2>
             <p>Sovellus kerää HRV datasi Kubios HRV- sovelluksesta. Selaa edellisiä tuloksiasi, joita
@@ -56,6 +59,8 @@
               <button id="print-hrv-thirty-days">30 viimeistä päivää</button>
             </div>
         </div>
+
+        <!-- Results container 1: charts for Readiness, RMSSD, SNS and PNS -->
         <div class="hrv-results-container-content">
             <div class="hrv-canvas-heading">
               <h2 class="measurement-timespan"></h2>
@@ -74,6 +79,8 @@
             </div>
             <button id="canvas-one-text-boxes">Mitä arvot tarkoittavat?</button>
         </div>
+
+        <!-- Results container 1 footer: info boxes for Readiness, RMSSD, SNS and PNS -->
         <div class="hrv-results-container-footer">
           <div class="results-readiness-text-box">
             <h4>Readiness</h4>
@@ -101,6 +108,8 @@
             </p>
           </div>
         </div>
+
+        <!-- Results container 2: charts for BPM and physiological age -->
         <div class="hrv-results-container-content">
           <div class="hrv-canvas-heading">
             <h2 class="measurement-timespan-2"></h2>
@@ -117,6 +126,8 @@
         </div>
           <button id="canvas-two-text-boxes">Mitä arvot tarkoittavat?</button>
         </div>
+
+        <!-- Results container 2 footer: info boxes for BPM and physiological age -->
         <div class="hrv-results-container-footer-2">
           <div class="results-bpm-text-box">
               <h4>BPM</h4>
@@ -130,6 +141,8 @@
             </p>
           </div>
         </div>
+
+        <!-- Feedback form container: feedback buttons and feedback form -->
         <div class="hrv-user-feedback">
           <div class="feedback-buttons">
             <h2>Palaute HRV tuloksista</h2>
@@ -154,6 +167,7 @@
           </div>
         </div>
 
+        <!-- Feedback table container: feedback table for printing user feedback -->
         <div class="feedback-table">
           <h2>Tallennetut palautteesi</h2>
           <table class="feedback-list-table">
@@ -169,21 +183,22 @@
         </table>
       </div>
 
+      <!-- Content container footer: A tip to checkout info.html -->
       <div class="container-footer-info-link">
         <div class="info-link-box-text">
           <h2>Vinkkejä ja ohjeita mittauksiin</h2>
-          <p>HRV arvoihisi vaikuttavat lukuiset tekijät ja olosuhteet. Mittauksessa kannattaa pyrkiä
-            noudattamaan tarkkoja ohjeistuksia, jotta työterveyslääkärisi saa tarkimmat mahdolliset tulokset.
+          <p>HRV arvoihisi vaikuttavat lukuiset tekijät ja olosuhteet. Mittauksissa kannattaa pyrkiä
+            noudattamaan annettuja ohjeita, jotta saat madollisimman tarkoja tuloksia.
             Näin takaat myös jatkotoimenpiteiden vastaavan parhaiten omia henkilökohtaisia tarpeitasi.
           </p>
         </div>
         <a href="info.html">Lue mittausohjeet</a>
       </div>
-
     </div>
-
     </main>
-    <footer>Renovo App</footer>
+
+    <!-- Footer -->
+    <footer>Student Project@Renovo App 2025</footer>
     <button id="backTopBtn" title="Takaisin ylös"><p><i class="arrow up"></i></p></button>
     <script type="module" src="/src/scripts/main.js"></script>
     <script type="module" src="/src/scripts/results.js"></script>

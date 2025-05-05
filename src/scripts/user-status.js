@@ -17,7 +17,7 @@ const getUserStatus = async () => {
   const response = await fetchData(url, options);
 
   if (response.error) {
-    if (userData.error == 'jwt expired') {
+    if (response.error == 'jwt expired') {
       localStorage.clear();
       location.href="index.html";
       return
@@ -27,7 +27,7 @@ const getUserStatus = async () => {
   }
 
   if (response.message) {
-      console.log(response.message);
+      console.log('Renovo App');
   }
 
 };

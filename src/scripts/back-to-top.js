@@ -22,40 +22,60 @@ function goBackToTop() {
   mybutton.addEventListener('click', topFunction);
 }
 
-// Reveal hidden text boxes for readiness, rmssd, sns, pns
-function revealTextOne(event) {
+// Toggle hidden text boxes for readiness, rmssd, sns, pns
+function toggleTextOne(event) {
   event.preventDefault();
   const infoOne = document.querySelector('.hrv-results-container-footer');
-  infoOne.style.display = 'flex';
+  const buttonOne = document.querySelector('#canvas-one-text-boxes'); // <- haetaan nappi
   const windowWidth = window.innerWidth;
 
-  //Katsotaan selaimen koko
-  if (windowWidth >= 1200) {
-    console.log('leveys' + windowWidth)
-    const firstCanvas = document.querySelector('.canvas-wrapper')
-    firstCanvas.scrollIntoView();
+  if (infoOne.style.display === 'flex') {
+    // Hide with animation
+    infoOne.style.animation = 'disappear 1s ease-out forwards';
+    buttonOne.textContent = 'Mitä arvot tarkoittavat?';
+    setTimeout(() => {
+      infoOne.style.display = 'none';
+    }, 1000);
   } else {
-    console.log('leveys' + windowWidth)
-    infoOne.scrollIntoView();
+    // Display with animation
+    infoOne.style.display = 'flex';
+    infoOne.style.animation = 'appear 1s ease-out forwards';
+    buttonOne.textContent = 'Piilota';
+    if (windowWidth >= 1200) {
+      const firstCanvas = document.querySelector('.canvas-wrapper');
+      firstCanvas.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      infoOne.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
 
-// Reveal hidden text boxes for physiological age and bpm
-function revealTextTwo(event) {
+// Toggle hidden text boxes for physiological age and bpm
+function toggleTextTwo(event) {
   event.preventDefault();
   const infoTwo = document.querySelector('.hrv-results-container-footer-2');
-  infoTwo.style.display = 'flex';
+  const buttonTwo = document.querySelector('#canvas-two-text-boxes'); // <- haetaan nappi
   const windowWidth = window.innerWidth;
 
-  //Katsotaan selaimen koko
-  if (windowWidth >= 1200) {
-    console.log('leveys' + windowWidth)
-    const secondCanvas = document.querySelector('.canvas-wrapper-2')
-    secondCanvas.scrollIntoView();
+  if (infoTwo.style.display === 'flex') {
+    // Hide with animation
+    infoTwo.style.animation = 'disappear 1s ease-out forwards';
+    buttonTwo.textContent = 'Mitä arvot tarkoittavat?';
+    setTimeout(() => {
+      infoTwo.style.display = 'none';
+    }, 1000);
   } else {
-    console.log('leveys' + windowWidth)
-    infoTwo.scrollIntoView();
+    // Display with animations
+    infoTwo.style.display = 'flex';
+    infoTwo.style.animation = 'appear 1s ease-out forwards';
+    buttonTwo.textContent = 'Piilota';
+    if (windowWidth >= 1200) {
+      const secondCanvas = document.querySelector('.canvas-wrapper-2');
+      secondCanvas.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      infoTwo.scrollIntoView({ behavior: 'smooth' });
+    }
   }
 }
 
-export {goBackToTop, revealTextOne, revealTextTwo}
+export {goBackToTop, toggleTextOne, toggleTextTwo}

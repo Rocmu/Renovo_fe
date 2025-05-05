@@ -8,6 +8,9 @@ body {
   flex-direction: column;
   justify-content: space-between;
   margin: 0;
+  background-image: url("/img/mountains.png");
+  background-size: cover;
+  background-position: center;
 
 }
 
@@ -15,15 +18,14 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  /*padding: 1rem;*/
   height: 10rem;
   position: relative;
 }
 
-/* Might be replaced later */
 .app-logo {
+  font-family: 'Poppins', sans-serif;
   margin: 0;
-  height: auto; /* Barely small enough not to overlap form input */
+  height: auto;
   width: 30%;
   max-width: 400px;
   min-width: 100px;
@@ -31,7 +33,7 @@ header {
 }
 
 #login-form {
-  margin-top: 3rem; /* Helps prevent overlap with header */
+  margin-top: 3rem;
   max-width: 400px;
   width: 100%;
   margin: auto;
@@ -53,6 +55,7 @@ header {
 }
 
 #login-form input {
+  font-family: 'Poppins', sans-serif;
   box-sizing: border-box;
   padding: 0.75rem;
   font-size: 1rem;
@@ -68,10 +71,11 @@ header {
 }
 
 #login-form button {
+  font-family: 'Poppins', sans-serif;
   padding: 0.75rem;
   background-color: #0046AD;
   color: white;
-  font-weight: bold;
+  font-size: 2.2vh;
   border: none;
   border-radius: 0.4rem;
   cursor: pointer;
@@ -79,7 +83,7 @@ header {
 }
 
 #login-form button:hover {
-  background-color: orange; /* --hover-color did not work */
+  background-color: orange;
 }
 
 #error-message {
@@ -97,7 +101,8 @@ header {
 }
 
 footer {
-  background-color: #CCCCCC;
+  font-family: 'Poppins', sans-serif;
+  background-color: #0046ad;
   color: white;
   padding: 1em;
   margin-top: 2em;
@@ -105,6 +110,7 @@ footer {
   font-family: Arial, sans-serif
 }
 
+/* Responsiveness */
 @media only screen and (max-width: 750px) {
 
   #login-form {
@@ -114,19 +120,24 @@ footer {
 
 }
 
-@media only screen and (max-width: 460px) {
+@media only screen and (max-width: 550px) {
 
   #login-form {
     padding-top: 1em;
     padding-bottom: 1em;
     padding-right: 0;
     padding-left: 0;
+    width: 95%;
   }
 
   input#username, input#password, form#login-form button {
     width: 95%;
     margin: auto;
     font-size: 4vw;
+  }
+
+  footer {
+    font-size: 3vw;
   }
 
 }

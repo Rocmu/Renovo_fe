@@ -4,14 +4,14 @@ import { fetchData } from './fetch.js';
 const loginUser = async (event) => {
 	event.preventDefault();
 
-	// Haetaan oikea formi
+	// Get the correct form
 	const loginForm = document.querySelector('#login-form');
 
-	// Haetaan formista arvot, tällä kertaa käyttäen attribuuutti selektoreita
+	// Get values from form, this time using attribute selectors
 	const username = loginForm.querySelector('input[type=text]').value;
 	const password = loginForm.querySelector('input[type=password]').value;
 
-	// Luodaan body lähetystä varten taustapalvelun vaatimaan muotoon
+	// Create a body for server request
 	const bodyData = {
 		username: username,
 		password: password,
@@ -28,9 +28,8 @@ const loginUser = async (event) => {
 			'Content-type': 'application/json',
 		},
 	};
-	//console.log(options);
 
-	// Hae data
+	// Get data
 	const response = await fetchData(url, options);
 
 	if (response.error) {
@@ -45,7 +44,6 @@ const loginUser = async (event) => {
     successMessage.innerHTML = '';
 		console.log(response.message, 'success');
 		localStorage.setItem('token', response.token);
-		//localStorage.setItem('nimi', response.user.email);
     localStorage.setItem('nimi', response.user);
     localStorage.setItem('user_id', response.user_id);
 		location.href = 'home.html';
