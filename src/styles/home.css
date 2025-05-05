@@ -27,10 +27,6 @@ main {
 .home-div {
   display: flex;
   flex-direction: column;
-  /*justify-content: left;
-  width: 60%;
-  max-height: 350px;
-  */
 }
 
 #home-welcome, #home-calendar, #home-results, #home-info, #home-problem {
@@ -56,12 +52,13 @@ main {
   font-size: 2.7em;
 }
 
-#home-welcome h3 {
+#home-welcome h2 {
   max-width: 600px;
   font-weight: normal;
   margin-bottom: 30px;
   margin-top: 0;
   color: var(--white-color);
+  font-size: 1.17em;
 }
 
 #home-calendar, #home-results, #home-info, #home-problem {
@@ -78,11 +75,11 @@ main {
   font-size: 2rem;
   }
 
-.home-div h2, .home-div h4, a.home-button, #home-welcome h3 {
+.home-div h2, .home-div h3, a.home-button, #home-welcome h2 {
   margin-left: 20px;
 }
 
-.home-div h4 {
+.home-div h3 {
   font-size: 1.17em;
   font-weight: 100;
   padding-bottom: 30px;
@@ -175,7 +172,7 @@ img {
     font-size: 6vw;
   }
 
-  .home-div h2, .home-div h4, a.home-button, #home-welcome h3 {
+  .home-div h2, .home-div h3, a.home-button, #home-welcome h2 {
     margin-left: 0;
     font-size: 4vw;
   }

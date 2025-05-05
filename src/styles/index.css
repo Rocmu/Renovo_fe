@@ -62,12 +62,17 @@ header {
   border: 0.1rem solid #ccc;
   border-radius: 0.4rem;
   transition: border-color 0.3s;
+  margin-bottom: 0px;
 }
 
 #login-form input:focus {
   outline: none;
   border-color: #0046AD;
   box-shadow: 0 0 5px rgba(0, 70, 173, 0.3);
+}
+
+#login-form label {
+  font-family: 'Poppins', sans-serif;
 }
 
 #login-form button {
@@ -130,7 +135,7 @@ footer {
     width: 95%;
   }
 
-  input#username, input#password, form#login-form button {
+  input#username, input#password, form#login-form button, #login-form label {
     width: 95%;
     margin: auto;
     font-size: 4vw;

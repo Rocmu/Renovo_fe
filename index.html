@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="description" content="Login to Renovo site">
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <title>Kirjautumissivu</title>
@@ -11,14 +12,16 @@
 
     <!-- Header -->
     <header>
-      <img class="app-logo" src="/public/img/Renovo_logo.png" alt="Renovo logo">
+      <img class="app-logo" src="/img/Renovo_logo.png" alt="Renovo logo">
     </header>
 
     <!-- Content: login form and submit button -->
     <form id="login-form">
       <p id="login-valid-confirm"></p>
-      <input type="text" id="username" placeholder="sähköposti" required />
-      <input type="password" id="password" placeholder="salasana" required />
+      <label for="username">Käyttäjänimi:</label>
+      <input type="text" id="username" placeholder="syötä sähköposti" required />
+      <label for="password">Salasana:</label>
+      <input type="password" id="password" placeholder="syötä salasana" required />
       <button type="submit">Kirjaudu sisään</button>
     </form>
 
