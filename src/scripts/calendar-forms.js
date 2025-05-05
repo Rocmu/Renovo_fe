@@ -1,5 +1,6 @@
 import { fetchData } from './fetch.js';
 import { showToast } from './toast.js';
+import { customConfirm } from './toast.js';
 import { getCurrentCalendar } from './calendar-core.js';
 
 export function initializeFormHandlers(calendar) {
@@ -164,7 +165,7 @@ async function submitForm(formId, type, url, calendar) {
       throw new Error(response.error);
     }
 
-    alert(`${type.charAt(0).toUpperCase() + type.slice(1)} tallennettu!`);
+    showToast(`${type.charAt(0).toUpperCase() + type.slice(1)} tallennettu!`);
     closeModal(`${type}Modal`);
     calendar.refetchEvents();
   } catch (error) {
@@ -174,7 +175,7 @@ async function submitForm(formId, type, url, calendar) {
       return;
     }
     console.error(`Error saving ${type}:`, error);
-    alert(`Virhe tallennettaessa ${type}: ${error.message}`);
+    showToast(`Virhe tallennettaessa ${type}: ${error.message}`);
   }
 }
 
@@ -247,7 +248,8 @@ async function handleEditShiftForm(calendar) {
 }
 
 async function handleDeleteShift(calendar) {
-  if (!confirm('Haluatko varmasti poistaa tämän työvuoron?')) return;
+  const isConfirmed = await customConfirm('Haluatko varmasti poistaa tämän työvuoron?');
+  if (!isConfirmed) return;
 
   const shiftId = document.getElementById('eventId').value;
 
@@ -289,7 +291,7 @@ async function handleEditEventForm(calendar) {
   const eventId = id.split('_')[1];
 
   if (!eventId) {
-    alert('Tapahtuman ID on puutteellinen!');
+    showToast('Tapahtuman ID on puutteellinen!');
     return;
   }
 
@@ -344,7 +346,7 @@ async function handleEditEventForm(calendar) {
 
     if (response.error) throw new Error(response.error);
 
-    alert('Tapahtuma päivitetty!');
+    showToast('Tapahtuma päivitetty!');
     closeModal('editModal');
     calendar.refetchEvents();
   } catch (error) {
@@ -353,7 +355,7 @@ async function handleEditEventForm(calendar) {
       location.href='index.html';
       return;
     }
-    alert('Virhe päivitettäessä tapahtumaa: ' + error.message);
+    showToast('Virhe päivitettäessä tapahtumaa: ' + error.message);
   }
 }
 
@@ -364,7 +366,7 @@ async function handleDeleteEvent(calendar) {
   const eventId = id.split('_')[1];
 
   if (!eventId) {
-    alert('Tapahtuman ID on puutteellinen!');
+    showToast('Tapahtuman ID on puutteellinen!');
     return;
   }
 
@@ -374,7 +376,8 @@ async function handleDeleteEvent(calendar) {
     others: `http://localhost:3000/api/others/${eventId}`,
   };
 
-  if (!confirm('Haluatko varmasti poistaa tämän tapahtuman?')) return;
+  const isConfirmed = await customConfirm('Haluatko varmasti poistaa tämän työvuoron?');
+  if (!isConfirmed) return;
 
   try {
     const token = localStorage.getItem('token');
@@ -395,10 +398,10 @@ async function handleDeleteEvent(calendar) {
 
     if (response.error) throw new Error(response.error);
 
-    alert('Tapahtuma poistettu!');
+    showToast('Tapahtuma poistettu!');
     closeModal('editModal');
     calendar.refetchEvents();
   } catch (error) {
-    alert('Virhe poistettaessa tapahtumaa: ' + error.message);
+    showToast('Virhe poistettaessa tapahtumaa: ' + error.message);
   }
 }
