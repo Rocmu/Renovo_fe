@@ -205,7 +205,7 @@ body {
 
 /* Events container */
 .fc .fc-daygrid-day-events {
-  margin-top: auto; /* Push to bottom */
+
   flex-shrink: 0; /* Prevents shrinking */
 }
 
