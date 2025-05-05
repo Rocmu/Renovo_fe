@@ -376,7 +376,7 @@ async function handleDeleteEvent(calendar) {
     others: `http://localhost:3000/api/others/${eventId}`,
   };
 
-  const isConfirmed = await customConfirm('Haluatko varmasti poistaa tämän työvuoron?');
+  const isConfirmed = await customConfirm('Haluatko varmasti poistaa tapahtuman kalenterista?');
   if (!isConfirmed) return;
 
   try {

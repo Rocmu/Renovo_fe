@@ -7,8 +7,6 @@ const drawChartTen = async (userData) => {
   Chart.getChart("bpm-chart")?.destroy()
   Chart.getChart("age-chart")?.destroy()
 
-	console.log('UserData 10:', userData);
-
 	const readiness = userData.readiness;
 	const rmssd = userData.rmssd;
 	const sns = userData.sns;
@@ -241,8 +239,6 @@ const drawChartThirty = async (userData) => {
   Chart.getChart("sns-pns-chart")?.destroy()
   Chart.getChart("bpm-chart")?.destroy()
   Chart.getChart("age-chart")?.destroy()
-
-	console.log('UserData 30:', userData);
 
 	const readiness = userData.readiness;
 	const rmssd = userData.rmssd;

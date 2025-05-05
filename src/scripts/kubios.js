@@ -46,7 +46,6 @@ function thirtyActive() {
 };
 
 const getUserDataTen = async () => {
-	console.log('Käyttäjän DATA Kubioksesta');
 
   tenActive();
 
@@ -72,7 +71,6 @@ const getUserDataTen = async () => {
 };
 
 const getUserDataThirty = async () => {
-	console.log('Käyttäjän DATA Kubioksesta');
 
   thirtyActive();
 

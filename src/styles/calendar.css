@@ -211,7 +211,6 @@ body {
 
 /* Specific styling for events */
 .fc .shift-event {
-  /*max-width: 40%;*/
   margin: 7px auto !important;
   background: none;
   border-style: none;
@@ -741,7 +740,6 @@ footer {
 
   .calendar-modal-content, .calendar-modal-content form#sicknessForm label input {
     width: 95%;
-    /*padding: 20px 15px;*/
   }
 
   div.calendar-modal-content input[type="time"], div.calendar-modal-content input[type="date"], div.calendar-modal-content input[type="text"], div.calendar-modal-content  textarea {
@@ -754,7 +752,7 @@ footer {
     font-size: 3vw;
   }
 
-  /* Varmista, että kuukausinäkymä on oletusarvoisesti käytössä */
+  /* Make sure that the month view is used as default */
 .fc .fc-dayGridMonth-button.fc-button-active {
   background-color: var(--blue-color) !important;
   color: var(--white-color) !important;
@@ -822,7 +820,7 @@ div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
     flex-direction: row;
   }
 
-  #fc-dom-1, .calendar-info-box, div.calendar-modal-content h2, div.form-shift-header {
+  #fc-dom-1, .calendar-info-box, div.calendar-modal-content h2, div.form-shift-header, .toast  {
     font-size: 4vw;
   }
 
@@ -871,8 +869,21 @@ div#calendarView.fc.fc-media-screen.fc-direction-ltr.fc-theme-standard {
     font-size: 10vw;
   }
 
-  .calendar-info div {
+  .calendar-info div, #confirmMessage {
     font-size: 4vw;
+  }
+
+  div.modal-content {
+    width: 95%;
+    padding: 10px;
+  }
+
+  div.modal-content .confirm-buttons {
+    flex-direction: column;
+  }
+
+  button#confirmYes, button#confirmNo {
+    font-size: 3vw;
   }
 
 }
