@@ -52,11 +52,11 @@ Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymäss�
 
 ### Front-end - linkki julkaistuun sovellukseen
 
-[Frontend](www.frontend.com)
+[Front-end](http://thehyte.northeurope.cloudapp.azure.com/)
 
 ### Back-end - linkki käytössä olevaan back-end-sovellukseen/APIin
 
-[Backend](www.backend.com)
+[Back-end](https://github.com/Rocmu/Renovo_be)
 
 ### Rautalankamallit
 
@@ -128,6 +128,7 @@ Kuvat rautalankamalleista
 
   - Kalenterissa alle 7h yövuorot / vuorot jotka jatkuvat seuraavalle vuorokaudelle jäävät näkyviin "päivävuoroina". Näitä vuoroja ei pysty jälkeenpäin muokkaamaan tai poistamaan, koska vuorot eivät tallennu oikealla tavalla.
   - Yövuorot, joka jatkuu ma-su yön yli, jää kalenteriin näkyviin hassusti.
+  - Liikunta-/aktiivisuusmerkintöjen muokkausmodaali ei tuo aloitus- ja lopetusaikoja.
 
 ### Referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
 
