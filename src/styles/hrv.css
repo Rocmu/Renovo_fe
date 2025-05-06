@@ -118,7 +118,7 @@ button#canvas-one-text-boxes:hover, button#canvas-two-text-boxes:hover {
   gap: 1em;
 }
 
-.canvas-wrapper h4, .canvas-wrapper-2 h4 {
+.canvas-wrapper h3, .canvas-wrapper-2 h3 {
   color: #707070;
   font-weight: 100;
 }
@@ -230,7 +230,7 @@ canvas#sns-pns-chart {
   margin-left: 20px;
 }
 
-form#feedback-form h4 {
+form#feedback-form h3 {
   color: var(--blue-color);
   font-size: 1.5em;
   margin-bottom: 5px;
@@ -294,11 +294,11 @@ tr td:last-child {
 
 div.container-footer-info-link a {
   text-decoration: none;
-  color: orange;
+  color: var(--white-color)
 }
 
 .container-footer-info-link a:hover {
-  color: lightblue;
+  color: var(--hover-color);
 }
 
 footer {
@@ -415,7 +415,7 @@ footer {
     font-size: 5vw;
   }
 
-  .hrv-results-container p , h4, div.container-footer-info-link, form#feedback-form h4 {
+  .hrv-results-container p , h3, div.container-footer-info-link, form#feedback-form h3 {
     font-size: 4vw;
   }
 

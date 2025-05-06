@@ -205,7 +205,7 @@ body {
 
 /* Events container */
 .fc .fc-daygrid-day-events {
-  margin-top: auto; /* Push to bottom */
+
   flex-shrink: 0; /* Prevents shrinking */
 }
 
@@ -581,6 +581,68 @@ div.calendar-modal-content input[type="time"], div.calendar-modal-content input[
   padding: 0.5em;
   width: 95%;
   margin: auto;
+}
+
+.confirm-modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  background-color: lightblue;
+  margin: 15% auto;
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#confirmMessage {
+  margin-bottom: 30px;
+  font-size: 2.7vh;
+  font-weight: bold;
+  color: var(--text-color);
+  text-align: center;
+}
+
+.confirm-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  justify-content: center;
+}
+
+#confirmYes, #confirmNo {
+  font: var(--font-family);
+  padding: 8px 16px;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 2.1vh;
+}
+
+#confirmYes {
+  background-color: red;
+  color: var(--white-color)
+}
+
+#confirmNo {
+  background-color:  rgb(86, 86, 86);
+  color: var(--white-color)
+}
+
+#confirmYes:hover {
+  background-color: #c82333;
+}
+
+#confirmNo:hover {
+  background-color: grey;
 }
 
 footer {

@@ -1,6 +1,7 @@
 import '../styles/main.css';
 import '../styles/calendar.css';
 import { showToast } from './toast.js';
+import { customConfirm } from './toast.js';
 import { fetchData } from './fetch.js';
 import { initializeEventHandlers } from './calendar-events.js';
 import { handleEventClick } from './calendar-events.js';
