@@ -1,36 +1,42 @@
 # Renovo_fe
 Frontend of the health application project
 
-### Kuvakaappaukset sovelluksen käyttöliittymästä
+## Kuvakaappaukset sovelluksen käyttöliittymästä
+Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymässä.
 
-#### Desktop käyttöliittymä:
+### Desktop käyttöliittymä:
 
-Sisäänkirjautuminen
+#### Sisäänkirjautuminen
 ![Login page](/public/img/ui_login.png)
 
-Kotisivu
+#### Kotisivu
 ![Home page](/public/img/ui_home.png)
 
-Kalenteri
+#### Kalenteri
 ![Home page](/public/img/ui_calendar.png)
 
-Tulokset
+#### Tulokset
 ![Results page](/public/img/ui_results.png)
 
-Info
+#### Info
 ![Info page](/public/img/ui_info.png)
 
-#### Mobiili käyttöliittymä:
+### Mobiili käyttöliittymä:
 
-Sisäänkirjautuminen ![Mobile login page](/public/img/mobile_ui_login.png)
+#### Sisäänkirjautuminen
+![Mobile login page](/public/img/mobile_ui_login.png)
 
-Kotisivu ![Mobiel home page](/public/img/mobile_ui_home.png)
+#### Kotisivu
+![Mobiel home page](/public/img/mobile_ui_home.png)
 
-Kalenteri ![Mobile home page](/public/img/mobile_ui_calendar.png)
+#### Kalenteri
+![Mobile home page](/public/img/mobile_ui_calendar.png)
 
-Tulokset ![Mobile results page](/public/img/mobile_ui_results.png)
+#### Tulokset
+![Mobile results page](/public/img/mobile_ui_results.png)
 
-Info ![Mobile info page](/public/img/mobile_ui_info.png)
+#### Info
+![Mobile info page](/public/img/mobile_ui_info.png)
 
 
 ### Front-end - linkki julkaistuun sovellukseen
