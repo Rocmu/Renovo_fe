@@ -133,7 +133,7 @@ Kuvat rautalankamalleista
 ### Referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
 
   - [Chart.js](https://www.chartjs.org/docs/latest/) tulosten graafista esitystä varten.
-  - [FullCalendar](https://fullcalendar.io/) kalenterimerkintöjä varten.
+  - [FullCalendar](https://fullcalendar.io/) luodaan kalenteri ja sen toiminnallisuudet.
   - [W3Schools](https://www.w3schools.com/) apuna vähän kaikessa.
 
 ### Linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
