@@ -23,7 +23,7 @@ Info
 #### Mobiili käyttöliittymä:
 
 Sisäänkirjautuminen
-![Mobile login page](/public/img/mobile_ui_login.png)
+Sisäänkirjautuminen - ![Mobile login page](/public/img/mobile_ui_login.png)
 
 Kotisivu
 ![Mobiel home page](/public/img/mobile_ui_home.png)
