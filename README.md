@@ -3,6 +3,11 @@ Frontend of the health application project
 
 ### Kuvakaappaukset sovelluksen käyttöliittymästä
 
+#### Desktop käyttöliittymä
+
+- ![Login page](/public/img/ui_login.png)
+
+
 ### Front-end - linkki julkaistuun sovellukseen
 
 [Frontend](www.frontend.com)
