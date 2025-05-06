@@ -126,15 +126,18 @@ Kuvat rautalankamalleista
 
 ### Tiedossa olevat bugit/ongelmat
 
+  - Kalenterissa alle 7h yövuorot / vuorot jotka jatkuvat seuraavalle vuorokaudelle jäävät näkyviin "päivävuoroina". Näitä vuoroja ei pysty jälkeenpäin muokkaamaan tai poistamaan, koska vuorot eivät tallennu oikealla tavalla.
+  - Yövuorot, joka jatkuu ma-su yön yli, jää kalenteriin näkyviin hassusti.
+
 ### Referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
 
-- [Chart.js](https://www.chartjs.org/docs/latest/) tulosten graafista esitystä varten.
-- [FullCalendar](https://fullcalendar.io/) kalenterimerkintöjä varten.
-- [W3Schools](https://www.w3schools.com/) apuna vähän kaikessa.
+  - [Chart.js](https://www.chartjs.org/docs/latest/) tulosten graafista esitystä varten.
+  - [FullCalendar](https://fullcalendar.io/) kalenterimerkintöjä varten.
+  - [W3Schools](https://www.w3schools.com/) apuna vähän kaikessa.
 
 ### Linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
 
-- Testit --> [tests](tests)
-- Tulokset --> [tests](outputs)
-- [Taustapalvelintestin READ.me](tests/README.md)
-- [Linkki Githubio-sivulle](https://nappulat.github.io/FeTesting/)
+  - Testit --> [tests](tests)
+  - Tulokset --> [tests](outputs)
+  - [Taustapalvelintestin READ.me](tests/README.md)
+  - [Linkki Githubio-sivulle](https://nappulat.github.io/FeTesting/)
