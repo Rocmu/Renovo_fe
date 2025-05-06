@@ -1,43 +1,54 @@
 # Renovo_fe
+
 Frontend of the health application project
 
 ## Kuvakaappaukset sovelluksen käyttöliittymästä
+
 Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymässä.
 
 ### Desktop käyttöliittymä:
 
 #### Sisäänkirjautuminen
+
 ![Login page](/public/img/ui_login.png)
 
 #### Kotisivu
+
 ![Home page](/public/img/ui_home.png)
 
 #### Kalenteri
+
 ![Home page](/public/img/ui_calendar.png)
 
 #### Tulokset
+
 ![Results page](/public/img/ui_results.png)
 
 #### Info
+
 ![Info page](/public/img/ui_info.png)
 
 ### Mobiili käyttöliittymä:
 
 #### Sisäänkirjautuminen
+
 ![Mobile login page](/public/img/mobile_ui_login.png)
 
 #### Kotisivu
+
 ![Mobiel home page](/public/img/mobile_ui_home.png)
 
 #### Kalenteri
+
 ![Mobile home page](/public/img/mobile_ui_calendar.png)
 
 #### Tulokset
+
 ![Mobile results page](/public/img/mobile_ui_results.png)
 
 #### Info
-![Mobile info page](/public/img/mobile_ui_info.png)
 
+![Mobile info page](/public/img/mobile_ui_info.png)
 
 ### Front-end - linkki julkaistuun sovellukseen
 
@@ -48,54 +59,70 @@ Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymäss�
 [Backend](www.backend.com)
 
 ### Rautalankamallit
+
 Kuvat rautalankamalleista
 
 #### Kotisivu
+
 ![Homepage wireframe](/public/img/wireframe_home.png)
 
 #### Kalenteri
+
 ![Calendar wireframe](/public/img/wireframe_calendar.png)
 
 #### Työvuoron merkitseminen
+
 ![Adding a shift wireframe](/public/img/wireframe_shift.png)
 
 ### Listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
 
--   Sisään kirjautuminen (TV_1).
-    - Käyttäjä pystyy kirjautumaan sovellukseen kubioksen käyttäjätunnuksella ja salasanalla.
+#### Sisään kirjautuminen (TV_1).
 
-- Käyttäjälle luodaan oma käyttäjätili (TV_30).
-    - Ensimmäisen sisäänkirjautumisen yhteydessä käyttäjätili tallennetaan sovelluksen tietokantaan.
+  - Käyttäjä pystyy kirjautumaan sovellukseen kubioksen käyttäjätunnuksella ja salasanalla.
 
--   Sovelluksen välilehtien selaaminen navigaatiopalkissa.
-    - Käyttäjä voi liikkua navigaatiopainikkeiden avulla sovelluksen välilehtien välillä.
+#### Käyttäjälle luodaan oma käyttäjätili (TV_30).
 
--   Työvuorojen merkitseminen kalenteriin (TV_28, TV_29).
-    - Käyttäjä pystyy tallentamaan työvuoronsa kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan työvuoroja.
+  - Ensimmäisen sisäänkirjautumisen yhteydessä käyttäjätili tallennetaan sovelluksen tietokantaan.
 
-- Liikunnan ja aktiivisuuden merkitseminen kalenteriin (TV_12).
-    - Käyttäjä pystyy merkitsemään liikuntaan ja aktiivisuuteen liittyviä merkintöjä kalenteriin sekä muokkaamaan ja poistamaan suorituksia.
+#### Sovelluksen välilehtien selaaminen navigaatiopalkissa.
 
--   Sairaustapausten merkitseminen kalenteriin.
-    - Käyttäjä pystyy tallentamaan sairaustapaukset kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan sairaustapauksia.
+  - Sovelluksen sisäinen navigointi on vaivatonta ja
+    nopeaa, haluttu tieto tai toiminto löytyy nopeasti ja loogisesta paikasta.
 
--   Muiden tapahtumien merkitseminen kalenteriin.
-    - Käyttäjä pystyy lisäämään muita tapahtumia kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan tapahtumia.
+#### Työvuorojen merkitseminen kalenteriin (TV_28, TV_29).
 
--   HRV mittaustulosten tarkastelu 10 päivän ja 30 päivän jaksoissa
-    - Käyttäjä näkee voi tarkastella mittaustuloksia tulokset-sivulla 10 ja 30 päivän jaksoissa.
+  - Käyttäjä pystyy tallentamaan työvuoronsa kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan työvuoroja. Työvuorot merkataan halutulle päivälle valitsemalla alkamis- ja päättymisaika. Työvuorot näkyvät kalenterissa päiväkohtaisesti.
 
--   Mittaustulosten raportointi visuaalisesti (TV_21).
-    - Mittaustuloksisa luodaan käyttäjälle visuaaliset kaaviot.
+#### Liikunnan ja aktiivisuuden merkitseminen kalenteriin (TV_12).
 
--   Käyttäjän palaute (TV_26).
-    - Käyttäjä pystyy antamaan palautetta mittaustuloksista, jos kokee etteivät tulokset vastaa tämän hetkistä terveydentilaa tai ovat virheellisiä.
+  - Käyttäjä pystyy merkitsemään liikuntaan ja aktiivisuuteen liittyviä merkintöjä kalenteriin sekä muokkaamaan ja poistamaan suorituksia. Käyttäjä pystyy raportoimaan merkinnän yhteyteen arvion suorituksen kuormittavuudesta. Merkinnät ovat näkyvillä kalenterissa päiväkohtaisesti.
 
--   Käyttäjälle tarjotaan tietoa HRV:stä (TV_27).
-    - Käyttäjälle on sovelluksessa tarjolla tietoa sykevälivaihtelusta (HRV) sekä mittauksen suorittamisesta.
+#### Sairaustapausten merkitseminen kalenteriin (TV_8, TV_9, TV_10, TV_11).
 
--   Uloskirjautuminen (TV_31).
-    - Käyttäjä pystyy kirjautumaan ulos sovelluksesta.
+  - Käyttäjä pystyy tallentamaan sairaustapaukset kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan sairaustapauksia. Käyttäjä pystyy myös kirjaamaan lisätietoa sairastumisesta vapaaseen tekstikenttään. Merkinnät ovat näkyvillä kalenterissa päiväkohtaisesti.
+
+#### Muiden tapahtumien ja poikkeustapahtumien merkitseminen kalenteriin (TV_16, TV_17, TV_18, TV_19).
+
+  - Käyttäjä pystyy lisäämään muita tapahtumia ja poikkeustapauksia kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan tapahtumia. Käyttäjä pystyy antamaan lisätietoa merkinnän yhteydessä vapaaseen tekstikenttään sekä arvioimaan tapahtuman kuormitusta tarvittaessa. Merkinnät jäävät kalenteriin näkyviin päiväkohtaisesti.
+
+#### HRV mittaustulosten tarkastelu 10 päivän ja 30 päivän jaksoissa
+
+  - Käyttäjä näkee voi tarkastella mittaustuloksia tulokset-sivulla 10 ja 30 päivän jaksoissa.
+
+#### Mittaustulosten raportointi visuaalisesti (TV_21).
+
+  - Mittaustuloksisa luodaan käyttäjälle visuaaliset kaaviot.
+
+#### Käyttäjän palaute (TV_26).
+
+  - Käyttäjä pystyy antamaan palautetta mittaustuloksista, jos kokee etteivät tulokset vastaa tämän hetkistä terveydentilaa tai ovat virheellisiä.
+
+#### Käyttäjälle tarjotaan tietoa HRV:stä (TV_27).
+
+  - Käyttäjälle on sovelluksessa tarjolla tietoa sykevälivaihtelusta (HRV) sekä mittauksen suorittamisesta.
+
+#### Uloskirjautuminen (TV_31).
+  - Käyttäjä pystyy kirjautumaan ulos sovelluksesta. Käyttäjä myös kirjataan ulos automaattisesti tunnin inaktiivisuuden jälkeen.
 
 ### Tiedossa olevat bugit/ongelmat
 
@@ -107,7 +134,7 @@ Kuvat rautalankamalleista
 
 ### Linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
 
--   Testit --> [tests](tests)
--   Tulokset --> [tests](outputs)
--   [Taustapalvelintestin READ.me](tests/README.md)
-
+- Testit --> [tests](tests)
+- Tulokset --> [tests](outputs)
+- [Taustapalvelintestin READ.me](tests/README.md)
+- [Linkki Githubio-sivulle](https://nappulat.github.io/FeTesting/)
