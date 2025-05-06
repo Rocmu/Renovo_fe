@@ -1,51 +1,69 @@
 # Renovo_fe
 Frontend of the health application project
 
-## Linkit testikansioon ja tuloksiin
+### Kuvakaappaukset sovelluksen käyttöliittymästä
 
-Testit --> [tests](tests)
-Tulokset --> [tests](outputs)
+### Front-end - linkki julkaistuun sovellukseen
 
-### 1. Ensimmäinen epäonnistunut sisäänkirjautuminen (Päivitetty 17.4.2025)
+[Frontend](www.frontend.com)
 
-- [Sisäänkirjautumistehtävän READ.me](tests/README.md)
-- [Sisäänkirjautuminen](tests/login-server-test.robot)
-- [log.html](outputs/log.html)
-- [output.xml](outputs/output.xml)
-- [report.html](outputs/report.html)
+### Back-end - linkki käytössä olevaan back-end-sovellukseen/APIin
 
-Huom! Testiä piti hiukan muuttaa asetusten vuoksi. Env- tiedostosta tulee nyt "huonot" käyttäjätunnukset. Lopputulos sama, eli epäonnistuu.
+[Backend](www.backend.com)
 
+### Rautalankamallit
 
-### 2. viikko 5, sisäänkirjautuminen toimivilla ja ei- toimivilla tunnuksilla
+[Siirry rautalankamalleihin](https://www.figma.com/design/8OiIS3HBxqU48f8joFLPv3/Renovo?node-id=4-3&p=f)
 
-- [Sisäänkirjautumistehtävän READ.me](tests/README.md)
-- [Epäonnistunut säänkirjautuminen, viikko 5](tests/login-invalid-login.robot)
-- [Onnistunut säänkirjautuminen, viikko 5](tests/login-valid-login.robot)
+### Listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
 
-### 3. viikko 6, tautapalvelimen testaus
+-   Sisään kirjautuminen (TV_1).
+    - Käyttäjä pystyy kirjautumaan sovellukseen kubioksen käyttäjätunnuksella ja salasanalla.
 
-- [Taustapalvelintestin READ.me](tests/README.md)
-- [taustapalvelintesti, viikko 6](tests/server-test.robot)
+- Käyttäjälle luodaan oma käyttäjätili (TV_30).
+    - Ensimmäisen sisäänkirjautumisen yhteydessä käyttäjätili tallennetaan sovelluksen tietokantaan.
 
-### README PALAUTUKSET
+-   Sovelluksen välilehtien selaaminen navigaatiopalkissa.
+    - Käyttäjä voi liikkua navigaatiopainikkeiden avulla sovelluksen välilehtien välillä.
 
-### kuvakaappaukset sovelluksen käyttöliittymästä
+-   Työvuorojen merkitseminen kalenteriin (TV_28, TV_29).
+    - Käyttäjä pystyy tallentamaan työvuoronsa kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan työvuoroja.
 
-### linkki julkaistuun sovellukseen (front-end)
+- Liikunnan ja aktiivisuuden merkitseminen kalenteriin (TV_12).
+    - Käyttäjä pystyy merkitsemään liikuntaan ja aktiivisuuteen liittyviä merkintöjä kalenteriin sekä muokkaamaan ja poistamaan suorituksia.
 
-### linkki käytössä olevaan back-end-sovellukseen/APIin
+-   Sairaustapausten merkitseminen kalenteriin.
+    - Käyttäjä pystyy tallentamaan sairaustapaukset kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan sairaustapauksia.
 
-### rautalankamallit tai linkki niihin
+-   Muiden tapahtumien merkitseminen kalenteriin.
+    - Käyttäjä pystyy lisäämään muita tapahtumia kalenteriin sekä tarvittaessa muokkaamaan ja poistamaan tapahtumia.
 
-### listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
+-   HRV mittaustulosten tarkastelu 10 päivän ja 30 päivän jaksoissa
+    - Käyttäjä näkee voi tarkastella mittaustuloksia tulokset-sivulla 10 ja 30 päivän jaksoissa.
 
-### mahdolliset tiedossa olevat bugit/ongelmat
+-   Mittaustulosten raportointi visuaalisesti (TV_21).
+    - Mittaustuloksisa luodaan käyttäjälle visuaaliset kaaviot.
 
-### referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
+-   Käyttäjän palaute (TV_26).
+    - Käyttäjä pystyy antamaan palautetta mittaustuloksista, jos kokee etteivät tulokset vastaa tämän hetkistä terveydentilaa tai ovat virheellisiä.
 
-### linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
+-   Käyttäjälle tarjotaan tietoa HRV:stä (TV_27).
+    - Käyttäjälle on sovelluksessa tarjolla tietoa sykevälivaihtelusta (HRV) sekä mittauksen suorittamisesta.
 
-### readmen tekemiseen voi käyttää koodieditoria tai esim. readme.so-sovellusta.
+-   Uloskirjautuminen (TV_31).
+    - Käyttäjä pystyy kirjautumaan ulos sovelluksesta.
 
-### varmistakaa, että opettajille on pääsy/käyttöoikeudet kaikkeen edellymainittuun materialiin
+### Tiedossa olevat bugit/ongelmat
+
+### Referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
+
+- [Chart.js](https://www.chartjs.org/docs/latest/) tulosten graafista esitystä varten.
+- [FullCalendar](https://fullcalendar.io/) kalenterimerkintöjä varten.
+- [W3Schools](https://www.w3schools.com/) apuna vähän kaikessa.
+
+### Linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
+
+-   Testit --> [tests](tests)
+-   Tulokset --> [tests](outputs)
+-   [Taustapalvelintestin READ.me](tests/README.md)
+
