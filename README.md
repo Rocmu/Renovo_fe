@@ -48,8 +48,16 @@ Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymäss�
 [Backend](www.backend.com)
 
 ### Rautalankamallit
+Kuvat rautalankamalleista
 
-[Siirry rautalankamalleihin](https://www.figma.com/design/8OiIS3HBxqU48f8joFLPv3/Renovo?node-id=4-3&p=f)
+#### Kotisivu
+![Homepage wireframe](/public/img/wireframe_home.png)
+
+#### Kalenteri
+![Calendar wireframe](/public/img/wireframe_calendar.png)
+
+#### Työvuoron merkitseminen
+![Adding a shift wireframe](/public/img/wireframe_shift.png)
 
 ### Listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
 
