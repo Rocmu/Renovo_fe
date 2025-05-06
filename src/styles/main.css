@@ -48,9 +48,13 @@ header {
 }
 
 .logo {
-  font-family: var(--font-family);
-  font-size: 22px;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+}
+
+.logo-image {
+  height: 30px;
+  width: auto;
 }
 
 .right-header {

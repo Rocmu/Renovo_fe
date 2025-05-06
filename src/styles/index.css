@@ -30,6 +30,7 @@ header {
   max-width: 400px;
   min-width: 100px;
   display: block;
+  padding-top: 50px;
 }
 
 #login-form {
