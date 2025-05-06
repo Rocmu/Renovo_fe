@@ -35,7 +35,6 @@ const loginUser = async (event) => {
 	if (response.error) {
     const errorMessage = document.querySelector('#login-valid-confirm');
     errorMessage.innerHTML = 'Sisäänkirjautuminen epäonnistui. Väärä käyttäjänimi/salasana.';
-		console.error('Error adding a new user:', response.error);
 		return;
 	}
 
@@ -49,7 +48,6 @@ const loginUser = async (event) => {
 		location.href = 'home.html';
 	}
 
-	console.log(response);
 	loginForm.reset();
 };
 

@@ -14,7 +14,7 @@ export let currentCalendar = null;
 
 // Initialize when DOM is loaded
 document.addEventListener('DOMContentLoaded', function () {
-  // INITIALIZE FULLCALENDAR
+  // Initialize FullCalendar
   const calendarEl = document.getElementById('calendarView');
   const calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
@@ -65,7 +65,7 @@ function renderEventContent(arg) {
     const start = parseInt(startTime.slice(0, 2))
     const end = parseInt(endTime.slice(0, 2))
     const difference = start - end
-    console.log(start + ' ' + end)
+
     // Create html element for shift, additional class if a night shift
     if (difference >= 0) {
       return {

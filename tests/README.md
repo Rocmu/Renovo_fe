@@ -10,11 +10,11 @@ Tämä dokumentaatio löytyy myös projektin Github.io sivulta ---> [Linkki Gith
 
 - #### Viikko 5: Tehty projektille sisäänkirjautumistesti. Testattu sisäänkirjautumista sekä onnistuneesti (toimiva tunnus ja salasana) ja niin, että sisäänkirjautuminen epäonnistuu (väärä tunnus ja/tai salasana) Testi 1 [Sisäänkirjautuminen (invalid)](login-invalid-login.robot) Testi 2 [Sisäänkirjautuminen (valid)](login-valid-login.robot)
 
-- ### Viikko 6: Projektin ensimmäiset taustapalvelimen testit [Taustapalvelin-vuorot-haku-syöttö](server-test.robot)
+- #### Viikko 6: Projektin ensimmäiset taustapalvelimen testit [Taustapalvelin-vuorot-haku-syöttö](server-test.robot)
 
-- ### Viikko 7: [Github.io](https://nappulat.github.io/FeTesting/)
+- #### Viikko 7: [Github.io](https://nappulat.github.io/FeTesting/)
 
-- ### Viikko 7-8: Käyttötapaukset ja niihin perustuvat testit. [Dokumentaatio](#testit)
+- #### Viikko 7-8: Käyttötapaukset ja niihin perustuvat testit. [Dokumentaatio](#testit)
 
 ## Rakenne
 
@@ -128,9 +128,9 @@ Viimeiseksi dokumentaatioon on kerätty suoritetut ohjelmistotestit, joissa olla
 
 Seuraavaksi esitellään luodut ohjelmistotestit. Huomioitavaa on, että käyttötapauksia ollaan testattu samoissa testeissä. Esimerkiksi kirjautuminen (ja mahdollisesti rekistöröinti) ovat pakollisia vaatimuksia muiden käyttötapausten testaamiseksi. Mikäli käyttötapausta ei voida testata tietyssä kohteessa (UI tai taustapalvelin), tästä myös mainitaan. Esimerkiksi uloskirjautuminen (UTC_10) testataan vain käyttöliittymän puolella ja liitetään mukaan suureen osaan muista testeistä. Samoin käyttöohjeet (UTC_9) ovat estusivulla, johon päädytään aina onnistuneen sisäänkirjautumisen jälkeen, joten sitä ei testata erikseen.
 
-#### Kirjautuminen.
+Sulkuihin on merkitty, mitkä käyttötapaukset testataan.
 
-Sovellukselle tehdään testejä, joissa syötetään oikeita/vääriä tunnuksia ja katsotaan, että ohjelmisto palauttaa oikean vastauksen. Sulkuihin on merkitty, mitkä käyttötapaukset testataan.
+#### Kirjautuminen.
 
 - Onnistunut kirjautuminen (ja mahdollisesti rekistöröityminen) käyttöliittymän puolella. Onnistunut kirjautuminen vie etusivulle, jossa näkyvät sovelluksen käyttöohjeet. ---> Testi: [login-valid-login.robot](login-valid-login.robot) (Käyttötapaukset UTC_1, UTC_2 ja UTC_9) (tehty 29.04.2025)
 

@@ -1,4 +1,5 @@
 import { fetchData } from './fetch.js';
+import { showToast } from './toast.js';
 
 function displayFeedbackForm() {
   const form = document.querySelector('.feedback-form-container');
@@ -13,11 +14,6 @@ function closeFeedbackForm() {
 function displayFeedbackTable() {
   const form = document.querySelector('.feedback-table');
   form.style.display = 'block';
-}
-
-function closeFeedbackTable() {
-  const form = document.querySelector('.feedback-table');
-  form.style.display = 'none';
 }
 
 const registerFeedBack = async (event) => {
@@ -59,7 +55,8 @@ const registerFeedBack = async (event) => {
       console.error('ADDING disagreement FAILED:', response.error);
       return;
     } else {
-      alert('Tallennettu.')
+      const message = 'Palautteesi on tallennettu.'
+      showToast(message)
     }
 
     feedBackForm.reset();
@@ -83,31 +80,27 @@ const getUserFeedback = async () => {
       }
   };
 
-  console.log(options);
-
   const response = await fetchData(url, options);
-
-  if (response.error) {
-      console.error('Error getting data:', response.error);
-      return;
-  }
-
-  if (response.message) {
-      console.log(response.message, 'success');
-  }
-
-  console.log(response);
 
   const tableBody = document.querySelector('.tbody')
 
   tableBody.innerHTML = '';
 
-  response.reverse();
+  if (response.error) {
+      tableBody.innerHTML = 'Palautteen haku epäonnistui.';
+      return;
+  }
 
-  console.log('Tämän pitunen' + response.length)
+  if (response.message) {
+      console.log(response.message, 'success');
+      return
+  }
+
+  response.reverse();
 
   if (response.length == 0) {
     tableBody.innerHTML = 'Et ole antanut palautetta.';
+    return
   }
 
   let nro = response.length

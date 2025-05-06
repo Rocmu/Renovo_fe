@@ -309,6 +309,29 @@ footer {
   text-align: center;
 }
 
+.toast {
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  background: var(--blue-color);
+  color: var(--white-color);
+  padding: 0.75rem 1.5rem;
+  bottom: 1.25rem;
+  font-weight: 500;
+  z-index: 9999;
+  animation: fadeIn 0.3s, fadeOut 0.3s 2.7s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateX(-50%) translateY(20px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+@keyframes fadeOut {
+  from { opacity: 1; }
+  to { opacity: 0; }
+}
+
 @media only screen and (max-width: 1200px) {
   .canvas-wrapper, .canvas-wrapper-2 {
     flex-direction: column;
@@ -415,7 +438,7 @@ footer {
     font-size: 5vw;
   }
 
-  .hrv-results-container p , h3, div.container-footer-info-link, form#feedback-form h3 {
+  .hrv-results-container p , h3, div.container-footer-info-link, form#feedback-form h3, .toast {
     font-size: 4vw;
   }
 
