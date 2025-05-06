@@ -6,6 +6,8 @@ Tämä dokumentaatio löytyy myös projektin Github.io sivulta ---> [Linkki Gith
 
 ## Aikataulu
 
+- #### Viikko 1-3: Tutustuttu kurssimateriaaliin ja tehty projektin ohjelmistotestaukseen valmistavia yksilötehtäviä.
+
 - #### Viikko 4: Palautettu projektin repositiori opettajalle ja suoritettu ensimmäinen (tahalleen) epäonnistunut sisäänkirjautumistesti [Testi](login-server-test.robot)
 
 - #### Viikko 5: Tehty projektille sisäänkirjautumistesti. Testattu sisäänkirjautumista sekä onnistuneesti (toimiva tunnus ja salasana) ja niin, että sisäänkirjautuminen epäonnistuu (väärä tunnus ja/tai salasana) Testi 1 [Sisäänkirjautuminen (invalid)](login-invalid-login.robot) Testi 2 [Sisäänkirjautuminen (valid)](login-valid-login.robot)

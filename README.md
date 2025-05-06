@@ -1,10 +1,30 @@
-# Renovo_fe
+# Renovo
 
-Frontend of the health application project
+Renovo sovelluksen tarkoitus on seurata käyttäjän hyvinvointia ja jaksamista analysoimalla HRV-dataa (sydämen sykevälivaihtelu). Käyttäjä kykenee sisäänkirjautumisen jälkeen tarkastelemaan seuranta- ajalla kertyneitä HRV arvojaan, sekä antamaan niistä sovelluksen kautta palautetta. Käyttäjä voi myös syöttää omakohtaista tietoa, jotka vaikuttavat HRV- dataan, kuten työvuorot, urheilun, sairaustapaukset jne. HRV data saadaan Kubios HRV- sovelluksen kautta ([Kubios Oy](https://www.kubios.com/)). Renovo sovellus myös tarkistaa pitää silmällä seuranta- aikaa, tehden sen päätyttyä lopullisen pyynnön käyttäjän datasta, joka tallennetaan tietokantaan.
+
+## Sisällysluettelo
+
+- [Yleiskatsaus](#yleiskatsaus)
+- [Kuvakaappaukset sovelluksen käyttöliittymästä](#kuvakaappaukset-sovelluksen-käyttöliittymästä)
+    - [Desktop käyttöliittymä](#desktop-käyttöliittymä)
+    - [Mobiili käyttöliittymä (Responsiivisuus)](#mobiili-käyttöliittymä-responsiivisuus)
+- [Julkaistu sovellus ja taustapalvelin](#julkaistu-sovellus-ja-taustapalvelin)
+- [Rautalankamallit](#rautalankamallit)
+- [Toteutetut toiminnot](#listaus-ja-kuvaus-kaikista-toiminnallisuuksista-mitä-on-toteutettu)
+- [Bugit ja ongelmat](#tiedossa-olevat-bugitongelmat)
+- [Referenssit](#referenssit-käytetyt-tutoriaalit-grafiikkakirjastot-tms)
+- [Ohjelmistotestaus](#linkki-ohjelmistotestauskansioon-mistä-löytyvät-testitapaukset-ja--raportit)
+- [Tekijät](#tekijät)
+
+## Yleiskatsaus
+
+Tämä repositorio sisältää käyttöliittymän **Renovo**-sovellukselle. Sovelluksen taustapalvelin löytyy erillisestä repositoriosta: [Renovo_fe](https://github.com/Rocmu/Renovo_be).
+
+Käyttöliittymä (CLient) on rakennetun sivun ulkoasu, jonka kautta käyttäjä on vuorovaikutuksessa ohjelmiston kanssa. Käyttöliittymästä lähetetään pyyntöjä sovelluksen taustapalvelimelle. Saatu vastaus käsitellään ja käyttöliittymä reagoi määrätyllä tavalla.
 
 ## Kuvakaappaukset sovelluksen käyttöliittymästä
 
-Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymässä.
+Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymässä. Sovellus luotiin ensisijaisesti desktop näkymälle. Mobiilinäkymä lisättiin myöhemmin saavutettavuuden tukemiseksi.
 
 ### Desktop käyttöliittymä:
 
@@ -28,7 +48,9 @@ Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymäss�
 
 ![Info page](/public/img/ui_info.png)
 
-### Mobiili käyttöliittymä:
+### Mobiili käyttöliittymä (Responsiivisuus):
+
+Media Query- toiminnallisuutta käyttäen sovellukselle luotiin "breakpointeja", joiden avulla Renovo- sovellusta voidaan käyttää sekä läppärillä että kutistaa esimerkiksi puhelimen näytön kokoon.
 
 #### Sisäänkirjautuminen
 
@@ -50,6 +72,8 @@ Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymäss�
 
 ![Mobile info page](/public/img/mobile_ui_info.png)
 
+## Julkaistu sovellus ja taustapalvelin
+
 ### Front-end - linkki julkaistuun sovellukseen
 
 [Front-end](http://thehyte.northeurope.cloudapp.azure.com/)
@@ -58,9 +82,9 @@ Kuvakaappaukset sovelluksen käyttöliittymästä desktop- ja mobiilinäkymäss�
 
 [Back-end](https://github.com/Rocmu/Renovo_be)
 
-### Rautalankamallit
+## Rautalankamallit
 
-Kuvat rautalankamalleista
+Kuvat rautalankamalleista.
 
 #### Kotisivu
 
@@ -74,7 +98,7 @@ Kuvat rautalankamalleista
 
 ![Adding a shift wireframe](/public/img/wireframe_shift.png)
 
-### Listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
+## Listaus ja kuvaus kaikista toiminnallisuuksista, mitä on toteutettu
 
 #### Sisään kirjautuminen (TV_1).
 
@@ -124,21 +148,33 @@ Kuvat rautalankamalleista
 #### Uloskirjautuminen (TV_31).
   - Käyttäjä pystyy kirjautumaan ulos sovelluksesta. Käyttäjä myös kirjataan ulos automaattisesti tunnin inaktiivisuuden jälkeen.
 
-### Tiedossa olevat bugit/ongelmat
+## Tiedossa olevat bugit/ongelmat
 
   - Kalenterissa alle 7h yövuorot / vuorot jotka jatkuvat seuraavalle vuorokaudelle jäävät näkyviin "päivävuoroina". Näitä vuoroja ei pysty jälkeenpäin muokkaamaan tai poistamaan, koska vuorot eivät tallennu oikealla tavalla.
   - Yövuorot, joka jatkuu ma-su yön yli, jää kalenteriin näkyviin hassusti.
   - Liikunta-/aktiivisuusmerkintöjen muokkausmodaali ei tuo aloitus- ja lopetusaikoja.
+  - Mikäli mobiilinavigaation klikkaa navigaatio-napista auki ja selainkokoa lähtee taas kasvattamaan, mobiilinavigaation nappi ja menu eivät mene piiloon. Korjautuu, kun sivun lataa uudestaan.
 
-### Referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
+## Referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
 
   - [Chart.js](https://www.chartjs.org/docs/latest/) tulosten graafista esitystä varten.
   - [FullCalendar](https://fullcalendar.io/) luodaan kalenteri ja sen toiminnallisuudet.
   - [W3Schools](https://www.w3schools.com/) apuna vähän kaikessa.
+  - [Youtube- "Lower the opacity of a background-image with CSS"](https://www.youtube.com/watch?v=lRPguPbovro) käytetty luomaan "läpinäkyviä" taustakuvia CSS:ä.
 
-### Linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
+## Linkki ohjelmistotestauskansioon, mistä löytyvät testitapaukset ja -raportit
 
   - Testit --> [tests](tests)
-  - Tulokset --> [tests](outputs)
+  - Tulokset --> [tulokset](outputs)
   - [Taustapalvelintestin READ.me](tests/README.md)
   - [Linkki Githubio-sivulle](https://nappulat.github.io/FeTesting/)
+
+## Tekijät
+
+- Ellisdd --> [Github](https://github.com/Ellisdd)
+
+- katarilp --> [Github](https://github.com/katarilp)
+
+- Rocmu --> [Github](https://github.com/Rocmu)
+
+- Nappulat --> [Github](https://github.com/Nappulat)
