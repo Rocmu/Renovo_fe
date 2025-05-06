@@ -22,20 +22,15 @@ Info
 
 #### Mobiili käyttöliittymä:
 
-Sisäänkirjautuminen
-Sisäänkirjautuminen - ![Mobile login page](/public/img/mobile_ui_login.png)
+Sisäänkirjautuminen ![Mobile login page](/public/img/mobile_ui_login.png)
 
-Kotisivu
-![Mobiel home page](/public/img/mobile_ui_home.png)
+Kotisivu ![Mobiel home page](/public/img/mobile_ui_home.png)
 
-Kalenteri
-![Mobile home page](/public/img/mobile_ui_calendar.png)
+Kalenteri ![Mobile home page](/public/img/mobile_ui_calendar.png)
 
-Tulokset
-![Mobile results page](/public/img/mobile_ui_results.png)
+Tulokset ![Mobile results page](/public/img/mobile_ui_results.png)
 
-Info
-![Mobile info page](/public/img/mobile_ui_info.png)
+Info ![Mobile info page](/public/img/mobile_ui_info.png)
 
 
 ### Front-end - linkki julkaistuun sovellukseen
