@@ -154,6 +154,7 @@ Kuvat rautalankamalleista.
   - Yövuorot, joka jatkuu ma-su yön yli, jää kalenteriin näkyviin hassusti.
   - Liikunta-/aktiivisuusmerkintöjen muokkausmodaali ei tuo aloitus- ja lopetusaikoja.
   - Mikäli mobiilinavigaation klikkaa navigaatio-napista auki ja selainkokoa lähtee taas kasvattamaan, mobiilinavigaation nappi ja menu eivät mene piiloon. Korjautuu, kun sivun lataa uudestaan.
+  - Pakotetut uloskirjautumiset eivät toimi täysin kalenteria koskevissa pyynnöissä. Toimivat muualla.
 
 ## Referenssit, käytetyt tutoriaalit, grafiikkakirjastot, tms.
 
