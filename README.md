@@ -18,7 +18,7 @@ Renovo sovelluksen tarkoitus on seurata käyttäjän hyvinvointia ja jaksamista 
 
 ## Yleiskatsaus
 
-Tämä repositorio sisältää käyttöliittymän **Renovo**-sovellukselle. Sovelluksen taustapalvelin löytyy erillisestä repositoriosta: [Renovo_fe](https://github.com/Rocmu/Renovo_be).
+Tämä repositorio sisältää käyttöliittymän **Renovo**-sovellukselle. Sovelluksen taustapalvelin löytyy erillisestä repositoriosta: [Renovo_be](https://github.com/Rocmu/Renovo_be).
 
 Käyttöliittymä (CLient) on rakennetun sivun ulkoasu, jonka kautta käyttäjä on vuorovaikutuksessa ohjelmiston kanssa. Käyttöliittymästä lähetetään pyyntöjä sovelluksen taustapalvelimelle. Saatu vastaus käsitellään ja käyttöliittymä reagoi määrätyllä tavalla.
 
@@ -167,8 +167,9 @@ Kuvat rautalankamalleista.
 
   - Testit --> [tests](tests)
   - Tulokset --> [tulokset](outputs)
-  - [Taustapalvelintestin READ.me](tests/README.md)
+  - [Testikansion READ.me](tests/README.md)
   - [Linkki Githubio-sivulle](https://nappulat.github.io/FeTesting/)
+  - [Linkki Github.io- sivun repoon](https://github.com/Nappulat/FeTesting)
 
 ## Tekijät
 
