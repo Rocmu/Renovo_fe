@@ -167,8 +167,9 @@ Kuvat rautalankamalleista.
 
   - Testit --> [tests](tests)
   - Tulokset --> [tulokset](outputs)
-  - [Taustapalvelintestin READ.me](tests/README.md)
+  - [Testikansion READ.me](tests/README.md)
   - [Linkki Githubio-sivulle](https://nappulat.github.io/FeTesting/)
+  - [Linkki Github.io- sivun repoon](https://github.com/Nappulat/FeTesting)
 
 ## Tekijät
 
