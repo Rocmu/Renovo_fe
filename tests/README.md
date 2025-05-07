@@ -182,7 +182,7 @@ Renovo sovellukselle tehdään testejä, jossa tarkastellaan käyttäjän mittau
 
 Kaiken kaikkiaan 31 testiä, 29 onnistuu.
 
-2 Epäonnistuvaa ovat ensimmäisiltä viikoilta 4 ([login-server-test.robot](login-server-test.robot)) ja 5 ([login-server-test.robot](login-server-test.robot)). Nämä on jätetty epäonnistuneiksi dokumentaatiota varten.
+2 Epäonnistuvaa ovat ensimmäisiltä viikoilta 4 ([login-server-test.robot](login-server-test.robot)) ja 5 ([login-server-test.robot](login-server-test.robot)). Nämä on jätetty epäonnistuneiksi alkuperäisiä tehtävänantoja noudattaen.
 
 #### Lokit ---> [log.html](../outputs/log.html)
 #### Raportit ---> [report.html](../outputs/report.html)
