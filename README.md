@@ -74,9 +74,9 @@ Media Query- toiminnallisuutta käyttäen sovellukselle luotiin "breakpointeja",
 
 ## Julkaistu sovellus ja taustapalvelin
 
-### Front-end - linkki julkaistuun sovellukseen
+### Linkki julkaistuun sovellukseen
 
-[Front-end](http://thehyte.northeurope.cloudapp.azure.com/)
+[Renovo-sovellus](http://thehyte.northeurope.cloudapp.azure.com/)
 
 ### Back-end - linkki käytössä olevaan back-end-sovellukseen/APIin
 
