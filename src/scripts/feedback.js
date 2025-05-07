@@ -34,7 +34,7 @@ const registerFeedBack = async (event) => {
   };
 
   // Endpoint
-  const url = 'http://localhost:3000/api/disagreement';
+  const url = '/api/disagreement';
 
   let token = localStorage.getItem('token');
 
@@ -70,7 +70,7 @@ const getUserFeedback = async () => {
 
   let user_id = localStorage.getItem('user_id')
 
-  const url = `http://localhost:3000/api/disagreement/user/${user_id}`;
+  const url = `/api/disagreement/user/${user_id}`;
 
   let token = localStorage.getItem('token');
 

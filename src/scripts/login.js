@@ -18,7 +18,7 @@ const loginUser = async (event) => {
 	};
 
 	// Endpoint
-	const url = 'http://localhost:3000/api/auth/kubios-login';
+	const url = '/api/auth/kubios-login';
 
 	// Options
 	const options = {

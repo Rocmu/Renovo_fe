@@ -4,7 +4,7 @@ const getUserStatus = async () => {
 
   let user_id = localStorage.getItem('user_id');
 
-  const url = `http://localhost:3000/api/kubios/${user_id}`;
+  const url = `/api/kubios/${user_id}`;
 
   let token = localStorage.getItem('token');
 
